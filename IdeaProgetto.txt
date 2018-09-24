@@ -27,8 +27,17 @@ Funzionalità su DBServer:
 		- Dati clienti
 		- QRCode prodotti
 		- Prodotti specifici di una certa sede
-		- ...
 		- Account
 		- Punti fedeltà
 		- QRCode
 		- ....
+
+TOOL:
+	- AndroidStudio
+	- Server: sublime --> plug-in: sublime SFTP
+		- Acquisto di un server (chiedere a strazza) dove caricare il tutto
+		- Server apache su raspBerry (Java?!?)
+		- EC2 Amazon server
+	- DBServer:
+		- Amazon RDS Server (da testare)
+	
