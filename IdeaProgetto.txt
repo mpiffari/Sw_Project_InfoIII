@@ -29,7 +29,7 @@ Funzionalità su DBServer:
 		- Prodotti specifici di una certa sede
 		- Account
 		- Punti fedeltà
-		- QRCode: https://deepai.org/dashboard Trova se due immagini sono identiche
+		- QRCode:https://deepai.org/dashboard Trova se due immagini sono identiche
 		- ....
 
 TOOL:
