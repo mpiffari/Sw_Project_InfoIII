@@ -19,7 +19,7 @@ Funzionalità su server:
 	. Funzionalità java di
 		- Verifica login
 		- Richiesta/aggiornamento punti fedeltà
-		- Ricerca prodotto 
+		- Ricerca prodotto : zxing
 		- API Google
 		- ...
 Funzionalità su DBServer:
