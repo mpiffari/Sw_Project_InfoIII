@@ -16,7 +16,7 @@ Funzionalità:
 Funzionalità su android:
 	. Salvataggio su file (.xls,.txt,.xml) con limitazioni d'accesso (psw)
 Funzionalità su server:
-	. Funzionalità java di
+	. Funzionalità java di:
 		- Verifica login
 		- Richiesta/aggiornamento punti fedeltà
 		- Ricerca prodotto : zxing
