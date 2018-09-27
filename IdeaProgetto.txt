@@ -29,7 +29,7 @@ Funzionalità su DBServer:
 		- Prodotti specifici di una certa sede
 		- Account
 		- Punti fedeltà
-		- QRCode:https://deepai.org/dashboard Trova se due immagini sono identiche
+		- QRCode
 		- ....
 
 TOOL:
@@ -39,5 +39,4 @@ TOOL:
 		- Server apache su raspBerry (Java?!?)
 		- EC2 Amazon server
 	- DBServer:
-		- Amazon RDS Server (da testare) - DB MySQL oratorio bonate se serve :-), ho provato con una classe java easy e si connette con jdbc
-	
+		- Amazon RDS Server (da testare)
