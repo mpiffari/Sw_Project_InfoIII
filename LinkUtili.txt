@@ -1,0 +1,2 @@
+- Tips per una modellazione migliore:
+	http://www.ddj.com/dept/architect/184415811?cid=Ambysoft
