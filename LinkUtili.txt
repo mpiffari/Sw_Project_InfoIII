@@ -1,2 +1,5 @@
 - Tips per una modellazione migliore:
 	http://www.ddj.com/dept/architect/184415811?cid=Ambysoft
+- MVC e MVP: --> better MVP for me 
+	https://www.infragistics.com/community/blogs/b/todd_snyder/posts/mvc-or-mvp-pattern-whats-the-difference
+	https://academy.realm.io/posts/eric-maxwell-mvc-mvp-and-mvvm-on-android/
