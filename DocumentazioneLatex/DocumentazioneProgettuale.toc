@@ -1,0 +1,6 @@
+\babel@toc {english}{}
+\contentsline {part}{I\hspace {1em}Iterazione 0}{3}{part.1}
+\contentsline {chapter}{\numberline {1}Requisiti e specifiche}{5}{chapter.1}
+\contentsline {section}{\numberline {1.1}Requisiti utente}{5}{section.1.1}
+\contentsline {section}{\numberline {1.2}Specfiche del progetto bla bla bla}{7}{section.1.2}
+\contentsline {chapter}{\numberline {2}Architettura}{9}{chapter.2}
