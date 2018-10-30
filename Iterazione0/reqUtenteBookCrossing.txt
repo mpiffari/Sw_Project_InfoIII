@@ -40,51 +40,57 @@ che concerne il percorso seguito dal libro, le recensioni lasciate dagli utenti 
 Prima di procedere con l'identificazione univoca del libro, il cliente deve inserire i dati 
 del testo (o dei testi) che intende condividere con il resto della community: questo inserimento può avvenire
 	- In maniera "automatica" tramite scansione dell' ISBN
-	- In modalità "manuale", nel caso in cui, per esempio, non sia presente il barcode, fornendo i 
+	- In modalità "manuale", nel caso in cui, per esempio, non sia presente il l'ISBN, fornendo i 
 	  seguenti dati:
 		- Titolo
 		- Autore
 		- Anno di pubblicazione/Edizione
 		- Categoria
 
-A questo punto il sistema genererà un BCID di 10 caratteri ( = Book Crossing ID) univoco il
-quale deve essere riportato sul testo dall'utente.
+A questo punto il sistema genererà un BCID di 10 caratteri, ovvero un Book Crossing ID univoco, il
+quale dovrà essere riportato sul testo dall'utente.
 
-
-Nel momento in cui il volume/i viene rilasciato, azione che può avvenire in un secondo momento
-rispetto alla fase di identificazione,il sistema dovrà acquisire i seguenti dati:
-	- Luogo di rialscio 
+La vera e propria condivisione avviene nel momento in cui il volume/i viene rilasciato (azione che può 
+avvenire in un secondo momento rispetto alla fase di identificazione), il sistema dovrà acquisire 
+i seguenti dati:
+	- Luogo di rilascio (con estensione future per un'acquisizione automatica della 
+			     posizione tramite GPS)
 	- Ora e data di rialscio (valutare se necessarie)
-e consiglierà come luogo di rilascio un punto in cui è già presente almeno un libro, 
-facilitando così la creazione di cassette virtuali.
+L'app inoltre consiglierà all'utente un luogo di rilascio in cui sia già presente almeno un libro, 
+facilitando così la creazione di cassette virtuali, ovvero di luoghi in cui sono presenti più libri: 
+l'idea è quella quindi di permettere al sistema di creare, in maniera autonoma, dei punti "fissi" di 
+consegna senza dover applicare interventi a livello infrastrutturale.
 
-Successivamente il sistema dovrà notificare gli utenti, interessati al genere del 
-libro rilasciato, dell'avvenuto rilascio.
+Successivamente l'applicazione dovrà notificare gli utenti, interessati al genere del 
+libro rilasciato,  della presenza di un nuovo testo, appena rilasciato, che potrebbe interessargli.
 		
 In qualsiasi momento è possibile effettuare le seguenti operezioni su ogni libro personalmente 
 condiviso con la rete di sharing:
 	-Aggiunta di recensione 
 	-Rating del libro
 
-Quando viene trovato un libro (journal entry), il cliente che vuole prelevarlo,
-deve inserire il BCID del libro; il sistema si occuperà di informare la community aggiornando
+Quando viene trovato un libro (nel gerco definito come "journal entry"), il cliente che vuole prelevarlo,
+, dopo aver effettuato il login nell'applicazione, deve inserire nell'apposito menù 
+il BCID del libro che intende acquisire.
+Il sistema si occuperà poi di informare la community aggiornando
 lo status del libro raccolto, che diventerà "underReading".
 
 Per quanto concerne invece l'area riservata, ogni utente ha la possibilità di 
 visualizzare informazioni in merito ai libri che: 
 	- ha messo a disposizione della community(relased)
 	- ha ottenuto dalla community(chased)
-	- libri attualmente in possesso
+	- attualmente possiede
 L'utente può effettuare la prenotazione di libri già inseriti nella liste "chased" e "relased" del proprio profilo.
 
 
 
-Il sistema deve prevedere al possibilità di ricercare un specifico testo e visualizzare i contatti dei
-lettori del libro al fine di scambiarsi opinioni in merito al libro stesso.
-Tale funzionalità di ricerca permette anche la prenotazione del testo ricercato purché sia nello
-stato "under reading".
+Il sistema deve prevedere anche la possibilità di ricercare un specifico testo e visualizzare i contatti dei
+lettori del libro al fine di potersi scambiare opinioni e/o pareri in merito al libro stesso.
+Tale funzionalità di ricerca permette anche la prenotazione del testo ricercato purché lo stesso
+sia nello stato "under reading", ovvero sia in possesso di un'altro utente.
 Per soddisfare questa richiesta il sistema provvederà a consigliare, al lettore corrente 
-del libro prenotato, zone di rialscio specifiche al fine di avvicinare tale libro al richiedente. 
+del libro prenotato, zone di rilascio specifiche al fine di avvicinare tale libro al richiedente,
+, tenendo presente anche la necessità di creare cassette virtuali (come specificato in precedenza).
 
 
 
