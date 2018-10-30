@@ -1,14 +1,16 @@
-24-10-2018
+30-10-2018
 La startUp bergamasca Book Crossing UniBg desidera mettere a disposizione dei propri
-utenti un'applicazione Android per poter gestire la libera condivisione di libri.
+utenti un'applicazione Android per poter gestire la libera condivisione di libri
+all'interno di una vasta community di utenti.
 
 I libri della rete di BookCrossing che l'azienda punta a gestire si possono trovare
 	- casualmente (in stazione, su una panchina, in un locale o in un qualsiasi altro luogo): funzionalità "on the go"
 	- nella zona di scambio ufficiale (OCZ_UniBg: Official Crossing Zone UniBg)
 
-Per il momento, l'unica OCZ gestita dalla startUp si trova all'interno dell'aula studio
-del campus di Ingegneria di Dalmine.
-
+Per il momento, l'unica OCZ gestita direttamente dalla startUp si trova 
+all'interno dell'aula studio del campus di Ingegneria di Dalmine, la quale 
+coincide anche con la sistemazione del server centrale che andrà a gestire 
+i vari interscambi tra gli users.
 
 La startUp richiede che, per usufruire dell'applicativo mobile, i clienti debbano registrarsi
 fornendo i propri dati quali
@@ -27,15 +29,16 @@ fornendo i propri dati quali
 	- Zona di residenza
 
 
-Una volta registrato l'utente può partecipare al programma di Book Crossing.
+Una volta registratosi l'utente può partecipare al programma di Book Crossing.
 
-L'utente, che vuole rendere disponibile alla comunità uno o più libri che non sono ancora presenti nella
-rete, 
-deve identificarli univocamente, per poterne così tracciare la storia, ovvero ciò che concerne 
-il percorso seguito dal libro, le recensioni lasciate dagli utenti etc.
+Secondo la politica del book sharing, per rendere disponibile alla comunità 
+uno o più libri che non sono ancora presenti nel network stesso, 
+serve
+identificarli univocamente, per poterne così tracciare la storia, ovvero ciò 
+che concerne il percorso seguito dal libro, le recensioni lasciate dagli utenti etc.
 
 Prima di procedere con l'identificazione univoca del libro, il cliente deve inserire i dati 
-del testo/i che condivide con il resto della community: questo inserimento può avvenire
+del testo (o dei testi) che intende condividere con il resto della community: questo inserimento può avvenire
 	- In maniera "automatica" tramite scansione dell' ISBN
 	- In modalità "manuale", nel caso in cui, per esempio, non sia presente il barcode, fornendo i 
 	  seguenti dati:
