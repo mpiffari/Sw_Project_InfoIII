@@ -6,5 +6,5 @@
 \contentsline {section}{\numberline {2.1}Analisi testuale dei casi d'uso}{7}{section.2.1}
 \contentsline {section}{\numberline {2.2}Use Case Diagram}{11}{section.2.2}
 \contentsline {section}{\numberline {2.3}Funzionalit\IeC {\`a} richieste}{11}{section.2.3}
-\contentsline {section}{\numberline {2.4}Specfiche del progetto bla bla bla}{12}{section.2.4}
+\contentsline {section}{\numberline {2.4}Specfiche del progetto bla bla bla}{11}{section.2.4}
 \contentsline {chapter}{\numberline {3}Architettura}{13}{chapter.3}
