@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.10.29)  31 OCT 2018 23:30
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.10.29)  7 NOV 2018 21:43
 entering extended mode
 **./DocumentazioneProgettuale.tex
 (DocumentazioneProgettuale.tex
@@ -249,30 +249,34 @@ ef")
 \l@canadian = a dialect from \language\l@american 
 \l@australian = a dialect from \language\l@british 
 \l@newzealand = a dialect from \language\l@british 
-)) (DocumentazioneProgettuale.aux)
+))
+("C:\Users\miche\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\lscape.st
+y"
+Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
+) (DocumentazioneProgettuale.aux)
 \openout1 = `DocumentazioneProgettuale.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
-LaTeX Font Info:    Try loading font information for T1+lmr on input line 62.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 64.
+LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Try loading font information for T1+lmr on input line 64.
 
 ("C:\Users\miche\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\t1lmr.fd"
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 \AtBeginShipoutBox=\box26
-Package hyperref Info: Link coloring OFF on input line 62.
+Package hyperref Info: Link coloring OFF on input line 64.
 
 ("C:\Users\miche\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\nameref.s
 ty"
@@ -284,9 +288,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count101
 )
-LaTeX Info: Redefining \ref on input line 62.
-LaTeX Info: Redefining \pageref on input line 62.
-LaTeX Info: Redefining \nameref on input line 62.
+LaTeX Info: Redefining \ref on input line 64.
+LaTeX Info: Redefining \pageref on input line 64.
+LaTeX Info: Redefining \nameref on input line 64.
  (DocumentazioneProgettuale.out) (DocumentazioneProgettuale.out)
 \@outlinefile=\write3
 \openout3 = `DocumentazioneProgettuale.out'.
@@ -322,32 +326,32 @@ Package grfext Info: Graphics extension search list:
 G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 456.
 )
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 66.
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 68.
  ("C:\Users\miche\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\ot1lmr.fd"
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 66.
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 68.
  ("C:\Users\miche\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\omllmm.fd"
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 66.
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 68.
 
 
 ("C:\Users\miche\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\omslmsy.fd"
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMX+lmex on input line 66.
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 68.
 
 
 ("C:\Users\miche\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\omxlmex.fd"
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 66.
+(Font)              <12> on input line 68.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 66.
+(Font)              <8> on input line 68.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 66.
+(Font)              <6> on input line 68.
 
 [1
 
@@ -378,34 +382,20 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 
  [7] [8
 
-]
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <9> on input line 93.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 93.
-LaTeX Font Info:    Try loading font information for T1+lmtt on input line 93.
+] [1
 
-("C:\Users\miche\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\t1lmtt.fd"
-File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
-Underfull \vbox (badness 2229) has occurred while \output is active []
-
- [1
-
-]
-LaTeX Font Info:    Try loading font information for OMS+lmr on input line 95.
+] [2]
+ 1.
+(Capitolo_Sezioni/RequisitiUtente.tex
+LaTeX Font Info:    Try loading font information for OMS+lmr on input line 6.
 
 ("C:\Users\miche\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\omslmr.fd"
 File: omslmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 95.
+(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 6.
 
-[2] [3
-
-] [4]
- 1.
-(Capitolo_Sezioni/RequisitiUtente.tex [5
+[3
 
 ]
 Overfull \hbox (0.22208pt too wide) in paragraph at lines 63--65
@@ -413,44 +403,49 @@ Overfull \hbox (0.22208pt too wide) in paragraph at lines 63--65
  in-ter-es-sati al genere
  []
 
-[6]) [7] [8
+[4]) [5] [6
 
 ]
  2.
-(Capitolo_Sezioni/AnalisiCasiUso.tex [9] [10] [11] [12])
-<Immagini/UseCase_BookCrossing.png, id=168, 805.35881pt x 554.22057pt>
+(Capitolo_Sezioni/AnalisiCasiUso.tex [7] [8] [9] [10])
+<Immagini/UseCase_BookCrossing.png, id=138, 805.35881pt x 554.22057pt>
 File: Immagini/UseCase_BookCrossing.png Graphic file (type png)
 <use Immagini/UseCase_BookCrossing.png>
 Package pdftex.def Info: Immagini/UseCase_BookCrossing.png  used on input line 
-131.
+94.
 (pdftex.def)             Requested size: 360.0pt x 247.73943pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[13] [14 <./Immagini/UseCase_BookCrossing.png>]
+
+Overfull \hbox (1285.57698pt too wide) in paragraph at lines 102--137
+ [] 
+ []
+
+[11] [12 <./Immagini/UseCase_BookCrossing.png>]
  3.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 138.
-[15
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 144.
+[13
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 138.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 144.
  (DocumentazioneProgettuale.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 138.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 138.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 144.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 144.
 Package rerunfilecheck Info: File `DocumentazioneProgettuale.out' has not chang
 ed.
-(rerunfilecheck)             Checksum: 931787CE8CDA83213CCECB03E83A1E43;502.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 138.
+(rerunfilecheck)             Checksum: 0594F09D1F6C982B45226B71EB9FFC39;574.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 144.
  ) 
 Here is how much of TeX's memory you used:
- 6013 strings out of 492970
- 91969 string characters out of 3126593
- 182631 words of memory out of 3000000
- 9735 multiletter control sequences out of 15000+200000
- 92048 words of font info for 57 fonts, out of 3000000 for 9000
+ 5954 strings out of 492970
+ 91263 string characters out of 3126593
+ 187821 words of memory out of 3000000
+ 9699 multiletter control sequences out of 15000+200000
+ 75246 words of font info for 46 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 28i,8n,28p,575b,465s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 28i,6n,28p,339b,465s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/miche/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ec.en
 c}{C:/Users/miche/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-maths
 y.enc}<C:/Users/miche/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/l
@@ -461,16 +456,12 @@ lic/lm/lmbxi10.pfb><C:/Users/miche/AppData/Local/Programs/MiKTeX 2.9/fonts/type
 /type1/public/lm/lmr10.pfb><C:/Users/miche/AppData/Local/Programs/MiKTeX 2.9/fo
 nts/type1/public/lm/lmr12.pfb><C:/Users/miche/AppData/Local/Programs/MiKTeX 2.9
 /fonts/type1/public/lm/lmr17.pfb><C:/Users/miche/AppData/Local/Programs/MiKTeX 
-2.9/fonts/type1/public/lm/lmr6.pfb><C:/Users/miche/AppData/Local/Programs/MiKTe
-X 2.9/fonts/type1/public/lm/lmr8.pfb><C:/Users/miche/AppData/Local/Programs/MiK
-TeX 2.9/fonts/type1/public/lm/lmri10.pfb><C:/Users/miche/AppData/Local/Programs
-/MiKTeX 2.9/fonts/type1/public/lm/lmro10.pfb><C:/Users/miche/AppData/Local/Prog
-rams/MiKTeX 2.9/fonts/type1/public/lm/lmsy10.pfb><C:/Users/miche/AppData/Local/
-Programs/MiKTeX 2.9/fonts/type1/public/lm/lmtt10.pfb><C:/Users/miche/AppData/Lo
-cal/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmtt9.pfb>
-Output written on DocumentazioneProgettuale.pdf (23 pages, 409246 bytes).
+2.9/fonts/type1/public/lm/lmri10.pfb><C:/Users/miche/AppData/Local/Programs/MiK
+TeX 2.9/fonts/type1/public/lm/lmro10.pfb><C:/Users/miche/AppData/Local/Programs
+/MiKTeX 2.9/fonts/type1/public/lm/lmsy10.pfb>
+Output written on DocumentazioneProgettuale.pdf (21 pages, 318936 bytes).
 PDF statistics:
- 241 PDF objects out of 1000 (max. 8388607)
- 47 named destinations out of 1000 (max. 500000)
- 70 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 196 PDF objects out of 1000 (max. 8388607)
+ 35 named destinations out of 1000 (max. 500000)
+ 78 words of extra memory for PDF output out of 10000 (max. 10000000)
 
