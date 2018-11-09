@@ -3,45 +3,79 @@
 \begin{itemize}
 	\item \textbf{\textit{UC1: Registrazione}}
 	\begin{itemize}
-		\item \textbf{Descrizione} 
-		\item \textbf{Attori coinvolti} 
-		\item \textbf{Obbiettivo}
-		\item \textbf{Preconditions}
-		\item \textbf{Postconditions}
-		\item \textbf{Processo}
+		\item \textbf{Descrizione:} registrazione alla rete di Book Crossing.
+		\item \textbf{Attori coinvolti:} utente finale.
+		\item \textbf{Preconditions:} l’utente non è ancora registrato al programma di Book Crossing.
+		\item \textbf{Postconditions:} l’utente è inserito tra gli utenti registrati al programma di Book Crossing.
+		\item \textbf{Processo:}
+		\begin{enumerate}
+			\item l’utente seleziona “Registrati” nella schermata principale dell’applicazione;
+			\item l’applicazione mostra un form da compilare;
+			\item l’utente inserisce i dati richiesti nel form presentato;
+			\item il sistema verifica la correttezza dei dati inseriti;
+			\item l’utente viene reindirizzato alla pagina principale dell’applicazione.
+		\end{enumerate}
 		\item \textbf{Alternative}
 		\item \textbf{Estensioni}
 	\end{itemize}
 	\item \textbf{\textit{UC2: Login}}
 	\begin{itemize}
-		\item \textbf{Descrizione}
-		\item \textbf{Attori coinvolti}
-		\item \textbf{Obbiettivo}
-		\item \textbf{Preconditions}
-		\item \textbf{Postconditions}
-		\item \textbf{Processo}
+		\item \textbf{Descrizione:} accesso alla rete di Book Crossing.
+		\item \textbf{Attori coinvolti:} utente finale. 
+		\item \textbf{Preconditions:} l’utente è già registrato alla rete di Book Crossing.
+		\item \textbf{Postconditions:} l’utente accede alla rete di Book Crossing
+		\item \textbf{Processo:}
+		\begin{enumerate}
+			\item l’utente seleziona “Login” nella schermata principale dell’applicazione;
+			\item l’applicazione mostra una schermata in cui inserire nome utente e password;
+			\item l’utente inserisce i dati richiesti nella view presentata;
+			\item il sistema verifica la correttezza dei dati inseriti;
+			\item l’utente viene reindirizzato alla pagina principale dell’applicazione.
+		\end{enumerate}
 		\item \textbf{Alternative}
 		\item \textbf{Estensioni}
 	\end{itemize}
 	\item \textit{\textbf{UC3: Raccolta libro}}
 	\begin{itemize}
-		\item \textbf{Descrizione}
-		\item \textbf{Attori coinvolti}
-		\item \textbf{Obbiettivo}
-		\item \textbf{Preconditions}
-		\item \textbf{Postconditions}
-		\item \textbf{Processo}
+		\item \textbf{Descrizione:} raccolta di un libro “on the go”\footnote{In questo caso il libro condiviso dalla community viene raccolto dall'utente in una qualsiasi zona (come per esempio la stazione, il parco, sale di attesa etc...)} o in una OCZ.\footnote{\textit{Official Crossing Zone}: zone riconosciute e fisse in cui la community può liberamente scambiarsi i libri}
+		\item \textbf{Attori coinvolti:} utente finale.
+		\item \textbf{Preconditions:}
+		\begin{itemize}
+			\item l’utente ha effettuato l’accesso alla rete di Book Crossing;
+			\item il libro è stato siglato con il codice BCID.
+		\end{itemize}
+		\item \textbf{Postconditions:} Il libro viene associato all’utente.
+		\item \textbf{Processo:}
+		\begin{enumerate}
+			\item l’utente seleziona “Raccogli libro” nel menu principale dell’applicazione;
+			\item l’applicazione mostra un form da compilare;
+			\item l’utente inserisce il codice BCID riportato nel libro;
+			\item il sistema verifica la correttezza del codice BCID inserito;
+			\item l’applicazione mostra una scheda riepilogativa relativa al libro appena aggiunto;
+			\item  l’utente conferma l’operazione.
+		\end{enumerate}
 		\item \textbf{Alternative}
 		\item \textbf{Estensioni}
 	\end{itemize}
 	\item \textbf{\textit{UC4: Registrazione libro}}
 	\begin{itemize}
-		\item \textbf{Descrizione}
-		\item \textbf{Attori coinvolti}
-		\item \textbf{Obbiettivo}
-		\item \textbf{Preconditions}
-		\item \textbf{Postconditions}
-		\item \textbf{Processo}
+		\item \textbf{Descrizione:} registrazione di un libro alla rete di Book Crossing (\textit{journal entry}).
+		\item \textbf{Generalizzazione:} aggiunta manuale dei dati del libro (U.C. 8) e Scansione ISBN(U.C. 9).
+		\item \textbf{Include:} scrittura BCID (U.C. 10).
+		\item \textbf{Attori coinvolti:} utente finale.
+		\item \textbf{Preconditions:}
+		\begin{itemize}
+			\item l’utente ha effettuato l’accesso alla rete di Book Crossing;
+			\item il libro non è ancora stato siglato con il codice BCID.
+		\end{itemize}
+		\item \textbf{Postconditions:} Il libro viene aggiunto alla rete di Book Crossing.		
+		\item \textbf{Processo:} 
+		\begin{enumerate}
+			\item l’utente seleziona “Registra un nuovo libro” nel menu principale dell’applicazione;
+			\item l’applicazione propone due possibilità: Scansiona ISBN e Aggiunta manuale;
+			\item l’utente sceglie la proposta preferita;
+			\item l’applicazione mostra la schermata relativa alla scelta fatta.
+		\end{enumerate}
 		\item \textbf{Alternative}
 		\item \textbf{Estensioni}
 	\end{itemize}
@@ -91,12 +125,15 @@
 	\end{itemize}
 	\item \textbf{\textit{UC9: Scansione ISBN}}
 	\begin{itemize}
-		\item \textbf{Descrizione:} Scansione del codice ISBN del libro tramite fotocamera.
-		\item \textbf{Attori coinvolti:} Utente finale
-		\item \textbf{Obbiettivo:}
-		\item \textbf{Preconditions:} l'utente deve essere registrato
-		\item \textbf{Postconditions:} il libro è condiviso con la community
-		\item \textbf{Processo:} Di seguito andiamo a descrivere il processo
+		\item \textbf{Descrizione:} scansione del codice ISBN del libro tramite fotocamera.
+		\item \textbf{Attori coinvolti:} utente finale.
+		\item {Preconditions:} 
+		\begin{itemize}
+			\item l’utente ha effettuato l’accesso alla rete di Book Crossing;
+			\item il libro è possiede il codice ISBN
+		\end{itemize}
+		\item \textbf{Postconditions:} il libro è in possesso dell'utente.
+		\item \textbf{Processo:}
 		\begin{enumerate}
 			\item 
 		\end{enumerate}
