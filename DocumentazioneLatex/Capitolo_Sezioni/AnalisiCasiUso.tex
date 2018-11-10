@@ -5,7 +5,11 @@
 	\begin{itemize}
 		\item \textbf{Descrizione:} registrazione alla rete di Book Crossing.
 		\item \textbf{Attori coinvolti:} utente finale.
-		\item \textbf{Preconditions:} l’utente non è ancora registrato al programma di Book Crossing.
+		\item \textbf{Preconditions:} 
+		\begin{itemize}
+			\item smartphone dotato di connessione dati;
+			\item l’utente non è ancora registrato al programma di Book Crossing.
+		\end{itemize}
 		\item \textbf{Postconditions:} l’utente è inserito tra gli utenti registrati al programma di Book Crossing.
 		\item \textbf{Processo:}
 		\begin{enumerate}
@@ -22,7 +26,11 @@
 	\begin{itemize}
 		\item \textbf{Descrizione:} accesso alla rete di Book Crossing.
 		\item \textbf{Attori coinvolti:} utente finale. 
-		\item \textbf{Preconditions:} l’utente è già registrato alla rete di Book Crossing.
+		\item \textbf{Preconditions:} 
+		\begin{itemize}
+			\item smartphone dotato di connessione dati;
+			\item l’utente è già registrato al programma di Book Crossing.
+		\end{itemize}
 		\item \textbf{Postconditions:} l’utente accede alla rete di Book Crossing
 		\item \textbf{Processo:}
 		\begin{enumerate}
@@ -37,10 +45,11 @@
 	\end{itemize}
 	\item \textit{\textbf{UC3: Raccolta libro}}
 	\begin{itemize}
-		\item \textbf{Descrizione:} raccolta di un libro “on the go”\footnote{In questo caso il libro condiviso dalla community viene raccolto dall'utente in una qualsiasi zona (come per esempio la stazione, il parco, sale di attesa etc...)} o in una OCZ.\footnote{\textit{Official Crossing Zone}: zone riconosciute e fisse in cui la community può liberamente scambiarsi i libri}
+		\item \textbf{Descrizione:} raccolta di un libro “on the go”\footnote{In questo caso il libro condiviso dalla community viene raccolto dall'utente in una qualsiasi zona (come per esempio la stazione, il parco, sale di attesa etc...).} o in una OCZ.\footnote{\textit{Official Crossing Zone}: zone riconosciute e fisse in cui la community può liberamente scambiarsi i libri.}
 		\item \textbf{Attori coinvolti:} utente finale.
 		\item \textbf{Preconditions:}
 		\begin{itemize}
+			\item smartphone dotato di connessione dati;
 			\item l’utente ha effettuato l’accesso alla rete di Book Crossing;
 			\item il libro è stato siglato con il codice BCID.
 		\end{itemize}
@@ -65,6 +74,7 @@
 		\item \textbf{Attori coinvolti:} utente finale.
 		\item \textbf{Preconditions:}
 		\begin{itemize}
+			\item smartphone dotato di connessione dati;
 			\item l’utente ha effettuato l’accesso alla rete di Book Crossing;
 			\item il libro non è ancora stato siglato con il codice BCID.
 		\end{itemize}
@@ -72,7 +82,7 @@
 		\item \textbf{Processo:} 
 		\begin{enumerate}
 			\item l’utente seleziona “Registra un nuovo libro” nel menu principale dell’applicazione;
-			\item l’applicazione propone due possibilità: Scansiona ISBN e Aggiunta manuale;
+			\item l’applicazione propone due possibilità: "Scansiona ISBN" e "Aggiunta dati manuale";
 			\item l’utente sceglie la proposta preferita;
 			\item l’applicazione mostra la schermata relativa alla scelta fatta.
 		\end{enumerate}
@@ -84,7 +94,10 @@
 		\item \textbf{Descrizione}
 		\item \textbf{Attori coinvolti}
 		\item \textbf{Obbiettivo}
-		\item \textbf{Preconditions}
+		\item \textbf{Preconditions:}
+		\begin{itemize}
+			\item smartphone dotato di connessione dati;
+		\end{itemize}
 		\item \textbf{Postconditions}
 		\item \textbf{Processo}
 		\item \textbf{Alternative}
@@ -95,7 +108,10 @@
 		\item \textbf{Descrizione}
 		\item \textbf{Attori coinvolti}
 		\item \textbf{Obbiettivo}
-		\item \textbf{Preconditions}
+		\item \textbf{Preconditions:}
+		\begin{itemize}
+			\item smartphone dotato di connessione dati;
+		\end{itemize}
 		\item \textbf{Postconditions}
 		\item \textbf{Processo}
 		\item \textbf{Alternative}
@@ -106,7 +122,10 @@
 		\item \textbf{Descrizione}
 		\item \textbf{Attori coinvolti}
 		\item \textbf{Obbiettivo}
-		\item \textbf{Preconditions}
+		\item \textbf{Preconditions:}
+		\begin{itemize}
+			\item smartphone dotato di connessione dati;
+		\end{itemize}
 		\item \textbf{Postconditions}
 		\item \textbf{Processo}
 		\item \textbf{Alternative}
@@ -117,7 +136,10 @@
 		\item \textbf{Descrizione}
 		\item \textbf{Attori coinvolti}
 		\item \textbf{Obbiettivo}
-		\item \textbf{Preconditions}
+		\item \textbf{Preconditions:}
+		\begin{itemize}
+			\item smartphone dotato di connessione dati;
+		\end{itemize}
 		\item \textbf{Postconditions}
 		\item \textbf{Processo}
 		\item \textbf{Alternative}
@@ -125,60 +147,99 @@
 	\end{itemize}
 	\item \textbf{\textit{UC9: Scansione ISBN}}
 	\begin{itemize}
-		\item \textbf{Descrizione:} scansione del codice ISBN del libro tramite fotocamera.
+		\item \textbf{Descrizione:} scansione del codice ISBN del libro tramite fotocamera per ottenere le informazioni in merito al libro da registrare.
 		\item \textbf{Attori coinvolti:} utente finale.
 		\item {Preconditions:} 
 		\begin{itemize}
+			\item smartphone dotato di connessione dati;
 			\item l’utente ha effettuato l’accesso alla rete di Book Crossing;
-			\item il libro è possiede il codice ISBN
+			\item il libro possiede il codice ISBN
 		\end{itemize}
-		\item \textbf{Postconditions:} il libro è in possesso dell'utente.
+		\item \textbf{Postconditions:} il libro è in possesso dell'utente e non più condiviso con la community.
 		\item \textbf{Processo:}
 		\begin{enumerate}
-			\item 
+			\item l’utente seleziona “Registra un nuovo libro” nel menu principale dell’applicazione;
+			\item l’applicazione propone due possibilità: "Scansiona ISBN" e "Aggiunta dati manuale";
+			\item l'utilizzatore preme il pulsante di "Scansione ISBN";
+			\item viene aperta la fotocamera all'interno dell'applicazione;
+			\item l'utente inquadra il codice ISBN finchè il sistema non chiude la automaticamente la fotocamera, rielaborando i dati acquisiti.
 		\end{enumerate}
 		\item \textbf{Alternative}
+		\begin{itemize}
+			\item \textbf{ISBN non riconsciuto:} il sistema non è in grado di riconoscere l'ISBN inquadrato. Si chiuderà la fotocamera e l'utente verrà reindirizzato 
+		\end{itemize}
 		\item \textbf{Estensioni}
 	\end{itemize}
-	\item \textbf{\textit{UC10: Scrittura BCID}}
+	\item \textbf{\textit{UC10: Scrittura BCID\footnote{\textit{Book Crossing IDentifier}}}}
 	\begin{itemize}
-		\item \textbf{Descrizione}
-		\item \textbf{Attori coinvolti}
-		\item \textbf{Obbiettivo}
-		\item \textbf{Preconditions}
-		\item \textbf{Postconditions}
-		\item \textbf{Processo}
+		\item \textbf{Descrizione:} scrittura del codice identificativo sul libro condiviso.
+		\item \textbf{Attori coinvolti:} utente finale.
+		\item \textbf{Preconditions:}
+		\begin{itemize}
+			\item smartphone dotato di connessione dati;
+			\item l’utente ha effettuato l’accesso alla rete di Book Crossing;
+			\item l'utente deve essere in possesso di un libro.
+		\end{itemize}
+		\item \textbf{Postconditions:} il libro è univocamente riconosciuto del sistema tramite il BCID.
+		\item \textbf{Processo:} l'utente copia il codice BCID dopo aver registrato il libro al sistema.
 		\item \textbf{Alternative}
 		\item \textbf{Estensioni}
 	\end{itemize}
 	\item \textbf{\textit{UC11: Visualizzazione contatti utente}}
 	\begin{itemize}
 		\item \textbf{Descrizione}
-		\item \textbf{Attori coinvolti}
-		\item \textbf{Obbiettivo}
-		\item \textbf{Preconditions}
+		\item \textbf{Attori coinvolti:} utente finale.
+		\item \textbf{Preconditions:}
+		\begin{itemize}
+			\item smartphone dotato di connessione dati;
+			\item l’utente ha effettuato l’accesso alla rete di Book Crossing.
+		\end{itemize}
 		\item \textbf{Postconditions}
 		\item \textbf{Processo}
 		\item \textbf{Alternative}
 		\item \textbf{Estensioni}
 	\end{itemize}
-	\item \textbf{\textit{UC12: Prenotrazione libro}}
+	\item \textbf{\textit{UC12: Prenotazione libro}}
 	\begin{itemize}
-		\item \textbf{Descrizione}
-		\item \textbf{Attori coinvolti}
-		\item \textbf{Obbiettivo}
-		\item \textbf{Preconditions}
-		\item \textbf{Postconditions}
-		\item \textbf{Processo}
+		\item \textbf{Descrizione:} l'utilizzatore esprime il desiderio di ricevere un determinato libro da parte di un altro lettore. Per cercare di far arrivare il libro in questione all'utente richiedente, esso può aprire una prenotazione verso l'utente terzo che attualmente è in possesso del volume.
+		\item \textbf{Attori coinvolti:} 
+		\begin{itemize}
+			\item utente richiedente \textit{claimant user};
+			\item utente attualmente in possesso del libro richiesto \textit{owner user}.
+		\end{itemize}
+		\item \textbf{Preconditions:}
+		\begin{itemize}
+			\item smartphone dotato di connessione dati;
+			\item l’utente ha effettuato l’accesso alla rete di Book Crossing;
+			\item il libro che si vuole prenotare deve essere registrato alla rete;
+			\item il libro richiesto deve essere già in possesso di un altro utente;
+		\end{itemize}
+		\item \textbf{Postconditions:}
+		\begin{itemize}
+			\item \textit{Owner user} viene consigliato dal sistema dove rilasciare il libro, nel caso in cui lo voglia fare, in maneira da avvicinare il libro al \textit{claimant user}
+			\item \textit{claimant user} viene notificato dal sistema nel momento in cui il libro risulta essere nelle sue vicinanze
+		\end{itemize}
+		\item \textbf{Processo:}
+		\begin{enumerate}
+			\item l'utente ricerca, dal menù principale dell'applicazione, il titolo del libro oppure il nome dell'autore;
+			\item l'applicazione mostrerà una lista di tutti i libri con quel determinato titolo o di quello specifico autore, visualizzando anche la località in cui si trova;
+			\item l'utente va a selezionare il libro all'interno della lista proposta dal sistema;
+			\item l'applicazione mostra un riepilogo sulle informazioni del libro, unitamente alla possibilità di prenotare;
+			\item l'utente preme il pulsante "Prenota";
+			\item viene inoltrata la richiesta all' \textit{owner user} unitamente alla visualizzazione dei suoi contatti.
+		\end{enumerate}
 		\item \textbf{Alternative}
 		\item \textbf{Estensioni}
 	\end{itemize}
 	\item \textbf{\textit{UC13: Visualizzazione info libri chased}}
 	\begin{itemize}
 		\item \textbf{Descrizione}
-		\item \textbf{Attori coinvolti}
-		\item \textbf{Obbiettivo}
-		\item \textbf{Preconditions}
+		\item \textbf{Attori coinvolti:} utente finale.
+		\item \textbf{Preconditions:}
+		\begin{itemize}
+			\item smartphone dotato di connessione dati;
+			\item l’utente ha effettuato l’accesso alla rete di Book Crossing.
+		\end{itemize}
 		\item \textbf{Postconditions}
 		\item \textbf{Processo}
 		\item \textbf{Alternative}
@@ -187,9 +248,12 @@
 	\item \textbf{\textit{UC14: Visualizzazione info libri released}}
 	\begin{itemize}
 		\item \textbf{Descrizione}
-		\item \textbf{Attori coinvolti}
-		\item \textbf{Obbiettivo}
-		\item \textbf{Preconditions}
+		\item \textbf{Attori coinvolti:}  utente finale.
+		\item \textbf{Preconditions:}
+		\begin{itemize}
+			\item smartphone dotato di connessione dati;
+			\item l’utente ha effettuato l’accesso alla rete di Book Crossing.
+		\end{itemize}
 		\item \textbf{Postconditions}
 		\item \textbf{Processo}
 		\item \textbf{Alternative}
@@ -198,9 +262,12 @@
 	\item \textbf{\textit{UC15: Visualizzazione info libri in possesso}}
 	\begin{itemize}
 		\item \textbf{Descrizione}
-		\item \textbf{Attori coinvolti}
-		\item \textbf{Obbiettivo}
-		\item \textbf{Preconditions}
+		\item \textbf{Attori coinvolti:}  utente finale.
+		\item \textbf{Preconditions:}
+		\begin{itemize}
+			\item smartphone dotato di connessione dati;
+			\item l’utente ha effettuato l’accesso alla rete di Book Crossing.
+		\end{itemize}
 		\item \textbf{Postconditions}
 		\item \textbf{Processo}
 		\item \textbf{Alternative}
@@ -209,9 +276,12 @@
 	\item \textbf{\textit{UC16: Rilascio libro}}
 	\begin{itemize}
 		\item \textbf{Descrizione}
-		\item \textbf{Attori coinvolti}
-		\item \textbf{Obbiettivo}
-		\item \textbf{Preconditions}
+		\item \textbf{Attori coinvolti:} utente finale.
+		\item \textbf{Preconditions:}
+		\begin{itemize}
+			\item smartphone dotato di connessione dati;
+			\item l’utente ha effettuato l’accesso alla rete di Book Crossing.
+		\end{itemize}
 		\item \textbf{Postconditions}
 		\item \textbf{Processo}
 		\item \textbf{Alternative}

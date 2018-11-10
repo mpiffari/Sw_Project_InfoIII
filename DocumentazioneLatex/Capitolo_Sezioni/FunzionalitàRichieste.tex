@@ -1,0 +1,49 @@
+\begin{table}
+\caption{Panoramica requisiti funzionali progettuali}
+\label{tab:Req_utente}
+\centering
+\begin{tabular}{|l|l|l|l|l|l|r}
+	\hline\hline
+	\textbf{Nome requisito} & \textbf{ID requisito} & \textbf{Tipologia} & \textbf{Priorità} & \textbf{Requisiti padre} & \textbf{Requisiti figli} \\
+	\hline\hline
+	Raccolta libro & UR1 & funzionale & alta & & UR2\\
+	\hline
+	Login utente & UR2 & funzionale & alta & UR1 & UR3, UR4\\
+	\hline
+	Registrazione utente & UR3 & funzionale & alta & UR2 & \\
+	\hline
+	Aggiunta libro & UR4 & funzionale & alta & UR2 & UR7, UR9 \\
+	\hline
+	Ricerca libro & UR5 & funzionale & media & UR2 & UR10 \\
+	\hline
+	Prenotazione libro & UR6 & funzionale & bassa & UR2 &\\
+	\hline
+	Visualizzazione info libri chased & UR7 & funzionale & bassa & UR2 &\\
+	\hline
+	Visualizzazione info libri released & UR8 & funzionale & bassa & UR2, UR4 &\\
+	\hline
+	Rilascio libro & UR9 & funzionale & alta & UR2, UR4 &\\
+	\hline
+	Visualizzazione contatti utenti & UR10 & funzionale & bassa & UR2, UR5 &\\
+	\hline
+	Visualizzazione profilo personale  & UR11 & funzionale & media & UR2 &\\
+	\hline
+\end{tabular}
+\end{table}
+
+\begin{table}
+	
+	\caption{Descrizione requisiti funzionali progettuali}
+	\label{tab:Req_utente_descrizione}
+	\centering
+	\begin{tabular}{|l|l|l}
+		\hline\hline
+		\textbf{Nome requisito} & \textbf{ID requisito} & \textbf{Descrizione} \\
+		\hline\hline
+		Controllo geolocalizzazione & UR12 & Requisito non funzionalità che permette di verificare che la posizione GPS
+		salvata del libro corrisponda, con margine d'accettazione, alla posizione 
+		in cui si trova l'utente nel momento in cui vuole raccogliere
+		un libro trovato "on the go".\\
+		\hline
+	\end{tabular}
+\end{table}
