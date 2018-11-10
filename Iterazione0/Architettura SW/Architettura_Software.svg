@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
-<!-- Generato da Microsoft Visio 11.0, SVG Export, v1.0 Architettura_Software - Copia.svg Page-1 -->
+<!-- Generato da Microsoft Visio 11.0, SVG Export, v1.0 Architettura_Software.svg Page-1 -->
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events"
 		xmlns:v="http://schemas.microsoft.com/visio/2003/SVGExtensions/" width="23.8031in" height="11.6929in"
 		viewBox="0 0 1713.83 841.89" xml:space="preserve" color-interpolation-filters="sRGB" class="st21">
@@ -94,7 +94,7 @@
 			<text x="10.72" y="839.09" class="st2" v:langID="1040"><v:paragraph v:horizAlign="1"/><v:tabList/>Android</text>		</g>
 		<g id="shape5-4" v:mID="5" v:groupContext="shape" transform="translate(638.646,-694.488)">
 			<title>activity.5</title>
-			<desc>Interfaccia Utente</desc>
+			<desc>GUI</desc>
 			<v:custProps>
 				<v:cp v:nameU="FMCType" v:lbl="Type" v:type="0" v:format="@" v:invis="true" v:langID="1031" v:val="VT4(active)"/>
 			</v:custProps>
@@ -140,7 +140,7 @@
 			<v:textBlock v:margins="rect(0,1,0,1)" v:tabSpace="42.5197"/>
 			<v:textRect cx="65.1969" cy="819.78" width="130.4" height="44.2205"/>
 			<rect x="0" y="797.669" width="130.394" height="44.2205" class="st3"/>
-			<text x="14.87" y="823.98" class="st4" v:langID="1040"><v:paragraph v:horizAlign="1"/><v:tabList/>Interfaccia Utente</text>		</g>
+			<text x="52.76" y="823.98" class="st4" v:langID="1040"><v:paragraph v:horizAlign="1"/><v:tabList/>GUI</text>		</g>
 		<g id="shape1-7" v:mID="1" v:groupContext="shape" transform="translate(638.646,-593.575)">
 			<title>activity.16</title>
 			<desc>Gestore Richieste</desc>
