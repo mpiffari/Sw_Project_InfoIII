@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.11.9)  10 NOV 2018 18:12
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.11.9)  10 NOV 2018 19:01
 entering extended mode
 **./DocumentazioneProgettuale.tex
 (DocumentazioneProgettuale.tex
@@ -391,14 +391,14 @@ G,.JBIG2,.JB2,.eps]
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: twoside 
-* h-part:(L,W,R)=(35.56593pt, 526.376pt, 35.56593pt)
+* h-part:(L,W,R)=(42.67912pt, 512.14963pt, 42.67912pt)
 * v-part:(T,H,B)=(56.9055pt, 731.23584pt, 56.9055pt)
 * \paperwidth=597.50787pt
 * \paperheight=845.04684pt
-* \textwidth=526.376pt
+* \textwidth=512.14963pt
 * \textheight=731.23584pt
-* \oddsidemargin=-36.70406pt
-* \evensidemargin=-36.70406pt
+* \oddsidemargin=-29.59087pt
+* \evensidemargin=-29.59087pt
 * \topmargin=-47.23828pt
 * \headheight=12.0pt
 * \headsep=19.8738pt
@@ -483,6 +483,11 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 ] [2]
  1.
 (Capitolo_Sezioni/RequisitiUtente.tex
+Overfull \hbox (3.89781pt too wide) in paragraph at lines 1--3
+\T1/lmr/m/n/10.95 La startUp berga-m-asca Book Cross-ing UniBg desidera met-ter
+e a dis-po-sizione dei pro-pri utenti un'applicazione
+ []
+
 LaTeX Font Info:    Try loading font information for OMS+lmr on input line 6.
 
 ("C:\Users\Stefano Villa\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\omslmr.
@@ -502,30 +507,30 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <5> on input line 48.
  [5
 
-] [6] [7] [8]
-Overfull \hbox (3.09145pt too wide) in paragraph at lines 252--253
-[]\T1/lmr/m/n/10.95 l'utente ricerca, dal menù prin-ci-pale dell'applicazione, 
-il titolo del li-bro op-pure il nome dell'autore; 
+] [6]
+Overfull \hbox (3.58688pt too wide) in paragraph at lines 118--119
+[]\T1/lmr/bx/n/10.95 Generalizzazione: \T1/lmr/m/n/10.95 vi-su-al-iz-zazione in
+-for-mazioni libri chased(UC.13), vi-su-al-iz-zazione in-for-mazioni
  []
 
-[9])
+[7] [8] [9])
 <Immagini/UseCase_BookCrossing.png, id=217, 805.35881pt x 554.22057pt>
 File: Immagini/UseCase_BookCrossing.png Graphic file (type png)
 <use Immagini/UseCase_BookCrossing.png>
 Package pdftex.def Info: Immagini/UseCase_BookCrossing.png  used on input line 
 95.
-(pdftex.def)             Requested size: 526.376pt x 362.25179pt.
+(pdftex.def)             Requested size: 512.14963pt x 352.45892pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 (Capitolo_Sezioni/FunzionalitÃ Richieste.tex
-Overfull \hbox (24.52773pt too wide) in paragraph at lines 5--32
+Overfull \hbox (38.7541pt too wide) in paragraph at lines 5--32
  [][] 
  []
 
 
-Overfull \hbox (834.85065pt too wide) in paragraph at lines 39--49
+Overfull \hbox (849.07703pt too wide) in paragraph at lines 39--49
  [][] 
  []
 
@@ -538,19 +543,19 @@ File: Immagini/Deployment_Diagram.jpg Graphic file (type jpg)
 <use Immagini/Deployment_Diagram.jpg>
 Package pdftex.def Info: Immagini/Deployment_Diagram.jpg  used on input line 10
 5.
-(pdftex.def)             Requested size: 526.376pt x 157.17854pt.
+(pdftex.def)             Requested size: 512.14963pt x 152.92722pt.
 <Immagini/Architecture_Envisoring.jpg, id=233, 511.15968pt x 48.18pt>
 File: Immagini/Architecture_Envisoring.jpg Graphic file (type jpg)
 <use Immagini/Architecture_Envisoring.jpg>
 Package pdftex.def Info: Immagini/Architecture_Envisoring.jpg  used on input li
 ne 111.
-(pdftex.def)             Requested size: 526.376pt x 49.6171pt.
+(pdftex.def)             Requested size: 512.14963pt x 48.27615pt.
 <Immagini/Architettura_Software.jpg, id=234, 771.63281pt x 735.49782pt>
 File: Immagini/Architettura_Software.jpg Graphic file (type jpg)
 <use Immagini/Architettura_Software.jpg>
 Package pdftex.def Info: Immagini/Architettura_Software.jpg  used on input line
  117.
-(pdftex.def)             Requested size: 526.376pt x 501.72554pt.
+(pdftex.def)             Requested size: 512.14963pt x 488.16843pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
@@ -569,7 +574,7 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 122.
 Here is how much of TeX's memory you used:
  7587 strings out of 492970
  119879 string characters out of 3123040
- 225856 words of memory out of 3000000
+ 225858 words of memory out of 3000000
  11242 multiletter control sequences out of 15000+200000
  98663 words of font info for 57 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -593,7 +598,7 @@ tefano Villa/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmri9.pfb>
 <C:/Users/Stefano Villa/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm
 /lmro10.pfb><C:/Users/Stefano Villa/AppData/Local/Programs/MiKTeX 2.9/fonts/typ
 e1/public/lm/lmsy10.pfb>
-Output written on DocumentazioneProgettuale.pdf (22 pages, 1263870 bytes).
+Output written on DocumentazioneProgettuale.pdf (22 pages, 1263791 bytes).
 PDF statistics:
  311 PDF objects out of 1000 (max. 8388607)
  95 named destinations out of 1000 (max. 500000)
