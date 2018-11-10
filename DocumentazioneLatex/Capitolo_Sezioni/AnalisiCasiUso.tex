@@ -91,57 +91,85 @@
 	\end{itemize}
 	\item \textbf{\textit{UC5: Ricerca libro}}
 	\begin{itemize}
-		\item \textbf{Descrizione}
-		\item \textbf{Attori coinvolti}
-		\item \textbf{Obbiettivo}
+		\item \textbf{Descrizione:} Ricerca di un libro all’interno della rete di Book Crossing.
+		\item \textbf{Attori coinvolti:} Utente finale
 		\item \textbf{Preconditions:}
 		\begin{itemize}
 			\item smartphone dotato di connessione dati;
+			\item l’utente ha effettuato l’accesso alla rete di Book Crossing;
+			\item il libro è stato aggiunto alla rete di Book Crossing;
 		\end{itemize}
-		\item \textbf{Postconditions}
-		\item \textbf{Processo}
+		\item \textbf{Postconditions:} L'applicazione mostra il libro ricercato.
+		\item \textbf{Processo:}
+		\begin{enumerate}
+			\item l’utente seleziona “Ricerca libro” nel menu principale dell’applicazione;
+			\item l’applicazione mostra un form da completare con il titolo del libro da ricercare;
+			\item l’utente inserisce nel form presentato il titolo del libro da cercare e conferma;
+			\item il sistema verifica la presenza del libro cercato;
+			\item in caso di esito positivo, l’applicazione mostra una scheda riassuntiva del libro;
+			\item in caso di esito negativo, l’applicazione mostrerà un messaggio di errore;
+		\end{enumerate}
 		\item \textbf{Alternative}
 		\item \textbf{Estensioni}
 	\end{itemize}
 	\item \textbf{\textit{UC6: Visualizzazione info}}
 	\begin{itemize}
-		\item \textbf{Descrizione}
-		\item \textbf{Attori coinvolti}
-		\item \textbf{Obbiettivo}
+		\item \textbf{Descrizione: Visualizzazione informazioni}
+		\item \textbf{Generalizzazione:} visualizzazione informazioni libri chased(UC.13), visualizzazione informazioni libri relased(UC.14), visualizzazione informazioni libri in possesso(UC.15)
+		\item \textbf{Attori coinvolti:} Utente finale
 		\item \textbf{Preconditions:}
 		\begin{itemize}
 			\item smartphone dotato di connessione dati;
+			\item l’utente ha effettuato l’accesso alla rete di Book Crossing;
 		\end{itemize}
-		\item \textbf{Postconditions}
-		\item \textbf{Processo}
+		\item \textbf{Postconditions:} L’applicazione mostra le informazioni desiderate
+		\item \textbf{Processo:}
+		\begin{enumerate}
+			\item l’utente seleziona la voce “I miei libri” nel menu principale dell’applicazione;
+			\item l’applicazione mostra categorie di informazioni visualizzabili;
+			\item l’utente seleziona la categoria che vuole visualizzare;
+		\end{enumerate}
 		\item \textbf{Alternative}
 		\item \textbf{Estensioni}
 	\end{itemize}
 	\item \textbf{\textit{UC7: Visualizzazione profilo personale}}
 	\begin{itemize}
-		\item \textbf{Descrizione}
-		\item \textbf{Attori coinvolti}
-		\item \textbf{Obbiettivo}
+		\item \textbf{Descrizione: } Visualizzazione profilo personale utente
+		\item \textbf{Attori coinvolti:} Utente finale
 		\item \textbf{Preconditions:}
 		\begin{itemize}
 			\item smartphone dotato di connessione dati;
+			\item l’utente ha effettuato l’accesso alla rete di Book Crossing;
 		\end{itemize}
-		\item \textbf{Postconditions}
-		\item \textbf{Processo}
+		\item \textbf{Postconditions: }L’applicazione mostra il profilo dell’utente.
+		\item \textbf{Processo: }
+		\begin{enumerate}
+			\item l’utente seleziona la voce “Il mio profilo” nel menu principale dell’applicazione;
+			\item l’applicazione mostra l’anagrafica, i contatti e le attività svolte dall’utente;
+		\end{enumerate}
 		\item \textbf{Alternative}
-		\item \textbf{Estensioni}
+		\item \textbf{Estensioni: } Visualizzazione informazioni libri in possesso(U.C.15)
 	\end{itemize}
 	\item \textbf{\textit{UC8: Aggiunta manuale dei dati del libro}}
 	\begin{itemize}
-		\item \textbf{Descrizione}
-		\item \textbf{Attori coinvolti}
-		\item \textbf{Obbiettivo}
+		\item \textbf{Descrizione:} Inserimento manuale di un libro nella rete di Book Crossing
+		\item \textbf{Attori coinvolti:} Utente finale
 		\item \textbf{Preconditions:}
 		\begin{itemize}
 			\item smartphone dotato di connessione dati;
+			\item l’utente ha effettuato l’accesso alla rete di Book Crossing;
+			\item il libro non è stato ancora siglato con il codice BCID;
 		\end{itemize}
-		\item \textbf{Postconditions}
-		\item \textbf{Processo}
+		\item \textbf{Postcondition:} Viene generato il codice BCID e il libro viene aggiunto alla rete di Book Crossing
+		\item \textbf{Processo: }
+		\begin{enumerate}
+			\item facendo riferimento al passo 1 e 2 del U.C. 4, scegliere la voce “Aggiunta manuale”;
+			\item l’applicazione mostra un form da compilare con i dati del libro;
+			\item l’utente inserisce i dati del libro richiesti e conferma l’operazione;
+			\item il sistema verifica la correttezza dei dati;
+			\item l’applicazione mostra il codice BCID da trascrivere sul libro;
+			\item il sistema aggiunge il libro alla rete di Book Crossing;
+		\end{enumerate}
 		\item \textbf{Alternative}
 		\item \textbf{Estensioni}
 	\end{itemize}
