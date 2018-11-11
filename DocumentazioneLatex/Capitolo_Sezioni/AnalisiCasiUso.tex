@@ -194,7 +194,7 @@
 		\end{enumerate}
 		\item \textbf{Alternative}
 		\begin{itemize}
-			\item \textbf{ISBN non riconsciuto:} il sistema non è in grado di riconoscere l'ISBN inquadrato. Si chiuderà la fotocamera e l'utente verrà reindirizzato 
+			\item \textbf{ISBN non riconsciuto:} il sistema non è in grado di riconoscere l'ISBN inquadrato. Si chiuderà la fotocamera e l'utente verrà reindirizzato avvisato di questo malfunzioanmento tramite UI.
 		\end{itemize}
 		\item \textbf{Estensioni}
 	\end{itemize}
@@ -215,16 +215,27 @@
 	\end{itemize}
 	\item \textbf{\textit{UC11: Visualizzazione contatti utente}}
 	\begin{itemize}
-		\item \textbf{Descrizione}
+		\item \textbf{Descrizione:} l'utente ottiene i contatti che un certo altro utilizzatore ha deciso di condividere con il sistema.
 		\item \textbf{Attori coinvolti:} utente finale.
 		\item \textbf{Preconditions:}
 		\begin{itemize}
 			\item smartphone dotato di connessione dati;
 			\item l’utente ha effettuato l’accesso alla rete di Book Crossing.
 		\end{itemize}
-		\item \textbf{Postconditions}
-		\item \textbf{Processo}
-		\item \textbf{Alternative}
+		\item \textbf{Postconditions:} l'applicazione visualizza i contatti a cui l'utente terzo può/vuole essere contattato.
+		\item \textbf{Processo:}
+		\begin{enumerate}
+			\item l'utente ricerca un libro dal menu principale dell'applicazione;
+			\item l'utente seleziona il libro;
+			\item il sistema mostra tutte le informazioni relative al libro (tra cui anche la lista di tutti i lettori che sono stati in possesso del libro in questione);
+			\item l'utlizzatore seleziona l'utente;
+			\item il sistema mostra tutte le informazioni di contatto che il cliente terzo ha deciso di condividere con la community.
+		\end{enumerate}
+		\item \textbf{Alternative:}
+		\begin{itemize}
+			\item \textbf{Nessun libro trovato:} la grafica notifica l'utilizzatore del fatto che la ricerca non sia andata a buon fine.
+			\item \textbf{Utente senza alcun contatto condiviso:} il sistema filtra la visualizzazione della lista degli utenti, visualizzando solo quegli utenti che hanno inserito, durante la fase di registrazione, almeno un contatto.
+		\end{itemize}
 		\item \textbf{Estensioni}
 	\end{itemize}
 	\item \textbf{\textit{UC12: Prenotazione libro}}
@@ -261,58 +272,99 @@
 	\end{itemize}
 	\item \textbf{\textit{UC13: Visualizzazione info libri chased}}
 	\begin{itemize}
-		\item \textbf{Descrizione}
+		\item \textbf{Descrizione:} visualizzazione storico dei libri "raccolti" dall'utente.
 		\item \textbf{Attori coinvolti:} utente finale.
 		\item \textbf{Preconditions:}
 		\begin{itemize}
 			\item smartphone dotato di connessione dati;
 			\item l’utente ha effettuato l’accesso alla rete di Book Crossing.
 		\end{itemize}
-		\item \textbf{Postconditions}
-		\item \textbf{Processo}
-		\item \textbf{Alternative}
+		\item \textbf{Postconditions:} mostrata sulla grafica la lista dei libri raccolti, con relativa data e luogo di "chasing".
+		\item \textbf{Processo:}
+		\begin{enumerate}
+			\item l'utente, dal menù principale dell'applicazione, entra nella propria area riservata;
+			\item l'applicazione mostrerà un riassunto delle informazioni dell'utilizzatore;
+			\item l'utente va preme il pulsante "Libri chased";
+			\item l'applicazione mostra un riepilogo di tutti i testi ottenuti dalla community di sharing.
+		\end{enumerate}
+		\item \textbf{Alternative:}
+		\begin{itemize}
+			\item \textbf{Nessun libro chased:} la grafica notifica l'utilizzatore del fatto che non sia ancora stata effettuata una raccolta di almeno un volume.
+		\end{itemize}
 		\item \textbf{Estensioni}
 	\end{itemize}
 	\item \textbf{\textit{UC14: Visualizzazione info libri released}}
 	\begin{itemize}
-		\item \textbf{Descrizione}
+		\item \textbf{Descrizione:} visualizzazione storico dei propri libri condivisi con la rete.
 		\item \textbf{Attori coinvolti:}  utente finale.
 		\item \textbf{Preconditions:}
 		\begin{itemize}
 			\item smartphone dotato di connessione dati;
 			\item l’utente ha effettuato l’accesso alla rete di Book Crossing.
 		\end{itemize}
-		\item \textbf{Postconditions}
-		\item \textbf{Processo}
-		\item \textbf{Alternative}
+		\item \textbf{Postconditions:} mostrata sulla grafica la lista dei libri inseriti nel programma di sharing, con relativa data e luogo di "relase".
+		\item \textbf{Processo:}
+		\begin{enumerate}
+			\item l'utente, dal menù principale dell'applicazione, entra nella propria area riservata;
+			\item l'applicazione mostrerà un riassunto delle informazioni dell'utilizzatore;
+			\item l'utente va preme il pulsante "Libri released";
+			\item l'applicazione mostra un riepilogo di tutti i libri rilasciati alla community di sharing.
+		\end{enumerate}
+		\item \textbf{Alternative:}
+		\begin{itemize}
+			\item \textbf{Nessun libro released:} la grafica notifica l'utilizzatore del fatto che non sia ancora stata effettuato un rilascio di almeno un volume.
+		\end{itemize}
 		\item \textbf{Estensioni}
 	\end{itemize}
 	\item \textbf{\textit{UC15: Visualizzazione info libri in possesso}}
 	\begin{itemize}
-		\item \textbf{Descrizione}
+		\item \textbf{Descrizione:} visualizzazione dei propri libri attualmente "under reading".
 		\item \textbf{Attori coinvolti:}  utente finale.
 		\item \textbf{Preconditions:}
 		\begin{itemize}
 			\item smartphone dotato di connessione dati;
 			\item l’utente ha effettuato l’accesso alla rete di Book Crossing.
 		\end{itemize}
-		\item \textbf{Postconditions}
-		\item \textbf{Processo}
-		\item \textbf{Alternative}
+		\item \textbf{Postconditions:} mostrata sulla grafica la lista dei libri attualmente in possesso dell'utente stesso. 
+		\item \textbf{Processo:}
+		\begin{enumerate}
+			\item l'utente, dal menù principale dell'applicazione, entra nella propria area riservata;
+			\item l'applicazione mostrerà un riassunto delle informazioni dell'utilizzatore;
+			\item l'utente va preme il pulsante "Libri in possesso";
+			\item l'applicazione mostra un riepilogo di tutti i libri attualmente in possesso.
+		\end{enumerate}
+		\item \textbf{Alternative:}
+		\begin{itemize}
+			\item \textbf{Nessun libro in lettura:} la grafica notifica l'utilizzatore del fatto che non ha alcun libro in proprio possesso.
+		\end{itemize}
 		\item \textbf{Estensioni}
 	\end{itemize}
 	\item \textbf{\textit{UC16: Rilascio libro}}
 	\begin{itemize}
-		\item \textbf{Descrizione}
+		\item \textbf{Descrizione:} l'utente libera un libro.
 		\item \textbf{Attori coinvolti:} utente finale.
 		\item \textbf{Preconditions:}
 		\begin{itemize}
 			\item smartphone dotato di connessione dati;
-			\item l’utente ha effettuato l’accesso alla rete di Book Crossing.
+			\item l’utente ha effettuato l’accesso alla rete di Book Crossing;
+			\item libro rilasciato già registrato al sistema di Book Crossing.
 		\end{itemize}
-		\item \textbf{Postconditions}
-		\item \textbf{Processo}
-		\item \textbf{Alternative}
+		\item \textbf{Postconditions:} il libro passa dallo stato "under reading" a quello "free".
+		\item \textbf{Processo:}
+		\begin{enumerate}
+			\item l'utente, dal menù principale dell'applicazione, entra nella propria area riservata;
+			\item l'applicazione mostrerà un riassunto delle informazioni dell'utilizzatore;
+			\item l'utente va preme il pulsante "Libri in possesso";
+			\item l'applicazione mostra un riepilogo di tutti i libri attualmente in possesso;
+			\item  l'utente preme sul testo che intende rilasciare;
+			\item il sistema suggerisce all'utente dove rilasciare il testo, per facilitare la creazione di cassette virtuali;
+			\item l'utente conferma il rilascio.
+		\end{enumerate}
+		\item \textbf{Alternative:}
+		\begin{itemize}
+			\item \textbf{Nessun libro in lettura:} la grafica notifica l'utilizzatore del fatto che non ha alcun libro in proprio possesso.
+			\item \textbf{Segnale GPS non trovato:} il sistema avvisa l'utente di andare ad attivare il segnale GPS.
+		\end{itemize}
 		\item \textbf{Estensioni}
 	\end{itemize}
 \end{itemize}
