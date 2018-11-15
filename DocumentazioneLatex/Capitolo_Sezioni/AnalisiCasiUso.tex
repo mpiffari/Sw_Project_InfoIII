@@ -4,49 +4,65 @@
 	\item \textbf{\textit{UC1: Registrazione}}
 	\begin{itemize}
 		\item \textbf{Descrizione:} registrazione alla rete di Book Crossing.
-		\item \textbf{Attori coinvolti:} utente finale.
+		\item \textbf{Attori coinvolti:} utente.
 		\item \textbf{Preconditions:} 
 		\begin{itemize}
 			\item smartphone dotato di connessione dati;
 			\item l’utente non è ancora registrato al programma di Book Crossing.
 		\end{itemize}
-		\item \textbf{Postconditions:} l’utente è inserito tra gli utenti registrati al programma di Book Crossing.
+		\item \textbf{Postconditions:} l’utente è registrato al programma di Book Crossing.
 		\item \textbf{Processo:}
 		\begin{enumerate}
-			\item l’utente seleziona “Registrati” nella schermata principale dell’applicazione;
-			\item l’applicazione mostra un form da compilare;
+			\item l’utente seleziona “Registrati” nella schermata inziale dell’applicazione;
+			\item l’applicazione mostra un form in cui l'utente può inserire:
+			\begin{enumerate}
+				\item [a.] Nome
+				\item [b.] Cognome
+				\item [c.] Data di nascita
+				\item [d.] Username
+				\item [e.] Password
+				\item [f.] Contatto di riferimento
+				\item [g.] Categorie di libri preferite
+				\item [h.] Zona di residenza
+			\end{enumerate}
 			\item l’utente inserisce i dati richiesti nel form presentato;
-			\item il sistema verifica la correttezza dei dati inseriti;
+			\item l'utente attende la visualizzazione della conferma di avvenuta registrazione;
 			\item l’utente viene reindirizzato alla pagina principale dell’applicazione.
 		\end{enumerate}
 		\item \textbf{Alternative}
+		\begin{itemize}
+			\item \textbf{Dati non validi:} se l'utente inserisce dei dati non validi e/o mancanti, l'applicazione mostra un messaggio d'errore permettendo all'utente di modificare i dati non validi.
+		\end{itemize}
 		\item \textbf{Estensioni}
 	\end{itemize}
 	\item \textbf{\textit{UC2: Login}}
 	\begin{itemize}
 		\item \textbf{Descrizione:} accesso alla rete di Book Crossing.
-		\item \textbf{Attori coinvolti:} utente finale. 
+		\item \textbf{Attori coinvolti:} utente. 
 		\item \textbf{Preconditions:} 
 		\begin{itemize}
 			\item smartphone dotato di connessione dati;
 			\item l’utente è già registrato al programma di Book Crossing.
 		\end{itemize}
-		\item \textbf{Postconditions:} l’utente accede alla rete di Book Crossing
+		\item \textbf{Postconditions:} l’utente è loggato nella rete di Book Crossing.
 		\item \textbf{Processo:}
 		\begin{enumerate}
-			\item l’utente seleziona “Login” nella schermata principale dell’applicazione;
-			\item l’applicazione mostra una schermata in cui inserire nome utente e password;
+			\item l’utente seleziona “Login” nella schermata iniziale dell’applicazione;
+			\item l’applicazione mostra una schermata in cui l'utente inserisce username e password;
 			\item l’utente inserisce i dati richiesti nella view presentata;
-			\item il sistema verifica la correttezza dei dati inseriti;
+			\item l'utente attende la verifica della correttezza dei dati inseriti;
 			\item l’utente viene reindirizzato alla pagina principale dell’applicazione.
 		\end{enumerate}
 		\item \textbf{Alternative}
+		\begin{itemize}
+			\item \textbf{Username e/o password non corretti:}  se l'utente inserisce username e/o password non validi, l'applicazione mostra un messaggio d'errore permettendo all'utente di modificare i dati.
+		\end{itemize}
 		\item \textbf{Estensioni}
 	\end{itemize}
 	\item \textit{\textbf{UC3: Raccolta libro}}
 	\begin{itemize}
 		\item \textbf{Descrizione:} raccolta di un libro “on the go”\footnote{In questo caso il libro condiviso dalla community viene raccolto dall'utente in una qualsiasi zona (come per esempio la stazione, il parco, sale di attesa etc...).} o in una OCZ.\footnote{\textit{Official Crossing Zone}: zone riconosciute e fisse in cui la community può liberamente scambiarsi i libri.}
-		\item \textbf{Attori coinvolti:} utente finale.
+		\item \textbf{Attori coinvolti:} utente.
 		\item \textbf{Preconditions:}
 		\begin{itemize}
 			\item smartphone dotato di connessione dati;
@@ -57,60 +73,84 @@
 		\item \textbf{Processo:}
 		\begin{enumerate}
 			\item l’utente seleziona “Raccogli libro” nel menu principale dell’applicazione;
-			\item l’applicazione mostra un form da compilare;
+			\item l’applicazione mostra un form in cui l’utente può inserire il BCID del libro;
 			\item l’utente inserisce il codice BCID riportato nel libro;
-			\item il sistema verifica la correttezza del codice BCID inserito;
-			\item l’applicazione mostra una scheda riepilogativa relativa al libro appena aggiunto;
-			\item  l’utente conferma l’operazione.
+			\item l'utente attende la visualizzazione di una scheda riepilogativa relativa al libro appena aggiunto;
+			\item l’utente verifica la corrispondenza delle informazioni mostrate;
+			\item l'utente conferma la raccolta.
 		\end{enumerate}
 		\item \textbf{Alternative}
+		\begin{itemize}
+			\item \textbf{BCID inesistente:} se l'utente inserisce un BCID non esistente, l'applicazione mostra un messaggio d'errore permettendo all'utente di modificare il BCID.
+			\item \textbf{BCID associato ad un altro utente:} se l'utente inserisce un BCID già in possesso di un'altro utente, l'applicazione mostra un messaggio d'errore permettendo all'utente di modificare il BCID.
+			\item \textbf{BCID non corrispondente:} se l'utente, al punto (4), verifica che il libro reale non corrisponde alle informazioni mostrate dall'applicazione, può annullare l'operazione di raccolta.
+		\end{itemize}
 		\item \textbf{Estensioni}
 	\end{itemize}
 	\item \textbf{\textit{UC4: Registrazione libro}}
 	\begin{itemize}
 		\item \textbf{Descrizione:} registrazione di un libro alla rete di Book Crossing (\textit{journal entry}).
-		\item \textbf{Generalizzazione:} aggiunta manuale dei dati del libro (U.C. 8) e Scansione ISBN(U.C. 9).
-		\item \textbf{Include:} scrittura BCID (U.C. 10).
-		\item \textbf{Attori coinvolti:} utente finale.
+		\item \textbf{Generalizzazione di:} 
+		\begin{itemize}
+			\item aggiunta manuale dei dati del libro (UC8);
+			\item scansione ISBN (UC9).
+		\end{itemize}
+		\item \textbf{Include:} scrittura BCID (UC10).
+		\item \textbf{Attori coinvolti:} utente.
 		\item \textbf{Preconditions:}
 		\begin{itemize}
 			\item smartphone dotato di connessione dati;
 			\item l’utente ha effettuato l’accesso alla rete di Book Crossing;
 			\item il libro non è ancora stato siglato con il codice BCID.
 		\end{itemize}
-		\item \textbf{Postconditions:} Il libro viene aggiunto alla rete di Book Crossing.		
+		\item \textbf{Postconditions:} Il libro viene registrato alla rete di Book Crossing.		
 		\item \textbf{Processo:} 
 		\begin{enumerate}
 			\item l’utente seleziona “Registra un nuovo libro” nel menu principale dell’applicazione;
-			\item l’applicazione propone due possibilità: "Scansiona ISBN" e "Aggiunta dati manuale";
-			\item l’utente sceglie la proposta preferita;
-			\item l’applicazione mostra la schermata relativa alla scelta fatta.
+			\item l’applicazione tenta di iniziare la scansione ISBN mostrando all'utente la fotocamera;
+			\item l’utente inquadra il codice ISBN del libro per il tempo sufficiente al riconoscimento del codice stesso;
+			\item l’applicazione mostra all'utente la schermata contente tutti le informazioni del libro.
 		\end{enumerate}
 		\item \textbf{Alternative}
+		\begin{itemize}
+			\item \textbf{Aggiunta manuale dei dati:} se, dalla schermata di scansione, l'utente decide di inserire manualmente i dati del libro da registrate, l'applicazione mostra una schermata dove aggiungere manualmente i dati del libro.
+			\item \textbf{Scansione fallita:} se la scansione fallisce, l'applicazione riapre la fotocamenra permettendo all'utente di ripetere l'operazione.
+		\end{itemize}
 		\item \textbf{Estensioni}
 	\end{itemize}
 	\item \textbf{\textit{UC5: Ricerca libro}}
 	\begin{itemize}
-		\item \textbf{Descrizione:} Ricerca di un libro all’interno della rete di Book Crossing.
-		\item \textbf{Attori coinvolti:} Utente finale
+		\item \textbf{Descrizione:} ricerca di un libro all’interno della rete di Book Crossing.
+		\item \textbf{Attori coinvolti:} utente.
 		\item \textbf{Preconditions:}
 		\begin{itemize}
 			\item smartphone dotato di connessione dati;
 			\item l’utente ha effettuato l’accesso alla rete di Book Crossing;
-			\item il libro è stato aggiunto alla rete di Book Crossing;
+			\item il libro è presente nella rete di Book Crossing.
 		\end{itemize}
-		\item \textbf{Postconditions:} L'applicazione mostra il libro ricercato.
+		\item \textbf{Postconditions:} il libro ricercato viene mostrato.
 		\item \textbf{Processo:}
 		\begin{enumerate}
 			\item l’utente seleziona “Ricerca libro” nel menu principale dell’applicazione;
-			\item l’applicazione mostra un form da completare con il titolo del libro da ricercare;
-			\item l’utente inserisce nel form presentato il titolo del libro da cercare e conferma;
+			\item l’applicazione mostra all'utente un form da completare in cui inserire i parametri della ricerca;
+			\item l’utente inserisce i parametri a cui è interessato;
+			\item l'utente preme il pulsante "Cerca" ed attende il completamento;
+			\item l'utente visualizza la lista di tutti i libri nella rete, che soddisfano la ricerca.
+			
+			 
 			\item il sistema verifica la presenza del libro cercato;
 			\item in caso di esito positivo, l’applicazione mostra una scheda riassuntiva del libro;
 			\item in caso di esito negativo, l’applicazione mostrerà un messaggio di errore;
 		\end{enumerate}
 		\item \textbf{Alternative}
+		\begin{itemize}
+			\item \textbf{Parametri non validi:}se l'utente inserisce dei parametri non validi, l'applicazione mostra un messaggio d'errore permettendo all'utente di modificarli.
+			\item \textbf{Ricerca senza risultati:} se la ricerca non va a buon fine, l'applicazione mostra un messaggio all'utente, comunicando che nessun libro presente nella rete soddisfa i parametri di ricerca inseriti.
+		\end{itemize}
 		\item \textbf{Estensioni}
+		\begin{itemize}
+			\item TODO: click su uno dei libri ricercati
+		\end{itemize}
 	\end{itemize}
 	\item \textbf{\textit{UC6: Visualizzazione info}}
 	\begin{itemize}
