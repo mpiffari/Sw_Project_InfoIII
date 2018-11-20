@@ -1,7 +1,7 @@
 
 
 \begin{itemize}
-	\item \textbf{\textit{UC1: Registrazione}}
+	\item \textbf{\textit{UC1: Registration}}
 	\begin{itemize}
 		\item \textbf{Descrizione:} registrazione alla rete di Book Crossing.
 		\item \textbf{Attori coinvolti:} utente.
@@ -24,6 +24,7 @@
 				\item [f.] Contatto di riferimento
 				\item [g.] Categorie di libri preferite
 				\item [h.] Zona di residenza
+				\item [i.] Raggio d'azione rispetto alla zona di residenza
 			\end{enumerate}
 			\item l’utente inserisce i dati richiesti nel form presentato;
 			\item l'utente attende la visualizzazione della conferma di avvenuta registrazione;
@@ -59,7 +60,27 @@
 		\end{itemize}
 		\item \textbf{Estensioni}
 	\end{itemize}
-	\item \textit{\textbf{UC3: Raccolta libro}}
+		\item \textbf{\textit{UC3: Logout}}
+	\begin{itemize}
+		\item \textbf{Descrizione:} disconnessione profilo personale.
+		\item \textbf{Attori coinvolti:} utente. 
+		\item \textbf{Preconditions:} 
+		\begin{itemize}
+			\item smartphone dotato di connessione dati;
+			\item l’utente è già registrato al programma di Book Crossing;
+			\item l'utente è loggato.
+		\end{itemize}
+		\item \textbf{Postconditions:} l’utente non è più loggato nella rete di Book Crossing.
+		\item \textbf{Processo:}
+		\begin{enumerate}
+			\item l’utente seleziona “Profilo personale” nella schermata principale dell’applicazione;
+			\item l’applicazione mostra una schermata in cui l'utente può visualizzare tutte le proprie informazioni;
+			\item l’utente preme il bottone "Logout";
+			\item l’utente viene reindirizzato alla pagina di login.
+		\end{enumerate}
+	\end{itemize}
+
+	\item \textit{\textbf{UC4: Book pick-up}}
 	\begin{itemize}
 		\item \textbf{Descrizione:} raccolta di un libro “on the go”\footnote{In questo caso il libro condiviso dalla community viene raccolto dall'utente in una qualsiasi zona (come per esempio la stazione, il parco, sale di attesa etc...).} o in una OCZ.\footnote{\textit{Official Crossing Zone}: zone riconosciute e fisse in cui la community può liberamente scambiarsi i libri.}
 		\item \textbf{Attori coinvolti:} utente.
@@ -87,7 +108,7 @@
 		\end{itemize}
 		\item \textbf{Estensioni}
 	\end{itemize}
-	\item \textbf{\textit{UC4: Registrazione libro}}
+	\item \textbf{\textit{UC5: Book registration}}
 	\begin{itemize}
 		\item \textbf{Descrizione:} registrazione di un libro alla rete di Book Crossing (\textit{journal entry}).
 		\item \textbf{Generalizzazione di:} 
@@ -109,7 +130,8 @@
 			\item l’utente seleziona “Registra un nuovo libro” nel menu principale dell’applicazione;
 			\item l’applicazione tenta di iniziare la scansione ISBN mostrando all'utente la fotocamera;
 			\item l’utente inquadra il codice ISBN del libro per il tempo sufficiente al riconoscimento del codice stesso;
-			\item l’applicazione mostra all'utente la schermata contente tutti le informazioni del libro.
+			\item l’applicazione mostra all'utente la schermata contente tutti le informazioni del libro; 
+			\item l'utente preme il pulsante "Conferma registrazione", dopo aver verficato rapidamente la coerenza dei dati.
 		\end{enumerate}
 		\item \textbf{Alternative}
 		\begin{itemize}
@@ -118,7 +140,7 @@
 		\end{itemize}
 		\item \textbf{Estensioni}
 	\end{itemize}
-	\item \textbf{\textit{UC5: Ricerca libro}}
+	\item \textbf{\textit{UC6: Book research}}
 	\begin{itemize}
 		\item \textbf{Descrizione:} ricerca di un libro all’interno della rete di Book Crossing.
 		\item \textbf{Attori coinvolti:} utente.
@@ -136,8 +158,6 @@
 			\item l’utente inserisce i parametri a cui è interessato;
 			\item l'utente preme il pulsante "Cerca" ed attende il completamento;
 			\item l'utente visualizza la lista di tutti i libri nella rete, che soddisfano la ricerca.
-			
-			 
 			\item il sistema verifica la presenza del libro cercato;
 			\item in caso di esito positivo, l’applicazione mostra una scheda riassuntiva del libro;
 			\item in caso di esito negativo, l’applicazione mostrerà un messaggio di errore;
@@ -149,14 +169,14 @@
 		\end{itemize}
 		\item \textbf{Estensioni}
 		\begin{itemize}
-			\item TODO: click su uno dei libri ricercati
+			\item L'utente può selezionare uno dei libri mostrati dall'applicazione e visualizzare le sue informazioni.
 		\end{itemize}
 	\end{itemize}
-	\item \textbf{\textit{UC6: Visualizzazione info}}
+	\item \textbf{\textit{UC7: Info visualization}}
 	\begin{itemize}
-		\item \textbf{Descrizione: Visualizzazione informazioni}
-		\item \textbf{Generalizzazione:} visualizzazione informazioni libri chased(UC.13), visualizzazione informazioni libri relased(UC.14), visualizzazione informazioni libri in possesso(UC.15)
-		\item \textbf{Attori coinvolti:} Utente finale
+		\item \textbf{Descrizione: } Visualizzazione informazioni
+		\item \textbf{Generalizzazione:} visualizzazione informazioni libri chased(UC13), visualizzazione informazioni libri relased(UC14), visualizzazione informazioni libri in possesso(UC15)
+		\item \textbf{Attori coinvolti:} Utente
 		\item \textbf{Preconditions:}
 		\begin{itemize}
 			\item smartphone dotato di connessione dati;
@@ -168,14 +188,18 @@
 			\item l’utente seleziona la voce “I miei libri” nel menu principale dell’applicazione;
 			\item l’applicazione mostra categorie di informazioni visualizzabili;
 			\item l’utente seleziona la categoria che vuole visualizzare;
+			\item l'applicazione mostro l'elenco dei libri della categoria selezionata.
 		\end{enumerate}
 		\item \textbf{Alternative}
+		\begin{itemize}
+			\item \textbf{Nessun libro in elenco:}se nessun libro è presente nello storico, l'applicazione mostra un messaggio all'utente, comunicando che non è stata ancora effettuata nessuna operazione nella comunità.
+		\end{itemize}
 		\item \textbf{Estensioni}
 	\end{itemize}
-	\item \textbf{\textit{UC7: Visualizzazione profilo personale}}
+	\item \textbf{\textit{UC8: Personal area visualization}}
 	\begin{itemize}
 		\item \textbf{Descrizione: } Visualizzazione profilo personale utente
-		\item \textbf{Attori coinvolti:} Utente finale
+		\item \textbf{Attori coinvolti:} Utente
 		\item \textbf{Preconditions:}
 		\begin{itemize}
 			\item smartphone dotato di connessione dati;
@@ -187,13 +211,12 @@
 			\item l’utente seleziona la voce “Il mio profilo” nel menu principale dell’applicazione;
 			\item l’applicazione mostra l’anagrafica, i contatti e le attività svolte dall’utente;
 		\end{enumerate}
-		\item \textbf{Alternative}
-		\item \textbf{Estensioni: } Visualizzazione informazioni libri in possesso(U.C.15)
+		\item \textbf{Estensioni:}
 	\end{itemize}
-	\item \textbf{\textit{UC8: Aggiunta manuale dei dati del libro}}
+	\item \textbf{\textit{UC9: Manual addition of book's data}}
 	\begin{itemize}
 		\item \textbf{Descrizione:} Inserimento manuale di un libro nella rete di Book Crossing
-		\item \textbf{Attori coinvolti:} Utente finale
+		\item \textbf{Attori coinvolti:} Utente
 		\item \textbf{Preconditions:}
 		\begin{itemize}
 			\item smartphone dotato di connessione dati;
@@ -203,85 +226,79 @@
 		\item \textbf{Postcondition:} Viene generato il codice BCID e il libro viene aggiunto alla rete di Book Crossing
 		\item \textbf{Processo: }
 		\begin{enumerate}
-			\item facendo riferimento al passo 1 e 2 del U.C. 4, scegliere la voce “Aggiunta manuale”;
+			\item facendo riferimento al passo 1 e 2 del UC4, l'utente preme il pulsante “Aggiunta manuale”;
 			\item l’applicazione mostra un form da compilare con i dati del libro;
 			\item l’utente inserisce i dati del libro richiesti e conferma l’operazione;
-			\item il sistema verifica la correttezza dei dati;
 			\item l’applicazione mostra il codice BCID da trascrivere sul libro;
 			\item il sistema aggiunge il libro alla rete di Book Crossing;
 		\end{enumerate}
-		\item \textbf{Alternative}
 		\item \textbf{Estensioni}
 	\end{itemize}
-	\item \textbf{\textit{UC9: Scansione ISBN}}
+	\item \textbf{\textit{UC10: ISBN scan}}
 	\begin{itemize}
-		\item \textbf{Descrizione:} scansione del codice ISBN del libro tramite fotocamera per ottenere le informazioni in merito al libro da registrare.
-		\item \textbf{Attori coinvolti:} utente finale.
+		\item \textbf{Descrizione:} scansione del codice ISBN tramite fotocamera per ottenere le informazioni in merito al libro da registrare.
+		\item \textbf{Attori coinvolti:} utente
 		\item {Preconditions:} 
 		\begin{itemize}
 			\item smartphone dotato di connessione dati;
 			\item l’utente ha effettuato l’accesso alla rete di Book Crossing;
-			\item il libro possiede il codice ISBN
+			\item il libro possiede il codice ISBN.
 		\end{itemize}
 		\item \textbf{Postconditions:} il libro è in possesso dell'utente e non più condiviso con la community.
 		\item \textbf{Processo:}
 		\begin{enumerate}
-			\item l’utente seleziona “Registra un nuovo libro” nel menu principale dell’applicazione;
-			\item l’applicazione propone due possibilità: "Scansiona ISBN" e "Aggiunta dati manuale";
-			\item l'utilizzatore preme il pulsante di "Scansione ISBN";
-			\item viene aperta la fotocamera all'interno dell'applicazione;
-			\item l'utente inquadra il codice ISBN finchè il sistema non chiude la automaticamente la fotocamera, rielaborando i dati acquisiti.
+			\item l’utente seleziona “Registra un nuovo libro” nel menu principale dell’applicazione;;
+			\item Viene aperta la fotocamera all'interno dell'applicazione;
+			\item l'utente inquadra il codice ISBN finchè il sistema non rileva il barcode.
 		\end{enumerate}
 		\item \textbf{Alternative}
 		\begin{itemize}
-			\item \textbf{ISBN non riconsciuto:} il sistema non è in grado di riconoscere l'ISBN inquadrato. Si chiuderà la fotocamera e l'utente verrà reindirizzato avvisato di questo malfunzioanmento tramite UI.
+			\item \textbf{ISBN non riconsciuto:} il sistema non è in grado di riconoscere l'ISBN inquadrato. Si chiuderà la fotocamera e l'utente verrà reindirizzato alla pagina di inserimento manuale del libro(UC9).
 		\end{itemize}
 		\item \textbf{Estensioni}
 	\end{itemize}
-	\item \textbf{\textit{UC10: Scrittura BCID\footnote{\textit{Book Crossing IDentifier}}}}
+	\item \textbf{\textit{UC11: Instruction to write BCID code\footnote{\textit{Book Crossing IDentifier}}}}
 	\begin{itemize}
 		\item \textbf{Descrizione:} scrittura del codice identificativo sul libro condiviso.
-		\item \textbf{Attori coinvolti:} utente finale.
+		\item \textbf{Attori coinvolti:} utente
 		\item \textbf{Preconditions:}
 		\begin{itemize}
 			\item smartphone dotato di connessione dati;
 			\item l’utente ha effettuato l’accesso alla rete di Book Crossing;
-			\item l'utente deve essere in possesso di un libro.
 		\end{itemize}
 		\item \textbf{Postconditions:} il libro è univocamente riconosciuto del sistema tramite il BCID.
-		\item \textbf{Processo:} l'utente copia il codice BCID dopo aver registrato il libro al sistema.
-		\item \textbf{Alternative}
+		\item \textbf{Processo:} l'utente copia il codice BCID sul libro, seguendo le istruzioni mostrate dall'applicazione.
 		\item \textbf{Estensioni}
 	\end{itemize}
-	\item \textbf{\textit{UC11: Visualizzazione contatti utente}}
+	\item \textbf{\textit{UC12: View of users contacts}}
 	\begin{itemize}
-		\item \textbf{Descrizione:} l'utente ottiene i contatti che un certo altro utilizzatore ha deciso di condividere con il sistema.
-		\item \textbf{Attori coinvolti:} utente finale.
+		\item \textbf{Descrizione:} l'utente ottiene i contatti che un altro utilizzatore ha deciso di condividere con la community.
+		\item \textbf{Attori coinvolti:} utente
 		\item \textbf{Preconditions:}
 		\begin{itemize}
 			\item smartphone dotato di connessione dati;
 			\item l’utente ha effettuato l’accesso alla rete di Book Crossing.
 		\end{itemize}
-		\item \textbf{Postconditions:} l'applicazione visualizza i contatti a cui l'utente terzo può/vuole essere contattato.
+		\item \textbf{Postconditions:} l'applicazione visualizza i contatti a cui l'utente può e/o vuole essere contattato.
 		\item \textbf{Processo:}
 		\begin{enumerate}
-			\item l'utente ricerca un libro dal menu principale dell'applicazione;
-			\item l'utente seleziona il libro;
+			\item l'utente selezione "Ricerca" dal menu principale dell'applicazione;
+			\item l'utente seleziona il libro a cui è interessato;
 			\item il sistema mostra tutte le informazioni relative al libro (tra cui anche la lista di tutti i lettori che sono stati in possesso del libro in questione);
-			\item l'utlizzatore seleziona l'utente;
+			\item l'utlizzatore seleziona l'utente che desidera contattare;
 			\item il sistema mostra tutte le informazioni di contatto che il cliente terzo ha deciso di condividere con la community.
 		\end{enumerate}
 		\item \textbf{Alternative:}
 		\begin{itemize}
 			\item \textbf{Nessun libro trovato:} la grafica notifica l'utilizzatore del fatto che la ricerca non sia andata a buon fine.
-			\item \textbf{Utente senza alcun contatto condiviso:} il sistema filtra la visualizzazione della lista degli utenti, visualizzando solo quegli utenti che hanno inserito, durante la fase di registrazione, almeno un contatto.
+			\item \textbf{Utente senza alcun contatto condiviso:} il sistema filtra la visualizzazione della lista degli utenti, visualizzando solo coloro che hanno inserito, durante la fase di registrazione, almeno un contatto o che desiderano essere contattati.
 		\end{itemize}
 		\item \textbf{Estensioni}
 	\end{itemize}
-	\item \textbf{\textit{UC12: Prenotazione libro}}
+	\item \textbf{\textit{UC13: Book reservation}}
 	\begin{itemize}
-		\item \textbf{Descrizione:} l'utilizzatore esprime il desiderio di ricevere un determinato libro da parte di un altro lettore. Per cercare di far arrivare il libro in questione all'utente richiedente, esso può aprire una prenotazione verso l'utente terzo che attualmente è in possesso del volume.
-		\item \textbf{Attori coinvolti:} 
+		\item \textbf{Descrizione:} l'utilizzatore prenota un determinato libro in possesso di un altro lettore.
+		\item \textbf{Attori coinvolti:}
 		\begin{itemize}
 			\item utente richiedente \textit{claimant user};
 			\item utente attualmente in possesso del libro richiesto \textit{owner user}.
@@ -295,19 +312,26 @@
 		\end{itemize}
 		\item \textbf{Postconditions:}
 		\begin{itemize}
-			\item \textit{Owner user} viene consigliato dal sistema dove rilasciare il libro, nel caso in cui lo voglia fare, in maneira da avvicinare il libro al \textit{claimant user}
-			\item \textit{claimant user} viene notificato dal sistema nel momento in cui il libro risulta essere nelle sue vicinanze
+			\item Se i due utenti hanno un punto di incontro in comune, si accordano sul luogo di scambio. 
+			\item Se, invece, non hanno un punto di incontro comune, il libro passerà tra gli utenti che si trovano tra \textit{claimant user} e \textit{owner user}.
 		\end{itemize}
 		\item \textbf{Processo:}
 		\begin{enumerate}
-			\item l'utente ricerca, dal menù principale dell'applicazione, il titolo del libro oppure il nome dell'autore;
-			\item l'applicazione mostrerà una lista di tutti i libri con quel determinato titolo o di quello specifico autore, visualizzando anche la località in cui si trova;
+			\item l’utente seleziona “Ricerca libro” nel menu principale dell’applicazione;
+			\item l’applicazione mostra all'utente un form da completare in cui inserire i parametri della ricerca;
+			\item l’utente inserisce i parametri a cui è interessato;
+			\item l'utente preme il pulsante "Cerca" ed attende il completamento;
+			\item l'utente visualizza la lista di tutti i libri nella rete, che soddisfano la ricerca.
+			\item il sistema verifica la presenza del libro cercato;
 			\item l'utente va a selezionare il libro all'interno della lista proposta dal sistema;
 			\item l'applicazione mostra un riepilogo sulle informazioni del libro, unitamente alla possibilità di prenotare;
 			\item l'utente preme il pulsante "Prenota";
-			\item viene inoltrata la richiesta all' \textit{owner user} unitamente alla visualizzazione dei suoi contatti.
+			\item l'applicazione mostra una pagina di conferma dell'avvenuta prenotazione.
 		\end{enumerate}
 		\item \textbf{Alternative}
+		\begin{itemize}
+			\item \textbf{Libro non prenotabile:} il libro selezionato non è prenotabile poichè non in possesso di un altro utente.
+		\end{itemize}
 		\item \textbf{Estensioni}
 	\end{itemize}
 	\item \textbf{\textit{UC13: Visualizzazione info libri chased}}
