@@ -94,9 +94,24 @@
 \input{Capitolo_Sezioni/UseCases}
 \newpage
 \section{Funzionalità richieste}
-
 \input{Capitolo_Sezioni/FunzionalitàRichieste}
-\section{Specfiche del progetto bla bla bla}
+\section{Stati del libro}
+La starup si impone l'obbiettivo di andare a gestire lo scambio di libri all'interno della rete di book-crossing: come visto all'interno dei diversi use-cases, ogni libro, nel corso della propria vita all'interno della community, passa di mano in mano, attraversando diverse zone.
+A questo movimento fisico, corrisponde anche un continuo cambio di stato da parte del libro stesse: possiamo riassumere con una \textit{"Finite State Machine"} il percorso che un generico libro segue durante la sua vita.
+
+{\LARGE INSERIRE PICCOLO SCHEMA DEGLI STATI}
+
+
+Riassumendo gli stati di un libro, possono essere:
+\begin{itemize}
+	\item Out of the network
+	\item Available
+	\item Under reading
+	\item Released
+	\item Reserved
+	\item Traveling
+\end{itemize}
+
 \chapter{Architettura}
 \section{Deployment diagram}
 \begin{figure}[h]
@@ -110,6 +125,7 @@
 	\caption{Architecture Envisoring}
 	\label{fig:ArchitectureEnvisoring}
 \end{figure}
+
 
 \part{Iterazione 1}
 \chapter{Architettura}
@@ -127,11 +143,39 @@
 	\label{fig:LogicalView}
 \end{figure}
 
-\section{Database}
-\begin{figure}[h]
-	\includegraphics[width=\textwidth]{Immagini/Database_v_1_0-2018-11-11_16_07}
-	\caption{Database}
-	\label{fig:DatabaseView}
-\end{figure}
+\section{Parte algoritmica: \textit{reservation handler}}
+Le gestione delle prenotazioni dei libri è una delle parte innovative introdotte dalla start up: questo servizio mira a sfruttare la flessibilità della community di sharing, basata sull'ideale di open-source, per comunque offrire un seervizio mirato ed attento alle necessità del lettore.
+Ogni utente, purchè sia registrato all'interno del servizio di Book-sharing, può prenotare un determinato libro che si trova nello stato "Under reading".
 
+Andiamo ad evidenziare gli attori coinvolti in questa operazione:
+\begin{itemize}
+	\item \textbf{\underline{Lettore} [L]:} esso rappresenta l'utente, registrato nella community, che possiede il libro oggetto della prenotazione. Indichiamo con:
+	\begin{itemize}
+		\item \textbf{{\LARGE $r_{L}$}:} raggio d'azione del lettore;
+		\item \textbf{{\LARGE $ z_{0} $}:} zona di residenza (espressa come coordinate puntuali).
+	\end{itemize}
+	\item \textbf{\underline{Prenotanti} [$ P_{i}$ con $i=1,...,N $]:} rappresentano l'insieme degli utenti, tutti interessati ad uno specifico libro in possesso dell'utente \textbf{L}.
+	Nello specifico l'indice \textit{i-esimo} indica l'ordine temporale con cui sono giunte le prenotazioni per lo specifico libro.
+	Oltre a questa informazione, ogni utente, rappresentando un generico utente della community, avrà fornito, al momento della registrazione, le seguenti informazioni:
+	\begin{itemize}
+		\item \textbf{{\LARGE $r^{i}_{P}$} con $i=1,...,N $:} raggio d'azione del lettore;
+		\item \textbf{{\LARGE $z^{i}_{P}$} con $i=1,...,N $:} zona di residenza.
+	\end{itemize}
+
+	L'algoritmo può essere scomposto in due macro-blocchi:
+	\begin{itemize}
+		\item \textbf{Step 0:} questo fase viene realizzata nel momento in cui il sistema inizia ad analizzare tutti gli utenti che hanno effettuato una prenotazione per un determinato libro che si trova nello stato di "Under reading".
+		Tutti gli N prenotanti \textit{$ P_{i} $} vengono ordinati in base alla distanza dal lettore \textit{L}, indipendentemente da quello che è l'ordine temporale con cui è stata effettuata la prenotazione: la quantità di cui si terrà conto sarà quindi
+		{\LARGE \begin{equation}
+			|z^{p}_{i}-z_{0}|
+		\end{equation}}
+		Questo ordinamento corrisponde quindi sostanzialmente a creare una \textit{priority queue} in cui si va ad assegnare una maggiore priorità all'utente la cui zona di residenza è più vicina a quella del lettore in possesso del libro.
+		\item \textbf{Step 1:} in questo macro-blocco andiamo effettivamente ad applicare l'algoritmo \textit{smart} per poter soddisfare, nella maniera migliore, le esigenze di ogni utente della community.
+		
+		
+		
+		
+		 
+	\end{itemize}
+\end{itemize}
 \end{document}

@@ -5,7 +5,7 @@
 \BOOKMARK [1][-]{section.2.1}{Analisi testuale dei casi d'uso}{chapter.2}% 5
 \BOOKMARK [1][-]{section.2.2}{Use Case Diagram}{chapter.2}% 6
 \BOOKMARK [1][-]{section.2.3}{Funzionalit\340 richieste}{chapter.2}% 7
-\BOOKMARK [1][-]{section.2.4}{Specfiche del progetto bla bla bla}{chapter.2}% 8
+\BOOKMARK [1][-]{section.2.4}{Stati del libro}{chapter.2}% 8
 \BOOKMARK [0][-]{chapter.3}{Architettura}{part.1}% 9
 \BOOKMARK [1][-]{section.3.1}{Deployment diagram}{chapter.3}% 10
 \BOOKMARK [1][-]{section.3.2}{Architecture Envisioning}{chapter.3}% 11
@@ -13,4 +13,4 @@
 \BOOKMARK [0][-]{chapter.4}{Architettura}{part.2}% 13
 \BOOKMARK [1][-]{section.4.1}{Architettura software}{chapter.4}% 14
 \BOOKMARK [1][-]{section.4.2}{Logical view}{chapter.4}% 15
-\BOOKMARK [1][-]{section.4.3}{Database}{chapter.4}% 16
+\BOOKMARK [1][-]{section.4.3}{Parte algoritmica: reservation handler}{chapter.4}% 16
