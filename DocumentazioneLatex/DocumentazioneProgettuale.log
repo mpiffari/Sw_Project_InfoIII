@@ -1,11 +1,15 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.10.29)  20 NOV 2018 10:59
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.11.9)  20 NOV 2018 17:29
 entering extended mode
 **./DocumentazioneProgettuale.tex
 (DocumentazioneProgettuale.tex
 LaTeX2e <2018-04-01> patch level 5
-("C:\Users\miche\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\book.cls"
+
+("C:\Users\Stefano Villa\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\book.
+cls"
 Document Class: book 2014/09/29 v1.4h Standard LaTeX document class
-("C:\Users\miche\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\bk11.clo"
+
+("C:\Users\Stefano Villa\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\bk11.
+clo"
 File: bk11.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count80
@@ -21,18 +25,23 @@ File: bk11.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
-("C:\Users\miche\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\fontenc.sty"
+("C:\Users\Stefano Villa\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\fonte
+nc.sty"
 Package: fontenc 2017/04/05 v2.0i Standard LaTeX package
 
-("C:\Users\miche\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\t1enc.def"
+("C:\Users\Stefano Villa\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\t1enc
+.def"
 File: t1enc.def 2017/04/05 v2.0i Standard LaTeX file
 LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
 ))
-("C:\Users\miche\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\inputenc.sty"
+("C:\Users\Stefano Villa\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\input
+enc.sty"
 Package: inputenc 2018/04/06 v1.3b Input encoding file
 \inpenc@prehook=\toks14
 \inpenc@posthook=\toks15
-) ("C:\Users\miche\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\lmodern.sty"
+)
+("C:\Users\Stefano Villa\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\lmodern
+.sty"
 Package: lmodern 2009/10/30 v1.6 Latin Modern Fonts
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  OT1/cmr/m/n --> OT1/lmr/m/n on input line 22.
@@ -67,17 +76,17 @@ LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 38.
 )
-("C:\Users\miche\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\hyperref.
-sty"
+("C:\Users\Stefano Villa\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\h
+yperref.sty"
 Package: hyperref 2018/09/30 v6.88a Hypertext links for LaTeX
 
-("C:\Users\miche\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\hobsub-
-hyperref.sty"
+("C:\Users\Stefano Villa\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek
+\hobsub-hyperref.sty"
 Package: hobsub-hyperref 2016/05/16 v1.14 Bundle oberdiek, subset hyperref (HO)
 
 
-("C:\Users\miche\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\hobsub-
-generic.sty"
+("C:\Users\Stefano Villa\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek
+\hobsub-generic.sty"
 Package: hobsub-generic 2016/05/16 v1.14 Bundle oberdiek, subset generic (HO)
 Package: hobsub 2016/05/16 v1.14 Construct package bundles (HO)
 Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
@@ -117,37 +126,37 @@ Package: atbegshi 2016/06/09 v1.18 At begin shipout hook (HO)
 Package: refcount 2016/05/16 v3.5 Data extraction from label references (HO)
 Package: hycolor 2016/05/16 v1.8 Color options for hyperref/bookmark (HO)
 )
-("C:\Users\miche\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\keyval.st
-y"
+("C:\Users\Stefano Villa\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\k
+eyval.sty"
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks16
 )
-("C:\Users\miche\AppData\Local\Programs\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.
-sty"
+("C:\Users\Stefano Villa\AppData\Local\Programs\MiKTeX 2.9\tex\generic\ifxetex\
+ifxetex.sty"
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
-("C:\Users\miche\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\auxhook.s
-ty"
+("C:\Users\Stefano Villa\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\a
+uxhook.sty"
 Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
 )
-("C:\Users\miche\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\kvoptions
-.sty"
+("C:\Users\Stefano Villa\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\k
+voptions.sty"
 Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
 )
 \@linkdim=\dimen103
 \Hy@linkcounter=\count89
 \Hy@pagecounter=\count90
 
-("C:\Users\miche\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\pd1enc.de
-f"
+("C:\Users\Stefano Villa\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\p
+d1enc.def"
 File: pd1enc.def 2018/09/30 v6.88a Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
 ... no UTF-8 mapping file for font encoding PD1
 )
 \Hy@SavedSpaceFactor=\count91
 
-("C:\Users\miche\AppData\Local\Programs\MiKTeX 2.9\tex\latex\00miktex\hyperref.
-cfg"
+("C:\Users\Stefano Villa\AppData\Local\Programs\MiKTeX 2.9\tex\latex\00miktex\h
+yperref.cfg"
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
 )
 Package hyperref Info: Hyper figures OFF on input line 4535.
@@ -158,7 +167,9 @@ Package hyperref Info: Backreferencing OFF on input line 4555.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4788.
 \c@Hy@tempcnt=\count92
- ("C:\Users\miche\AppData\Local\Programs\MiKTeX 2.9\tex\latex\url\url.sty"
+
+("C:\Users\Stefano Villa\AppData\Local\Programs\MiKTeX 2.9\tex\latex\url\url.st
+y"
 \Urlmuskip=\muskip10
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
@@ -182,76 +193,82 @@ LaTeX Info: Redefining \pageref on input line 6470.
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
 
-("C:\Users\miche\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\hpdftex.d
-ef"
+("C:\Users\Stefano Villa\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\h
+pdftex.def"
 File: hpdftex.def 2018/09/30 v6.88a Hyperref driver for pdfTeX
 \Fld@listcount=\count97
 \c@bookmark@seq@number=\count98
 
-("C:\Users\miche\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\rerunfile
-check.sty"
+("C:\Users\Stefano Villa\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\r
+erunfilecheck.sty"
 Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 82.
 )
 \Hy@SectionHShift=\skip43
 )
-("C:\Users\miche\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\graphicx.
-sty"
+("C:\Users\Stefano Villa\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\g
+raphicx.sty"
 Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
 
-("C:\Users\miche\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\graphics.
-sty"
+("C:\Users\Stefano Villa\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\g
+raphics.sty"
 Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
 
-("C:\Users\miche\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+("C:\Users\Stefano Villa\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\t
+rig.sty"
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 )
-("C:\Users\miche\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-cfg\graph
-ics.cfg"
+("C:\Users\Stefano Villa\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-c
+fg\graphics.cfg"
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 99.
 
-("C:\Users\miche\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-def\pdfte
-x.def"
+("C:\Users\Stefano Villa\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-d
+ef\pdftex.def"
 File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen107
 \Gin@req@width=\dimen108
 )
-("C:\Users\miche\AppData\Local\Programs\MiKTeX 2.9\tex\generic\babel\babel.sty"
-Package: babel 2018/09/26 3.24 The Babel package
-("C:\Users\miche\AppData\Local\Programs\MiKTeX 2.9\tex\generic\babel\switch.def
-"
-File: switch.def 2018/09/26 3.24 Babel switching mechanism
+("C:\Users\Stefano Villa\AppData\Local\Programs\MiKTeX 2.9\tex\generic\babel\ba
+bel.sty"
+Package: babel 2018/10/03 3.25 The Babel package
+
+("C:\Users\Stefano Villa\AppData\Local\Programs\MiKTeX 2.9\tex\generic\babel\sw
+itch.def"
+File: switch.def 2018/10/03 3.25 Babel switching mechanism
 )
 *************************************
 * Local config file bblopts.cfg used
 *
-("C:\Users\miche\AppData\Local\Programs\MiKTeX 2.9\tex\latex\arabi\bblopts.cfg"
+
+("C:\Users\Stefano Villa\AppData\Local\Programs\MiKTeX 2.9\tex\latex\arabi\bblo
+pts.cfg"
 File: bblopts.cfg 2005/09/08 v0.1 add Arabic and Farsi to "declared" options of
  babel
 )
-("C:\Users\miche\AppData\Local\Programs\MiKTeX 2.9\tex\latex\babel-english\engl
-ish.ldf"
+("C:\Users\Stefano Villa\AppData\Local\Programs\MiKTeX 2.9\tex\latex\babel-engl
+ish\english.ldf"
 Language: english 2017/06/06 v3.3r English support from the babel system
 
-("C:\Users\miche\AppData\Local\Programs\MiKTeX 2.9\tex\generic\babel\babel.def"
-File: babel.def 2018/09/26 3.24 Babel common definitions
+("C:\Users\Stefano Villa\AppData\Local\Programs\MiKTeX 2.9\tex\generic\babel\ba
+bel.def"
+File: babel.def 2018/10/03 3.25 Babel common definitions
 \babel@savecnt=\count99
 \U@D=\dimen109
 
-("C:\Users\miche\AppData\Local\Programs\MiKTeX 2.9\tex\generic\babel\txtbabel.d
-ef")
+("C:\Users\Stefano Villa\AppData\Local\Programs\MiKTeX 2.9\tex\generic\babel\tx
+tbabel.def")
 \bbl@dirlevel=\count100
 )
 \l@canadian = a dialect from \language\l@american 
 \l@australian = a dialect from \language\l@british 
 \l@newzealand = a dialect from \language\l@british 
 ))
-("C:\Users\miche\AppData\Local\Programs\MiKTeX 2.9\tex\latex\geometry\geometry.
-sty"
+("C:\Users\Stefano Villa\AppData\Local\Programs\MiKTeX 2.9\tex\latex\geometry\g
+eometry.sty"
 Package: geometry 2018/04/16 v5.8 Page Geometry
 \Gm@cnth=\count101
 \Gm@cntv=\count102
@@ -266,18 +283,18 @@ Package: geometry 2018/04/16 v5.8 Page Geometry
 \Gm@layoutvoffset=\dimen117
 \Gm@dimlist=\toks17
 
-("C:\Users\miche\AppData\Local\Programs\MiKTeX 2.9\tex\latex\geometry\geometry.
-cfg"))
-("C:\Users\miche\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\lscape.st
-y"
+("C:\Users\Stefano Villa\AppData\Local\Programs\MiKTeX 2.9\tex\latex\geometry\g
+eometry.cfg"))
+("C:\Users\Stefano Villa\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\l
+scape.sty"
 Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
 )
-("C:\Users\miche\AppData\Local\Programs\MiKTeX 2.9\tex\latex\caption\caption.st
-y"
+("C:\Users\Stefano Villa\AppData\Local\Programs\MiKTeX 2.9\tex\latex\caption\ca
+ption.sty"
 Package: caption 2018/10/06 v3.3-154 Customizing captions (AR)
 
-("C:\Users\miche\AppData\Local\Programs\MiKTeX 2.9\tex\latex\caption\caption3.s
-ty"
+("C:\Users\Stefano Villa\AppData\Local\Programs\MiKTeX 2.9\tex\latex\caption\ca
+ption3.sty"
 Package: caption3 2018/09/12 v1.8c caption3 kernel (AR)
 Package caption3 Info: TeX engine: e-TeX on input line 64.
 \captionmargin=\dimen118
@@ -310,18 +327,19 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 65.
 LaTeX Font Info:    ... okay on input line 65.
 LaTeX Font Info:    Try loading font information for T1+lmr on input line 65.
 
-("C:\Users\miche\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\t1lmr.fd"
+("C:\Users\Stefano Villa\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\t1lmr.f
+d"
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 \AtBeginShipoutBox=\box26
 Package hyperref Info: Link coloring OFF on input line 65.
 
-("C:\Users\miche\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\nameref.s
-ty"
+("C:\Users\Stefano Villa\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\n
+ameref.sty"
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 
-("C:\Users\miche\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\gettitl
-estring.sty"
+("C:\Users\Stefano Villa\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek
+\gettitlestring.sty"
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count106
@@ -329,13 +347,14 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 65.
 LaTeX Info: Redefining \pageref on input line 65.
 LaTeX Info: Redefining \nameref on input line 65.
- (DocumentazioneProgettuale.out) (DocumentazioneProgettuale.out)
+ (DocumentazioneProgettuale.out)
+(DocumentazioneProgettuale.out)
 \@outlinefile=\write3
 \openout3 = `DocumentazioneProgettuale.out'.
 
 
-("C:\Users\miche\AppData\Local\Programs\MiKTeX 2.9\tex\context\base\supp-pdf.mk
-ii"
+("C:\Users\Stefano Villa\AppData\Local\Programs\MiKTeX 2.9\tex\context\base\sup
+p-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count107
 \scratchdimen=\dimen125
@@ -349,12 +368,12 @@ ii"
 \makeMPintoPDFobject=\count112
 \everyMPtoPDFconversion=\toks19
 )
-("C:\Users\miche\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\epstopdf-
-base.sty"
+("C:\Users\Stefano Villa\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\e
+pstopdf-base.sty"
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
-("C:\Users\miche\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\grfext.st
-y"
+("C:\Users\Stefano Villa\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\g
+rfext.sty"
 Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
 )
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
@@ -372,14 +391,14 @@ G,.JBIG2,.JB2,.eps]
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: twoside 
-* h-part:(L,W,R)=(42.67912pt, 512.14963pt, 42.67912pt)
+* h-part:(L,W,R)=(56.9055pt, 483.69687pt, 56.9055pt)
 * v-part:(T,H,B)=(56.9055pt, 731.23584pt, 56.9055pt)
 * \paperwidth=597.50787pt
 * \paperheight=845.04684pt
-* \textwidth=512.14963pt
+* \textwidth=483.69687pt
 * \textheight=731.23584pt
-* \oddsidemargin=-29.59087pt
-* \evensidemargin=-29.59087pt
+* \oddsidemargin=-15.36449pt
+* \evensidemargin=-15.36449pt
 * \topmargin=-47.23828pt
 * \headheight=12.0pt
 * \headsep=19.8738pt
@@ -401,24 +420,29 @@ G,.JBIG2,.JB2,.eps]
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 LaTeX Font Info:    Try loading font information for OT1+lmr on input line 69.
-("C:\Users\miche\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\ot1lmr.fd"
+
+("C:\Users\Stefano Villa\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\ot1lmr.
+fd"
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Try loading font information for OML+lmm on input line 69.
 
-("C:\Users\miche\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\omllmm.fd"
+("C:\Users\Stefano Villa\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\omllmm.
+fd"
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 69.
 
 
-("C:\Users\miche\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\omslmsy.fd"
+("C:\Users\Stefano Villa\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\omslmsy
+.fd"
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Try loading font information for OMX+lmex on input line 69.
 
 
-("C:\Users\miche\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\omxlmex.fd"
+("C:\Users\Stefano Villa\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\omxlmex
+.fd"
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
@@ -427,15 +451,13 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <8> on input line 69.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <6> on input line 69.
-
-[1
-
+ [1
 
 
-{C:/Users/miche/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2
 
-]
-(DocumentazioneProgettuale.toc
+{C:/Users/Stefano Villa/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2
+
+] (DocumentazioneProgettuale.toc
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <10.95> on input line 4.
 )
@@ -448,8 +470,7 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 \tf@lof=\write5
 \openout5 = `DocumentazioneProgettuale.lof'.
 
-
-[5] [6
+ [5] [6
 
 ] (DocumentazioneProgettuale.lot)
 \tf@lot=\write6
@@ -462,19 +483,20 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 ] [2]
  1.
 (Capitolo_Sezioni/RequisitiUtente.tex
-Overfull \hbox (3.89781pt too wide) in paragraph at lines 1--3
+Overfull \hbox (32.35057pt too wide) in paragraph at lines 1--3
 \T1/lmr/m/n/10.95 La startUp berga-m-asca Book Cross-ing UniBg desidera met-ter
 e a dis-po-sizione dei pro-pri utenti un'applicazione
  []
 
 LaTeX Font Info:    Try loading font information for OMS+lmr on input line 6.
-("C:\Users\miche\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\omslmr.fd"
+
+("C:\Users\Stefano Villa\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\omslmr.
+fd"
 File: omslmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <10.95> not available
 (Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 6.
-
-[3
+ [3
 
 ]) [4]
  2.
@@ -485,50 +507,69 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <9> on input line 85.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <5> on input line 85.
- [6] [7]
-Overfull \hbox (0.54524pt too wide) in paragraph at lines 178--179
-[]\T1/lmr/bx/n/10.95 Generalizzazione: \T1/lmr/m/n/10.95 vi-su-al-iz-zazione in
--for-mazioni libri chased(UC13), vi-su-al-iz-zazione in-for-mazioni
- []
-
-[8] [9]
-Overfull \hbox (5.09352pt too wide) in paragraph at lines 270--271
+ [6] [7] [8] [9]
+Overfull \hbox (33.54628pt too wide) in paragraph at lines 270--271
 []\T1/lmr/bx/n/10.95 Processo: \T1/lmr/m/n/10.95 l'utente copia il codice BCID 
 sul li-bro, seguendo le istruzioni mostrate dall'applicazione. 
  []
 
-[10] [11]) (Capitolo_Sezioni/UseCases.tex
-<Immagini/UseCase_BookCrossing.png, id=270, 805.35881pt x 554.22057pt>
+[10] [11] [12]) (Capitolo_Sezioni/UseCases.tex
+<Immagini/UseCase_BookCrossing.png, id=283, 840.741pt x 709.4505pt>
 File: Immagini/UseCase_BookCrossing.png Graphic file (type png)
 <use Immagini/UseCase_BookCrossing.png>
 Package pdftex.def Info: Immagini/UseCase_BookCrossing.png  used on input line 
 2.
-(pdftex.def)             Requested size: 512.14963pt x 352.45892pt.
- [12])
-(Capitolo_Sezioni/FunzionalitàRichieste.tex
-Overfull \hbox (38.7541pt too wide) in paragraph at lines 5--32
- [][] 
+(pdftex.def)             Requested size: 483.69687pt x 408.16902pt.
+) [13 <./Immagini/UseCase_BookCrossing.png>] (Capitolo_Sezioni/FunzionalitàRic
+hieste.tex
+Underfull \hbox (badness 10000) in paragraph at lines 13--13
+[]\T1/lmr/m/n/10.95 Registrazione
  []
 
 
-Overfull \hbox (849.07703pt too wide) in paragraph at lines 39--49
- [][] 
+Underfull \hbox (badness 10000) in paragraph at lines 19--19
+[]\T1/lmr/m/n/10.95 Prenotazione
  []
 
-) [13 <./Immagini/UseCase_BookCrossing.png>] [14]
+
+Underfull \hbox (badness 10000) in paragraph at lines 21--21
+[]\T1/lmr/m/n/10.95 Visualizzazione
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 23--23
+[]\T1/lmr/m/n/10.95 Visualizzazione
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 27--27
+[]\T1/lmr/m/n/10.95 Visualizzazione
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 29--29
+[]\T1/lmr/m/n/10.95 Visualizzazione
+ []
+
+
+Overfull \hbox (5.60779pt too wide) in paragraph at lines 4--33
+[][] 
+ []
+
+) [14]
  3.
 <Immagini/Deployment_Diagram.jpg, id=297, 1146.2825pt x 342.27875pt>
 File: Immagini/Deployment_Diagram.jpg Graphic file (type jpg)
 <use Immagini/Deployment_Diagram.jpg>
 Package pdftex.def Info: Immagini/Deployment_Diagram.jpg  used on input line 10
-1.
-(pdftex.def)             Requested size: 512.14963pt x 152.92722pt.
+3.
+(pdftex.def)             Requested size: 483.69687pt x 144.43504pt.
 <Immagini/Architecture_Envisoring.jpg, id=298, 511.15968pt x 48.18pt>
 File: Immagini/Architecture_Envisoring.jpg Graphic file (type jpg)
 <use Immagini/Architecture_Envisoring.jpg>
 Package pdftex.def Info: Immagini/Architecture_Envisoring.jpg  used on input li
-ne 107.
-(pdftex.def)             Requested size: 512.14963pt x 48.27615pt.
+ne 109.
+(pdftex.def)             Requested size: 483.69687pt x 45.59132pt.
 [15
 
  <./Immagini/Deployment_Diagram.jpg> <./Immagini/Architecture_Envisoring.jpg>] 
@@ -540,20 +581,19 @@ ne 107.
 File: Immagini/Architettura_Software.jpg Graphic file (type jpg)
 <use Immagini/Architettura_Software.jpg>
 Package pdftex.def Info: Immagini/Architettura_Software.jpg  used on input line
- 116.
-(pdftex.def)             Requested size: 512.14963pt x 488.16843pt.
-[19
-
- <./Immagini/Architettura_Software.jpg>]
-<Immagini/Logical_View.jpg, id=321, 2152.88527pt x 3043.89828pt>
+ 118.
+(pdftex.def)             Requested size: 483.69687pt x 461.04297pt.
+<Immagini/Logical_View.jpg, id=317, 2152.88527pt x 3043.89828pt>
 File: Immagini/Logical_View.jpg Graphic file (type jpg)
 <use Immagini/Logical_View.jpg>
-Package pdftex.def Info: Immagini/Logical_View.jpg  used on input line 123.
-(pdftex.def)             Requested size: 512.14963pt x 724.09451pt.
+Package pdftex.def Info: Immagini/Logical_View.jpg  used on input line 125.
+(pdftex.def)             Requested size: 483.69687pt x 683.87221pt.
 
+Underfull \vbox (badness 2158) has occurred while \output is active []
 
-LaTeX Warning: Float too large for page by 14.85867pt on input line 126.
+ [19
 
+ <./Immagini/Architettura_Software.jpg>]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
@@ -562,49 +602,51 @@ t>
 File: Immagini/Database_v_1_0-2018-11-11_16_07.jpg Graphic file (type jpg)
 <use Immagini/Database_v_1_0-2018-11-11_16_07.jpg>
 Package pdftex.def Info: Immagini/Database_v_1_0-2018-11-11_16_07.jpg  used on 
-input line 130.
-(pdftex.def)             Requested size: 512.14963pt x 371.364pt.
+input line 132.
+(pdftex.def)             Requested size: 483.69687pt x 350.70944pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 135.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 137.
 [20] [21 <./Immagini/Logical_View.jpg>] [22 <./Immagini/Database_v_1_0-2018-11-
 11_16_07.jpg>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 135.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 137.
  (DocumentazioneProgettuale.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 135.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 135.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 137.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 137.
 Package rerunfilecheck Info: File `DocumentazioneProgettuale.out' has not chang
 ed.
 (rerunfilecheck)             Checksum: 4631F98C4C3ADEC10960BA4EC0C6F5F5;1002.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 135.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 137.
  ) 
 Here is how much of TeX's memory you used:
- 7654 strings out of 492970
- 120299 string characters out of 3126593
- 220990 words of memory out of 3000000
- 11257 multiletter control sequences out of 15000+200000
+ 7653 strings out of 492970
+ 120873 string characters out of 3123040
+ 220949 words of memory out of 3000000
+ 11256 multiletter control sequences out of 15000+200000
  98663 words of font info for 57 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,8n,39p,475b,543s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Users/miche/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ec.en
-c}{C:/Users/miche/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-maths
-y.enc}<C:/Users/miche/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/l
-mbx10.pfb><C:/Users/miche/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/
-lm/lmbx12.pfb><C:/Users/miche/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pub
-lic/lm/lmbxi10.pfb><C:/Users/miche/AppData/Local/Programs/MiKTeX 2.9/fonts/type
-1/public/lm/lmcsc10.pfb><C:/Users/miche/AppData/Local/Programs/MiKTeX 2.9/fonts
-/type1/public/lm/lmr10.pfb><C:/Users/miche/AppData/Local/Programs/MiKTeX 2.9/fo
-nts/type1/public/lm/lmr12.pfb><C:/Users/miche/AppData/Local/Programs/MiKTeX 2.9
-/fonts/type1/public/lm/lmr17.pfb><C:/Users/miche/AppData/Local/Programs/MiKTeX 
-2.9/fonts/type1/public/lm/lmr6.pfb><C:/Users/miche/AppData/Local/Programs/MiKTe
-X 2.9/fonts/type1/public/lm/lmr8.pfb><C:/Users/miche/AppData/Local/Programs/MiK
-TeX 2.9/fonts/type1/public/lm/lmr9.pfb><C:/Users/miche/AppData/Local/Programs/M
-iKTeX 2.9/fonts/type1/public/lm/lmri10.pfb><C:/Users/miche/AppData/Local/Progra
-ms/MiKTeX 2.9/fonts/type1/public/lm/lmri9.pfb><C:/Users/miche/AppData/Local/Pro
-grams/MiKTeX 2.9/fonts/type1/public/lm/lmro10.pfb><C:/Users/miche/AppData/Local
-/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmsy10.pfb>
-Output written on DocumentazioneProgettuale.pdf (30 pages, 1717352 bytes).
+ 36i,15n,39p,475b,541s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Users/Stefano Villa/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/
+lm-ec.enc}{C:/Users/Stefano Villa/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/d
+vips/lm/lm-mathsy.enc}<C:/Users/Stefano Villa/AppData/Local/Programs/MiKTeX 2.9
+/fonts/type1/public/lm/lmbx10.pfb><C:/Users/Stefano Villa/AppData/Local/Program
+s/MiKTeX 2.9/fonts/type1/public/lm/lmbx12.pfb><C:/Users/Stefano Villa/AppData/L
+ocal/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmbxi10.pfb><C:/Users/Stefano Vi
+lla/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmcsc10.pfb><C:/Use
+rs/Stefano Villa/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmr10.
+pfb><C:/Users/Stefano Villa/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/publi
+c/lm/lmr12.pfb><C:/Users/Stefano Villa/AppData/Local/Programs/MiKTeX 2.9/fonts/
+type1/public/lm/lmr17.pfb><C:/Users/Stefano Villa/AppData/Local/Programs/MiKTeX
+ 2.9/fonts/type1/public/lm/lmr6.pfb><C:/Users/Stefano Villa/AppData/Local/Progr
+ams/MiKTeX 2.9/fonts/type1/public/lm/lmr8.pfb><C:/Users/Stefano Villa/AppData/L
+ocal/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmr9.pfb><C:/Users/Stefano Villa
+/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmri10.pfb><C:/Users/S
+tefano Villa/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmri9.pfb>
+<C:/Users/Stefano Villa/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm
+/lmro10.pfb><C:/Users/Stefano Villa/AppData/Local/Programs/MiKTeX 2.9/fonts/typ
+e1/public/lm/lmsy10.pfb>
+Output written on DocumentazioneProgettuale.pdf (30 pages, 1806705 bytes).
 PDF statistics:
  412 PDF objects out of 1000 (max. 8388607)
  142 named destinations out of 1000 (max. 500000)
