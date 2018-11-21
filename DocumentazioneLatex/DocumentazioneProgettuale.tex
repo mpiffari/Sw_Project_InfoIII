@@ -17,6 +17,14 @@
 \usepackage[a4paper,top=2cm,bottom=2cm,left=2cm,right=2cm]{geometry}
 \usepackage{lscape}
 \usepackage{caption}
+\usepackage{amsmath}
+\usepackage{listingsutf8}
+
+\lstset{numbers=left,
+	numberstyle=\tiny}
+\lstset{frameround=fttt}
+\lstset{language=Java}
+
 \captionsetup{tableposition=top,figureposition=bottom,font=small}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 'dedication' environment: To add a dedication paragraph at the start of book %
@@ -165,6 +173,7 @@ Andiamo ad evidenziare gli attori coinvolti in questa operazione:
 	L'algoritmo può essere scomposto in due macro-blocchi:
 	\begin{itemize}
 		\item \textbf{Step 0:} questo fase viene realizzata nel momento in cui il sistema inizia ad analizzare tutti gli utenti che hanno effettuato una prenotazione per un determinato libro che si trova nello stato di "Under reading".
+		
 		Tutti gli N prenotanti \textit{$ P_{i} $} vengono ordinati in base alla distanza dal lettore \textit{L}, indipendentemente da quello che è l'ordine temporale con cui è stata effettuata la prenotazione: la quantità di cui si terrà conto sarà quindi
 		{\LARGE \begin{equation}
 			|z^{p}_{i}-z_{0}|
@@ -172,10 +181,42 @@ Andiamo ad evidenziare gli attori coinvolti in questa operazione:
 		Questo ordinamento corrisponde quindi sostanzialmente a creare una \textit{priority queue} in cui si va ad assegnare una maggiore priorità all'utente la cui zona di residenza è più vicina a quella del lettore in possesso del libro.
 		\item \textbf{Step 1:} in questo macro-blocco andiamo effettivamente ad applicare l'algoritmo \textit{smart} per poter soddisfare, nella maniera migliore, le esigenze di ogni utente della community.
 		
+		L'idea di base è che, se lettore e prenotante hanno possibilità di incontrarsi, ovvero se i loro raggi d'azione si sovrappongono, essi potranno accordarsi direttamente sul luogo dello scambio, rendendo \textit{"safety"} il passaggio del libro.
+		Nel caso in cui invece, i due utenti interessati, non abbiano la possibilità di trovare un luogo comune in cui potersi scambiare il libro direttamente, si avrà che, la rete di users appartenenti alla community farà da tramite, per portare il libro \textit{"coast-to-coast"}.
+		\\\\\\\\\\\\
+		Quindi, a livello di pseudo-codice, possiamo scrivere il nostro algoritmo come
+	
+		\begin{lstlisting}
+		if VerificaPuntoIncontro(Lettore, Prenotante) {
+			 Ricerca possibile punto di incontro tra i due utenti
+			 Notifica di dove effettuare lo scambio		
+		} else {
+			 Trovare la rete di users che stanno nel mezzo tra i due utenti 
+			 Ricerca del cammino ottimo passando attraverso gli utenti intermedi
+		}
+		\end{lstlisting}
 		
+		Nello specifico, la funzionalità \textit{VerificaPuntoIncontro(Lettore, Prenotante)} andrà a verificare che:
 		
+		{\LARGE \begin{equation}
+			|z^{p}_{i}-z_{0}|-r_{0}-r_{i}<=0
+		\end{equation}}
 		
-		 
+		ovvero che i raggi d'azione si sovrappongano.
+		
+		Nel caso in cui i due utenti non abbiano un possibili punto d'incontro, dobbiamo selezionare gli utenti tramite il quale il libro in questione potrà viaggiare: l'idea base è quindi quella di costruirsi un'area circolare il centro si trovi nella metà della congiungente del punto $ z_{0} $ (zona di residenza lettore) e $ z^{p}_{i} $ (zona di residenza prenotante).
+		In passi sequenziali, possiamo scrivere:
+		\begin{itemize}
+			\item Calcolo centro del bacino circolare di users:
+			\begin{equation}
+				Z = \dfrac{1}{2} |z^{p}_{i}-z_{0}|
+			\end{equation}
+			\item Tra tutti gli utenti registrati nella community, seleziono tutti quelli, tali per cui, chiamata $z^{u}_{i}$, la zona di residenza, vale
+			\begin{equation}
+				|z^{u}_{i}-z_{0}| < Z
+			\end{equation}
+			Si tratta quindi di tutti gli users inclusi nella circonferenza tra lettore e prenotante.
+		\end{itemize}				
 	\end{itemize}
 \end{itemize}
 \end{document}
