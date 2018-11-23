@@ -21,7 +21,8 @@
 \usepackage{listingsutf8}
 
 \lstset{numbers=left,
-	numberstyle=\tiny}
+	numberstyle=\tiny}
+
 \lstset{frameround=fttt}
 \lstset{language=Java}
 
@@ -133,8 +134,14 @@ Riassumendo gli stati di un libro, possono essere:
 	\caption{Architecture Envisoring}
 	\label{fig:ArchitectureEnvisoring}
 \end{figure}
-
-
+\noindent
+In figura 3.1 e 3.2 sono mostrati il Deployment Diagram e l'Architecture Envisioning del sistema progettato per lo sviluppo dell’applicazione di Book Crossing. Si può osservare che si tratta di un’architettura \textbf{\textit{Three Tiers}}:
+\begin{enumerate}
+	\item A sinistra si individua il client, ovvero il dispositivo Android con il quale è possibile interfacciarsi. Al suo interno quindi si può osservare la presenza di un componente relativo all’interfaccia grafica e uno relativo alla gestione delle richieste per invio e ricezione di dati con il server;
+	\item Nella parte centrale individuiamo gli altri due layer dell’architettura: server EC2 e Database Relazionale RDS. il fatto di utilizzare Amazon Web Services consente di avere questi due elementi a bordo di un unico strato.
+\end{enumerate}
+\noindent
+Per quanto riguarda la comunicazione tra i vari layer si sfruttano protocolli e librerie fornite sempre dall'ambiente Amazon Web Services. Nel caso della comunicazione tra smartphone e server EC2 si sfrutta Amazon SDK(nota con link), mentre per interfacciarsi con il Database RDS si sfrutta il connettore JDBC.
 \part{Iterazione 1}
 \chapter{Architettura}
 \section{Architettura software}
@@ -143,14 +150,37 @@ Riassumendo gli stati di un libro, possono essere:
 	\caption{Architettura Software}
 	\label{fig:ArchitetturaSoftware}
 \end{figure}
-
+\newpage
+Nella figura 4.1 è mostrata l'architettura software modellizzata attraverso una rete di Petri. Innanzitutto si può già osservare chè è stata definita seguendo il modello architetturale MVC:
+\begin{itemize}
+	\item A monte è prevista una parte riservata all'interfaccia grafica, attraverso la quale sarà possibile inviare e ricevere informazioni dal server applicativo. Si vede, infatti, che è prevista una comunicazione bidirezionale tra dispositivo Android e Server.
+	\item Al centro sono rappresentate tutte le richieste a cui è in grado di rispondere. Queste, quindi, saranno funzioni implementate lato Server.
+	\item Infine, è prevista una banca dati persistente, in questo caso un database relazione, al quale il Server Applicativo accede sia per operazioni di lettura che di scrittura, sempre con lo scopo di far fronte alle richieste provenienti a monte.
+\end{itemize}
+Si può quindi constatare che non si trattano di strati tra loro indipendenti, poichè il flusso dei dati li coinvolge tutti.
 \section{Logical view}
-\begin{figure}[h]
-	\includegraphics[width=\textwidth]{Immagini/Logical_View}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{Immagini/Logical_View_part1}
 	\caption{Logical view}
-	\label{fig:LogicalView}
+	\label{fig:LogicalView1}
 \end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{Immagini/Logical_View_part2}
+	\caption{Logical view}
+	\label{fig:LogicalView2}
+\end{figure}
+\noindent
+In figura 4.2 e 4.3 è mostrata la Logical View del sistema progettato. Si può osservare che segue il modello definito attraverso il pattern archietteturale Model View Controller/Presenter, dal momento che vengono individuati tre strati, ciascuno dei quali con le seguenti caratteristiche:
+\begin{itemize}
+	\item \textbf{Subsystem \textit{"GUI”:}} Rappresenta l’interfaccia grafica con la quale l’applicazione si presenterà. Ciascun componente fa riferimento ad una azione che può essere svolta attraverso lo smartphone, come l’accesso alla rete di Book Crossing(Login) o registrazione di un  libro. Questi componenti saranno quindi allocati direttamente sul dispositivo mobile. 
+	\item \textbf{Subsystem \textit{"Request Manager”:}} Ha il compito di gestire le richieste provenienti da ciascun componente descritto nel subsystem \textit{GUI”}. Al suo interno sono indicati i componenti attraverso i quali si risponde alle chiamate provenienti dal client. Questo quindi descrive i componenti che saranno individuati sul server presente all’interno dell’architettura.
+	\item \textbf{Subsystem \textit{"Data Manager":}} ”: Rappresenta la comunicazione con il Database. Sono quindi indicati i componenti con i quali il sistema si interfaccerà con la banca dati dell’architettura.
+\end{itemize}
+Il modello architetturale MVC è stato poi applicato anche successivamente per la progettazione delle componenti previste per ciascun elemento dell'architettura.
 
+\newpage
 \section{Parte algoritmica: \textit{reservation handler}}
 Le gestione delle prenotazioni dei libri è una delle parte innovative introdotte dalla start up: questo servizio mira a sfruttare la flessibilità della community di sharing, basata sull'ideale di open-source, per comunque offrire un seervizio mirato ed attento alle necessità del lettore.
 Ogni utente, purchè sia registrato all'interno del servizio di Book-sharing, può prenotare un determinato libro che si trova nello stato "Under reading".
