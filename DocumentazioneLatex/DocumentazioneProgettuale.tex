@@ -19,13 +19,16 @@
 \usepackage{caption}
 \usepackage{amsmath}
 \usepackage{listingsutf8}
+\usepackage[ruled]{algorithm2e}
 
-\lstset{numbers=left,
-	numberstyle=\tiny}
-
-\lstset{frameround=fttt}
-\lstset{language=Java}
-
+\lstset{% general command to set parameter(s)
+	basicstyle=\small, % print whole listing small
+	numbers=left,
+	keywordstyle=\color{black}\bfseries,
+	% underlined bold black keywords
+	identifierstyle=, % nothing happens
+	stringstyle=\ttfamily} % typewriter type for strings
+\lstset{language=Java} 
 \captionsetup{tableposition=top,figureposition=bottom,font=small}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 'dedication' environment: To add a dedication paragraph at the start of book %
@@ -66,7 +69,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Book's title and subtitle
-\title{\Huge \textbf{Gestione di un sistema di book-crossing: la \textit{\textbf{WalkingBooks}}} \\ \huge \textit{\textbf{Documentazione progettuale}} \\ \bigskip \huge Progetto del corso di Informatica IIIB \\ \huge A.A. 2018/2019}
+\title{\Huge \textbf{Gestione di un sistema di book-crossing:\\ \textit{\textbf{The WalkingBooks}}} \\ \huge \textit{\textbf{Documentazione progettuale}} \\ \bigskip \huge Progetto del corso di Informatica IIIB \\ \huge A.A. 2018/2019}
 % Author
 \author{\textsc{Paganessi Andrea} \\ \textsc{Piffari Michele} \\ \textsc{Villa Stefano}}
 
@@ -135,7 +138,7 @@ Riassumendo gli stati di un libro, possono essere:
 	\label{fig:ArchitectureEnvisoring}
 \end{figure}
 \noindent
-In figura 3.1 e 3.2 sono mostrati il Deployment Diagram e l'Architecture Envisioning del sistema progettato per lo sviluppo dell’applicazione di Book Crossing. Si può osservare che si tratta di un’architettura \textbf{\textit{Three Tiers}}:
+In figura ~\ref{fig:Deployment Diagram} e ~\ref{fig:ArchitectureEnvisoring} sono mostrati il Deployment Diagram e l'Architecture Envisioning del sistema progettato per lo sviluppo dell’applicazione di Book Crossing. Si può osservare che si tratta di un’architettura \textbf{\textit{Three Tiers}}:
 \begin{enumerate}
 	\item A sinistra si individua il client, ovvero il dispositivo Android con il quale è possibile interfacciarsi. Al suo interno quindi si può osservare la presenza di un componente relativo all’interfaccia grafica e uno relativo alla gestione delle richieste per invio e ricezione di dati con il server;
 	\item Nella parte centrale individuiamo gli altri due layer dell’architettura: server EC2 e Database Relazionale RDS. il fatto di utilizzare Amazon Web Services consente di avere questi due elementi a bordo di un unico strato.
@@ -213,20 +216,24 @@ Andiamo ad evidenziare gli attori coinvolti in questa operazione:
 		
 		L'idea di base è che, se lettore e prenotante hanno possibilità di incontrarsi, ovvero se i loro raggi d'azione si sovrappongono, essi potranno accordarsi direttamente sul luogo dello scambio, rendendo \textit{"safety"} il passaggio del libro.
 		Nel caso in cui invece, i due utenti interessati, non abbiano la possibilità di trovare un luogo comune in cui potersi scambiare il libro direttamente, si avrà che, la rete di users appartenenti alla community farà da tramite, per portare il libro \textit{"coast-to-coast"}.
-		\\\\\\\\\\\\
-		Quindi, a livello di pseudo-codice, possiamo scrivere il nostro algoritmo come
+		Quindi, tramite un semplice pseudo-codice, possiamo scrivere il nostro algoritmo come
 	
-		\begin{lstlisting}
-		if VerificaPuntoIncontro(Lettore, Prenotante) {
-			 Ricerca possibile punto di incontro tra i due utenti
-			 Notifica di dove effettuare lo scambio		
-		} else {
-			 Trovare la rete di users che stanno nel mezzo tra i due utenti 
-			 Ricerca del cammino ottimo passando attraverso gli utenti intermedi
-		}
-		\end{lstlisting}
+		\begin{algorithm}[H]
+			\SetAlgoLined
+			\KwData{Users and their informations}
+			\KwResult{Optimum path from reader to reserver}
+			Step 0 (intilization)\;
+			\eIf{Distanza <= 0}{
+				Trova un punto d'incontro nell'unione delle delle area;
+				Notifica gli utenti di dove potersi scambiare direttamente il libro
+			}{
+				Crea la rete di utenti che faranno da tramite tra lettore e prenotante
+				Ricerca del cammino ottimo (il libro si muoverà \textit{hand-to-hand})
+			}
+			\caption{Algoritmo di gestione della prenotazione}
+		\end{algorithm}
 		
-		Nello specifico, la funzionalità \textit{VerificaPuntoIncontro(Lettore, Prenotante)} andrà a verificare che:
+		Nello specifico il calcolo della distanza avverrà tramite la funzionalità \textit{VerificaPuntoIncontro(Lettore, Prenotante)} (TODO: inseire funzione effettiva), la quale andrà a verificare che:
 		
 		{\LARGE \begin{equation}
 			|z^{p}_{i}-z_{0}|-r_{0}-r_{i}<=0
@@ -234,8 +241,30 @@ Andiamo ad evidenziare gli attori coinvolti in questa operazione:
 		
 		ovvero che i raggi d'azione si sovrappongano.
 		
-		Nel caso in cui i due utenti non abbiano un possibili punto d'incontro, dobbiamo selezionare gli utenti tramite il quale il libro in questione potrà viaggiare: l'idea base è quindi quella di costruirsi un'area circolare il centro si trovi nella metà della congiungente del punto $ z_{0} $ (zona di residenza lettore) e $ z^{p}_{i} $ (zona di residenza prenotante).
+		Nel caso in cui i due utenti non abbiano un possibili punto d'incontro (Distanza$>= 0 $), dobbiamo selezionare gli utenti tramite il quale il libro in questione potrà viaggiare: l'idea base è quindi quella di costruirsi un'area circolare di centro pari alla metà della congiungente del punto $ z_{0} $ (zona di residenza lettore) e $ z^{p}_{i} $ (zona di residenza prenotante).
+		Andremo poi a selezionare tutti gli utenti che si trovano all'interno di questa circoscrizione.
 		In passi sequenziali, possiamo scrivere:
+		
+		\begin{algorithm}[H]
+			\SetAlgoLined
+			\KwData{Zona di residenza e raggio d'azione di utente lettore e prenotante}
+			\KwResult{Elenco di utenti attraverso cui il libro dovrà spostarsi \textit{hand-to-hand}}
+			
+			Calcolo distanza media tra zona di residenza lettore ($ z_{0} $) e zona residenza prenotante ($z_{i}^P $)\;
+			
+			Il raggio della circoscrizione di utenti coinvolti sarà pari alla distanza
+			\[ \bar{Z} = \dfrac{1}{2}\bullet(Distanza(z_{0},z_{i}^P)) \]
+			\For{All user $ z_{i}^U $ in the community}{
+			\If{$ (Distanza(z_{0},z_{i}^U)) <= \bar{Z} $ oppure $ (Distanza(z_{i}^P,z_{i}^U)) <= \bar{Z} $  }{
+				
+				Seleziono l'utente $ z_{i}^U $ e lo inserisco nella lista (\textit{HandToHandUsers}) dei possibili utenti che potrebbero partecipare attivamente al prestito.
+			}
+			}
+			Creiamo il collegamento tra gli users della lista \textit{HandToHandUsers} il cui raggio d'azione si sovrappone\:
+			\caption{Creazione del percorso tra lettore e prenotante}
+		\end{algorithm}
+		
+		
 		\begin{itemize}
 			\item Calcolo centro del bacino circolare di users:
 			\begin{equation}

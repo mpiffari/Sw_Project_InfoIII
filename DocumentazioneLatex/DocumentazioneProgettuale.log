@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.10.29)  23 NOV 2018 22:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.10.29)  24 NOV 2018 00:02
 entering extended mode
 **./DocumentazioneProgettuale.tex
 (DocumentazioneProgettuale.tex
@@ -393,33 +393,91 @@ nc.sty"
 Package: stringenc 2016/05/16 v1.11 Convert strings between diff. encodings (HO
 )
 ))
+("C:\Users\miche\AppData\Local\Programs\MiKTeX 2.9\tex\latex\algorithm2e\algori
+thm2e.sty"
+Package: algorithm2e 2017/07/18 v5.2 algorithms environments
+\c@AlgoLine=\count126
+
+("C:\Users\miche\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\ifthen.sty"
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+\algocf@hangindent=\skip47
+
+("C:\Users\miche\AppData\Local\Programs\MiKTeX 2.9\tex\latex\ifoddpage\ifoddpag
+e.sty"
+Package: ifoddpage 2016/04/23 v1.1 Conditionals for odd/even page detection
+\c@checkoddpage=\count127
+)
+("C:\Users\miche\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tools\xspace.sty"
+Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
+)
+("C:\Users\miche\AppData\Local\Programs\MiKTeX 2.9\tex\latex\relsize\relsize.st
+y"
+Package: relsize 2013/03/29 ver 4.1
+)
+\skiptotal=\skip48
+\skiplinenumber=\skip49
+\skiprule=\skip50
+\skiphlne=\skip51
+\skiptext=\skip52
+\skiplength=\skip53
+\algomargin=\skip54
+\skipalgocfslide=\skip55
+\algowidth=\dimen138
+\inoutsize=\dimen139
+\inoutindent=\dimen140
+\interspacetitleruled=\dimen141
+\interspacealgoruled=\dimen142
+\interspacetitleboxruled=\dimen143
+\algocf@ruledwidth=\skip56
+\algocf@inoutbox=\box30
+\algocf@inputbox=\box31
+\AlCapSkip=\skip57
+\AlCapHSkip=\skip58
+\algoskipindent=\skip59
+\algocf@nlbox=\box32
+\algocf@hangingbox=\box33
+\algocf@untilbox=\box34
+\algocf@skipuntil=\skip60
+\algocf@capbox=\box35
+\algocf@lcaptionbox=\skip61
+\algoheightruledefault=\skip62
+\algoheightrule=\skip63
+\algotitleheightruledefault=\skip64
+\algotitleheightrule=\skip65
+\c@algocfline=\count128
+\c@algocfproc=\count129
+\c@algocf=\count130
+\algocf@algoframe=\box36
+\algocf@algobox=\box37
+)
 ("C:\Users\miche\AppData\Local\Programs\MiKTeX 2.9\tex\latex\listings\lstlang1.
 sty"
 File: lstlang1.sty 2018/09/02 1.7 listings language file
 ) (DocumentazioneProgettuale.aux)
 \openout1 = `DocumentazioneProgettuale.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Try loading font information for T1+lmr on input line 74.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Try loading font information for T1+lmr on input line 78.
 
 ("C:\Users\miche\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\t1lmr.fd"
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-\AtBeginShipoutBox=\box30
-Package hyperref Info: Link coloring OFF on input line 74.
+\AtBeginShipoutBox=\box38
+Package hyperref Info: Link coloring OFF on input line 78.
 
 ("C:\Users\miche\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\nameref.s
 ty"
@@ -429,11 +487,11 @@ Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 estring.sty"
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count126
+\c@section@level=\count131
 )
-LaTeX Info: Redefining \ref on input line 74.
-LaTeX Info: Redefining \pageref on input line 74.
-LaTeX Info: Redefining \nameref on input line 74.
+LaTeX Info: Redefining \ref on input line 78.
+LaTeX Info: Redefining \pageref on input line 78.
+LaTeX Info: Redefining \nameref on input line 78.
  (DocumentazioneProgettuale.out) (DocumentazioneProgettuale.out)
 \@outlinefile=\write3
 \openout3 = `DocumentazioneProgettuale.out'.
@@ -442,16 +500,16 @@ LaTeX Info: Redefining \nameref on input line 74.
 ("C:\Users\miche\AppData\Local\Programs\MiKTeX 2.9\tex\context\base\supp-pdf.mk
 ii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count127
-\scratchdimen=\dimen138
-\scratchbox=\box31
-\nofMPsegments=\count128
-\nofMParguments=\count129
+\scratchcounter=\count132
+\scratchdimen=\dimen144
+\scratchbox=\box39
+\nofMPsegments=\count133
+\nofMParguments=\count134
 \everyMPshowfont=\toks24
-\MPscratchCnt=\count130
-\MPscratchDim=\dimen139
-\MPnumerator=\count131
-\makeMPintoPDFobject=\count132
+\MPscratchCnt=\count135
+\MPscratchDim=\dimen145
+\MPnumerator=\count136
+\makeMPintoPDFobject=\count137
 \everyMPtoPDFconversion=\toks25
 )
 ("C:\Users\miche\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\epstopdf-
@@ -506,34 +564,34 @@ G,.JBIG2,.JB2,.eps]
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
-\c@lstlisting=\count133
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 78.
+\c@lstlisting=\count138
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 82.
 ("C:\Users\miche\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\ot1lmr.fd"
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 78.
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 82.
 
 ("C:\Users\miche\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\omllmm.fd"
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 78.
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 82.
 
 
 ("C:\Users\miche\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\omslmsy.fd"
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMX+lmex on input line 78.
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 82.
 
 
 ("C:\Users\miche\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\omxlmex.fd"
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 78.
+(Font)              <12> on input line 82.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 78.
+(Font)              <8> on input line 82.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 78.
+(Font)              <6> on input line 82.
 
 [1
 
@@ -648,44 +706,44 @@ Overfull \hbox (5.60779pt too wide) in paragraph at lines 4--33
 <Immagini/Deployment_Diagram.jpg, id=305, 1706.375pt x 546.04pt>
 File: Immagini/Deployment_Diagram.jpg Graphic file (type jpg)
 <use Immagini/Deployment_Diagram.jpg>
-Package pdftex.def Info: Immagini/Deployment_Diagram.jpg  used on input line 12
-7.
+Package pdftex.def Info: Immagini/Deployment_Diagram.jpg  used on input line 13
+1.
 (pdftex.def)             Requested size: 483.69687pt x 154.7815pt.
 <Immagini/Architecture_Envisoring.jpg, id=306, 511.15968pt x 48.18pt>
 File: Immagini/Architecture_Envisoring.jpg Graphic file (type jpg)
 <use Immagini/Architecture_Envisoring.jpg>
 Package pdftex.def Info: Immagini/Architecture_Envisoring.jpg  used on input li
-ne 133.
+ne 137.
 (pdftex.def)             Requested size: 483.69687pt x 45.59132pt.
 [17 <./Immagini/Deployment_Diagram.jpg> <./Immagini/Architecture_Envisoring.jpg
 >] [18
 
 ] [19] [20]
  4.
-<Immagini/Architettura_Software.jpg, id=326, 771.63281pt x 735.49782pt>
+<Immagini/Architettura_Software.jpg, id=328, 771.63281pt x 735.49782pt>
 File: Immagini/Architettura_Software.jpg Graphic file (type jpg)
 <use Immagini/Architettura_Software.jpg>
 Package pdftex.def Info: Immagini/Architettura_Software.jpg  used on input line
- 149.
+ 153.
 (pdftex.def)             Requested size: 483.69687pt x 461.04297pt.
 [21
 
  <./Immagini/Architettura_Software.jpg>]
-<Immagini/Logical_View_part1.jpg, id=332, 720.6925pt x 1218.5525pt>
+<Immagini/Logical_View_part1.jpg, id=334, 720.6925pt x 1218.5525pt>
 File: Immagini/Logical_View_part1.jpg Graphic file (type jpg)
 <use Immagini/Logical_View_part1.jpg>
 Package pdftex.def Info: Immagini/Logical_View_part1.jpg  used on input line 16
-4.
+8.
 (pdftex.def)             Requested size: 386.95897pt x 654.27124pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Immagini/Logical_View_part2.jpg, id=333, 1102.1175pt x 1142.2675pt>
+<Immagini/Logical_View_part2.jpg, id=335, 1102.1175pt x 1142.2675pt>
 File: Immagini/Logical_View_part2.jpg Graphic file (type jpg)
 <use Immagini/Logical_View_part2.jpg>
 Package pdftex.def Info: Immagini/Logical_View_part2.jpg  used on input line 17
-0.
+4.
 (pdftex.def)             Requested size: 386.95897pt x 401.05455pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -695,74 +753,39 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [23 <./Immagini/Logical_View_part1.jpg>]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <17.28> on input line 192.
+(Font)              <17.28> on input line 196.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 192.
+(Font)              <10> on input line 196.
  [24 <./Immagini/Logical_View_part2.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 214--218
-
+Overfull \hbox (51.46509pt too wide) in paragraph at lines 222--235
+$[]$ 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 214--218
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 214--218
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 214--218
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 214--218
-
- []
-
-
-Overfull \hbox (73.66231pt too wide) in paragraph at lines 221--222
-[][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (40.81203pt too wide) in paragraph at lines 222--223
-[][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (139.36284pt too wide) in paragraph at lines 224--225
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (172.2131pt too wide) in paragraph at lines 225--226
-[][][][][][][][][][][][][][][][][][][][][][] 
+Overfull \hbox (51.46509pt too wide) in paragraph at lines 249--266
+$[]$ 
  []
 
 [25]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 252.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 282.
  [26]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 252.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 282.
  (DocumentazioneProgettuale.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 252.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 252.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 282.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 282.
 Package rerunfilecheck Info: File `DocumentazioneProgettuale.out' has not chang
 ed.
 (rerunfilecheck)             Checksum: 3E7037A98574A0AA8841F74E6192BE1B;1013.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 252.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 282.
  ) 
 Here is how much of TeX's memory you used:
- 10118 strings out of 492970
- 152544 string characters out of 3126593
- 445010 words of memory out of 3000000
- 13664 multiletter control sequences out of 15000+200000
+ 10746 strings out of 492970
+ 165661 string characters out of 3126593
+ 468584 words of memory out of 3000000
+ 14279 multiletter control sequences out of 15000+200000
  117432 words of font info for 66 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,15n,40p,475b,1223s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 36i,15n,40p,475b,578s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/miche/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-rm.en
 c}{C:/Users/miche/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathi
 t.enc}{C:/Users/miche/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-e
@@ -785,9 +808,9 @@ ocal/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmri10.pfb><C:/Users/miche/AppDa
 ta/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmri9.pfb><C:/Users/miche/Ap
 pData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmro10.pfb><C:/Users/mich
 e/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmsy10.pfb>
-Output written on DocumentazioneProgettuale.pdf (34 pages, 1182597 bytes).
+Output written on DocumentazioneProgettuale.pdf (34 pages, 1180616 bytes).
 PDF statistics:
- 472 PDF objects out of 1000 (max. 8388607)
- 160 named destinations out of 1000 (max. 500000)
+ 469 PDF objects out of 1000 (max. 8388607)
+ 156 named destinations out of 1000 (max. 500000)
  159 words of extra memory for PDF output out of 10000 (max. 10000000)
 
