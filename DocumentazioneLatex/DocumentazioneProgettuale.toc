@@ -14,5 +14,5 @@
 \contentsline {chapter}{\numberline {4}Architettura}{21}{chapter.4}
 \contentsline {section}{\numberline {4.1}Architettura software}{21}{section.4.1}
 \contentsline {section}{\numberline {4.2}Logical view}{22}{section.4.2}
-\contentsline {section}{\numberline {4.3}Analisi dei componenti}{22}{section.4.3}
-\contentsline {section}{\numberline {4.4}Parte algoritmica: \textit {reservation handler}}{24}{section.4.4}
+\contentsline {section}{\numberline {4.3}Analisi dei componenti}{24}{section.4.3}
+\contentsline {section}{\numberline {4.4}Parte algoritmica: \textit {reservation handler}}{25}{section.4.4}

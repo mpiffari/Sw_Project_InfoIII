@@ -182,18 +182,24 @@ In figura ~\ref{fig:LogicalView1} e ~\ref{fig:LogicalView2} è mostrata la Logic
 	\item \textbf{Subsystem \textit{"Data Manager":}} ”: Rappresenta la comunicazione con il Database. Sono quindi indicati i componenti con i quali il sistema si interfaccerà con la banca dati dell’architettura.
 \end{itemize}
 Il modello architetturale MVC è stato poi applicato anche successivamente per la progettazione delle componenti previste per ciascun elemento dell'architettura.
+\newpage
 \section{Analisi dei componenti}
 Come già presentato in precedenza, per la definizione dei componenti si è deciso di seguire il pattern architetturale MVC. 
 Le componenti che si è deciso di sviluppare durante la prima iterazione sono: 
 \begin{itemize}
-	\item \textbf{Componente \textit{Book registration:}} La componente “Book Registration” fa riferimento all’ UC5, ovvero alla funzione di aggiunta di un libro alla rete di Book Crossing. La componente si presenta nel seguente modo:
+	\item \textbf{Componente \textit{Book registration:}} La componente \textit{Book registration} fa riferimento all’ UC5, ovvero alla funzione di aggiunta di un libro alla rete di Book Crossing. La componente si presenta nel seguente modo:
 	\begin{itemize}
 		\item \textit{GUI:} Interfaccia grafica utilizzata per registrare un libro alla rete di Book Crossing. Verranno quindi messe a disposizione una serie di funzionalità per aggiungere un nuovo libro e ottenere il relativo BCID;
 		\item \textit{Model:} Si fa carico di ricevere le informazioni relative al libro e sfruttando la parte Data restituisce alla parte GUI il BCID con il quale siglare il libro;
 		\item \textit{Data:} Le informazioni relative al libro che si vuole aggiungere sono memorizzate nel Database RDS, associandolo all’utente per ulteriori funzionalità. 
-	\end{itemize}  
+	\end{itemize}
+	\item \textbf{Componente \textit{Book reservation:}}  La componente \textit{Book reservation} fa riferimento all’ U13, ovvero alla funzione di prenotazione di un libro, passando prima per un'operazione di ricerca dello stesso all'interno della community. La componente si presenta nel seguente modo:
+	\begin{itemize}
+		\item \textit{GUI:} Interfaccia grafica utilizzata per poter procedere con la prenotazione di un libro della rete di Book Crossing. In questo caso sarà possibile compiere tale azione attraverso una procedura di ricerca del libro, oppure navigando nella propria sezione personale del profilo;
+		\item \textit{Model:} Si fa carico di gestire la coda relativa alla prenotazione di un determinato libro, in modo da poterle soddisfare. La gestione è demandata ad un algoritmo presentato nelle sezioni successive. Fa affidamento alla parte Data per poter risalire ai dati dei richiedenti;
+		\item \textit{Data:} Le informazioni relative al libro che si vuole prenotare e agli utenti richiedenti sono memorizzate nel Database. 
+	\end{itemize}
 \end{itemize}
-\newpage
 \section{Parte algoritmica: \textit{reservation handler}}
 \input{Capitolo_Sezioni/Algoritmo}
 \end{document}
