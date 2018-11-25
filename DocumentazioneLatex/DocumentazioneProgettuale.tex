@@ -20,7 +20,6 @@
 \usepackage{amsmath}
 \usepackage{listingsutf8}
 \usepackage[ruled]{algorithm2e}
-
 \lstset{% general command to set parameter(s)
 	basicstyle=\small, % print whole listing small
 	numbers=left,
@@ -183,7 +182,17 @@ In figura ~\ref{fig:LogicalView1} e ~\ref{fig:LogicalView2} è mostrata la Logic
 	\item \textbf{Subsystem \textit{"Data Manager":}} ”: Rappresenta la comunicazione con il Database. Sono quindi indicati i componenti con i quali il sistema si interfaccerà con la banca dati dell’architettura.
 \end{itemize}
 Il modello architetturale MVC è stato poi applicato anche successivamente per la progettazione delle componenti previste per ciascun elemento dell'architettura.
-
+\section{Analisi dei componenti}
+Come già presentato in precedenza, per la definizione dei componenti si è deciso di seguire il pattern architetturale MVC. 
+Le componenti che si è deciso di sviluppare durante la prima iterazione sono: 
+\begin{itemize}
+	\item \textbf{Componente \textit{Book registration:}} La componente “Book Registration” fa riferimento all’ UC5, ovvero alla funzione di aggiunta di un libro alla rete di Book Crossing. La componente si presenta nel seguente modo:
+	\begin{itemize}
+		\item \textit{GUI:} Interfaccia grafica utilizzata per registrare un libro alla rete di Book Crossing. Verranno quindi messe a disposizione una serie di funzionalità per aggiungere un nuovo libro e ottenere il relativo BCID;
+		\item \textit{Model:} Si fa carico di ricevere le informazioni relative al libro e sfruttando la parte Data restituisce alla parte GUI il BCID con il quale siglare il libro;
+		\item \textit{Data:} Le informazioni relative al libro che si vuole aggiungere sono memorizzate nel Database RDS, associandolo all’utente per ulteriori funzionalità. 
+	\end{itemize}  
+\end{itemize}
 \newpage
 \section{Parte algoritmica: \textit{reservation handler}}
 \input{Capitolo_Sezioni/Algoritmo}
