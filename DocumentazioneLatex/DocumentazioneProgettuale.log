@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.10.29)  25 NOV 2018 11:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.10.29)  25 NOV 2018 11:56
 entering extended mode
 **./DocumentazioneProgettuale.tex
 (DocumentazioneProgettuale.tex
@@ -785,7 +785,7 @@ $[]$
 File: Immagini/Algorithm_UsersNet.jpg Graphic file (type jpg)
 <use Immagini/Algorithm_UsersNet.jpg>
 Package pdftex.def Info: Immagini/Algorithm_UsersNet.jpg  used on input line 10
-4.
+3.
 (pdftex.def)             Requested size: 386.95897pt x 337.06415pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -832,7 +832,7 @@ ocal/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmri10.pfb><C:/Users/miche/AppDa
 ta/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmri9.pfb><C:/Users/miche/Ap
 pData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmro10.pfb><C:/Users/mich
 e/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmsy10.pfb>
-Output written on DocumentazioneProgettuale.pdf (35 pages, 1308925 bytes).
+Output written on DocumentazioneProgettuale.pdf (35 pages, 1308923 bytes).
 PDF statistics:
  484 PDF objects out of 1000 (max. 8388607)
  158 named destinations out of 1000 (max. 500000)
