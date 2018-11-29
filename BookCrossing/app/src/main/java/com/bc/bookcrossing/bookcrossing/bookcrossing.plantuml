@@ -1,0 +1,651 @@
+@startuml
+
+title __BOOKCROSSING's Class Diagram__\n
+
+  package com.bc.bookcrossing.bookcrossing {
+    class BookInfo {
+        - title : String
+        - author : String
+        - dataPickUp : String
+        + BookInfo()
+        + getDataPickUp()
+        + setDataPickUp()
+        + getAuthor()
+        + setAuthor()
+        + getTitle()
+        + setTitle()
+    }
+  }
+  
+
+  package com.bc.bookcrossing.bookcrossing {
+    class BookRegistrationFragment {
+        {static} - ARG_PARAM1 : String
+        {static} - ARG_PARAM2 : String
+        - mParam1 : String
+        - mParam2 : String
+        + BookRegistrationFragment()
+        {static} + newInstance()
+        + onCreate()
+        + onCreateView()
+        + onButtonPressed()
+        + onAttach()
+        + onDetach()
+        + callbackRegistration()
+    }
+  }
+  
+
+  package com.bc.bookcrossing.bookcrossing {
+    interface OnFragmentInteractionListener {
+        {abstract} + onFragmentInteraction()
+    }
+  }
+  
+
+  package android.support.v4 {
+    class AnimationInfo {
+        ~ mAnimatingAway : View
+        ~ mAnimator : Animator
+        ~ mStateAfterAnimating : int
+        ~ mNextAnim : int
+        ~ mNextTransition : int
+        ~ mNextTransitionStyle : int
+        ~ mEnterTransition : Object
+        ~ mReturnTransition : Object
+        ~ mExitTransition : Object
+        ~ mReenterTransition : Object
+        ~ mSharedElementEnterTransition : Object
+        ~ mSharedElementReturnTransition : Object
+        ~ mAllowReturnTransitionOverlap : Boolean
+        ~ mAllowEnterTransitionOverlap : Boolean
+        ~ mEnterTransitionCallback : SharedElementCallback
+        ~ mExitTransitionCallback : SharedElementCallback
+        ~ mEnterTransitionPostponed : boolean
+        ~ mStartEnterTransitionListener : OnStartEnterTransitionListener
+        ~ mIsHideReplaced : boolean
+        ~ AnimationInfo()
+    }
+  }
+  
+
+  package android.support.v4 {
+    interface OnStartEnterTransitionListener {
+        {abstract} + onStartEnterTransition()
+        {abstract} + startListening()
+    }
+  }
+  
+
+  package android.support.v4 {
+    class InstantiationException {
+        + InstantiationException()
+    }
+  }
+  
+
+  package android.support.v4 {
+    class SavedState {
+        ~ mState : Bundle
+        {static} + CREATOR : Creator<SavedState>
+        ~ SavedState()
+        ~ SavedState()
+        + describeContents()
+        + writeToParcel()
+    }
+  }
+  
+
+  interface Creator {
+      {abstract} + createFromParcel()
+      {abstract} + newArray()
+  }
+  
+
+  interface ClassLoaderCreator {
+      {abstract} + createFromParcel()
+  }
+  
+
+  package com.bc.bookcrossing.bookcrossing {
+    class DataDispatcher {
+        + sendDataLogin()
+        + sendDataSignIn()
+        + sendDataPickUp()
+        + sendDataTakenBooks()
+        + sendDataBookRegistration()
+        + sendDataBookRegistration()
+        + register()
+        + unRegister()
+    }
+  }
+  
+
+  package com.bc.bookcrossing.bookcrossing {
+    interface DelegateSendData {
+        {abstract} + sendDataLogin()
+        {abstract} + sendDataSignIn()
+        {abstract} + sendDataPickUp()
+        {abstract} + sendDataTakenBooks()
+        {abstract} + sendDataBookRegistration()
+        {abstract} + sendDataBookRegistration()
+        {abstract} + register()
+        {abstract} + unRegister()
+    }
+  }
+  
+
+  package com.bc.bookcrossing.bookcrossing {
+    interface GenerateRequests {
+    }
+  }
+  
+
+  package com.bc.bookcrossing.bookcrossing {
+    class LoginFragment {
+        {static} - ARG_PARAM1 : String
+        {static} - ARG_PARAM2 : String
+        - mParam1 : String
+        - mParam2 : String
+        + LoginFragment()
+        {static} + newInstance()
+        + onCreate()
+        + onCreateView()
+        + onButtonPressed()
+        + onAttach()
+        + onDetach()
+    }
+  }
+  
+
+  package com.bc.bookcrossing.bookcrossing {
+    interface OnFragmentInteractionListener {
+        {abstract} + onFragmentInteraction()
+    }
+  }
+  
+
+  package android.support.v4 {
+    class AnimationInfo {
+        ~ mAnimatingAway : View
+        ~ mAnimator : Animator
+        ~ mStateAfterAnimating : int
+        ~ mNextAnim : int
+        ~ mNextTransition : int
+        ~ mNextTransitionStyle : int
+        ~ mEnterTransition : Object
+        ~ mReturnTransition : Object
+        ~ mExitTransition : Object
+        ~ mReenterTransition : Object
+        ~ mSharedElementEnterTransition : Object
+        ~ mSharedElementReturnTransition : Object
+        ~ mAllowReturnTransitionOverlap : Boolean
+        ~ mAllowEnterTransitionOverlap : Boolean
+        ~ mEnterTransitionCallback : SharedElementCallback
+        ~ mExitTransitionCallback : SharedElementCallback
+        ~ mEnterTransitionPostponed : boolean
+        ~ mStartEnterTransitionListener : OnStartEnterTransitionListener
+        ~ mIsHideReplaced : boolean
+        ~ AnimationInfo()
+    }
+  }
+  
+
+  package android.support.v4 {
+    interface OnStartEnterTransitionListener {
+        {abstract} + onStartEnterTransition()
+        {abstract} + startListening()
+    }
+  }
+  
+
+  package android.support.v4 {
+    class InstantiationException {
+        + InstantiationException()
+    }
+  }
+  
+
+  package android.support.v4 {
+    class SavedState {
+        ~ mState : Bundle
+        {static} + CREATOR : Creator<SavedState>
+        ~ SavedState()
+        ~ SavedState()
+        + describeContents()
+        + writeToParcel()
+    }
+  }
+  
+
+  interface Creator {
+      {abstract} + createFromParcel()
+      {abstract} + newArray()
+  }
+  
+
+  interface ClassLoaderCreator {
+      {abstract} + createFromParcel()
+  }
+  
+
+  package com.bc.bookcrossing.bookcrossing {
+    enum LoginInStatus {
+      SUCCESS
+      EMPTY_USERNAME
+      EMPTY_PASSWORD
+      COMMUNICATION_ERROR
+    }
+  }
+  
+
+  package com.bc.bookcrossing.bookcrossing {
+    class MainActivity {
+        # onCreate()
+    }
+  }
+  
+
+  package android.support.v4 {
+    class HostCallbacks {
+        + HostCallbacks()
+        + onDump()
+        + onShouldSaveFragmentState()
+        + onGetLayoutInflater()
+        + onGetHost()
+        + onSupportInvalidateOptionsMenu()
+        + onStartActivityFromFragment()
+        + onStartActivityFromFragment()
+        + onStartIntentSenderFromFragment()
+        + onRequestPermissionsFromFragment()
+        + onShouldShowRequestPermissionRationale()
+        + onHasWindowAnimations()
+        + onGetWindowAnimations()
+        + onAttachFragment()
+        + onFindViewById()
+        + onHasView()
+    }
+  }
+  
+
+  package android.support.v4 {
+    class NonConfigurationInstances {
+        ~ custom : Object
+        ~ viewModelStore : ViewModelStore
+        ~ fragments : FragmentManagerNonConfig
+        ~ NonConfigurationInstances()
+    }
+  }
+  
+
+  package android.support.v4 {
+    class ExtraData {
+        + ExtraData()
+    }
+  }
+  
+
+  package com.bc.bookcrossing.bookcrossing {
+    abstract class Observer {
+    }
+  }
+  
+
+  package com.bc.bookcrossing.bookcrossing {
+    class PickUpFragment {
+        {static} - ARG_PARAM1 : String
+        {static} - ARG_PARAM2 : String
+        - mParam1 : String
+        - mParam2 : String
+        + PickUpFragment()
+        {static} + newInstance()
+        + onCreate()
+        + onCreateView()
+        + onButtonPressed()
+        + onAttach()
+        + onDetach()
+        + callbackPickUp()
+    }
+  }
+  
+
+  package com.bc.bookcrossing.bookcrossing {
+    interface OnFragmentInteractionListener {
+        {abstract} + onFragmentInteraction()
+    }
+  }
+  
+
+  package android.support.v4 {
+    class AnimationInfo {
+        ~ mAnimatingAway : View
+        ~ mAnimator : Animator
+        ~ mStateAfterAnimating : int
+        ~ mNextAnim : int
+        ~ mNextTransition : int
+        ~ mNextTransitionStyle : int
+        ~ mEnterTransition : Object
+        ~ mReturnTransition : Object
+        ~ mExitTransition : Object
+        ~ mReenterTransition : Object
+        ~ mSharedElementEnterTransition : Object
+        ~ mSharedElementReturnTransition : Object
+        ~ mAllowReturnTransitionOverlap : Boolean
+        ~ mAllowEnterTransitionOverlap : Boolean
+        ~ mEnterTransitionCallback : SharedElementCallback
+        ~ mExitTransitionCallback : SharedElementCallback
+        ~ mEnterTransitionPostponed : boolean
+        ~ mStartEnterTransitionListener : OnStartEnterTransitionListener
+        ~ mIsHideReplaced : boolean
+        ~ AnimationInfo()
+    }
+  }
+  
+
+  package android.support.v4 {
+    interface OnStartEnterTransitionListener {
+        {abstract} + onStartEnterTransition()
+        {abstract} + startListening()
+    }
+  }
+  
+
+  package android.support.v4 {
+    class InstantiationException {
+        + InstantiationException()
+    }
+  }
+  
+
+  package android.support.v4 {
+    class SavedState {
+        ~ mState : Bundle
+        {static} + CREATOR : Creator<SavedState>
+        ~ SavedState()
+        ~ SavedState()
+        + describeContents()
+        + writeToParcel()
+    }
+  }
+  
+
+  interface Creator {
+      {abstract} + createFromParcel()
+      {abstract} + newArray()
+  }
+  
+
+  interface ClassLoaderCreator {
+      {abstract} + createFromParcel()
+  }
+  
+
+  package com.bc.bookcrossing.bookcrossing {
+    class Processing {
+    }
+  }
+  
+
+  package com.bc.bookcrossing.bookcrossing {
+    class SignInFragment {
+        {static} - ARG_PARAM1 : String
+        {static} - ARG_PARAM2 : String
+        - mParam1 : String
+        - mParam2 : String
+        + SignInFragment()
+        {static} + newInstance()
+        + onCreate()
+        + onCreateView()
+        + onButtonPressed()
+        + onAttach()
+        + onDetach()
+        + callbackSignIn()
+    }
+  }
+  
+
+  package com.bc.bookcrossing.bookcrossing {
+    interface OnFragmentInteractionListener {
+        {abstract} + onFragmentInteraction()
+    }
+  }
+  
+
+  package android.support.v4 {
+    class AnimationInfo {
+        ~ mAnimatingAway : View
+        ~ mAnimator : Animator
+        ~ mStateAfterAnimating : int
+        ~ mNextAnim : int
+        ~ mNextTransition : int
+        ~ mNextTransitionStyle : int
+        ~ mEnterTransition : Object
+        ~ mReturnTransition : Object
+        ~ mExitTransition : Object
+        ~ mReenterTransition : Object
+        ~ mSharedElementEnterTransition : Object
+        ~ mSharedElementReturnTransition : Object
+        ~ mAllowReturnTransitionOverlap : Boolean
+        ~ mAllowEnterTransitionOverlap : Boolean
+        ~ mEnterTransitionCallback : SharedElementCallback
+        ~ mExitTransitionCallback : SharedElementCallback
+        ~ mEnterTransitionPostponed : boolean
+        ~ mStartEnterTransitionListener : OnStartEnterTransitionListener
+        ~ mIsHideReplaced : boolean
+        ~ AnimationInfo()
+    }
+  }
+  
+
+  package android.support.v4 {
+    interface OnStartEnterTransitionListener {
+        {abstract} + onStartEnterTransition()
+        {abstract} + startListening()
+    }
+  }
+  
+
+  package android.support.v4 {
+    class InstantiationException {
+        + InstantiationException()
+    }
+  }
+  
+
+  package android.support.v4 {
+    class SavedState {
+        ~ mState : Bundle
+        {static} + CREATOR : Creator<SavedState>
+        ~ SavedState()
+        ~ SavedState()
+        + describeContents()
+        + writeToParcel()
+    }
+  }
+  
+
+  interface Creator {
+      {abstract} + createFromParcel()
+      {abstract} + newArray()
+  }
+  
+
+  interface ClassLoaderCreator {
+      {abstract} + createFromParcel()
+  }
+  
+
+  package com.bc.bookcrossing.bookcrossing {
+    enum SignInStatus {
+      SUCCESS
+      ERROR_USERNAME
+      ERROR_PASSWORD
+      EMPTY_NAME
+      EMPTY_LASTNAME
+      ERROR_DOB
+      ERROR_COMMUNICATION
+    }
+  }
+  
+
+  package com.bc.bookcrossing.bookcrossing {
+    class TakenBooksFragment {
+        {static} - ARG_PARAM1 : String
+        {static} - ARG_PARAM2 : String
+        - mParam1 : String
+        - mParam2 : String
+        + TakenBooksFragment()
+        {static} + newInstance()
+        + onCreate()
+        + onCreateView()
+        + onButtonPressed()
+        + onAttach()
+        + onDetach()
+        + callbackBookTaken()
+    }
+  }
+  
+
+  package com.bc.bookcrossing.bookcrossing {
+    interface OnFragmentInteractionListener {
+        {abstract} + onFragmentInteraction()
+    }
+  }
+  
+
+  package android.support.v4 {
+    class AnimationInfo {
+        ~ mAnimatingAway : View
+        ~ mAnimator : Animator
+        ~ mStateAfterAnimating : int
+        ~ mNextAnim : int
+        ~ mNextTransition : int
+        ~ mNextTransitionStyle : int
+        ~ mEnterTransition : Object
+        ~ mReturnTransition : Object
+        ~ mExitTransition : Object
+        ~ mReenterTransition : Object
+        ~ mSharedElementEnterTransition : Object
+        ~ mSharedElementReturnTransition : Object
+        ~ mAllowReturnTransitionOverlap : Boolean
+        ~ mAllowEnterTransitionOverlap : Boolean
+        ~ mEnterTransitionCallback : SharedElementCallback
+        ~ mExitTransitionCallback : SharedElementCallback
+        ~ mEnterTransitionPostponed : boolean
+        ~ mStartEnterTransitionListener : OnStartEnterTransitionListener
+        ~ mIsHideReplaced : boolean
+        ~ AnimationInfo()
+    }
+  }
+  
+
+  package android.support.v4 {
+    interface OnStartEnterTransitionListener {
+        {abstract} + onStartEnterTransition()
+        {abstract} + startListening()
+    }
+  }
+  
+
+  package android.support.v4 {
+    class InstantiationException {
+        + InstantiationException()
+    }
+  }
+  
+
+  package android.support.v4 {
+    class SavedState {
+        ~ mState : Bundle
+        {static} + CREATOR : Creator<SavedState>
+        ~ SavedState()
+        ~ SavedState()
+        + describeContents()
+        + writeToParcel()
+    }
+  }
+  
+
+  interface Creator {
+      {abstract} + createFromParcel()
+      {abstract} + newArray()
+  }
+  
+
+  interface ClassLoaderCreator {
+      {abstract} + createFromParcel()
+  }
+  
+
+  BookRegistrationFragment -up-|> ObserverBookDataRegistration
+  BookRegistrationFragment -up-|> Fragment
+  BookRegistrationFragment o-- OnFragmentInteractionListener : mListener
+  BookRegistrationFragment +-down- OnFragmentInteractionListener
+  BookRegistrationFragment +-down- AnimationInfo
+  BookRegistrationFragment +-down- OnStartEnterTransitionListener
+  BookRegistrationFragment +-down- InstantiationException
+  BookRegistrationFragment +-down- SavedState
+  SavedState -up-|> Parcelable
+  SavedState +-down- Creator
+  SavedState +-down- ClassLoaderCreator
+  DataDispatcher -up-|> DelegateSendData
+  LoginFragment -up-|> ObserverDataLogin
+  LoginFragment -up-|> Fragment
+  LoginFragment o-- OnFragmentInteractionListener : mListener
+  LoginFragment +-down- OnFragmentInteractionListener
+  LoginFragment +-down- AnimationInfo
+  LoginFragment +-down- OnStartEnterTransitionListener
+  LoginFragment +-down- InstantiationException
+  LoginFragment +-down- SavedState
+  SavedState -up-|> Parcelable
+  SavedState +-down- Creator
+  SavedState +-down- ClassLoaderCreator
+  MainActivity -up-|> AppCompatActivity
+  MainActivity +-down- HostCallbacks
+  MainActivity +-down- NonConfigurationInstances
+  MainActivity +-down- ExtraData
+  HostCallbacks -up-|> FragmentHostCallback
+  PickUpFragment -up-|> ObserverDataBookPickUp
+  PickUpFragment -up-|> Fragment
+  PickUpFragment o-- OnFragmentInteractionListener : mListener
+  PickUpFragment +-down- OnFragmentInteractionListener
+  PickUpFragment +-down- AnimationInfo
+  PickUpFragment +-down- OnStartEnterTransitionListener
+  PickUpFragment +-down- InstantiationException
+  PickUpFragment +-down- SavedState
+  SavedState -up-|> Parcelable
+  SavedState +-down- Creator
+  SavedState +-down- ClassLoaderCreator
+  Processing -up-|> GenerateRequests
+  SignInFragment -up-|> ObserverDataSignIn
+  SignInFragment -up-|> Fragment
+  SignInFragment o-- OnFragmentInteractionListener : mListener
+  SignInFragment +-down- OnFragmentInteractionListener
+  SignInFragment +-down- AnimationInfo
+  SignInFragment +-down- OnStartEnterTransitionListener
+  SignInFragment +-down- InstantiationException
+  SignInFragment +-down- SavedState
+  SavedState -up-|> Parcelable
+  SavedState +-down- Creator
+  SavedState +-down- ClassLoaderCreator
+  TakenBooksFragment -up-|> ObserverDataBookTaken
+  TakenBooksFragment -up-|> Fragment
+  TakenBooksFragment o-- OnFragmentInteractionListener : mListener
+  TakenBooksFragment +-down- OnFragmentInteractionListener
+  TakenBooksFragment +-down- AnimationInfo
+  TakenBooksFragment +-down- OnStartEnterTransitionListener
+  TakenBooksFragment +-down- InstantiationException
+  TakenBooksFragment +-down- SavedState
+  SavedState -up-|> Parcelable
+  SavedState +-down- Creator
+  SavedState +-down- ClassLoaderCreator
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

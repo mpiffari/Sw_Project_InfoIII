@@ -1,0 +1,380 @@
+@startuml
+
+title __APP's Class Diagram__\n
+
+  package com.bc.bookcrossing.bookcrossing {
+    class BookInfo {
+    }
+  }
+  
+
+  package com.bc.bookcrossing.bookcrossing {
+    class BookRegistrationFragment {
+    }
+  }
+  
+
+  package com.bc.bookcrossing.bookcrossing {
+    class BuildConfig {
+    }
+  }
+  
+
+  package com.bc.bookcrossing.bookcrossing {
+    class DataDispatcher {
+    }
+  }
+  
+
+  package com.bc.bookcrossing.bookcrossing {
+    interface DelegateSendData {
+    }
+  }
+  
+
+  package com.bc.bookcrossing.bookcrossing {
+    class ExampleInstrumentedTest {
+    }
+  }
+  
+
+  package com.bc.bookcrossing.bookcrossing {
+    interface GenerateRequests {
+    }
+  }
+  
+
+  package com.bc.bookcrossing.bookcrossing {
+    class LoginFragment {
+    }
+  }
+  
+
+  package com.bc.bookcrossing.bookcrossing {
+    enum LoginInStatus {
+    }
+  }
+  
+
+  package com.bc.bookcrossing.bookcrossing {
+    class MainActivity {
+    }
+  }
+  
+
+  package com.bc.bookcrossing.bookcrossing {
+    abstract class Observer {
+    }
+  }
+  
+
+  package com.bc.bookcrossing.bookcrossing {
+    package com.bc.bookcrossing.bookcrossing.observerInterfaces {
+      interface ObserverBookDataRegistration {
+      }
+    }
+  }
+  
+
+  package com.bc.bookcrossing.bookcrossing {
+    package com.bc.bookcrossing.bookcrossing.observerInterfaces {
+      interface ObserverDataBookPickUp {
+      }
+    }
+  }
+  
+
+  package com.bc.bookcrossing.bookcrossing {
+    package com.bc.bookcrossing.bookcrossing.observerInterfaces {
+      interface ObserverDataBookTaken {
+      }
+    }
+  }
+  
+
+  package com.bc.bookcrossing.bookcrossing {
+    package com.bc.bookcrossing.bookcrossing.observerInterfaces {
+      interface ObserverDataLogin {
+      }
+    }
+  }
+  
+
+  package com.bc.bookcrossing.bookcrossing {
+    package com.bc.bookcrossing.bookcrossing.observerInterfaces {
+      interface ObserverDataSignIn {
+      }
+    }
+  }
+  
+
+  package com.bc.bookcrossing.bookcrossing {
+    class PickUpFragment {
+    }
+  }
+  
+
+  package com.bc.bookcrossing.bookcrossing {
+    class Processing {
+    }
+  }
+  
+
+  package android.arch.lifecycle {
+    package android.arch.lifecycle.livedata {
+      package android.arch.lifecycle.livedata.core {
+        class R {
+        }
+      }
+    }
+  }
+  
+
+  package android.support.drawerlayout {
+    class R {
+    }
+  }
+  
+
+  package android.support.customview {
+    class R {
+    }
+  }
+  
+
+  package android.support.v7.appcompat {
+    class R {
+    }
+  }
+  
+
+  package com.google.android.gms.plus {
+    class R {
+    }
+  }
+  
+
+  package android.support.v4 {
+    class R {
+    }
+  }
+  
+
+  package android.support.v7.viewpager {
+    class R {
+    }
+  }
+  
+
+  package com.google.android.gms.common {
+    class R {
+    }
+  }
+  
+
+  package android.support.swiperefreshlayout {
+    class R {
+    }
+  }
+  
+
+  package android.support.slidingpanelayout {
+    class R {
+    }
+  }
+  
+
+  package android.arch.lifecycle {
+    package android.arch.lifecycle.viewmodel {
+      class R {
+      }
+    }
+  }
+  
+
+  package com.google.android.gms.base {
+    class R {
+    }
+  }
+  
+
+  package android.support.coordinatorlayout {
+    class R {
+    }
+  }
+  
+
+  package android.support.localbroadcastmanager {
+    class R {
+    }
+  }
+  
+
+  package com.google.android.gms.audience {
+    class R {
+    }
+  }
+  
+
+  package android.support.interpolator {
+    class R {
+    }
+  }
+  
+
+  package android.support.loader {
+    class R {
+    }
+  }
+  
+
+  package android.support.constraint {
+    class R {
+    }
+  }
+  
+
+  package android.support.mediacompat {
+    class R {
+    }
+  }
+  
+
+  package android.support.compat {
+    class R {
+    }
+  }
+  
+
+  package android.support.documentfile {
+    class R {
+    }
+  }
+  
+
+  package com.bc.bookcrossing.bookcrossing {
+    class R {
+    }
+  }
+  
+
+  package android.support.graphics.drawable {
+    class R {
+    }
+  }
+  
+
+  package android.support.cursoradapter {
+    class R {
+    }
+  }
+  
+
+  package com.google.android.gms.tasks {
+    class R {
+    }
+  }
+  
+
+  package androidx.versionedparcelable {
+    class R {
+    }
+  }
+  
+
+  package android.arch.core {
+    class R {
+    }
+  }
+  
+
+  package android.support.coreui {
+    class R {
+    }
+  }
+  
+
+  package android.support.asynclayoutinflater {
+    class R {
+    }
+  }
+  
+
+  package android.support.print {
+    class R {
+    }
+  }
+  
+
+  package android.arch.lifecycle {
+    class R {
+    }
+  }
+  
+
+  package android.support.fragment {
+    class R {
+    }
+  }
+  
+
+  package android.support.coreutils {
+    class R {
+    }
+  }
+  
+
+  package android.arch.lifecycle {
+    package android.arch.lifecycle.livedata {
+      class R {
+      }
+    }
+  }
+  
+
+  package com.bc.bookcrossing.bookcrossing {
+    class SignInFragment {
+    }
+  }
+  
+
+  package com.bc.bookcrossing.bookcrossing {
+    enum SignInStatus {
+    }
+  }
+  
+
+  package com.bc.bookcrossing.bookcrossing {
+    class TakenBooksFragment {
+    }
+  }
+  
+
+  BookRegistrationFragment -up-|> ObserverBookDataRegistration
+  BookRegistrationFragment -up-|> Fragment
+  BookRegistrationFragment o-- OnFragmentInteractionListener : mListener
+  DataDispatcher -up-|> DelegateSendData
+  LoginFragment -up-|> ObserverDataLogin
+  LoginFragment -up-|> Fragment
+  LoginFragment o-- OnFragmentInteractionListener : mListener
+  MainActivity -up-|> AppCompatActivity
+  PickUpFragment -up-|> ObserverDataBookPickUp
+  PickUpFragment -up-|> Fragment
+  PickUpFragment o-- OnFragmentInteractionListener : mListener
+  Processing -up-|> GenerateRequests
+  SignInFragment -up-|> ObserverDataSignIn
+  SignInFragment -up-|> Fragment
+  SignInFragment o-- OnFragmentInteractionListener : mListener
+  TakenBooksFragment -up-|> ObserverDataBookTaken
+  TakenBooksFragment -up-|> Fragment
+  TakenBooksFragment o-- OnFragmentInteractionListener : mListener
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml
