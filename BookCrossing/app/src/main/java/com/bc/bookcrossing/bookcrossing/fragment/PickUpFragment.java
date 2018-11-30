@@ -1,4 +1,4 @@
-package com.bc.bookcrossing.bookcrossing;
+package com.bc.bookcrossing.bookcrossing.fragment;
 
 import android.content.Context;
 import android.net.Uri;
@@ -8,20 +8,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.bc.bookcrossing.bookcrossing.observerInterfaces.ObserverDataBookTaken;
-
-import java.util.ArrayList;
+import com.bc.bookcrossing.bookcrossing.R;
+import com.bc.bookcrossing.bookcrossing.observerInterfaces.ObserverDataBookPickUp;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link TakenBooksFragment.OnFragmentInteractionListener} interface
+ * {@link PickUpFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link TakenBooksFragment#newInstance} factory method to
+ * Use the {@link PickUpFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class TakenBooksFragment extends Fragment implements ObserverDataBookTaken {
+public class PickUpFragment extends Fragment implements ObserverDataBookPickUp {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -33,7 +32,7 @@ public class TakenBooksFragment extends Fragment implements ObserverDataBookTake
 
     private OnFragmentInteractionListener mListener;
 
-    public TakenBooksFragment() {
+    public PickUpFragment() {
         // Required empty public constructor
     }
 
@@ -43,11 +42,11 @@ public class TakenBooksFragment extends Fragment implements ObserverDataBookTake
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment TakenBooksFragment.
+     * @return A new instance of fragment PickUpFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static TakenBooksFragment newInstance(String param1, String param2) {
-        TakenBooksFragment fragment = new TakenBooksFragment();
+    public static PickUpFragment newInstance(String param1, String param2) {
+        PickUpFragment fragment = new PickUpFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -68,7 +67,7 @@ public class TakenBooksFragment extends Fragment implements ObserverDataBookTake
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_taken_books, container, false);
+        return inflater.inflate(R.layout.fragment_pick_up, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -96,7 +95,7 @@ public class TakenBooksFragment extends Fragment implements ObserverDataBookTake
     }
 
     @Override
-    public void callbackBookTaken(ArrayList<BookInfo> bookInformations) {
+    public void callbackPickUp(short bookStatus) {
 
     }
 

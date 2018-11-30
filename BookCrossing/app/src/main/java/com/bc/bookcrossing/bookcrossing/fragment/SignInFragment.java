@@ -1,4 +1,4 @@
-package com.bc.bookcrossing.bookcrossing;
+package com.bc.bookcrossing.bookcrossing.fragment;
 
 import android.content.Context;
 import android.net.Uri;
@@ -8,20 +8,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.bc.bookcrossing.bookcrossing.observerInterfaces.ObserverBookDataRegistration;
+import com.bc.bookcrossing.bookcrossing.R;
+import com.bc.bookcrossing.bookcrossing.SignInStatus;
+import com.bc.bookcrossing.bookcrossing.observerInterfaces.ObserverDataSignIn;
 
-import java.util.Observable;
+import java.util.List;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link BookRegistrationFragment.OnFragmentInteractionListener} interface
+ * {@link SignInFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link BookRegistrationFragment#newInstance} factory method to
+ * Use the {@link SignInFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class BookRegistrationFragment extends Fragment implements ObserverBookDataRegistration {
+public class SignInFragment extends Fragment implements ObserverDataSignIn {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -33,7 +35,7 @@ public class BookRegistrationFragment extends Fragment implements ObserverBookDa
 
     private OnFragmentInteractionListener mListener;
 
-    public BookRegistrationFragment() {
+    public SignInFragment() {
         // Required empty public constructor
     }
 
@@ -43,11 +45,11 @@ public class BookRegistrationFragment extends Fragment implements ObserverBookDa
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment BookRegistrationFragment.
+     * @return A new instance of fragment SignInFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static BookRegistrationFragment newInstance(String param1, String param2) {
-        BookRegistrationFragment fragment = new BookRegistrationFragment();
+    public static SignInFragment newInstance(String param1, String param2) {
+        SignInFragment fragment = new SignInFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -68,7 +70,7 @@ public class BookRegistrationFragment extends Fragment implements ObserverBookDa
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_book_registration2, container, false);
+        return inflater.inflate(R.layout.fragment_sign_in, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -96,10 +98,9 @@ public class BookRegistrationFragment extends Fragment implements ObserverBookDa
     }
 
     @Override
-    public void callbackRegistration(boolean result, String bookCodeID) {
+    public void callbackSignIn(List<SignInStatus> status) {
 
     }
-
 
 
     /**

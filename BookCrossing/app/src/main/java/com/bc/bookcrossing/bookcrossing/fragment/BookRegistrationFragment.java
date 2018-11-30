@@ -1,4 +1,4 @@
-package com.bc.bookcrossing.bookcrossing;
+package com.bc.bookcrossing.bookcrossing.fragment;
 
 import android.content.Context;
 import android.net.Uri;
@@ -8,20 +8,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.bc.bookcrossing.bookcrossing.observerInterfaces.ObserverDataSignIn;
-
-import java.util.List;
+import com.bc.bookcrossing.bookcrossing.R;
+import com.bc.bookcrossing.bookcrossing.observerInterfaces.ObserverBookDataRegistration;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link SignInFragment.OnFragmentInteractionListener} interface
+ * {@link BookRegistrationFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link SignInFragment#newInstance} factory method to
+ * Use the {@link BookRegistrationFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class SignInFragment extends Fragment implements ObserverDataSignIn {
+public class BookRegistrationFragment extends Fragment implements ObserverBookDataRegistration {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -33,7 +32,7 @@ public class SignInFragment extends Fragment implements ObserverDataSignIn {
 
     private OnFragmentInteractionListener mListener;
 
-    public SignInFragment() {
+    public BookRegistrationFragment() {
         // Required empty public constructor
     }
 
@@ -43,11 +42,11 @@ public class SignInFragment extends Fragment implements ObserverDataSignIn {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment SignInFragment.
+     * @return A new instance of fragment BookRegistrationFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static SignInFragment newInstance(String param1, String param2) {
-        SignInFragment fragment = new SignInFragment();
+    public static BookRegistrationFragment newInstance(String param1, String param2) {
+        BookRegistrationFragment fragment = new BookRegistrationFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -68,7 +67,7 @@ public class SignInFragment extends Fragment implements ObserverDataSignIn {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_sign_in, container, false);
+        return inflater.inflate(R.layout.fragment_book_registration2, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -96,9 +95,10 @@ public class SignInFragment extends Fragment implements ObserverDataSignIn {
     }
 
     @Override
-    public void callbackSignIn(List<SignInStatus> status) {
+    public void callbackRegistration(boolean result, String bookCodeID) {
 
     }
+
 
 
     /**
