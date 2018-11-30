@@ -1,9 +1,6 @@
 package com.bc.bookcrossing.bookcrossing;
 
-import com.bc.bookcrossing.bookcrossing.observerInterfaces.ObserverDataBookPickUp;
-import com.bc.bookcrossing.bookcrossing.observerInterfaces.ObserverDataBookTaken;
-import com.bc.bookcrossing.bookcrossing.observerInterfaces.ObserverDataLogin;
-import com.bc.bookcrossing.bookcrossing.observerInterfaces.ObserverDataSignIn;
+import com.bc.bookcrossing.bookcrossing.observerInterfaces.ObserverForUiInformation;
 
 import java.util.Date;
 
@@ -16,8 +13,8 @@ public interface DelegateSendData {
     public void sendDataBookRegistration(String ISBN);
     public void sendDataBookRegistration(String title, String author, Date pubblicationDate);
 
-    public void register(Observer observer);
-    public void unRegister(Observer observer);
+    public void register(ObserverForUiInformation observerForUiInformation);
+    public void unRegister(ObserverForUiInformation observerForUiInformation);
 
 
 }

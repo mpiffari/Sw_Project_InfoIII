@@ -1,6 +1,6 @@
 package com.bc.bookcrossing.bookcrossing;
 
-import com.bc.bookcrossing.bookcrossing.observerInterfaces.ObserverBookDataRegistration;
+import com.bc.bookcrossing.bookcrossing.observerInterfaces.ObserverForUiInformation;
 
 import java.util.Date;
 
@@ -37,12 +37,12 @@ public class DataDispatcher implements DelegateSendData {
     }
 
     @Override
-    public void register(Observer observer) {
+    public void register(ObserverForUiInformation observerForUiInformation) {
 
     }
 
     @Override
-    public void unRegister(Observer observer) {
+    public void unRegister(ObserverForUiInformation observerForUiInformation) {
 
     }
 }

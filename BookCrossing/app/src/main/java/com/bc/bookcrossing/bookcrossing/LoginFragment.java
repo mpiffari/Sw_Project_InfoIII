@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 
 import com.bc.bookcrossing.bookcrossing.observerInterfaces.ObserverDataLogin;
 
+import java.util.List;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -91,6 +93,11 @@ public class LoginFragment extends Fragment implements ObserverDataLogin {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void callbackLogin(List<LoginInStatus> status) {
+
     }
 
     /**
