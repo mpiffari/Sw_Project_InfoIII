@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Prova2" version="4">
+  <OBJECT>
+    <ID name="Prova2" mc="Infrastructure.DiagramSet" uid="5eba8ee5-7a2b-4652-9389-a407de32b20f"/>
+    <PID name="Prova2" mc="Standard.Project" uid="7dad8cbc-2f12-410a-99b8-c0788196e4c8"/>
+    <ATTRIBUTES>
+      <ATT name="Name"><![CDATA[Prova2]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES></DEPENDENCIES>
+  </OBJECT>
+</EXT>

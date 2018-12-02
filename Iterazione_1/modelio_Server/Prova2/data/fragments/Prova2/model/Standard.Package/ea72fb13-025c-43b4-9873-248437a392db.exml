@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="prova2" version="4">
+  <OBJECT>
+    <ID name="prova2" mc="Standard.Package" uid="ea72fb13-025c-43b4-9873-248437a392db"/>
+    <PID name="Prova2" mc="Standard.Project" uid="7dad8cbc-2f12-410a-99b8-c0788196e4c8"/>
+    <ATTRIBUTES>
+      <ATT name="IsInstantiable">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[prova2]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="OwnedElement">
+        <COMPID name="RequestManager" mc="Standard.Package" uid="7cf5f037-78d0-4e7d-987f-c06e88123ce3"/>
+        <COMPID name="ResultSet" mc="Standard.DataType" uid="2d83c77b-a690-4223-9f41-a1b2cc2f3a7c"/>
+        <COMPID name="UserQuery" mc="Standard.Interface" uid="887c189d-afdf-4007-96b9-80c26a721cb8"/>
+        <COMPID name="BookQuery" mc="Standard.Interface" uid="78841bf2-2b5d-4acb-8238-4eb6cbfdb80a"/>
+      </COMP>
+      <COMP relation="Product">
+        <COMPID name="prova2 Class diagram" mc="Standard.ClassDiagram" uid="48bc09df-2645-4dfd-810a-8eeb97c67d5c"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>
