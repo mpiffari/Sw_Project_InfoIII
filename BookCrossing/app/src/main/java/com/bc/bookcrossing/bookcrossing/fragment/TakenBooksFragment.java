@@ -13,6 +13,8 @@ import com.bc.bookcrossing.bookcrossing.R;
 import com.bc.bookcrossing.bookcrossing.observerInterfaces.ObserverDataBookTaken;
 
 import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
 
 
 /**

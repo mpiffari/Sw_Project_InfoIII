@@ -13,6 +13,8 @@ import com.bc.bookcrossing.bookcrossing.SignInStatus;
 import com.bc.bookcrossing.bookcrossing.observerInterfaces.ObserverDataSignIn;
 
 import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 
 
 /**

@@ -8,24 +8,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.bc.bookcrossing.bookcrossing.LoginInStatus;
 import com.bc.bookcrossing.bookcrossing.R;
-import com.bc.bookcrossing.bookcrossing.observerInterfaces.ObserverDataLogin;
-
-import java.util.List;
-import java.util.Observable;
-import java.util.Observer;
-
+import com.bc.bookcrossing.bookcrossing.UserInformations;
+import com.bc.bookcrossing.bookcrossing.observerInterfaces.ObserverDataProfile;
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link LoginFragment.OnFragmentInteractionListener} interface
+ * {@link ProfileFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link LoginFragment#newInstance} factory method to
+ * Use the {@link ProfileFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class LoginFragment extends Fragment implements ObserverDataLogin {
+public class ProfileFragment extends Fragment implements ObserverDataProfile{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -37,7 +32,7 @@ public class LoginFragment extends Fragment implements ObserverDataLogin {
 
     private OnFragmentInteractionListener mListener;
 
-    public LoginFragment() {
+    public ProfileFragment() {
         // Required empty public constructor
     }
 
@@ -47,11 +42,11 @@ public class LoginFragment extends Fragment implements ObserverDataLogin {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment LoginFragment.
+     * @return A new instance of fragment ProfileFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static LoginFragment newInstance(String param1, String param2) {
-        LoginFragment fragment = new LoginFragment();
+    public static ProfileFragment newInstance(String param1, String param2) {
+        ProfileFragment fragment = new ProfileFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -72,7 +67,7 @@ public class LoginFragment extends Fragment implements ObserverDataLogin {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_login, container, false);
+        return inflater.inflate(R.layout.fragment_profile, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -100,7 +95,7 @@ public class LoginFragment extends Fragment implements ObserverDataLogin {
     }
 
     @Override
-    public void callbackLogin(List<LoginInStatus> status) {
+    public void callbackProfile(UserInformations userInformations) {
 
     }
 

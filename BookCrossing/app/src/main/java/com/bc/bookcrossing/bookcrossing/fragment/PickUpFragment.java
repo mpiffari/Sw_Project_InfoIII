@@ -11,6 +11,9 @@ import android.view.ViewGroup;
 import com.bc.bookcrossing.bookcrossing.R;
 import com.bc.bookcrossing.bookcrossing.observerInterfaces.ObserverDataBookPickUp;
 
+import java.util.Observable;
+import java.util.Observer;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -98,6 +101,8 @@ public class PickUpFragment extends Fragment implements ObserverDataBookPickUp {
     public void callbackPickUp(short bookStatus) {
 
     }
+
+
 
     /**
      * This interface must be implemented by activities that contain this

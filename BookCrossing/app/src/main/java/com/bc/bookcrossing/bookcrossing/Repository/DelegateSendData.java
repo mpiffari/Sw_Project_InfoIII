@@ -1,4 +1,4 @@
-package com.bc.bookcrossing.bookcrossing;
+package com.bc.bookcrossing.bookcrossing.Repository;
 
 import com.bc.bookcrossing.bookcrossing.observerInterfaces.ObserverForUiInformation;
 
@@ -12,9 +12,10 @@ public interface DelegateSendData {
     public void sendDataTakenBooks();
     public void sendDataBookRegistration(String ISBN);
     public void sendDataBookRegistration(String title, String author, Date pubblicationDate);
+    public void sendDataProfileInformations(String username, String password);
 
     public void register(ObserverForUiInformation observerForUiInformation);
-    public void unRegister(ObserverForUiInformation observerForUiInformation);
+    public boolean unRegister(ObserverForUiInformation observerForUiInformation);
 
 
 }

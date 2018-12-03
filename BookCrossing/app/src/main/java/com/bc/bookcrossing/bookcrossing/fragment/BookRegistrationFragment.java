@@ -11,6 +11,9 @@ import android.view.ViewGroup;
 import com.bc.bookcrossing.bookcrossing.R;
 import com.bc.bookcrossing.bookcrossing.observerInterfaces.ObserverBookDataRegistration;
 
+import java.util.Observable;
+import java.util.Observer;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -98,6 +101,7 @@ public class BookRegistrationFragment extends Fragment implements ObserverBookDa
     public void callbackRegistration(boolean result, String bookCodeID) {
 
     }
+
 
 
 

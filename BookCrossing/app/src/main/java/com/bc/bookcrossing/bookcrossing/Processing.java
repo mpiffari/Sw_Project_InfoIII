@@ -1,4 +1,6 @@
 package com.bc.bookcrossing.bookcrossing;
 
-public class Processing implements GenerateRequests{
+import com.bc.bookcrossing.bookcrossing.Comunication.GenerateRequests;
+
+public class Processing implements GenerateRequests {
 }
