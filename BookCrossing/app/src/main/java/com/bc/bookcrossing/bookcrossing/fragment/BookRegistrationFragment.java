@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bc.bookcrossing.bookcrossing.R;
+import com.bc.bookcrossing.bookcrossing.Repository.DataDispatcheSingleton;
 import com.bc.bookcrossing.bookcrossing.observerInterfaces.ObserverBookDataRegistration;
 
 import java.util.Observable;
@@ -64,13 +65,18 @@ public class BookRegistrationFragment extends Fragment implements ObserverBookDa
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        DataDispatcheSingleton.getInstance().register(this);
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        DataDispatcheSingleton.getInstance().register(this);
         return inflater.inflate(R.layout.fragment_book_registration2, container, false);
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -95,6 +101,7 @@ public class BookRegistrationFragment extends Fragment implements ObserverBookDa
     public void onDetach() {
         super.onDetach();
         mListener = null;
+        DataDispatcheSingleton.getInstance().unRegister(this);
     }
 
     @Override

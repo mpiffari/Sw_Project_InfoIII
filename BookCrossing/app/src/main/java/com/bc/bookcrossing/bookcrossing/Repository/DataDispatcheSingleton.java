@@ -3,7 +3,6 @@ package com.bc.bookcrossing.bookcrossing.Repository;
 import com.bc.bookcrossing.bookcrossing.BookInfo;
 import com.bc.bookcrossing.bookcrossing.Comunication.ReceiveData;
 import com.bc.bookcrossing.bookcrossing.LoginInStatus;
-import com.bc.bookcrossing.bookcrossing.Repository.DelegateSendData;
 import com.bc.bookcrossing.bookcrossing.SignInStatus;
 import com.bc.bookcrossing.bookcrossing.UserInformations;
 import com.bc.bookcrossing.bookcrossing.observerInterfaces.ObserverBookDataRegistration;
@@ -18,7 +17,15 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class DataDispatcher implements DelegateSendData, ReceiveData {
+public class DataDispatcheSingleton implements ReceiveData, DelegateSendData {
+    private static final DataDispatcheSingleton ourInstance = new DataDispatcheSingleton();
+
+    public static DataDispatcheSingleton getInstance() {
+        return ourInstance;
+    }
+
+    private DataDispatcheSingleton() {
+    }
 
     private List<ObserverBookDataRegistration> observersBookDataRegistration = new ArrayList<>();
     private List<ObserverDataBookPickUp> observersDataBookPickUp = new ArrayList<>();
@@ -162,4 +169,3 @@ public class DataDispatcher implements DelegateSendData, ReceiveData {
 
     }
 }
-
