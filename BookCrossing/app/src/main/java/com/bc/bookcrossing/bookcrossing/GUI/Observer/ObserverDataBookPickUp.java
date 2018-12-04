@@ -1,6 +1,4 @@
-package com.bc.bookcrossing.bookcrossing.observerInterfaces;
-
-import java.util.Observer;
+package com.bc.bookcrossing.bookcrossing.GUI.Observer;
 
 public interface ObserverDataBookPickUp extends ObserverForUiInformation {
 

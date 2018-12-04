@@ -1,4 +1,4 @@
-package com.bc.bookcrossing.bookcrossing.fragment;
+package com.bc.bookcrossing.bookcrossing.GUI.Fragment;
 
 import android.content.Context;
 import android.net.Uri;
@@ -9,12 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bc.bookcrossing.bookcrossing.BookInfo;
+import com.bc.bookcrossing.bookcrossing.GUI.Observer.ObserverDataBookTaken;
 import com.bc.bookcrossing.bookcrossing.R;
-import com.bc.bookcrossing.bookcrossing.observerInterfaces.ObserverDataBookTaken;
 
 import java.util.ArrayList;
-import java.util.Observable;
-import java.util.Observer;
 
 
 /**

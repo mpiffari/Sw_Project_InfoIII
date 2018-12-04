@@ -1,38 +1,37 @@
-package com.bc.bookcrossing.bookcrossing.Repository;
+package com.bc.bookcrossing.bookcrossing.GUI;
 
 import com.bc.bookcrossing.bookcrossing.BookInfo;
 import com.bc.bookcrossing.bookcrossing.Comunication.ReceiveData;
+import com.bc.bookcrossing.bookcrossing.GUI.Observer.ObserverBookDataRegistration;
+import com.bc.bookcrossing.bookcrossing.GUI.Observer.ObserverDataBookPickUp;
+import com.bc.bookcrossing.bookcrossing.GUI.Observer.ObserverDataBookTaken;
+import com.bc.bookcrossing.bookcrossing.GUI.Observer.ObserverDataLogin;
+import com.bc.bookcrossing.bookcrossing.GUI.Observer.ObserverDataProfile;
+import com.bc.bookcrossing.bookcrossing.GUI.Observer.ObserverDataSignIn;
+import com.bc.bookcrossing.bookcrossing.GUI.Observer.ObserverForUiInformation;
 import com.bc.bookcrossing.bookcrossing.LoginInStatus;
 import com.bc.bookcrossing.bookcrossing.SignInStatus;
 import com.bc.bookcrossing.bookcrossing.UserInformations;
-import com.bc.bookcrossing.bookcrossing.observerInterfaces.ObserverBookDataRegistration;
-import com.bc.bookcrossing.bookcrossing.observerInterfaces.ObserverDataBookPickUp;
-import com.bc.bookcrossing.bookcrossing.observerInterfaces.ObserverDataBookTaken;
-import com.bc.bookcrossing.bookcrossing.observerInterfaces.ObserverDataLogin;
-import com.bc.bookcrossing.bookcrossing.observerInterfaces.ObserverDataProfile;
-import com.bc.bookcrossing.bookcrossing.observerInterfaces.ObserverDataSignIn;
-import com.bc.bookcrossing.bookcrossing.observerInterfaces.ObserverForUiInformation;
+import com.bc.bookcrossing.bookcrossing.Comunication.ProcessingSingleton;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class DataDispatcheSingleton implements ReceiveData, DelegateSendData {
-    private static final DataDispatcheSingleton ourInstance = new DataDispatcheSingleton();
-
-    public static DataDispatcheSingleton getInstance() {
-        return ourInstance;
+public class DataDispatcherSingleton implements ReceiveData, DelegateSendData {
+    public static final DataDispatcherSingleton ourInstance = new DataDispatcherSingleton();
+    private DataDispatcherSingleton() {
     }
 
-    private DataDispatcheSingleton() {
-    }
-
+    private ProcessingSingleton p = ProcessingSingleton.getInstance();
+    //region Declaration of vector of observer
     private List<ObserverBookDataRegistration> observersBookDataRegistration = new ArrayList<>();
     private List<ObserverDataBookPickUp> observersDataBookPickUp = new ArrayList<>();
     private List<ObserverDataBookTaken> observersDataBookTaken = new ArrayList<>();
     private List<ObserverDataLogin> observersDataLogin = new ArrayList<>();
     private List<ObserverDataSignIn> observersDataSignIn = new ArrayList<>();
     private List<ObserverDataProfile> observersDataProfile = new ArrayList<>();
+    //endregion
 
     //Metodi per piccolo controllo: stringhe vuote o in formato non valido
 
@@ -40,40 +39,43 @@ public class DataDispatcheSingleton implements ReceiveData, DelegateSendData {
     @Override
     public void sendDataLogin(String username, String password) {
         //TODO CONTROLLO MINIMO
-
+        p.generateRequestForDataLogin(username,password);
     }
 
     @Override
     public void sendDataSignIn(String name, String lastName, String username, Date DOB, String[] contacts, String password, int actionArea) {
         //TODO CONTROLLO MINIMO
+        p.generateRequestForDataSignIn(name, lastName, username, DOB, contacts, password, actionArea);
     }
 
     @Override
     public void sendDataPickUp(String BCID) {
         //TODO CONTROLLO MINIMO
+        p.generateRequestForDataPickUp(BCID);
     }
 
     @Override
     public void sendDataTakenBooks() {
         //TODO CONTROLLO MINIMO
-
+        p.generateRequestForDataTakenBooks();
     }
 
     @Override
     public void sendDataBookRegistration(String ISBN) {
         //TODO CONTROLLO MINIMO
-
-
+        p.generateRequestForDataBookRegistration(ISBN);
     }
 
     @Override
     public void sendDataBookRegistration(String title, String author, Date pubblicationDate) {
         //TODO CONTROLLO MINIMO
+        p.generateRequestForDataBookRegistration(title, author, pubblicationDate);
     }
 
     @Override
     public void sendDataProfileInformations(String username, String password) {
         //TODO CONTROLLO MINIMO
+        p.generateRequestForDataProfileInformations(username, password);
     }
     //endregion
 

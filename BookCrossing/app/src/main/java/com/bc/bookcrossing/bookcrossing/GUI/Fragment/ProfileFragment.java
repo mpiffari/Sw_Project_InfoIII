@@ -1,4 +1,4 @@
-package com.bc.bookcrossing.bookcrossing.fragment;
+package com.bc.bookcrossing.bookcrossing.GUI.Fragment;
 
 import android.content.Context;
 import android.net.Uri;
@@ -8,23 +8,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bc.bookcrossing.bookcrossing.GUI.Observer.ObserverDataProfile;
 import com.bc.bookcrossing.bookcrossing.R;
-import com.bc.bookcrossing.bookcrossing.Repository.DataDispatcheSingleton;
-import com.bc.bookcrossing.bookcrossing.observerInterfaces.ObserverBookDataRegistration;
-
-import java.util.Observable;
-import java.util.Observer;
-
+import com.bc.bookcrossing.bookcrossing.UserInformations;
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link BookRegistrationFragment.OnFragmentInteractionListener} interface
+ * {@link ProfileFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link BookRegistrationFragment#newInstance} factory method to
+ * Use the {@link ProfileFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class BookRegistrationFragment extends Fragment implements ObserverBookDataRegistration {
+public class ProfileFragment extends Fragment implements ObserverDataProfile {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -36,7 +32,7 @@ public class BookRegistrationFragment extends Fragment implements ObserverBookDa
 
     private OnFragmentInteractionListener mListener;
 
-    public BookRegistrationFragment() {
+    public ProfileFragment() {
         // Required empty public constructor
     }
 
@@ -46,11 +42,11 @@ public class BookRegistrationFragment extends Fragment implements ObserverBookDa
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment BookRegistrationFragment.
+     * @return A new instance of fragment ProfileFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static BookRegistrationFragment newInstance(String param1, String param2) {
-        BookRegistrationFragment fragment = new BookRegistrationFragment();
+    public static ProfileFragment newInstance(String param1, String param2) {
+        ProfileFragment fragment = new ProfileFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -65,18 +61,13 @@ public class BookRegistrationFragment extends Fragment implements ObserverBookDa
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
-        DataDispatcheSingleton.getInstance().register(this);
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        DataDispatcheSingleton.getInstance().register(this);
-        return inflater.inflate(R.layout.fragment_book_registration2, container, false);
-
+        return inflater.inflate(R.layout.fragment_profile, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -101,16 +92,12 @@ public class BookRegistrationFragment extends Fragment implements ObserverBookDa
     public void onDetach() {
         super.onDetach();
         mListener = null;
-        DataDispatcheSingleton.getInstance().unRegister(this);
     }
 
     @Override
-    public void callbackRegistration(boolean result, String bookCodeID) {
+    public void callbackProfile(UserInformations userInformations) {
 
     }
-
-
-
 
     /**
      * This interface must be implemented by activities that contain this

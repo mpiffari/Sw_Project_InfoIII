@@ -1,6 +1,6 @@
-package com.bc.bookcrossing.bookcrossing.Repository;
+package com.bc.bookcrossing.bookcrossing.GUI;
 
-import com.bc.bookcrossing.bookcrossing.observerInterfaces.ObserverForUiInformation;
+import com.bc.bookcrossing.bookcrossing.GUI.Observer.ObserverForUiInformation;
 
 import java.util.Date;
 

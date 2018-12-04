@@ -1,6 +1,6 @@
 package com.bc.bookcrossing.bookcrossing.Comunication;
 
-import com.bc.bookcrossing.bookcrossing.Repository.DelegateSendData;
+import com.bc.bookcrossing.bookcrossing.GUI.DelegateSendData;
 
 import java.util.Date;
 
@@ -13,8 +13,4 @@ public interface GenerateRequests {
     public void generateRequestForDataBookRegistration(String ISBN);
     public void generateRequestForDataBookRegistration(String title, String author, Date pubblicationDate);
     public void generateRequestForDataProfileInformations(String username, String password);
-
-    public void register(DelegateSendData observerForDispatching);
-    public boolean unRegister(DelegateSendData observerForDispatching);
-
 }

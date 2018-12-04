@@ -1,4 +1,4 @@
-package com.bc.bookcrossing.bookcrossing.fragment;
+package com.bc.bookcrossing.bookcrossing.GUI.Fragment;
 
 import android.content.Context;
 import android.net.Uri;
@@ -8,22 +8,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bc.bookcrossing.bookcrossing.GUI.Observer.ObserverDataSignIn;
 import com.bc.bookcrossing.bookcrossing.R;
-import com.bc.bookcrossing.bookcrossing.observerInterfaces.ObserverDataBookPickUp;
+import com.bc.bookcrossing.bookcrossing.SignInStatus;
 
-import java.util.Observable;
-import java.util.Observer;
+import java.util.List;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link PickUpFragment.OnFragmentInteractionListener} interface
+ * {@link SignInFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link PickUpFragment#newInstance} factory method to
+ * Use the {@link SignInFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class PickUpFragment extends Fragment implements ObserverDataBookPickUp {
+public class SignInFragment extends Fragment implements ObserverDataSignIn {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -35,7 +35,7 @@ public class PickUpFragment extends Fragment implements ObserverDataBookPickUp {
 
     private OnFragmentInteractionListener mListener;
 
-    public PickUpFragment() {
+    public SignInFragment() {
         // Required empty public constructor
     }
 
@@ -45,11 +45,11 @@ public class PickUpFragment extends Fragment implements ObserverDataBookPickUp {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment PickUpFragment.
+     * @return A new instance of fragment SignInFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static PickUpFragment newInstance(String param1, String param2) {
-        PickUpFragment fragment = new PickUpFragment();
+    public static SignInFragment newInstance(String param1, String param2) {
+        SignInFragment fragment = new SignInFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -70,7 +70,7 @@ public class PickUpFragment extends Fragment implements ObserverDataBookPickUp {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_pick_up, container, false);
+        return inflater.inflate(R.layout.fragment_sign_in, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -98,10 +98,9 @@ public class PickUpFragment extends Fragment implements ObserverDataBookPickUp {
     }
 
     @Override
-    public void callbackPickUp(short bookStatus) {
+    public void callbackSignIn(List<SignInStatus> status) {
 
     }
-
 
 
     /**
