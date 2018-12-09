@@ -7,8 +7,18 @@
 \contentsline {figure}{\numberline {3.2}{\ignorespaces Architecture Envisioning\relax }}{17}{figure.caption.8}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {4.1}{\ignorespaces Architettura Software\relax }}{21}{figure.caption.9}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Logical view\relax }}{23}{figure.caption.10}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Logical view\relax }}{24}{figure.caption.11}
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Distanza tra lettore e prenotante i-esimo\relax }}{26}{figure.caption.12}
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Zona d'incontro tra lettore e prenotante\relax }}{26}{figure.caption.13}
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Rete di utenti che potrebbero essere attivi nel prestito\relax }}{27}{figure.caption.14}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Logical view - GUI subsystem\relax }}{22}{figure.caption.10}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Logical view - Request Manager subsystem\relax }}{23}{figure.caption.11}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Logical view - Request Manager subsystem server side\relax }}{23}{figure.caption.12}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Logical view - Server functionality\relax }}{24}{figure.caption.13}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Interfaccie per la ricezione degli eventi\relax }}{25}{figure.caption.14}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Struttura del componente \textit {DataDispatcher}\relax }}{26}{figure.caption.15}
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Struttura del componente \textit {LoginFragment}\relax }}{27}{figure.caption.16}
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Struttura del componente \textit {PickUpFragment}\relax }}{27}{figure.caption.17}
+\contentsline {figure}{\numberline {4.10}{\ignorespaces Struttura del componente \textit {ProfileFragment}\relax }}{28}{figure.caption.18}
+\contentsline {figure}{\numberline {4.11}{\ignorespaces Struttura del componente \textit {SignInFragment}\relax }}{29}{figure.caption.19}
+\contentsline {figure}{\numberline {4.12}{\ignorespaces Struttura del componente \textit {TakenBooksFragment}\relax }}{29}{figure.caption.20}
+\contentsline {figure}{\numberline {4.13}{\ignorespaces Struttura del componente \textit {BookRegistrationFragment}\relax }}{30}{figure.caption.21}
+\contentsline {figure}{\numberline {4.14}{\ignorespaces Distanza tra lettore e prenotante i-esimo\relax }}{30}{figure.caption.22}
+\contentsline {figure}{\numberline {4.15}{\ignorespaces Zona d'incontro tra lettore e prenotante\relax }}{31}{figure.caption.23}
+\contentsline {figure}{\numberline {4.16}{\ignorespaces Rete di utenti che potrebbero essere attivi nel prestito\relax }}{32}{figure.caption.24}

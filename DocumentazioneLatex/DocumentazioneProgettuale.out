@@ -14,4 +14,6 @@
 \BOOKMARK [1][-]{section.4.1}{Architettura software}{chapter.4}% 14
 \BOOKMARK [1][-]{section.4.2}{Logical view}{chapter.4}% 15
 \BOOKMARK [1][-]{section.4.3}{Analisi dei componenti}{chapter.4}% 16
-\BOOKMARK [1][-]{section.4.4}{Parte algoritmica: reservation handler}{chapter.4}% 17
+\BOOKMARK [1][-]{section.4.4}{Observer-delegate pattern: la nostra implementazione}{chapter.4}% 17
+\BOOKMARK [1][-]{section.4.5}{Implementazione comunicazione server: il framework Netty}{chapter.4}% 18
+\BOOKMARK [1][-]{section.4.6}{Parte algoritmica: reservation handler}{chapter.4}% 19
