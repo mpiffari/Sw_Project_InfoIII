@@ -12,7 +12,7 @@ import java.util.Date;
  * Handles a server-side channel.
  */
 @Sharable
-public class ServerHandler extends SimpleChannelInboundHandler<String> {
+public class ServerHandler extends SimpleChannelInboundHandler<Book> {
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
@@ -23,18 +23,18 @@ public class ServerHandler extends SimpleChannelInboundHandler<String> {
     }
 
     @Override
-    public void channelRead0(ChannelHandlerContext ctx, String request) throws Exception {
+    public void channelRead0(ChannelHandlerContext ctx, Book request) throws Exception {
         // Generate and write a response.
-        String response;
+        String response = "";
         boolean close = false;
-        if (request.isEmpty()) {
+        /*if (request.isEmpty()) {
             response = "Please type something.\r\n";
         } else if ("bye".equals(request.toLowerCase())) {
             response = "Have a good day!\r\n";
             close = true;
         } else {
             response = "Did you say '" + request + "'?\r\n";
-        }
+        }*/
 
         // We do not need to write a ChannelBuffer here.
         // We know the encoder inserted at TelnetPipelineFactory will do the conversion.

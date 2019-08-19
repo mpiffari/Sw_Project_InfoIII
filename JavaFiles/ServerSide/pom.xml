@@ -6,13 +6,17 @@
 	<artifactId>ServerSide</artifactId>
 	<version>0.0.1</version>
 	<dependencies>
+		<dependency>
+			<groupId>com.google.code.findbugs</groupId>
+			<artifactId>jsr305</artifactId>
+			<version>3.0.2</version>
+		</dependency>
 		<!-- https://mvnrepository.com/artifact/io.netty/netty-all -->
 		<dependency>
 			<groupId>io.netty</groupId>
 			<artifactId>netty-all</artifactId>
 			<version>4.1.32.Final</version>
 		</dependency>
-
 	</dependencies>
 
 	<build>
