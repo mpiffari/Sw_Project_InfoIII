@@ -1,0 +1,16 @@
+dataManager/BookQuery.class
+requestManager/Communication$1.class
+dataManager/UserQuery.class
+requestManager/Communication.class
+requestManager/SendAnswer.class
+requestManager/ProcessRequest.class
+requestManager/ComputeRequest.class
+dataManager/BookData.class
+dataManager/DBConnector.class
+book/Book.class
+requestManager/ServerHandler.class
+dataManager/QueryPerformer.class
+dataManager/UserData.class
+requestManager/ServerInitializer.class
+requestManager/Communication$2.class
+book/BookType.class
