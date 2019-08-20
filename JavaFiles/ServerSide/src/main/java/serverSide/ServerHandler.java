@@ -27,6 +27,8 @@ public class ServerHandler extends SimpleChannelInboundHandler<Book> {
         // Generate and write a response.
         String response = "";
         boolean close = false;
+        
+        
         /*if (request.isEmpty()) {
             response = "Please type something.\r\n";
         } else if ("bye".equals(request.toLowerCase())) {
@@ -35,7 +37,9 @@ public class ServerHandler extends SimpleChannelInboundHandler<Book> {
         } else {
             response = "Did you say '" + request + "'?\r\n";
         }*/
-
+        
+        response = "Title: " + request.getTitle();
+        
         // We do not need to write a ChannelBuffer here.
         // We know the encoder inserted at TelnetPipelineFactory will do the conversion.
         ChannelFuture future = ctx.write(response);
