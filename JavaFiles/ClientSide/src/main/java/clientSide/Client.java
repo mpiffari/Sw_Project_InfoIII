@@ -10,8 +10,12 @@ import io.netty.handler.ssl.SslContext;
 import io.netty.handler.ssl.SslContextBuilder;
 import io.netty.handler.ssl.util.InsecureTrustManagerFactory;
 
+
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
+
+import javax.net.ssl.SSLException;
 
 /**
  * Simplistic telnet client.
@@ -21,13 +25,19 @@ public final class Client {
 	static final String port = "5000";
 	static final boolean SSL = System.getProperty("ssl") != null;
 	static final String HOST = System.getProperty("host", "35.180.103.132");
+	//static final String HOST = System.getProperty("host", "127.0.0.1");
 	static final int PORT = Integer.parseInt(System.getProperty("port", port));
 
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args)  {
 		// Configure SSL.
-		final SslContext sslCtx;
+		SslContext sslCtx = null;
 		if (SSL) {
-			sslCtx = SslContextBuilder.forClient().trustManager(InsecureTrustManagerFactory.INSTANCE).build();
+			try {
+				sslCtx = SslContextBuilder.forClient().trustManager(InsecureTrustManagerFactory.INSTANCE).build();
+			} catch (SSLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		} else {
 			sslCtx = null;
 		}
@@ -38,13 +48,32 @@ public final class Client {
 			b.group(group).channel(NioSocketChannel.class).handler(new ClientInitializer(sslCtx));
 
 			// Start the connection attempt.
-			Channel ch = b.connect(HOST, PORT).sync().channel();
+			Channel ch = null;
+			
+			while(ch  == null || !ch.isOpen()) {
+				try {
+					ch = b.connect(HOST, PORT).sync().channel();
+				} catch (InterruptedException e) {
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
+			}
 
 			// Read commands from the stdin.
 			ChannelFuture lastWriteFuture = null;
 			BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 			for (;;) {
-				String line = in.readLine();
+				String line = null;
+				try {
+					line = in.readLine();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				if (line == null) {
 					break;
 				}
@@ -56,14 +85,24 @@ public final class Client {
 				// If user typed the 'bye' command, wait until the server closes
 				// the connection.
 				if ("bye".equals(line.toLowerCase())) {
-					ch.closeFuture().sync();
+					try {
+						ch.closeFuture().sync();
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					break;
 				}
 			}
 
 			// Wait until all messages are flushed before closing the channel.
 			if (lastWriteFuture != null) {
-				lastWriteFuture.sync();
+				try {
+					lastWriteFuture.sync();
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		} finally {
 			group.shutdownGracefully();
