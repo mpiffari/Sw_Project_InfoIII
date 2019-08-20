@@ -1,18 +1,33 @@
 package com.bc.bookcrossing.bookcrossing.clientSide;
 
-public enum BookType {
-	ACTION("ACTION"),
-	ADVENTURE("ADVENTURE"),
-	THRILLER("THRILLER"),
-	HORROR("HORROR");
-	
-    private String description;
+import javax.annotation.Nullable;
 
-    private BookType(String desc) {
+public enum BookType {
+    ACTION("ACTION"),
+    ADVENTURE("ADVENTURE"),
+    THRILLER("THRILLER"),
+    FANTASY("FANTASY"),
+    HORROR("HORROR"),
+    FAIRYTALE("FAIRYTALE"),
+    OTHER("OTHER");
+	
+    public String description;
+
+    BookType(String desc) {
         this.description = desc;
     }
 
     public String getSigla() {
         return description;
+    }
+
+    @Nullable
+    public static BookType fromString(String text) {
+        for (BookType b : BookType.values()) {
+            if (b.description.equalsIgnoreCase(text)) {
+                return b;
+            }
+        }
+        return BookType.OTHER;
     }
 }

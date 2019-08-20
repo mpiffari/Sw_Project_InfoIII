@@ -9,4 +9,10 @@
     <string name="author">Author...</string>
     <string name="editionNumber">Edition number...</string>
     <string name="yearOfPubb">Year of pubb...</string>
+    <string name="book_menu_registration">Book Menu registration</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="submit">Submit</string>
 </resources>

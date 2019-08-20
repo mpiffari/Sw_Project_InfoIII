@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/BookRegistrationLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GUI.Fragment.BookRegistrationFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/titleBook"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/title"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+            tools:text="Title..." />
+
+        <EditText
+            android:id="@+id/authorBook"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/author"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+            tools:text="Author..." />
+
+        <EditText
+            android:id="@+id/Year_of_pubblication"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints=""
+            android:ems="10"
+            android:hint="@string/yearOfPubb"
+            android:inputType="date"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+            tools:text="Year of pubb..." />
+
+        <EditText
+            android:id="@+id/EditionNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:importantForAutofill="no"
+            android:inputType="number"
+            android:hint="@string/editionNumber"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+            tools:text="Edition number..." />
+
+        <Spinner
+            android:id="@+id/BookTypeSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="Book type" />
+
+        <Button
+            android:id="@+id/SubmitBookReg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/submit" />
+    </LinearLayout>
+</FrameLayout>
