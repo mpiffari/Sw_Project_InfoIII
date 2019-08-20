@@ -7,11 +7,11 @@ import org.eclipse.jdt.annotation.Nullable;
  * @author Michele
  * 
  * String format received from client:
- * - TITLE:(space).....\r\n
- * - AUTHOR:(space).....\r\n
- * - YEAR:(space).....\r\n
- * - EDITION:(space).....\r\n
- * - TYPE:(space).....\r\n
+ * - TITLE:.....;
+ * - AUTHOR:.....;
+ * - YEAR:.....;
+ * - EDITION:.....;
+ * - TYPE:.....;
  *
  */
 
@@ -24,7 +24,7 @@ public class Book {
     private BookType type;
 
     public Book(String msg) {
-    	String lines[] = msg.split("\\r?\\n");
+    	String lines[] = msg.split(";");
         this.title = getTitleFromString(lines[0]);
         this.author = getAuthorFromString(lines[1]);
         this.yearOfPubblication = getYearOfPubblicationFromString(lines[2]);
@@ -84,17 +84,17 @@ public class Book {
 	}
 	
 	private String getTitleFromString(String msg) {
-		String words[] = msg.split(" ");
+		String words[] = msg.split(":");
 		return words[1];
 	}
 	
 	private String getAuthorFromString(String msg) {
-		String words[] = msg.split(" ");
+		String words[] = msg.split(":");
 		return words[1];
 	}
 	
 	private @Nullable Integer getYearOfPubblicationFromString(String msg) {
-		String words[] = msg.split(" ");
+		String words[] = msg.split(":");
 		if (words[1].equalsIgnoreCase("null")) {
 			return null;
 		} else {
@@ -103,7 +103,7 @@ public class Book {
 	}
 	
 	private @Nullable Integer getEditionNumberFromString(String msg) {
-		String words[] = msg.split(" ");
+		String words[] = msg.split(":");
 		if (words[1].equalsIgnoreCase("null")) {
 			return null;
 		} else {
@@ -112,7 +112,7 @@ public class Book {
 	}
 	
 	private BookType getBookTypeFromString(String msg) {
-		String words[] = msg.split(" ");
+		String words[] = msg.split(":");
 		return BookType.valueOf(words[1]);
 	}
 }
