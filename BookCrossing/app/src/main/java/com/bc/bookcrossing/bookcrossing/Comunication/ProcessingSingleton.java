@@ -14,6 +14,10 @@ public class ProcessingSingleton implements GenerateRequests, ReceiveAnswer {
     private ProcessingSingleton() {
     }
 
+    public static ProcessingSingleton getInstance(){
+        return singletonProcessing;
+    }
+
     private String separator = " ";
 
     @Override

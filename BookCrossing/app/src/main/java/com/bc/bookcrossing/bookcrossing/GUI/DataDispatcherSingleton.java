@@ -23,6 +23,10 @@ public class DataDispatcherSingleton implements ReceiveData, DelegateSendData {
     private DataDispatcherSingleton() {
     }
 
+    public static DataDispatcherSingleton getInstance(){
+        return ourInstance;
+    }
+
     private ProcessingSingleton p = ProcessingSingleton.getInstance();
     //region Declaration of vector of observer
     private List<ObserverBookDataRegistration> observersBookDataRegistration = new ArrayList<>();
