@@ -50,7 +50,7 @@ public final class Client {
 				}
 
 				// Sends the received line to the server.
-				lastWriteFuture = ch.writeAndFlush(line + "\r\n");
+				lastWriteFuture = ch.writeAndFlush(new Book("Piccolo Principe", "Antoine de Saint-Exupéry", 1854, 1, BookType.ACTION) + "\r\n");
 
 				// If user typed the 'bye' command, wait until the server closes
 				// the connection.
