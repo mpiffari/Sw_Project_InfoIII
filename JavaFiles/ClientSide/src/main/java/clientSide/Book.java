@@ -1,5 +1,7 @@
 package clientSide;
 
+import java.io.Serializable;
+
 import org.eclipse.jdt.annotation.Nullable;
 
 /**
@@ -15,7 +17,7 @@ import org.eclipse.jdt.annotation.Nullable;
  *
  */
 
-public class Book {
+public class Book implements Serializable{
 
 	private String title;
 	private String author;
@@ -78,11 +80,11 @@ public class Book {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return "TITLE: " + title + "\n" +
-				"AUTHOR: " + author + "\n" +
-				"YEAR: " + yearOfPubblication + "\n" +
-				"EDITION: " + editionNumber + "\n" +
-				"TYPE: " + type + "\n";
+		return "TITLE:" + title + ";" +
+				"AUTHOR:" + author + ";" +
+				"YEAR:" + yearOfPubblication + ";" +
+				"EDITION:" + editionNumber + ";" +
+				"TYPE:" + type + ";";
 	}
 
 }
