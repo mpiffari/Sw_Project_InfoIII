@@ -18,11 +18,11 @@
 			<version>4.1.32.Final</version>
 		</dependency>
 
-<<<<<<< HEAD
+
 		<!-- ojdbc dependency -->
 		<!--  <dependency>
-=======
-		<!-- ojdbc dependency>
+
+		
 		<dependency>
 >>>>>>> f59f897cc0c31b30528157e887810b6531b19d80
 			<groupId>ojdbc7</groupId>
@@ -32,9 +32,8 @@
 			<systemPath>/home/andrea/Downloads/ojdbc-7.jar</systemPath>
 <<<<<<< HEAD
 		</dependency> -->
-=======
-		</dependency -->
->>>>>>> f59f897cc0c31b30528157e887810b6531b19d80
+
+
 
 	</dependencies>
 

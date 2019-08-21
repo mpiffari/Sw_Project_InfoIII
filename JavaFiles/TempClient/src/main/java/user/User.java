@@ -2,21 +2,21 @@ package user;
 
 import java.util.Date;
 
-import dataManager.UserData;
+//import dataManager.UserData;
 
 public class User {
 
 	private String username;
 	private String firstName;
 	private String lastName;
-	private Date dateOfBirth;
+	private String dateOfBirth;
 	private String password;
 	private double latitude;
 	private double longitude;
-	private double action;
+	private int action;
 
-	public User(String username, String firstName, String lastName, Date dateOfBirth, String password, double latitude,
-			double longitude, double action) {
+	public User(String username, String firstName, String lastName, String dateOfBirth, String password, double latitude,
+			double longitude, int action) {
 		
 		this.username = username;
 		this.firstName = firstName;
@@ -27,11 +27,6 @@ public class User {
 		this.longitude = longitude;
 		this.action = action;
 	}
-	
-	public User(String username, String password){
-        this.username = username;
-        this.password = password;
-    }
 	
 	public User(String msg) {	
     	String lines[] = msg.split(";");
@@ -74,11 +69,11 @@ public class User {
 		this.lastName = lastName;
 	}
 
-	public Date getDateOfBirth() {
+	public String getDateOfBirth() {
 		return dateOfBirth;
 	}
 
-	public void setDateOfBirth(Date dateOfBirth) {
+	public void setDateOfBirth(String dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
 
@@ -106,17 +101,17 @@ public class User {
 		this.longitude = longitude;
 	}
 
-	public double getAction() {
+	public int getAction() {
 		return action;
 	}
 
-	public void setAction(double action) {
+	public void setAction(int action) {
 		this.action = action;
 	}
-	
+	/*
 	public boolean login(String username, String password) {
 		return UserData.getInstance().login(this);
-	}
+	}*/
 	
 	@Override
 	public String toString() {

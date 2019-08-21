@@ -28,11 +28,6 @@ public class User {
 		this.action = action;
 	}
 	
-	public User(String username, String password){
-        this.username = username;
-        this.password = password;
-    }
-	
 	public User(String msg) {	
     	String lines[] = msg.split(";");
         this.username = getUserFromString(lines[0]);

@@ -1,5 +1,6 @@
 package requestManager;
 
+
 import book.Book;
 import user.User;
 
@@ -33,14 +34,12 @@ public class ComputeRequest implements ProcessRequest{
 				Book book = new Book(msg.substring(i + 1));
 				Communication.getInstance().send(username, "requestType: 1; result: " + book.reserve(username));
 				break;
-<<<<<<< HEAD
+
 			case 2:
 				User user = new User(msg.substring(i + 1));
 				Communication.getInstance().send(username, "requestType: 2; result: " + user.login(username, user.getPassword()));
-=======
 			default:
->>>>>>> f59f897cc0c31b30528157e887810b6531b19d80
-				break;
+			break;
 		}
 		
 		

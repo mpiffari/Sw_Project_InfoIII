@@ -15,6 +15,7 @@ import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.ssl.SslContext;
 import io.netty.handler.ssl.SslContextBuilder;
 import io.netty.handler.ssl.util.InsecureTrustManagerFactory;
+import user.User;
 
 /**
  * Simplistic telnet client.
@@ -79,7 +80,10 @@ public final class Client {
 
 				// Sends the received line to the server.
 				Book obj = new Book("Piccolo Principe", "Antoine de Saint-Exupèry", 1854, 1, BookType.ACTION);
-				lastWriteFuture = ch.writeAndFlush("Pippo;requestType:0;" + obj.toString() + "\r\n");
+				
+				User user = new User("Pippo", "mario", "rossi", "1996-08-13", "aaaaaaaa", 10.5, 10.5, 5);
+				
+				lastWriteFuture = ch.writeAndFlush("Pippo;requestType:2;" + user.toString() + "\r\n");
 				//System.out.print(obj.toString());
 				// If user typed the 'bye' command, wait until the server closes
 				// the connection.

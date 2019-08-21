@@ -2,7 +2,7 @@ package book;
 
 import java.security.SecureRandom;
 import java.util.Random;
-
+import book.BookType;
 import dataManager.BookData;
 import dataManager.BookQuery;
 
@@ -168,10 +168,7 @@ public class Book {
 		String words[] = msg.split(":");
 		return BookType.valueOf(words[1]);
 	}
-	
-	
-	
-	
+
 	public String generateBCID() {
 		
 		int leftLimit = 97; // letter 'a'

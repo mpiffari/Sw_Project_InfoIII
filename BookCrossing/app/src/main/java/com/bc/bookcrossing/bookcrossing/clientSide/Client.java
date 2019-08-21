@@ -24,7 +24,7 @@ public final class Client {
 
 	public static void main(String[] args) throws Exception {}
 
-	public static void send(String newBook) throws Exception {
+	public static void send(String user) throws Exception {
 		// Configure SSL.
 		final SslContext sslCtx;
 		if (SSL) {
@@ -43,8 +43,11 @@ public final class Client {
 
 			ChannelFuture lastWriteFuture = null;
 			//TODO: retrieve username. Submit possible only if the user is logged in.
-			lastWriteFuture = ch.writeAndFlush("Pippo;requestType:0;" + newBook + "\r\n");
-			Log.d("!!! Book inserted: ", newBook);
+			//lastWriteFuture = ch.writeAndFlush("Pippo;requestType:0;" + newBook + "\r\n");
+
+			lastWriteFuture = ch.writeAndFlush("Pippo;requestType:0;" + user + "\r\n");
+
+			Log.d("!!! Book inserted: ", user);
 
 			// Wait until all messages are flushed before closing the channel.
 			if (lastWriteFuture != null) {
