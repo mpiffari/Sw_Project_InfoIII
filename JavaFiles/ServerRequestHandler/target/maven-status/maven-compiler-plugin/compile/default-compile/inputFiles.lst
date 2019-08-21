@@ -1,13 +1,14 @@
-C:\Users\miche\OneDrive\Desktop\I anno Magistrale\Informatica III - Modulo di progettazione ed algoritmi\WalkingBooks_ProgettoInfoIIIB\JavaFiles\ServerRequestHandler\src\main\java\dataManager\BookQuery.java
-C:\Users\miche\OneDrive\Desktop\I anno Magistrale\Informatica III - Modulo di progettazione ed algoritmi\WalkingBooks_ProgettoInfoIIIB\JavaFiles\ServerRequestHandler\src\main\java\dataManager\BookData.java
-C:\Users\miche\OneDrive\Desktop\I anno Magistrale\Informatica III - Modulo di progettazione ed algoritmi\WalkingBooks_ProgettoInfoIIIB\JavaFiles\ServerRequestHandler\src\main\java\requestManager\ComputeRequest.java
-C:\Users\miche\OneDrive\Desktop\I anno Magistrale\Informatica III - Modulo di progettazione ed algoritmi\WalkingBooks_ProgettoInfoIIIB\JavaFiles\ServerRequestHandler\src\main\java\requestManager\SendAnswer.java
-C:\Users\miche\OneDrive\Desktop\I anno Magistrale\Informatica III - Modulo di progettazione ed algoritmi\WalkingBooks_ProgettoInfoIIIB\JavaFiles\ServerRequestHandler\src\main\java\requestManager\ProcessRequest.java
-C:\Users\miche\OneDrive\Desktop\I anno Magistrale\Informatica III - Modulo di progettazione ed algoritmi\WalkingBooks_ProgettoInfoIIIB\JavaFiles\ServerRequestHandler\src\main\java\dataManager\UserData.java
-C:\Users\miche\OneDrive\Desktop\I anno Magistrale\Informatica III - Modulo di progettazione ed algoritmi\WalkingBooks_ProgettoInfoIIIB\JavaFiles\ServerRequestHandler\src\main\java\dataManager\QueryPerformer.java
-C:\Users\miche\OneDrive\Desktop\I anno Magistrale\Informatica III - Modulo di progettazione ed algoritmi\WalkingBooks_ProgettoInfoIIIB\JavaFiles\ServerRequestHandler\src\main\java\dataManager\UserQuery.java
-C:\Users\miche\OneDrive\Desktop\I anno Magistrale\Informatica III - Modulo di progettazione ed algoritmi\WalkingBooks_ProgettoInfoIIIB\JavaFiles\ServerRequestHandler\src\main\java\book\BookType.java
-C:\Users\miche\OneDrive\Desktop\I anno Magistrale\Informatica III - Modulo di progettazione ed algoritmi\WalkingBooks_ProgettoInfoIIIB\JavaFiles\ServerRequestHandler\src\main\java\book\Book.java
-C:\Users\miche\OneDrive\Desktop\I anno Magistrale\Informatica III - Modulo di progettazione ed algoritmi\WalkingBooks_ProgettoInfoIIIB\JavaFiles\ServerRequestHandler\src\main\java\requestManager\RequestType.java
-C:\Users\miche\OneDrive\Desktop\I anno Magistrale\Informatica III - Modulo di progettazione ed algoritmi\WalkingBooks_ProgettoInfoIIIB\JavaFiles\ServerRequestHandler\src\main\java\dataManager\DBConnector.java
-C:\Users\miche\OneDrive\Desktop\I anno Magistrale\Informatica III - Modulo di progettazione ed algoritmi\WalkingBooks_ProgettoInfoIIIB\JavaFiles\ServerRequestHandler\src\main\java\requestManager\Communication.java
+/home/andrea/workspace-eclipse/ServerRequestHandler/src/main/java/book/BookType.java
+/home/andrea/workspace-eclipse/ServerRequestHandler/src/main/java/requestManager/RequestType.java
+/home/andrea/workspace-eclipse/ServerRequestHandler/src/main/java/dataManager/BookQuery.java
+/home/andrea/workspace-eclipse/ServerRequestHandler/src/main/java/dataManager/BookData.java
+/home/andrea/workspace-eclipse/ServerRequestHandler/src/main/java/requestManager/Communication.java
+/home/andrea/workspace-eclipse/ServerRequestHandler/src/main/java/dataManager/QueryPerformer.java
+/home/andrea/workspace-eclipse/ServerRequestHandler/src/main/java/requestManager/ComputeRequest.java
+/home/andrea/workspace-eclipse/ServerRequestHandler/src/main/java/requestManager/SendAnswer.java
+/home/andrea/workspace-eclipse/ServerRequestHandler/src/main/java/book/Book.java
+/home/andrea/workspace-eclipse/ServerRequestHandler/src/main/java/requestManager/ProcessRequest.java
+/home/andrea/workspace-eclipse/ServerRequestHandler/src/main/java/dataManager/DBConnector.java
+/home/andrea/workspace-eclipse/ServerRequestHandler/src/main/java/user/User.java
+/home/andrea/workspace-eclipse/ServerRequestHandler/src/main/java/dataManager/UserQuery.java
+/home/andrea/workspace-eclipse/ServerRequestHandler/src/main/java/dataManager/UserData.java

@@ -1,12 +1,13 @@
 package dataManager;
 
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import book.Book;
 import book.BookType;
-import user.User;
 
 public class BookData implements BookQuery{
 
@@ -81,7 +82,7 @@ public class BookData implements BookQuery{
 	
 	public int reserveBook(Book book, String username) {
 		if(searchBook(book.getTitle()) != null) {
-			ResultSet rs = searchBook(book.getTitle()); //ho i libri che cerco e relative posizioni
+			//ResultSet rs = searchBook(book.getTitle()); //ho i libri che cerco e relative posizioni
 			
 			//algoritmo->da sopra ho posizione del libro. con query database sfruttando param user ricavo posizione di chi prenota
 			
@@ -95,25 +96,36 @@ public class BookData implements BookQuery{
 		
 	}
 	
+	/*public static void main(String[] args) {
+		BookData.getInstance().searchBook("SS");
+	}*/
+	
 	/**
-	 * ricerca per titolo di libri che sono in possesso
+	 * ricerca il libro per titolo
 	 * @param book
 	 * @return 
 	 */
 	
-	public ResultSet searchBook(String title) {
-		String sql = "SELECT Titolo, Autore FROM Libro AS L JOIN Possesso AS P ON L.BCID = P.LIBRO WHERE Titolo = ?";
+	public ArrayList<Book> searchBook(String title) {
+		ArrayList<Book> result = new ArrayList<Book>();
+		
+		//String sql = "SELECT Titolo, Autore FROM Libro AS L JOIN Possesso AS P ON L.BCID = P.LIBRO WHERE Titolo = ?";
+		String sql = "SELECT Titolo, Autore FROM Libro L WHERE Titolo = ?";
 		PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(sql);
 		try {
 			stmt.setString(1, title);
 			ResultSet rs = stmt.executeQuery();
-			if(rs.getRow() > 0)	//if rs return more than one row -> there are books
-				return rs;
+			
+			while(rs.next()) {
+				//System.out.println("#_ " + rs.getString(1) +"  " +rs.getString(2));
+				result.add(new Book(rs.getString(1), rs.getString(2), 0,0,BookType.ACTION));
+			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
-		return null;
+		return result;
 	}
 
 }

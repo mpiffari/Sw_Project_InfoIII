@@ -35,9 +35,9 @@ public class ComputeRequest implements ProcessRequest{
 				Communication.getInstance().send(username, "requestType: 1; result: " + book.reserve(username));
 				break;
 
-			case 2:
+			/*case 2:
 				User user = new User(msg.substring(i + 1));
-				Communication.getInstance().send(username, "requestType: 2; result: " + user.login(username, user.getPassword()));
+				Communication.getInstance().send(username, "requestType: 2; result: " + user.login(username, user.getPassword()));*/
 			default:
 			break;
 		}
