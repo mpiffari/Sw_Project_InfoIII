@@ -210,7 +210,7 @@ public final class Communication implements SendAnswer {
 	}
 
 	public void send(final String username, final String msg) {
-		System.out.println("invio: " + msg);
+		System.out.println("Risposta da server a client:\r\n" + msg);
 		
 		ChannelFuture oo = chcMap.get(username).writeAndFlush(msg + "\r\n");
 		oo.addListener(new ChannelFutureListener() {
@@ -218,7 +218,7 @@ public final class Communication implements SendAnswer {
 			public void operationComplete(ChannelFuture future) throws Exception {
 				while (!future.isSuccess()) {
 					chcMap.get(username).writeAndFlush(msg + "\r\n");
-					System.out.println("FAIL!");
+					System.out.println("Retry send response!");
 				}
 				future.addListener(ChannelFutureListener.CLOSE);
 				//rimuvo il ChannelHandlerContext
