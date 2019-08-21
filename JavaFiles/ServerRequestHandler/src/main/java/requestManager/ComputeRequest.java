@@ -9,6 +9,9 @@ public class ComputeRequest implements ProcessRequest{
 	 * <request-Type>: number that specifies type of request;
 	 * <other data>
 	 */
+	
+	private final static String request = "requestType: 0; result: ";
+	
 	public void process(String msg, String username) {
 		int i = msg.indexOf(";", 0);
 		int j = msg.indexOf(":", 0);
@@ -26,6 +29,8 @@ public class ComputeRequest implements ProcessRequest{
 				Communication.getInstance().send(username, "Request of type 0 had this result: " + result);
 				break;
 			case BOOK_RESERVATION:
+				Book book = new Book(msg.substring(i + 1));
+				Communication.getInstance().send(username, "requestType: 1; result: " + book.reserve(username));
 				break;
 			default:
 				break;

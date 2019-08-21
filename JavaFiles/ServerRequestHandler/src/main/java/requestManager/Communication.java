@@ -62,6 +62,7 @@ class ServerInitializer extends ChannelInitializer<SocketChannel> {
 		pipeline.addLast(SERVER_HANDLER);
 	}
 }
+
 @Sharable
 class ServerHandler extends SimpleChannelInboundHandler<String> {
 
@@ -75,38 +76,32 @@ class ServerHandler extends SimpleChannelInboundHandler<String> {
 
 	@Override
 	public void channelRead0(ChannelHandlerContext ctx, String request) throws Exception {
-		//Communication.chc = ctx;
-		
+		// Communication.chc = ctx;
+
 		int j = request.indexOf(";");
 		String username = request.substring(0, j);
 		Communication.chcMap.put(username, ctx);
-		
-		
-		
+
 		ComputeRequest computeRequest = new ComputeRequest();
-		computeRequest.process(request.substring(j+1), username);
+		computeRequest.process(request.substring(j + 1), username);
 
-		
-		
 		// Generate and write a response.
-		/*String response = request + "\r\n";
-		String perPrint = "";
-		boolean close = false;
-
-		Book bookReceived = new Book(response);
-
-		perPrint = "Title: " + bookReceived.getTitle() + " Author: " + bookReceived.getAuthor() + " Year: "
-				+ bookReceived.getYearOfPubblication() + " Edition: " + bookReceived.getEditionNumber() + " Type: "
-				+ bookReceived.getType() + "\r\n";
-
-		System.out.print(perPrint);
-		ChannelFuture future = ctx.write(perPrint);
-		 
-		// Close the connection after sending 'Have a good day!'
-		// if the client has sent 'bye'.
-		if (close) {
-			future.addListener(ChannelFutureListener.CLOSE);
-		}*/
+		/*
+		 * String response = request + "\r\n"; String perPrint = ""; boolean close =
+		 * false;
+		 * 
+		 * Book bookReceived = new Book(response);
+		 * 
+		 * perPrint = "Title: " + bookReceived.getTitle() + " Author: " +
+		 * bookReceived.getAuthor() + " Year: " + bookReceived.getYearOfPubblication() +
+		 * " Edition: " + bookReceived.getEditionNumber() + " Type: " +
+		 * bookReceived.getType() + "\r\n";
+		 * 
+		 * System.out.print(perPrint); ChannelFuture future = ctx.write(perPrint);
+		 * 
+		 * // Close the connection after sending 'Have a good day!' // if the client has
+		 * sent 'bye'. if (close) { future.addListener(ChannelFutureListener.CLOSE); }
+		 */
 	}
 
 	@Override
@@ -126,14 +121,14 @@ public final class Communication implements SendAnswer {
 	static final String portValue = "5000";
 	static final boolean SSL = System.getProperty("ssl") != null;
 	static final int PORT = Integer.parseInt(System.getProperty("port", portValue));
-	//static ChannelHandlerContext chc;
+	// static ChannelHandlerContext chc;
 
 	static HashMap<String, ChannelHandlerContext> chcMap = new HashMap<String, ChannelHandlerContext>();
-	
+
 	private static Communication instance;
-	
+
 	public static Communication getInstance() {
-		if(instance == null) {
+		if (instance == null) {
 			try {
 				instance = new Communication();
 			} catch (Exception e) {
@@ -143,10 +138,9 @@ public final class Communication implements SendAnswer {
 			return instance;
 		}
 		return instance;
-		
+
 	}
-	
-	
+
 	private Communication() throws Exception {
 
 		Thread t = new Thread(new Runnable() {
@@ -211,7 +205,7 @@ public final class Communication implements SendAnswer {
 
 	public void send(final String username, final String msg) {
 		System.out.println("Risposta da server a client:\r\n" + msg);
-		
+
 		ChannelFuture oo = chcMap.get(username).writeAndFlush(msg + "\r\n");
 		System.out.println(oo.hashCode());
 		oo.addListener(new ChannelFutureListener() {
@@ -225,7 +219,7 @@ public final class Communication implements SendAnswer {
 				chcMap.get(username).writeAndFlush("All ok" + "\r\n");
 				System.out.println("All ok!");
 				future.addListener(ChannelFutureListener.CLOSE);
-				//rimuvo il ChannelHandlerContext
+				// rimuvo il ChannelHandlerContext
 				chcMap.remove(username);
 			}
 		});

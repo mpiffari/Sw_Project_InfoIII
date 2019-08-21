@@ -70,6 +70,9 @@ public class Book {
     	return BookData.getInstance().insertBook(this);
     }
     
+    public int reserve(String username) {
+    	return BookData.getInstance().reserveBook(this, username);
+    }
     
     public String getAuthor() {
 
