@@ -22,7 +22,8 @@ public class ComputeRequest implements ProcessRequest{
 				//TODO: remove the following line
 				b.setISBN("esticazzi");
 				
-				Communication.getInstance().send(username, "requestType: 0; result: " + b.insert());
+				boolean result = b.insert();
+				Communication.getInstance().send(username, "Request of type 0 had this result: " + result);
 				break;
 			case BOOK_RESERVATION:
 				break;
