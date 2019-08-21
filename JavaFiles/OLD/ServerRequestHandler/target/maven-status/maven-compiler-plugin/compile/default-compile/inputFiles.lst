@@ -1,0 +1,12 @@
+/home/andrea/eclipse-workspace-java/ServerRequestHandler/src/main/java/dataManager/UserQuery.java
+/home/andrea/eclipse-workspace-java/ServerRequestHandler/src/main/java/dataManager/BookQuery.java
+/home/andrea/eclipse-workspace-java/ServerRequestHandler/src/main/java/dataManager/BookData.java
+/home/andrea/eclipse-workspace-java/ServerRequestHandler/src/main/java/requestManager/ProcessRequest.java
+/home/andrea/eclipse-workspace-java/ServerRequestHandler/src/main/java/book/Book.java
+/home/andrea/eclipse-workspace-java/ServerRequestHandler/src/main/java/requestManager/Communication.java
+/home/andrea/eclipse-workspace-java/ServerRequestHandler/src/main/java/dataManager/DBConnector.java
+/home/andrea/eclipse-workspace-java/ServerRequestHandler/src/main/java/book/BookType.java
+/home/andrea/eclipse-workspace-java/ServerRequestHandler/src/main/java/requestManager/SendAnswer.java
+/home/andrea/eclipse-workspace-java/ServerRequestHandler/src/main/java/dataManager/QueryPerformer.java
+/home/andrea/eclipse-workspace-java/ServerRequestHandler/src/main/java/requestManager/ComputeRequest.java
+/home/andrea/eclipse-workspace-java/ServerRequestHandler/src/main/java/dataManager/UserData.java

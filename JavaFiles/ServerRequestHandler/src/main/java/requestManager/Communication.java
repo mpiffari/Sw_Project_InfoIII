@@ -77,13 +77,14 @@ class ServerHandler extends SimpleChannelInboundHandler<String> {
 	public void channelRead0(ChannelHandlerContext ctx, String request) throws Exception {
 		//Communication.chc = ctx;
 		
-		String username = request.substring(0, request.indexOf(";"));
+		int j = request.indexOf(";");
+		String username = request.substring(0, j);
 		Communication.chcMap.put(username, ctx);
 		
 		
 		
 		ComputeRequest computeRequest = new ComputeRequest();
-		computeRequest.process(request, username);
+		computeRequest.process(request.substring(j+1), username);
 
 		
 		
@@ -201,8 +202,8 @@ public final class Communication implements SendAnswer {
 	}
 
 	public static void main(String[] args) throws Exception {
-		DBConnector.getDBConnector().PROVA();
-		//Communication c = new Communication();
+		@SuppressWarnings("unused")
+		Communication c = new Communication();
 		// Thread.sleep(30000);
 		// c.send("Ciao");
 		// c.ch.closeFuture().sync();

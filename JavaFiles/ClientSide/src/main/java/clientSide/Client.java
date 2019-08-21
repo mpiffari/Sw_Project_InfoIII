@@ -1,5 +1,11 @@
 package clientSide;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+import javax.net.ssl.SSLException;
+
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
@@ -9,13 +15,6 @@ import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.ssl.SslContext;
 import io.netty.handler.ssl.SslContextBuilder;
 import io.netty.handler.ssl.util.InsecureTrustManagerFactory;
-
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-
-import javax.net.ssl.SSLException;
 
 /**
  * Simplistic telnet client.
@@ -79,8 +78,8 @@ public final class Client {
 				}
 
 				// Sends the received line to the server.
-				Book obj = new Book("Piccolo Principe", "Antoine de Saint-Exupéry", 1854, 1, BookType.ACTION);
-				lastWriteFuture = ch.writeAndFlush(obj.toString() + "\r\n");
+				Book obj = new Book("Piccolo Principe", "Antoine de Saint-ExupÃ¨ry", 1854, 1, BookType.ACTION);
+				lastWriteFuture = ch.writeAndFlush("Pippo;requestType:0;" + obj.toString() + "\r\n");
 				//System.out.print(obj.toString());
 				// If user typed the 'bye' command, wait until the server closes
 				// the connection.

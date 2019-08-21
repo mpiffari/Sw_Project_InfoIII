@@ -2,7 +2,6 @@ package clientSide;
 
 import java.io.Serializable;
 
-import org.eclipse.jdt.annotation.Nullable;
 
 /**
  * 
@@ -21,12 +20,12 @@ public class Book implements Serializable{
 
 	private String title;
 	private String author;
-	private @Nullable int yearOfPubblication;
-	private @Nullable int editionNumber;
+	private  int yearOfPubblication;
+	private  int editionNumber;
 	private BookType type;
 
 	
-	public Book(String title, String author, @Nullable int yearOfPubblication, @Nullable int editionNumber, BookType type) {
+	public Book(String title, String author,  int yearOfPubblication,  int editionNumber, BookType type) {
 		this.title = title;
 		this.author = author;
 		this.yearOfPubblication = yearOfPubblication;

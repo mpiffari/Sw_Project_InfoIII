@@ -44,7 +44,7 @@
 							<addClasspath>true</addClasspath>
 							<classpathPrefix>libs/</classpathPrefix>
 							<mainClass>
-								org.baeldung.executable.ExecutableMavenJar
+								clientSide.Client
 							</mainClass>
 						</manifest>
 					</archive>

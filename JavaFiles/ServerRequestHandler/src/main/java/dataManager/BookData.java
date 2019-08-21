@@ -41,7 +41,7 @@ public class BookData implements BookQuery{
 			stmt.setString(3, book.getAuthor());
 			stmt.setString(4, book.getISBN());
 			stmt.setString(5, book.getProprietario());
-			
+
 			result = stmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
