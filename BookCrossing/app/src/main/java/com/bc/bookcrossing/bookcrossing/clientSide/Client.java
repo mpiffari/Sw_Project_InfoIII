@@ -42,8 +42,9 @@ public final class Client {
 			Channel ch = b.connect(HOST, PORT).sync().channel();
 
 			ChannelFuture lastWriteFuture = null;
-			lastWriteFuture = ch.writeAndFlush(newBook + "\r\n");
-			Log.d("!!! Book inserted: !!!", newBook);
+			//TODO: retrieve username. Submit possible only if the user is logged in.
+			lastWriteFuture = ch.writeAndFlush("Pippo;requestType:0;" + newBook + "\r\n");
+			Log.d("!!! Book inserted: ", newBook);
 
 			// Wait until all messages are flushed before closing the channel.
 			if (lastWriteFuture != null) {

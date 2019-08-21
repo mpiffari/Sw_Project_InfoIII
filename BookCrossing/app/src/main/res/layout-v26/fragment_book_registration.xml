@@ -20,8 +20,8 @@
             android:hint="@string/title"
             android:textAppearance="@style/TextAppearance.AppCompat.Display2"
             tools:text="Title..."
-            android:autofillHints=""
-            android:inputType="" />
+            android:inputType=""
+            android:autofillHints="" />
 
         <EditText
             android:id="@+id/authorBook"
@@ -30,8 +30,8 @@
             android:hint="@string/author"
             android:textAppearance="@style/TextAppearance.AppCompat.Display2"
             tools:text="Author..."
-            android:autofillHints=""
-            android:inputType="" />
+            android:inputType=""
+            android:autofillHints="" />
 
         <EditText
             android:id="@+id/Year_of_pubblication"
@@ -40,7 +40,7 @@
             android:autofillHints=""
             android:ems="10"
             android:hint="@string/yearOfPubb"
-            android:inputType="number"
+            android:inputType="date"
             android:textAppearance="@style/TextAppearance.AppCompat.Display2"
             tools:text="Year of pubb..." />
 
@@ -58,7 +58,7 @@
         <Spinner
             android:id="@+id/BookTypeSpinner"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="wrap_content"
             android:autofillHints="Book type" />
 
         <Button

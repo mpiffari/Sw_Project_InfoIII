@@ -18,14 +18,14 @@
 			<version>4.1.32.Final</version>
 		</dependency>
 
-		<!-- ojdbc dependency -->
+		<!-- ojdbc dependency>
 		<dependency>
 			<groupId>ojdbc7</groupId>
 			<artifactId>ojdbc</artifactId>
 			<version>7</version>
 			<scope>system</scope>
 			<systemPath>/home/andrea/Downloads/ojdbc-7.jar</systemPath>
-		</dependency>
+		</dependency -->
 
 	</dependencies>
 
