@@ -4,7 +4,10 @@ public enum BookType {
 	ACTION("ACTION"),
 	ADVENTURE("ADVENTURE"),
 	THRILLER("THRILLER"),
-	HORROR("HORROR");
+	FANTASY("FANTASY"),
+	HORROR("HORROR"),
+	FAIRYSTORY("FAIRYSTORY"),
+	OTHER("OTHER");
 	
     private String description;
 
