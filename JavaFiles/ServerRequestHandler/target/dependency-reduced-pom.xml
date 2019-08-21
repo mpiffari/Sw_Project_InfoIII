@@ -32,14 +32,5 @@
       </plugin>
     </plugins>
   </build>
-  <dependencies>
-    <dependency>
-      <groupId>ojdbc7</groupId>
-      <artifactId>ojdbc</artifactId>
-      <version>7</version>
-      <scope>system</scope>
-      <systemPath>/home/andrea/Downloads/ojdbc-7.jar</systemPath>
-    </dependency>
-  </dependencies>
 </project>
 

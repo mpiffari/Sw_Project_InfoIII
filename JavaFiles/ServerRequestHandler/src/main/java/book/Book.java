@@ -8,7 +8,6 @@ import dataManager.BookQuery;
 
 /**
  * 
- * @author Michele
  * 
  * String format received from client:
  * - TITLE:.....;

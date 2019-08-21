@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/BookRegistrationLayout"
     android:layout_width="match_parent"
@@ -20,7 +19,9 @@
             android:layout_height="wrap_content"
             android:hint="@string/title"
             android:textAppearance="@style/TextAppearance.AppCompat.Display2"
-            tools:text="Title..." />
+            tools:text="Title..."
+            android:autofillHints=""
+            android:inputType="" />
 
         <EditText
             android:id="@+id/authorBook"
@@ -28,7 +29,9 @@
             android:layout_height="wrap_content"
             android:hint="@string/author"
             android:textAppearance="@style/TextAppearance.AppCompat.Display2"
-            tools:text="Author..." />
+            tools:text="Author..."
+            android:autofillHints=""
+            android:inputType="" />
 
         <EditText
             android:id="@+id/Year_of_pubblication"
@@ -37,7 +40,7 @@
             android:autofillHints=""
             android:ems="10"
             android:hint="@string/yearOfPubb"
-            android:inputType="date"
+            android:inputType="number"
             android:textAppearance="@style/TextAppearance.AppCompat.Display2"
             tools:text="Year of pubb..." />
 
@@ -55,7 +58,7 @@
         <Spinner
             android:id="@+id/BookTypeSpinner"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="45dp"
             android:autofillHints="Book type" />
 
         <Button
