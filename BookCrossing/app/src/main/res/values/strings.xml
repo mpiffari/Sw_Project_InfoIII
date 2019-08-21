@@ -15,4 +15,10 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="submit">Submit</string>
+
+
+    //Login
+    <string name="user">USERNAME</string>
+    <string name="password">PASSWORD</string>
+    <string name="login">LOGIN</string>
 </resources>

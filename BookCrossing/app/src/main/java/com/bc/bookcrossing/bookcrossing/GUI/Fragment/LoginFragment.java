@@ -7,7 +7,11 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
+import com.bc.bookcrossing.bookcrossing.GUI.DataDispatcherSingleton;
 import com.bc.bookcrossing.bookcrossing.GUI.Observer.ObserverDataLogin;
 import com.bc.bookcrossing.bookcrossing.LoginInStatus;
 import com.bc.bookcrossing.bookcrossing.R;
@@ -23,7 +27,7 @@ import java.util.List;
  * Use the {@link LoginFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class LoginFragment extends Fragment implements ObserverDataLogin {
+public class LoginFragment extends Fragment implements ObserverDataLogin, View.OnClickListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -70,7 +74,14 @@ public class LoginFragment extends Fragment implements ObserverDataLogin {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_login, container, false);
+        View v = inflater.inflate(R.layout.fragment_login, container, false);
+
+        DataDispatcherSingleton.getInstance().register(this);
+
+        Button loginButton = v.findViewById(R.id.loginButton);
+        loginButton.setOnClickListener(this);
+
+        return v;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -83,6 +94,13 @@ public class LoginFragment extends Fragment implements ObserverDataLogin {
     @Override
     public void callbackLogin(List<LoginInStatus> status) {
 
+    }
+
+    @Override
+    public void onClick(View view) {
+        String user = ((EditText)getActivity().findViewById(R.id.user)).getText().toString();
+        String password = ((EditText)getActivity().findViewById(R.id.password)).getText().toString();
+        Toast.makeText(view.getContext(), user + " - " + password, Toast.LENGTH_LONG).show();
     }
 
     /**

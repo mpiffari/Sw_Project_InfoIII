@@ -2,6 +2,8 @@ package user;
 
 import java.util.Date;
 
+import dataManager.UserData;
+
 public class User {
 
 	private String username;
@@ -25,7 +27,24 @@ public class User {
 		this.longitude = longitude;
 		this.action = action;
 	}
+	
+	public User(String msg) {	
+    	String lines[] = msg.split(";");
+        this.username = getUserFromString(lines[0]);
+        this.password = getPasswordFromString(lines[1]);
+        
+    }
 
+	private String getUserFromString(String msg) {
+		String words[] = msg.split(":");
+		return words[1];
+	}
+	
+	private String getPasswordFromString(String msg) {
+		String words[] = msg.split(":");
+		return words[1];
+	}
+	
 	public String getUsername() {
 		return username;
 	}
@@ -88,6 +107,10 @@ public class User {
 
 	public void setAction(double action) {
 		this.action = action;
+	}
+	
+	public boolean login(String username, String password) {
+		return UserData.getInstance().login(this);
 	}
 
 }
