@@ -6,6 +6,7 @@ import java.sql.SQLException;
 
 import book.Book;
 import book.BookType;
+import user.User;
 
 public class BookData implements BookQuery{
 
@@ -70,6 +71,49 @@ public class BookData implements BookQuery{
 		}
 		
 		return false;
+	}
+	
+	/**
+	 * prenota libro-> sfrutto metodo cerca
+	 * @param book
+	 * @return
+	 */
+	
+	public int reserveBook(Book book, String username) {
+		if(searchBook(book.getTitle()) != null) {
+			ResultSet rs = searchBook(book.getTitle()); //ho i libri che cerco e relative posizioni
+			
+			//algoritmo->da sopra ho posizione del libro. con query database sfruttando param user ricavo posizione di chi prenota
+			
+			return 1;
+		}
+		else {
+			//TODO libro non trovato
+			return 0;
+		}
+		
+		
+	}
+	
+	/**
+	 * ricerca per titolo di libri che sono in possesso
+	 * @param book
+	 * @return 
+	 */
+	
+	public ResultSet searchBook(String title) {
+		String sql = "SELECT Titolo, Autore FROM Libro AS L JOIN Possesso AS P ON L.BCID = P.LIBRO WHERE Titolo = ?";
+		PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(sql);
+		try {
+			stmt.setString(1, title);
+			ResultSet rs = stmt.executeQuery();
+			if(rs.getRow() > 0)	//if rs return more than one row -> there are books
+				return rs;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return null;
 	}
 
 }

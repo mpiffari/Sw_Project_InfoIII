@@ -7,6 +7,9 @@ public class ComputeRequest implements ProcessRequest{
 	/**
 	 * @param msg: is a string somthing like this request-Type:<number that specifies the quest>;<other data>
 	 */
+	
+	private final static String request = "requestType: 0; result: ";
+	
 	public void process(String msg, String username) {
 		int i = msg.indexOf(";", 0);
 		String str = msg.substring(0, i);
@@ -22,6 +25,8 @@ public class ComputeRequest implements ProcessRequest{
 				Communication.getInstance().send(username, "requestType: 0; result: " + b.insert());
 				break;
 			case 1:
+				Book book = new Book(msg.substring(i + 1));
+				Communication.getInstance().send(username, "requestType: 1; result: " + book.reserve(username));
 				break;
 			case 2:
 				break;
