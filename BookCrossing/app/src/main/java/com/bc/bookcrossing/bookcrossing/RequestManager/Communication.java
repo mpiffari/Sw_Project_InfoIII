@@ -125,7 +125,6 @@ public class Communication implements SendRequests  {
             }
 
             ChannelFuture lastWriteFuture = null;
-            //TODO: change Pippo with real username
             lastWriteFuture = ch.writeAndFlush(data + "\r\n");
 
             // Wait until all messages are flushed before closing the channel.

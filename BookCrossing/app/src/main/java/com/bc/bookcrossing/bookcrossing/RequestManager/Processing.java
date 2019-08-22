@@ -24,7 +24,14 @@ public class Processing implements GenerateRequests, ReceiveAnswer {
 
     @Override
     public void generateRequestForDataLogin(String username, String password) {
-        singletonCommunication.send(RequestType.LOGIN.toString() + separator + username + separator + password);
+        singletonCommunication.send(username + separator + Globals.reqType  + RequestType.LOGIN.toString() + separator + password);
+    }
+
+    @Override
+    public void generateRequestForDataBookRegistration(Book book) {
+        //TODO: check username
+        String username = "Pippo";
+        singletonCommunication.send(username + separator + Globals.reqType + RequestType.BOOK_REGISTRATION_MANUAL.toString() + separator + book.toString());
     }
 
     @Override
@@ -47,13 +54,6 @@ public class Processing implements GenerateRequests, ReceiveAnswer {
     @Override
     public void generateRequestForDataBookRegistration(String ISBN) {
         singletonCommunication.send(RequestType.BOOK_REGISTRATION_AUTOMATIC.toString() + separator + ISBN);
-    }
-
-    @Override
-    public void generateRequestForDataBookRegistration(Book book) {
-        //TODO: check username
-        String username = "Pippo";
-        singletonCommunication.send(username + separator + Globals.reqType + RequestType.BOOK_REGISTRATION_MANUAL.toString() + separator + book.toString());
     }
 
     @Override

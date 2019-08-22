@@ -1,5 +1,8 @@
 package com.bc.bookcrossing.bookcrossing.GUI;
 
+import android.os.Build;
+import android.support.annotation.RequiresApi;
+
 import com.bc.bookcrossing.bookcrossing.BookInfo;
 import com.bc.bookcrossing.bookcrossing.RequestManager.ReceiveData;
 import com.bc.bookcrossing.bookcrossing.GUI.Observer.ObserverBookDataRegistration;
@@ -11,11 +14,15 @@ import com.bc.bookcrossing.bookcrossing.GUI.Observer.ObserverDataSignIn;
 import com.bc.bookcrossing.bookcrossing.GUI.Observer.ObserverForUiInformation;
 import com.bc.bookcrossing.bookcrossing.LoginInStatus;
 import com.bc.bookcrossing.bookcrossing.SignInStatus;
+import com.bc.bookcrossing.bookcrossing.Structure.User;
 import com.bc.bookcrossing.bookcrossing.UserInformations;
 import com.bc.bookcrossing.bookcrossing.RequestManager.Processing;
 import com.bc.bookcrossing.bookcrossing.Structure.Book;
 import com.bc.bookcrossing.bookcrossing.Structure.BookType;
 
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -42,9 +49,20 @@ public class DataDispatcherSingleton implements ReceiveData, DelegateSendData {
     //Metodi per piccolo controllo: stringhe vuote o in formato non valido
 
     //region Delegate SendData functions
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public void sendDataLogin(String username, String password) {
-        //TODO CONTROLLO MINIMO
+
+        // HASH 256
+        MessageDigest digest = null;
+        try {
+            digest = MessageDigest.getInstance("SHA-256");
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        byte[] encodedPsw = digest.digest(password.getBytes(StandardCharsets.UTF_8));
+
+        User u = new  User(username, new String(encodedPsw));
         p.generateRequestForDataLogin(username,password);
     }
 
