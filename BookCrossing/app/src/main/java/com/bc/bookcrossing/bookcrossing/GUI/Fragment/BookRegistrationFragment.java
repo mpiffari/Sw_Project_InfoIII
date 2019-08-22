@@ -1,5 +1,6 @@
 package com.bc.bookcrossing.bookcrossing.GUI.Fragment;
 
+import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -17,12 +18,10 @@ import com.bc.bookcrossing.bookcrossing.GUI.DataDispatcherSingleton;
 import com.bc.bookcrossing.bookcrossing.GUI.Observer.ObserverBookDataRegistration;
 import com.bc.bookcrossing.bookcrossing.Globals;
 import com.bc.bookcrossing.bookcrossing.R;
-import com.bc.bookcrossing.bookcrossing.clientSide.Book;
-import com.bc.bookcrossing.bookcrossing.clientSide.BookType;
-import com.bc.bookcrossing.bookcrossing.clientSide.Client;
 
 public class BookRegistrationFragment extends Fragment implements ObserverBookDataRegistration, View.OnClickListener {
     private OnFragmentInteractionListener mListener;
+    private DataDispatcherSingleton dispatcher;
 
     public BookRegistrationFragment() {
         // Required empty public constructor
@@ -44,6 +43,15 @@ public class BookRegistrationFragment extends Fragment implements ObserverBookDa
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        dispatcher = DataDispatcherSingleton.getInstance();
+        dispatcher.register(this);
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener = null;
+        dispatcher.unRegister(this);
     }
 
     @Override
@@ -86,32 +94,32 @@ public class BookRegistrationFragment extends Fragment implements ObserverBookDa
         String yearOfPubb = ((TextView) getActivity().findViewById(R.id.Year_of_pubblication)).getText().toString();
         String edition = (((TextView) getActivity().findViewById(R.id.EditionNumber)).getText().toString());
         String bookTypeDesc = ((Spinner) getActivity().findViewById(R.id.BookTypeSpinner)).getSelectedItem().toString();
-        BookType bookType = BookType.fromString(bookTypeDesc);
 
-        if (title.length() > 0 && author.length() > 0 && yearOfPubb.length() > 0 && edition.length() > 0) {
-            Book newBook = new Book(title, author, Integer.parseInt(yearOfPubb), Integer.parseInt(edition), bookType);
-            String newBookString = newBook.toString();
-
-            try {
-                Client.send(newBookString);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+        if (title.length() > 0 && author.length() > 0 && yearOfPubb.length() > 0 && edition.length() > 0 && bookTypeDesc.length() > 0) {
+            dispatcher.sendDataBookRegistration(title, author, yearOfPubb, edition, bookTypeDesc);
         } else {
             Toast.makeText(getActivity(), "Fill all fields", Toast.LENGTH_LONG).show();
         }
+
     }
 
     @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-        DataDispatcherSingleton.getInstance().unRegister(this);
-    }
-
-    @Override
-    public void callbackRegistration(boolean result, String bookCodeID) {
-
+    public void callbackRegistration(final boolean result, final String bookCodeID) {
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if(result){
+                    Toast.makeText(getActivity(), "Registrazione completata BCID:" + bookCodeID, Toast.LENGTH_LONG).show();
+                    ((TextView) getActivity().findViewById(R.id.titleBook)).setText("");
+                    ((TextView) getActivity().findViewById(R.id.authorBook)).setText("");
+                    ((TextView) getActivity().findViewById(R.id.Year_of_pubblication)).setText("");
+                    ((TextView) getActivity().findViewById(R.id.EditionNumber)).setText("");
+                    ((Spinner) getActivity().findViewById(R.id.BookTypeSpinner)).setSelection(0);
+                } else {
+                    Toast.makeText(getActivity(), "Errore durante la registrazione", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
     }
 
     /**
