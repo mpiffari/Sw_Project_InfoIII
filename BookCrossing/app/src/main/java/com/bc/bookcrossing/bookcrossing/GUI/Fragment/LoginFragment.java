@@ -10,15 +10,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bc.bookcrossing.bookcrossing.GUI.DataDispatcherSingleton;
 import com.bc.bookcrossing.bookcrossing.GUI.Observer.ObserverDataLogin;
-import com.bc.bookcrossing.bookcrossing.LoginInStatus;
 import com.bc.bookcrossing.bookcrossing.R;
-import com.bc.bookcrossing.bookcrossing.Structure.User;
-
-import java.util.List;
 
 
 /**
@@ -73,8 +70,19 @@ public class LoginFragment extends Fragment implements ObserverDataLogin, View.O
     }
 
     @Override
-    public void callbackLogin(List<LoginInStatus> status) {
-
+    public void callbackLogin(final boolean result) {
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if(result){
+                    Toast.makeText(getActivity(), "Login OK", Toast.LENGTH_LONG).show();
+                    ((EditText)getActivity().findViewById(R.id.user)).setText("");
+                    ((EditText)getActivity().findViewById(R.id.password)).setText("");
+                } else {
+                    Toast.makeText(getActivity(), "Errore durante il login", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)

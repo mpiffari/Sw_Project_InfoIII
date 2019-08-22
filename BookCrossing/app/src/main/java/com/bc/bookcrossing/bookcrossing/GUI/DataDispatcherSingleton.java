@@ -12,7 +12,6 @@ import com.bc.bookcrossing.bookcrossing.GUI.Observer.ObserverDataLogin;
 import com.bc.bookcrossing.bookcrossing.GUI.Observer.ObserverDataProfile;
 import com.bc.bookcrossing.bookcrossing.GUI.Observer.ObserverDataSignIn;
 import com.bc.bookcrossing.bookcrossing.GUI.Observer.ObserverForUiInformation;
-import com.bc.bookcrossing.bookcrossing.LoginInStatus;
 import com.bc.bookcrossing.bookcrossing.SignInStatus;
 import com.bc.bookcrossing.bookcrossing.Structure.User;
 import com.bc.bookcrossing.bookcrossing.UserInformations;
@@ -62,9 +61,20 @@ public class DataDispatcherSingleton implements ReceiveData, DelegateSendData {
         }
         byte[] encodedPsw = digest.digest(password.getBytes(StandardCharsets.UTF_8));
 
-        User u = new  User(username, new String(encodedPsw));
-        p.generateRequestForDataLogin(username,password);
+        User u = new  User(username, this.bytesToHex(encodedPsw));
+        p.generateRequestForDataLogin(u);
     }
+
+    private static String bytesToHex(byte[] hash) {
+        StringBuffer hexString = new StringBuffer();
+        for (int i = 0; i < hash.length; i++) {
+            String hex = Integer.toHexString(0xff & hash[i]);
+            if(hex.length() == 1) hexString.append('0');
+            hexString.append(hex);
+        }
+        return hexString.toString();
+    }
+
 
     @Override
     public void sendDataSignIn(String name, String lastName, String username, Date DOB, String[] contacts, String password, int actionArea) {
@@ -132,9 +142,9 @@ public class DataDispatcherSingleton implements ReceiveData, DelegateSendData {
     }
 
     @Override
-    public void callbackLogin(List<LoginInStatus> status) {
+    public void callbackLogin(boolean result) {
         for (ObserverDataLogin obs : observersDataLogin) {
-            obs.callbackLogin(status);
+            obs.callbackLogin(result);
         }
 
     }

@@ -10,5 +10,6 @@ public interface GenerateRequests {
     public void generateRequestForDataTakenBooks();
     public void generateRequestForDataBookRegistration(String ISBN);
     public void generateRequestForDataLogin(User user);
+    public void generateRequestForDataProfileInformations(String username, String password);
     public void generateRequestForDataBookRegistration(Book book);
 }

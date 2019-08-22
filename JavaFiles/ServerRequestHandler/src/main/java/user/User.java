@@ -114,7 +114,7 @@ public class User {
 		this.action = action;
 	}
 	
-	public boolean login(String username, String password) {
+	public boolean login() {
 		return UserData.getInstance().login(this);
 	}
 	

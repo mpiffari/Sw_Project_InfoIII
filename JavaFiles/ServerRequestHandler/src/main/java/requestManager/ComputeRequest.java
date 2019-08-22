@@ -23,7 +23,8 @@ public class ComputeRequest implements ProcessRequest{
 			RequestType requestType = RequestType.getEnumReqType(msg.substring(0, i).substring(j+1));
 			System.out.println(msg.substring(0, i));
 			System.out.println(msg.substring(0, i).substring(j+1));
-
+			boolean result;
+			
 			switch(requestType) {
 			case BOOK_REGISTRATION_MANUAL:
 				Book b = new Book(msg.substring(i + 1));
@@ -31,17 +32,18 @@ public class ComputeRequest implements ProcessRequest{
 				//TODO: add check of ISBN (iteration 2)
 				b.setISBN("AAAAAAAAA");
 
-				boolean result = b.insert();
+				result = b.insert();
 				Communication.getInstance().send(username, "requestType:0;result:" + (result?1:0) + ";BCID:" + b.getBCID());
 				break;
 			case BOOK_RESERVATION:
 				Book book = new Book(msg.substring(i + 1));
-				Communication.getInstance().send(username, "requestType: 1; result: " + book.reserve(username));
+				Communication.getInstance().send(username, "requestType:1;result:" + book.reserve(username));
 				break;
-
-				/*case 2:
+			case LOGIN:
 				User user = new User(msg.substring(i + 1));
-				Communication.getInstance().send(username, "requestType: 2; result: " + user.login(username, user.getPassword()));*/
+				
+				result = user.login();
+				Communication.getInstance().send(username, "requestType:2;result:" + (result?1:0));
 			default:
 				break;
 			}

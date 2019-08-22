@@ -97,6 +97,9 @@ public class Processing implements GenerateRequests, ReceiveAnswer {
             case BOOK_RESERVATION:
                 break;
             case LOGIN:
+                int f = data.indexOf(":", i+1);
+                int r = Integer.parseInt(data.substring(f+1));
+                DataDispatcherSingleton.getInstance().callbackLogin(r == 1 ? true : false);
                 break;
             case SIGN_IN:
                 break;
