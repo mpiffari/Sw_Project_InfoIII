@@ -209,15 +209,30 @@ public final class Communication implements SendAnswer {
 		ChannelFuture oo = chcMap.get(username).writeAndFlush(msg + "\r\n");
 		System.out.println(oo.hashCode());
 		oo.addListener(new ChannelFutureListener() {
-
+			
 			public void operationComplete(ChannelFuture future) throws Exception {
 				System.out.println("Operation completed for future: " + future.hashCode());
-				if(!future.isSuccess()) {
+				int count = 0;
+				boolean isError = false;
+				while(!future.isSuccess()) {
 					chcMap.get(username).writeAndFlush(msg + "\r\n");
 					System.out.println("Retry send response!");
+					if(count == 3) {
+						isError = true;
+						break;
+					} else {
+						count ++;
+					}
 				}
-				chcMap.get(username).writeAndFlush("All ok" + "\r\n");
-				System.out.println("All ok!");
+				
+				if(isError == true) {
+					chcMap.get(username).writeAndFlush("Error" + "\r\n");
+					System.out.println("Error!");
+				} else {
+					chcMap.get(username).writeAndFlush("All ok" + "\r\n");
+					System.out.println("All ok!");	
+				}
+				
 				future.addListener(ChannelFutureListener.CLOSE);
 				// rimuvo il ChannelHandlerContext
 				chcMap.remove(username);
