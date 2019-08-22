@@ -7,7 +7,6 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-import com.bc.bookcrossing.bookcrossing.clientSide.Client;
 import com.bc.bookcrossing.bookcrossing.GUI.Fragment.BookRegistrationFragment;
 import com.bc.bookcrossing.bookcrossing.GUI.Fragment.LoginFragment;
 

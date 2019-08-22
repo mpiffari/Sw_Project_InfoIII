@@ -1,7 +1,7 @@
 package com.bc.bookcrossing.bookcrossing.GUI;
 
 import com.bc.bookcrossing.bookcrossing.BookInfo;
-import com.bc.bookcrossing.bookcrossing.Comunication.ReceiveData;
+import com.bc.bookcrossing.bookcrossing.RequestManager.ReceiveData;
 import com.bc.bookcrossing.bookcrossing.GUI.Observer.ObserverBookDataRegistration;
 import com.bc.bookcrossing.bookcrossing.GUI.Observer.ObserverDataBookPickUp;
 import com.bc.bookcrossing.bookcrossing.GUI.Observer.ObserverDataBookTaken;
@@ -12,7 +12,9 @@ import com.bc.bookcrossing.bookcrossing.GUI.Observer.ObserverForUiInformation;
 import com.bc.bookcrossing.bookcrossing.LoginInStatus;
 import com.bc.bookcrossing.bookcrossing.SignInStatus;
 import com.bc.bookcrossing.bookcrossing.UserInformations;
-import com.bc.bookcrossing.bookcrossing.Comunication.ProcessingSingleton;
+import com.bc.bookcrossing.bookcrossing.RequestManager.Processing;
+import com.bc.bookcrossing.bookcrossing.Structure.Book;
+import com.bc.bookcrossing.bookcrossing.Structure.BookType;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -27,7 +29,7 @@ public class DataDispatcherSingleton implements ReceiveData, DelegateSendData {
         return ourInstance;
     }
 
-    private ProcessingSingleton p = ProcessingSingleton.getInstance();
+    private Processing p = Processing.getInstance();
     //region Declaration of vector of observer
     private List<ObserverBookDataRegistration> observersBookDataRegistration = new ArrayList<>();
     private List<ObserverDataBookPickUp> observersDataBookPickUp = new ArrayList<>();
@@ -71,9 +73,10 @@ public class DataDispatcherSingleton implements ReceiveData, DelegateSendData {
     }
 
     @Override
-    public void sendDataBookRegistration(String title, String author, Date pubblicationDate) {
-        //TODO CONTROLLO MINIMO
-        p.generateRequestForDataBookRegistration(title, author, pubblicationDate);
+    public void sendDataBookRegistration(String title, String author, String yearOfPubb, String edition, String bookTypeDesc) {
+        BookType bookType = BookType.fromString(bookTypeDesc);
+        Book newBook = new Book(title, author, Integer.parseInt(yearOfPubb), Integer.parseInt(edition), bookType);
+        p.generateRequestForDataBookRegistration(newBook);
     }
 
     @Override

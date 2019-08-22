@@ -1,4 +1,4 @@
-package com.bc.bookcrossing.bookcrossing.Comunication;
+package com.bc.bookcrossing.bookcrossing.RequestManager;
 
 import com.bc.bookcrossing.bookcrossing.BookInfo;
 import com.bc.bookcrossing.bookcrossing.LoginInStatus;

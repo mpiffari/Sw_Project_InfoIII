@@ -12,7 +12,8 @@ public class ClientHandler extends SimpleChannelInboundHandler<String> {
 
 	@Override
 	protected void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
-		System.err.println(msg);
+		System.out.println("channelRead0");
+		System.out.println(msg);
 	}
 
 	@Override

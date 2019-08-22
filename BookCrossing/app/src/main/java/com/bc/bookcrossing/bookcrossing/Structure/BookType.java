@@ -1,4 +1,4 @@
-package com.bc.bookcrossing.bookcrossing.clientSide;
+package com.bc.bookcrossing.bookcrossing.Structure;
 
 import javax.annotation.Nullable;
 

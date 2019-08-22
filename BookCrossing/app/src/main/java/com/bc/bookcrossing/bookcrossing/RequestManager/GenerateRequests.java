@@ -1,6 +1,6 @@
-package com.bc.bookcrossing.bookcrossing.Comunication;
+package com.bc.bookcrossing.bookcrossing.RequestManager;
 
-import com.bc.bookcrossing.bookcrossing.GUI.DelegateSendData;
+import com.bc.bookcrossing.bookcrossing.Structure.Book;
 
 import java.util.Date;
 
@@ -11,6 +11,6 @@ public interface GenerateRequests {
     public void generateRequestForDataPickUp(String BCID);
     public void generateRequestForDataTakenBooks();
     public void generateRequestForDataBookRegistration(String ISBN);
-    public void generateRequestForDataBookRegistration(String title, String author, Date pubblicationDate);
     public void generateRequestForDataProfileInformations(String username, String password);
+    public void generateRequestForDataBookRegistration(Book book);
 }

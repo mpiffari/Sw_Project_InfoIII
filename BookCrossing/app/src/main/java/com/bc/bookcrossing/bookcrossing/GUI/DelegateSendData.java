@@ -11,7 +11,7 @@ public interface DelegateSendData {
     public void sendDataPickUp(String BCID);
     public void sendDataTakenBooks();
     public void sendDataBookRegistration(String ISBN);
-    public void sendDataBookRegistration(String title, String author, Date pubblicationDate);
+    public void sendDataBookRegistration(String title, String author, String yearOfPubb, String edition, String bookTypeDesc);
     public void sendDataProfileInformations(String username, String password);
 
     public void register(ObserverForUiInformation observerForUiInformation);

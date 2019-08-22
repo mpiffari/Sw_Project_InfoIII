@@ -1,6 +1,4 @@
-package com.bc.bookcrossing.bookcrossing.clientSide;
-
-import java.util.Date;
+package com.bc.bookcrossing.bookcrossing.Structure;
 
 //import dataManager.UserData;
 

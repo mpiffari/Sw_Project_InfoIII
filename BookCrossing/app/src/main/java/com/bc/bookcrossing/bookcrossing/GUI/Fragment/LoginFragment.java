@@ -1,6 +1,5 @@
 package com.bc.bookcrossing.bookcrossing.GUI.Fragment;
 
-import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -15,8 +14,7 @@ import com.bc.bookcrossing.bookcrossing.GUI.DataDispatcherSingleton;
 import com.bc.bookcrossing.bookcrossing.GUI.Observer.ObserverDataLogin;
 import com.bc.bookcrossing.bookcrossing.LoginInStatus;
 import com.bc.bookcrossing.bookcrossing.R;
-import com.bc.bookcrossing.bookcrossing.clientSide.Client;
-import com.bc.bookcrossing.bookcrossing.clientSide.User;
+import com.bc.bookcrossing.bookcrossing.Structure.User;
 
 import java.util.List;
 
@@ -106,7 +104,8 @@ public class LoginFragment extends Fragment implements ObserverDataLogin, View.O
         User u = new  User(user, password);
         if(user.length() > 0 && password.length() > 0){
             try {
-                Client.send(u.toString());
+                //TODO: use new function for communication
+                //Client.send(u.toString());
             } catch (Exception e) {
                 e.printStackTrace();
             }
