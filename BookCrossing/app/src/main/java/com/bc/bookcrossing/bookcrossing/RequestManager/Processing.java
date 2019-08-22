@@ -3,6 +3,7 @@ package com.bc.bookcrossing.bookcrossing.RequestManager;
 import com.bc.bookcrossing.bookcrossing.GUI.DataDispatcherSingleton;
 import com.bc.bookcrossing.bookcrossing.Globals;
 import com.bc.bookcrossing.bookcrossing.Structure.Book;
+import com.bc.bookcrossing.bookcrossing.Structure.User;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -23,8 +24,9 @@ public class Processing implements GenerateRequests, ReceiveAnswer {
     }
 
     @Override
-    public void generateRequestForDataLogin(String username, String password) {
-        singletonCommunication.send(username + separator + Globals.reqType  + RequestType.LOGIN.toString() + separator + password);
+    public void generateRequestForDataLogin(User user) {
+        String username = user.getUsername();
+        singletonCommunication.send(username + separator + Globals.reqType  + RequestType.LOGIN.toString() + separator + user.toString());
     }
 
     @Override

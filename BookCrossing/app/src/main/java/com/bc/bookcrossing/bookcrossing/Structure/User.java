@@ -118,8 +118,8 @@ public class User {
 
     @Override
     public String toString() {
-        return "USER: " + username + ";"
-                + "PASSWORD: " + password;
+        return  "USER:" + username + ";" +
+                "PASSWORD:" + password;
     }
 
 }
