@@ -30,7 +30,24 @@ public class UserData implements UserQuery{
 			stmt.setString(1, user.getUsername());
 			stmt.setString(2, user.getPassword());
 			ResultSet rs = stmt.executeQuery();
-			if(rs.next() && rs.getInt(1) == 0)	//if rs is not empty and query result is 0 then the BCID is available
+			if(rs.next() && rs.getInt(1) == 1)	//
+				return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return false;
+	}
+
+	public boolean exist(String username) {
+		// TODO Auto-generated method stub
+		String sql = "SELECT Count(Username) AS Result FROM Utente Where Username = ?";
+		PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(sql);
+		
+		try {
+			stmt.setString(1, username);
+			ResultSet rs = stmt.executeQuery();
+			if(rs.next() && rs.getInt(1) == 1)	//
 				return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
