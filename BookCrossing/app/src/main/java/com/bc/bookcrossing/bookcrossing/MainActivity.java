@@ -1,16 +1,26 @@
 package com.bc.bookcrossing.bookcrossing;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
-import com.bc.bookcrossing.bookcrossing.GUI.Fragment.BookRegistrationFragment;
-import com.bc.bookcrossing.bookcrossing.GUI.Fragment.LoginFragment;
+import android.view.View;
+import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+import com.bc.bookcrossing.bookcrossing.GUI.Fragment.BookRegistrationFragment;
+import com.bc.bookcrossing.bookcrossing.GUI.Fragment.ISBNScanFragment;
+import com.bc.bookcrossing.bookcrossing.GUI.Fragment.LoginFragment;
+import com.bc.bookcrossing.bookcrossing.GUI.Fragment.NoScanResultException;
+import com.bc.bookcrossing.bookcrossing.GUI.Fragment.ScanResultReceiver;
+
+public class MainActivity extends AppCompatActivity implements ScanResultReceiver{
+
 
     @Override
     protected void onResume() {
@@ -30,6 +40,11 @@ public class MainActivity extends AppCompatActivity {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                     new LoginFragment()).commit();
         }
+
+        if (getIntent().getStringExtra("isbn") != null) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                    new ISBNScanFragment()).commit();
+        }
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
@@ -45,6 +60,9 @@ public class MainActivity extends AppCompatActivity {
                         case R.id.book_registration:
                             selectedFragment = new BookRegistrationFragment();
                             break;
+                        case R.id.isbn_scan:
+                            selectedFragment = new ISBNScanFragment();
+                            break;
                         case R.id.book_reservation:
                             //selectedFragment = new SearchFragment();
                             break;
@@ -59,4 +77,19 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 }
             };
+
+    @Override
+    public void scanResultData(String codeFormat, String codeContent){
+        // display it on screen
+        Log.d("FORMAT: ", codeFormat);
+        Log.d("CONTENT: ", codeContent);
+    }
+
+    @Override
+    public void scanResultData(NoScanResultException noScanData) {
+        //Toast.makeText(this, noScanData.getMessage(), Toast.LENGTH_SHORT).show();
+    }
 }
+
+
+

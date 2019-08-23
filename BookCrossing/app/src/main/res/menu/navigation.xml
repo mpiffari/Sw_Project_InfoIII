@@ -12,6 +12,11 @@
         android:title="Book registration" />
 
     <item
+        android:id="@+id/isbn_scan"
+        android:icon="@drawable/ic_library_books_black_24dp"
+        android:title="Scan ISBN" />
+
+    <item
         android:id="@+id/book_reservation"
         android:icon="@drawable/ic_notifications_black_24dp"
         android:title="Book reservation" />

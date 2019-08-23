@@ -79,6 +79,9 @@ public class Book implements Serializable{
 		this.type = type;
 	}
 
+	public Book(){
+
+	}
 	
 	@Override
 	public String toString() {

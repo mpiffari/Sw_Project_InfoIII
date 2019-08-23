@@ -5,6 +5,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,6 +47,7 @@ public class LoginFragment extends Fragment implements ObserverDataLogin, View.O
         super.onCreate(savedInstanceState);
         dispatcher = DataDispatcherSingleton.getInstance();
         dispatcher.register(this);
+        Log.d("Status: ", "onCreate");
     }
 
     @Override
@@ -53,6 +55,14 @@ public class LoginFragment extends Fragment implements ObserverDataLogin, View.O
         super.onDetach();
         mListener = null;
         dispatcher.unRegister(this);
+
+        Log.d("Status: ", "onDetach");
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.d("Status: ", "onResume");
     }
 
     @Override
@@ -60,6 +70,8 @@ public class LoginFragment extends Fragment implements ObserverDataLogin, View.O
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_login, container, false);
+
+        Log.d("Status: ", "onCreateView");
 
         DataDispatcherSingleton.getInstance().register(this);
 
