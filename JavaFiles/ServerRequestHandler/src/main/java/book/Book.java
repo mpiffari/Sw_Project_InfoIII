@@ -1,10 +1,8 @@
 package book;
 
-import java.security.SecureRandom;
 import java.util.Random;
 import book.BookType;
 import dataManager.BookData;
-import dataManager.BookQuery;
 
 /**
  * 

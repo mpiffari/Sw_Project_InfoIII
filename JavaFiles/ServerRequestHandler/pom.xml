@@ -5,12 +5,14 @@
 	<groupId>ServerRequestManager</groupId>
 	<artifactId>ServerRequestManager</artifactId>
 	<version>0.0.1</version>
+	
 	<dependencies>
 		<dependency>
 			<groupId>com.google.code.findbugs</groupId>
 			<artifactId>jsr305</artifactId>
 			<version>3.0.2</version>
 		</dependency>
+		
 		<!-- https://mvnrepository.com/artifact/io.netty/netty-all -->
 		<dependency>
 			<groupId>io.netty</groupId>
@@ -23,14 +25,6 @@
 			<artifactId>ojdbc7</artifactId>
 			<version>12.1.0.2</version>
 		</dependency>
-		
-		<!-- ojdbc dependency -->
-		<!-- <dependency> <dependency> <groupId>ojdbc7</groupId> <artifactId>ojdbc</artifactId> 
-			<version>7</version> <scope>system</scope> <systemPath>/home/andrea/Downloads/ojdbc-7.jar</systemPath> 
-			</dependency> -->
-
-
-
 	</dependencies>
 
 	<repositories>

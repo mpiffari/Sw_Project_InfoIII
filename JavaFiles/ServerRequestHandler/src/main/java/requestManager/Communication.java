@@ -22,14 +22,10 @@ import io.netty.handler.codec.DelimiterBasedFrameDecoder;
 import io.netty.handler.codec.Delimiters;
 import io.netty.handler.codec.string.StringEncoder;
 
-import java.net.InetAddress;
 import java.security.cert.CertificateException;
-import java.util.Date;
 import java.util.HashMap;
 
 import javax.net.ssl.SSLException;
-
-import dataManager.DBConnector;
 
 class ServerInitializer extends ChannelInitializer<SocketChannel> {
 
@@ -65,41 +61,23 @@ class ServerInitializer extends ChannelInitializer<SocketChannel> {
 
 @Sharable
 class ServerHandler extends SimpleChannelInboundHandler<String> {
-
+	
+	ComputeRequest computeRequest;
 	@Override
 	public void channelActive(ChannelHandlerContext ctx) throws Exception {
 		// Send greeting for a new connection.
+		computeRequest = ComputeRequest.computeRequestSingleton;
 		System.out.println("WELCOME TO A NEW CONNECTION");
 	}
 
 	@Override
 	public void channelRead0(ChannelHandlerContext ctx, String request) throws Exception {
-		// Communication.chc = ctx;
-
 		int j = request.indexOf(";");
 		String username = request.substring(0, j);
 		Communication.chcMap.put(username, ctx);
-
-		ComputeRequest computeRequest = new ComputeRequest();
+		
+		System.out.println("Process request: " + request);
 		computeRequest.process(request.substring(j + 1), username);
-
-		// Generate and write a response.
-		/*
-		 * String response = request + "\r\n"; String perPrint = ""; boolean close =
-		 * false;
-		 * 
-		 * Book bookReceived = new Book(response);
-		 * 
-		 * perPrint = "Title: " + bookReceived.getTitle() + " Author: " +
-		 * bookReceived.getAuthor() + " Year: " + bookReceived.getYearOfPubblication() +
-		 * " Edition: " + bookReceived.getEditionNumber() + " Type: " +
-		 * bookReceived.getType() + "\r\n";
-		 * 
-		 * System.out.print(perPrint); ChannelFuture future = ctx.write(perPrint);
-		 * 
-		 * // Close the connection after sending 'Have a good day!' // if the client has
-		 * sent 'bye'. if (close) { future.addListener(ChannelFutureListener.CLOSE); }
-		 */
 	}
 
 	@Override
@@ -119,8 +97,6 @@ public final class Communication implements SendAnswer {
 	static final String portValue = "5000";
 	static final boolean SSL = System.getProperty("ssl") != null;
 	static final int PORT = Integer.parseInt(System.getProperty("port", portValue));
-	// static ChannelHandlerContext chc;
-
 	static HashMap<String, ChannelHandlerContext> chcMap = new HashMap<String, ChannelHandlerContext>();
 
 	private static Communication instance;
@@ -169,16 +145,7 @@ public final class Communication implements SendAnswer {
 					ServerBootstrap b = new ServerBootstrap();
 					b.group(bossGroup, workerGroup).channel(NioServerSocketChannel.class)
 							.handler(new LoggingHandler(LogLevel.INFO)).childHandler(new ServerInitializer(sslCtx));
-
-					// ch = b.bind(PORT).sync().channel();
-					// Thread.sleep(20000);
-
-					// ch.writeAndFlush("hahaha" + "\r\n");
-
-					// this.send("Ciao");
-
 					b.bind(PORT).sync().channel().closeFuture().sync();
-
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -190,7 +157,6 @@ public final class Communication implements SendAnswer {
 			}
 		});
 		t.start();
-
 	}
 
 	public static void main(String[] args) throws Exception {
@@ -205,13 +171,12 @@ public final class Communication implements SendAnswer {
 		System.out.println("Risposta da server a client:\r\n" + msg);
 
 		ChannelFuture oo = chcMap.get(username).writeAndFlush(msg + "\r\n");
-		System.out.println(oo.hashCode());
 		oo.addListener(new ChannelFutureListener() {
 			
 			public void operationComplete(ChannelFuture future) throws Exception {
-				System.out.println("Operation completed for future: " + future.hashCode());
 				int count = 0;
 				boolean isError = false;
+				
 				while(!future.isSuccess()) {
 					chcMap.get(username).writeAndFlush(msg + "\r\n");
 					System.out.println("Retry send response!");

@@ -32,7 +32,6 @@ public class BookData implements BookQuery{
 	
 	public boolean insertBook(Book book) {
 		String sql = "INSERT INTO LIBRO (BCID, TITOLO, AUTORE, ISBN, PROPRIETARIO) VALUES (?,?,?,?,?)";
-		
 		PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(sql);
 		
 		int result = 0;

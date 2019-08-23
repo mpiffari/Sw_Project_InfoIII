@@ -12,10 +12,10 @@ public class ComputeRequest implements ProcessRequest{
 	 * <request-Type>: number that specifies type of request;
 	 * <other data>
 	 */
-
-	private final static String request = "requestType: 0; result: ";
-
-	public void process(String msg, String username) {
+	
+	public final static ComputeRequest computeRequestSingleton = new ComputeRequest();
+	
+	public final void process(String msg, String username) {
 		if(UserData.getInstance().exist(username)) {
 			System.out.println("Message in process func: " + msg);
 			int i = msg.indexOf(";", 0);
@@ -47,7 +47,9 @@ public class ComputeRequest implements ProcessRequest{
 			default:
 				break;
 			}
-
+		} else {
+			//TODO: handle error on username
+			Communication.getInstance().send(username, "requestType:10000000;result:NO_USER");
 		}
 
 	}

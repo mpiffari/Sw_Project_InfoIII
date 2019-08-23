@@ -1,8 +1,5 @@
 package clientSide;
 
-import java.io.Serializable;
-
-
 /**
  * 
  * @author Michele
@@ -16,7 +13,7 @@ import java.io.Serializable;
  *
  */
 
-public class Book implements Serializable{
+public class Book {
 
 	private String title;
 	private String author;
@@ -24,7 +21,6 @@ public class Book implements Serializable{
 	private  int editionNumber;
 	private BookType type;
 
-	
 	public Book(String title, String author,  int yearOfPubblication,  int editionNumber, BookType type) {
 		this.title = title;
 		this.author = author;
@@ -75,7 +71,6 @@ public class Book implements Serializable{
 		this.type = type;
 	}
 
-	
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
