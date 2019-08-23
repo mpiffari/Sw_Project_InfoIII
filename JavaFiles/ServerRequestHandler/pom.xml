@@ -17,25 +17,28 @@
 			<artifactId>netty-all</artifactId>
 			<version>4.1.32.Final</version>
 		</dependency>
-
-
-		<!-- ojdbc dependency -->
-		<!--  <dependency>
-
 		
 		<dependency>
->>>>>>> f59f897cc0c31b30528157e887810b6531b19d80
-			<groupId>ojdbc7</groupId>
-			<artifactId>ojdbc</artifactId>
-			<version>7</version>
-			<scope>system</scope>
-			<systemPath>/home/andrea/Downloads/ojdbc-7.jar</systemPath>
-<<<<<<< HEAD
-		</dependency> -->
+			<groupId>com.oracle</groupId>
+			<artifactId>ojdbc7</artifactId>
+			<version>12.1.0.2</version>
+		</dependency>
+		
+		<!-- ojdbc dependency -->
+		<!-- <dependency> <dependency> <groupId>ojdbc7</groupId> <artifactId>ojdbc</artifactId> 
+			<version>7</version> <scope>system</scope> <systemPath>/home/andrea/Downloads/ojdbc-7.jar</systemPath> 
+			</dependency> -->
 
 
 
 	</dependencies>
+
+	<repositories>
+		<repository>
+			<id>codelds</id>
+			<url>https://code.lds.org/nexus/content/groups/main-repo</url>
+		</repository>
+	</repositories>
 
 	<build>
 		<plugins>
