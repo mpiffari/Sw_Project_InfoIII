@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.bc.bookcrossing.bookcrossing.GUI.DataDispatcherSingleton;
 import com.bc.bookcrossing.bookcrossing.GUI.Observer.ObserverDataLogin;
 import com.bc.bookcrossing.bookcrossing.Globals;
+import com.bc.bookcrossing.bookcrossing.MainActivity;
 import com.bc.bookcrossing.bookcrossing.R;
 import com.bc.bookcrossing.bookcrossing.Structures.LoginStatus;
 
@@ -75,6 +76,7 @@ public class LoginFragment extends Fragment implements ObserverDataLogin, View.O
         Log.d("Status: ", "onResume");
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -83,6 +85,19 @@ public class LoginFragment extends Fragment implements ObserverDataLogin, View.O
         View v = inflater.inflate(R.layout.fragment_login, container, false);
         DataDispatcherSingleton.getInstance().register(this);
 
+        if(Globals.isLoggedIn) {
+            MainActivity.bottomNav.setEnabled(true);
+            MainActivity.bottomNav.setFocusable(true);
+            MainActivity.bottomNav.setFocusableInTouchMode(true);
+            MainActivity.bottomNav.setClickable(true);
+            MainActivity.bottomNav.setContextClickable(true);
+        } else {
+            MainActivity.bottomNav.setEnabled(false);
+            MainActivity.bottomNav.setFocusable(false);
+            MainActivity.bottomNav.setFocusableInTouchMode(false);
+            MainActivity.bottomNav.setClickable(false);
+            MainActivity.bottomNav.setContextClickable(false);
+        }
         loginStatus = (TextView)v.findViewById(R.id.loginStatus);
         usernameText = (EditText) v.findViewById(R.id.user);
         pwdText = (EditText) v.findViewById(R.id.password);
@@ -100,6 +115,7 @@ public class LoginFragment extends Fragment implements ObserverDataLogin, View.O
     @Override
     public void callbackLogin(final boolean result, final LoginStatus s) {
         getActivity().runOnUiThread(new Runnable() {
+            @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void run() {
                 if(result){
@@ -112,10 +128,20 @@ public class LoginFragment extends Fragment implements ObserverDataLogin, View.O
 
                     loginButton.setVisibility(View.INVISIBLE);
                     leaveButton.setVisibility(View.VISIBLE);
-                    Globals.isLoggedIn = false;
+                    Globals.isLoggedIn = true;
+                    MainActivity.bottomNav.setEnabled(true);
+                    MainActivity.bottomNav.setFocusable(true);
+                    MainActivity.bottomNav.setFocusableInTouchMode(true);
+                    MainActivity.bottomNav.setClickable(true);
+                    MainActivity.bottomNav.setContextClickable(true);
                     loginStatus.setText(s.getDescription());
                 } else {
                     Globals.isLoggedIn = false;
+                    MainActivity.bottomNav.setEnabled(false);
+                    MainActivity.bottomNav.setFocusable(false);
+                    MainActivity.bottomNav.setFocusableInTouchMode(false);
+                    MainActivity.bottomNav.setClickable(false);
+                    MainActivity.bottomNav.setContextClickable(false);
                     loginStatus.setText(s.getDescription());
                     if(s == LoginStatus.WRONG_USERNAME) {
                         usernameText.setText("");
@@ -145,7 +171,16 @@ public class LoginFragment extends Fragment implements ObserverDataLogin, View.O
             case R.id.signInButton:
                 break;
             case R.id.leaveButton:
+                usernameText.setText("");
+                pwdText.setText("");
+                usernameText.setFocusable(true);
+                pwdText.setFocusable(true);
 
+                loginButton.setVisibility(View.VISIBLE);
+                leaveButton.setVisibility(View.INVISIBLE);
+
+                Globals.isLoggedIn = false;
+                loginStatus.setText(LoginStatus.NONE.getDescription());
         }
     }
 

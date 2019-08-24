@@ -2,12 +2,15 @@ package com.bc.bookcrossing.bookcrossing;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,7 +24,7 @@ import com.bc.bookcrossing.bookcrossing.GUI.Fragment.ScanResultReceiver;
 
 public class MainActivity extends AppCompatActivity implements ScanResultReceiver{
 
-    BottomNavigationView bottomNav;
+    public static BottomNavigationView bottomNav;
     @Override
     protected void onResume() {
         super.onResume();
@@ -71,10 +74,12 @@ public class MainActivity extends AppCompatActivity implements ScanResultReceive
                             break;
                     }
 
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                            selectedFragment).addToBackStack(null).commit();
-
-
+                    if(Globals.isLoggedIn == true) {
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                                selectedFragment).addToBackStack(null).commit();
+                    } else {
+                        Toast.makeText(MainActivity.this,"NEED TO LOGIN", Toast.LENGTH_LONG).show();
+                    }
                     return true;
                 }
             };
