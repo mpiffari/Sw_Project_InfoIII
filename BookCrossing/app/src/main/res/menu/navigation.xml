@@ -13,7 +13,7 @@
 
     <item
         android:id="@+id/isbn_scan"
-        android:icon="@drawable/ic_library_books_black_24dp"
+        android:icon="@drawable/ic_border_left_black_24dp"
         android:title="Scan ISBN" />
 
     <item
