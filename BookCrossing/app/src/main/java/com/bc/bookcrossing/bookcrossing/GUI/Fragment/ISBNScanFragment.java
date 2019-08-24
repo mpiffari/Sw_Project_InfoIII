@@ -12,13 +12,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
 
 import com.bc.bookcrossing.bookcrossing.GUI.DataDispatcherSingleton;
 import com.bc.bookcrossing.bookcrossing.GUI.Observer.ObserverBookDataRegistration;
-import com.bc.bookcrossing.bookcrossing.MainActivity;
 import com.bc.bookcrossing.bookcrossing.R;
-import com.bc.bookcrossing.bookcrossing.Structure.Book;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 

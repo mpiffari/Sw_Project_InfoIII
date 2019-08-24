@@ -2,7 +2,6 @@ package book;
 
 import java.util.Random;
 import book.BookType;
-import dataManager.BookData;
 
 /**
  * 

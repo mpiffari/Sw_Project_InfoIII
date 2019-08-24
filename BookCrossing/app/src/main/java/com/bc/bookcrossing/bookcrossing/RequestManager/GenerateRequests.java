@@ -1,7 +1,7 @@
 package com.bc.bookcrossing.bookcrossing.RequestManager;
 
-import com.bc.bookcrossing.bookcrossing.Structure.Book;
-import com.bc.bookcrossing.bookcrossing.Structure.User;
+import com.bc.bookcrossing.bookcrossing.Structures.Book;
+import com.bc.bookcrossing.bookcrossing.Structures.User;
 import java.util.Date;
 
 public interface GenerateRequests {

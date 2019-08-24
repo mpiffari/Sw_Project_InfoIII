@@ -2,8 +2,6 @@ package user;
 
 import java.util.Date;
 
-import dataManager.UserData;
-
 public class User {
 
 	private String username;
@@ -114,7 +112,7 @@ public class User {
 		this.action = action;
 	}
 	
-	public boolean login() {
+	public LoginStatus login() {
 		return UserData.getInstance().login(this);
 	}
 	

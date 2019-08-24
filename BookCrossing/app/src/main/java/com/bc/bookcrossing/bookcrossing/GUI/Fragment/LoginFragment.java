@@ -16,7 +16,9 @@ import android.widget.Toast;
 
 import com.bc.bookcrossing.bookcrossing.GUI.DataDispatcherSingleton;
 import com.bc.bookcrossing.bookcrossing.GUI.Observer.ObserverDataLogin;
+import com.bc.bookcrossing.bookcrossing.Globals;
 import com.bc.bookcrossing.bookcrossing.R;
+import com.bc.bookcrossing.bookcrossing.Structures.LoginStatus;
 
 
 /**
@@ -30,6 +32,14 @@ import com.bc.bookcrossing.bookcrossing.R;
 public class LoginFragment extends Fragment implements ObserverDataLogin, View.OnClickListener {
     private DataDispatcherSingleton dispatcher;
     private OnFragmentInteractionListener mListener;
+
+    private TextView loginStatus;
+    private EditText usernameText;
+    private EditText pwdText;
+    private Button loginButton;
+    private Button leaveButton;
+    private Button signInButton;
+
 
     public LoginFragment() {
         // Required empty public constructor
@@ -68,30 +78,52 @@ public class LoginFragment extends Fragment implements ObserverDataLogin, View.O
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        Log.d("Status: ", "onCreateView");
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_login, container, false);
-
-        Log.d("Status: ", "onCreateView");
-
         DataDispatcherSingleton.getInstance().register(this);
 
-        Button loginButton = v.findViewById(R.id.loginButton);
-        loginButton.setOnClickListener(this);
+        loginStatus = (TextView)v.findViewById(R.id.loginStatus);
+        usernameText = (EditText) v.findViewById(R.id.user);
+        pwdText = (EditText) v.findViewById(R.id.password);
+        loginButton = (Button) v.findViewById(R.id.loginButton);
+        leaveButton = (Button) v.findViewById(R.id.leaveButton);
+        signInButton = (Button) v.findViewById(R.id.signInButton);
 
+        loginStatus.setText(LoginStatus.NONE.getDescription());
+        loginButton.setOnClickListener(this);
+        signInButton.setOnClickListener(this);
+        leaveButton.setOnClickListener(this);
         return v;
     }
 
     @Override
-    public void callbackLogin(final boolean result) {
+    public void callbackLogin(final boolean result, final LoginStatus s) {
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 if(result){
-                    Toast.makeText(getActivity(), "Login OK", Toast.LENGTH_LONG).show();
-                    ((EditText)getActivity().findViewById(R.id.user)).setText("");
-                    ((EditText)getActivity().findViewById(R.id.password)).setText("");
+                    //Toast.makeText(getActivity(), "Login OK", Toast.LENGTH_LONG).show();
+
+                    usernameText.setText("");
+                    pwdText.setText("");
+                    usernameText.setFocusable(false);
+                    pwdText.setFocusable(false);
+
+                    loginButton.setVisibility(View.INVISIBLE);
+                    leaveButton.setVisibility(View.VISIBLE);
+                    Globals.isLoggedIn = false;
+                    loginStatus.setText(s.getDescription());
                 } else {
-                    Toast.makeText(getActivity(), "Errore durante il login", Toast.LENGTH_LONG).show();
+                    Globals.isLoggedIn = false;
+                    loginStatus.setText(s.getDescription());
+                    if(s == LoginStatus.WRONG_USERNAME) {
+                        usernameText.setText("");
+                    }
+                    if(s == LoginStatus.WRONG_PASSWORD) {
+                        pwdText.setText("");
+                    }
+                    //Toast.makeText(getActivity(), "Error during login", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -100,12 +132,20 @@ public class LoginFragment extends Fragment implements ObserverDataLogin, View.O
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public void onClick(View view) {
-        String user = ((EditText)getActivity().findViewById(R.id.user)).getText().toString();
-        String password = ((EditText)getActivity().findViewById(R.id.password)).getText().toString();
-        if(user.length() > 0 && password.length() > 0) {
-            dispatcher.sendDataLogin(user,password);
-        } else {
-            Toast.makeText(getActivity(), "Fill all fields", Toast.LENGTH_LONG).show();
+        switch (view.getId()) {
+            case R.id.loginButton:
+                String user = usernameText.getText().toString();
+                String password = pwdText.getText().toString();
+                if(user.length() > 0 && password.length() > 0) {
+                    dispatcher.sendDataLogin(user,password);
+                } else {
+                    Toast.makeText(getActivity(), "Fill all fields", Toast.LENGTH_LONG).show();
+                }
+                break;
+            case R.id.signInButton:
+                break;
+            case R.id.leaveButton:
+
         }
     }
 

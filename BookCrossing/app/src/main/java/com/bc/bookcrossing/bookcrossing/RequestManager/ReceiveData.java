@@ -1,17 +1,20 @@
 package com.bc.bookcrossing.bookcrossing.RequestManager;
 
-import com.bc.bookcrossing.bookcrossing.BookInfo;
-import com.bc.bookcrossing.bookcrossing.SignInStatus;
-import com.bc.bookcrossing.bookcrossing.UserInformations;
+import android.support.annotation.Nullable;
+
+import com.bc.bookcrossing.bookcrossing.Structures.BookInfo;
+import com.bc.bookcrossing.bookcrossing.Structures.LoginStatus;
+import com.bc.bookcrossing.bookcrossing.Structures.SignInStatus;
+import com.bc.bookcrossing.bookcrossing.Structures.UserInformations;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public interface ReceiveData {
-    public void callbackRegistration(boolean result, String bookCodeID);
-    public void callbackPickUp(short bookStatus);
-    public void callbackBookTaken(ArrayList<BookInfo> bookInformations);
-    public void callbackLogin(boolean status);
-    public void callbackProfile(UserInformations userInformations);
-    public void callbackSignIn(List<SignInStatus> status);
+    void callbackRegistration(boolean result, String bookCodeID);
+    void callbackPickUp(short bookStatus);
+    void callbackBookTaken(ArrayList<BookInfo> bookInformations);
+    void callbackLogin(final boolean result,@Nullable LoginStatus s);
+    void callbackProfile(UserInformations userInformations);
+    void callbackSignIn(List<SignInStatus> status);
 }

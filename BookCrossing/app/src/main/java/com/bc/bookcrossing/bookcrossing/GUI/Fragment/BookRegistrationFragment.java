@@ -120,14 +120,14 @@ public class BookRegistrationFragment extends Fragment implements ObserverBookDa
             @Override
             public void run() {
                 if(result){
-                    Toast.makeText(getActivity(), "Registrazione completata BCID:" + bookCodeID, Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Book registration completed with BCID:" + bookCodeID, Toast.LENGTH_LONG).show();
                     ((TextView) getActivity().findViewById(R.id.titleBook)).setText("");
                     ((TextView) getActivity().findViewById(R.id.authorBook)).setText("");
                     ((TextView) getActivity().findViewById(R.id.Year_of_pubblication)).setText("");
                     ((TextView) getActivity().findViewById(R.id.EditionNumber)).setText("");
                     ((Spinner) getActivity().findViewById(R.id.BookTypeSpinner)).setSelection(0);
                 } else {
-                    Toast.makeText(getActivity(), "Errore durante la registrazione", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Book registration failed", Toast.LENGTH_LONG).show();
                 }
             }
         });

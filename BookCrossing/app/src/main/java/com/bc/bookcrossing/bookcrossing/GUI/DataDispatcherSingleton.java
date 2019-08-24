@@ -3,7 +3,7 @@ package com.bc.bookcrossing.bookcrossing.GUI;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 
-import com.bc.bookcrossing.bookcrossing.BookInfo;
+import com.bc.bookcrossing.bookcrossing.Structures.BookInfo;
 import com.bc.bookcrossing.bookcrossing.RequestManager.ReceiveData;
 import com.bc.bookcrossing.bookcrossing.GUI.Observer.ObserverBookDataRegistration;
 import com.bc.bookcrossing.bookcrossing.GUI.Observer.ObserverDataBookPickUp;
@@ -12,12 +12,13 @@ import com.bc.bookcrossing.bookcrossing.GUI.Observer.ObserverDataLogin;
 import com.bc.bookcrossing.bookcrossing.GUI.Observer.ObserverDataProfile;
 import com.bc.bookcrossing.bookcrossing.GUI.Observer.ObserverDataSignIn;
 import com.bc.bookcrossing.bookcrossing.GUI.Observer.ObserverForUiInformation;
-import com.bc.bookcrossing.bookcrossing.SignInStatus;
-import com.bc.bookcrossing.bookcrossing.Structure.User;
-import com.bc.bookcrossing.bookcrossing.UserInformations;
+import com.bc.bookcrossing.bookcrossing.Structures.LoginStatus;
+import com.bc.bookcrossing.bookcrossing.Structures.SignInStatus;
+import com.bc.bookcrossing.bookcrossing.Structures.User;
+import com.bc.bookcrossing.bookcrossing.Structures.UserInformations;
 import com.bc.bookcrossing.bookcrossing.RequestManager.Processing;
-import com.bc.bookcrossing.bookcrossing.Structure.Book;
-import com.bc.bookcrossing.bookcrossing.Structure.BookType;
+import com.bc.bookcrossing.bookcrossing.Structures.Book;
+import com.bc.bookcrossing.bookcrossing.Structures.BookType;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
@@ -142,9 +143,9 @@ public class DataDispatcherSingleton implements ReceiveData, DelegateSendData {
     }
 
     @Override
-    public void callbackLogin(boolean result) {
+    public void callbackLogin(final boolean result, LoginStatus s) {
         for (ObserverDataLogin obs : observersDataLogin) {
-            obs.callbackLogin(result);
+            obs.callbackLogin(result,s);
         }
 
     }

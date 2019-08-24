@@ -1,6 +1,5 @@
 package com.bc.bookcrossing.bookcrossing.GUI.Fragment;
 
-import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,7 +9,7 @@ import android.view.ViewGroup;
 
 import com.bc.bookcrossing.bookcrossing.GUI.Observer.ObserverDataProfile;
 import com.bc.bookcrossing.bookcrossing.R;
-import com.bc.bookcrossing.bookcrossing.UserInformations;
+import com.bc.bookcrossing.bookcrossing.Structures.UserInformations;
 
 /**
  * A simple {@link Fragment} subclass.

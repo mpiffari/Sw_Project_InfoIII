@@ -1,6 +1,5 @@
 package com.bc.bookcrossing.bookcrossing.GUI.Fragment;
 
-import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.bc.bookcrossing.bookcrossing.BookInfo;
+import com.bc.bookcrossing.bookcrossing.Structures.BookInfo;
 import com.bc.bookcrossing.bookcrossing.GUI.Observer.ObserverDataBookTaken;
 import com.bc.bookcrossing.bookcrossing.R;
 

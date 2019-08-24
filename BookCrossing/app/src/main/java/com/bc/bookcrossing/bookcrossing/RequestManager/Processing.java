@@ -2,8 +2,9 @@ package com.bc.bookcrossing.bookcrossing.RequestManager;
 
 import com.bc.bookcrossing.bookcrossing.GUI.DataDispatcherSingleton;
 import com.bc.bookcrossing.bookcrossing.Globals;
-import com.bc.bookcrossing.bookcrossing.Structure.Book;
-import com.bc.bookcrossing.bookcrossing.Structure.User;
+import com.bc.bookcrossing.bookcrossing.Structures.Book;
+import com.bc.bookcrossing.bookcrossing.Structures.LoginStatus;
+import com.bc.bookcrossing.bookcrossing.Structures.User;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -97,9 +98,25 @@ public class Processing implements GenerateRequests, ReceiveAnswer {
             case BOOK_RESERVATION:
                 break;
             case LOGIN:
-                int f = data.indexOf(":", i+1);
-                int r = Integer.parseInt(data.substring(f+1));
-                DataDispatcherSingleton.getInstance().callbackLogin(r == 1 ? true : false);
+                int result = data.indexOf(":", i+1);
+                String msg = data.substring(result+1);
+                boolean flag =false;
+                LoginStatus logStaus = LoginStatus.NONE;
+                switch (msg) {
+                    case "Success":
+                        flag = true;
+                        logStaus = LoginStatus.SUCCESS;
+                        break;
+                    case "KO_Username":
+                        flag = false;
+                        logStaus = LoginStatus.WRONG_USERNAME;
+                        break;
+                    case "KO_Password":
+                        flag = false;
+                        logStaus = LoginStatus.WRONG_PASSWORD;
+                        break;
+                }
+                DataDispatcherSingleton.getInstance().callbackLogin(flag, logStaus);
                 break;
             case SIGN_IN:
                 break;

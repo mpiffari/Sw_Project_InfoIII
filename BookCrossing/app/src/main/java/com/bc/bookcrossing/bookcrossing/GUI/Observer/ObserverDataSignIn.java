@@ -1,6 +1,6 @@
 package com.bc.bookcrossing.bookcrossing.GUI.Observer;
 
-import com.bc.bookcrossing.bookcrossing.SignInStatus;
+import com.bc.bookcrossing.bookcrossing.Structures.SignInStatus;
 
 import java.util.List;
 

@@ -21,7 +21,8 @@
             android:hint="@string/user"
             android:textAppearance="@style/TextAppearance.AppCompat.Display2"
             android:inputType="textEmailAddress"
-            tools:text="USERNAME" />
+            tools:text="USERNAME"
+            android:autofillHints="" />
 
         <EditText
             android:id="@+id/password"
@@ -30,7 +31,8 @@
             android:hint="@string/password"
             android:inputType="textPassword"
             android:textAppearance="@style/TextAppearance.AppCompat.Display2"
-            tools:text="PASSWORD" />
+            tools:text="PASSWORD"
+            android:autofillHints="" />
 
         <Button
             android:id="@+id/loginButton"

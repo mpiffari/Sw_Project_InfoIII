@@ -3,8 +3,8 @@ package com.bc.bookcrossing.bookcrossing.GUI.Fragment;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.bc.bookcrossing.bookcrossing.Structure.Book;
-import com.bc.bookcrossing.bookcrossing.Structure.BookType;
+import com.bc.bookcrossing.bookcrossing.Structures.Book;
+import com.bc.bookcrossing.bookcrossing.Structures.BookType;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
