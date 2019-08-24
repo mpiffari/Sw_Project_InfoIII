@@ -61,6 +61,7 @@ public class ISBNScanFragment extends Fragment implements ObserverBookDataRegist
         return v;
     }
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,7 +80,10 @@ public class ISBNScanFragment extends Fragment implements ObserverBookDataRegist
             codeFormat = scanningResult.getFormatName();
             // send received data
             parentActivity.scanResultData(codeFormat, codeContent);
-            Log.d("Fragment content: ", codeContent);
+
+            if(codeContent != null) {
+                Log.d("Fragment content: ", codeContent);
+            }
 
             if(codeContent != null){
 
@@ -96,11 +100,13 @@ public class ISBNScanFragment extends Fragment implements ObserverBookDataRegist
                 BottomNavigationView bottomNavigationView;
                 bottomNavigationView = (BottomNavigationView) getActivity().findViewById(R.id.navigation);
                 bottomNavigationView.setSelectedItemId(R.id.book_registration);
+
             }
 
-
             ISBN = codeContent;
-            Log.d("ISBN:", ISBN);
+            if(ISBN != null){
+                Log.d("ISBN:", ISBN);
+            }
             searchBooks(ISBN);
 
 
@@ -130,12 +136,8 @@ public class ISBNScanFragment extends Fragment implements ObserverBookDataRegist
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
 
         // If the network is active and the search field is not empty, start a FetchBook AsyncTask.
-        if (networkInfo != null && networkInfo.isConnected() && queryString.length()!=0) {
-            Log.d("Result: ", "Search!");
+        if (networkInfo != null && networkInfo.isConnected()) {
             fetchBook.execute(queryString);
-            if(fetchBook.getSendBook() != null) {
-                Log.d("Receive: ", fetchBook.getSendBook().toString());
-            }
         }
         // Otherwise update the TextView to tell the user there is no connection or no search term.
         else {
@@ -146,7 +148,8 @@ public class ISBNScanFragment extends Fragment implements ObserverBookDataRegist
             }
         }
 
-        Book receiveBook = fetchBook.getSendBook();
+
+
 
     }
 }

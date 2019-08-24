@@ -1,6 +1,5 @@
 package com.bc.bookcrossing.bookcrossing.GUI.Fragment;
 
-import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -59,11 +58,6 @@ public class BookRegistrationFragment extends Fragment implements ObserverBookDa
     @Override
     public void onResume() {
         super.onResume();
-        Log.d("BookRegistration:", "OnResume");
-        if(getArguments() != null){
-            String receiveBook = getArguments().getString("book");
-            Log.d("Receive: ", receiveBook);
-        }
     }
 
     @Override
@@ -98,6 +92,8 @@ public class BookRegistrationFragment extends Fragment implements ObserverBookDa
 
         Button b = myView.findViewById(R.id.SubmitBookReg);
         b.setOnClickListener(this);
+
+
         return myView;
     }
 

@@ -21,7 +21,7 @@ import com.bc.bookcrossing.bookcrossing.GUI.Fragment.ScanResultReceiver;
 
 public class MainActivity extends AppCompatActivity implements ScanResultReceiver{
 
-
+    BottomNavigationView bottomNav;
     @Override
     protected void onResume() {
         super.onResume();
@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements ScanResultReceive
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        BottomNavigationView bottomNav = findViewById(R.id.navigation);
+        bottomNav = findViewById(R.id.navigation);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
 
         //I added this if statement to keep the selected fragment when rotating the device
@@ -72,7 +72,8 @@ public class MainActivity extends AppCompatActivity implements ScanResultReceive
                     }
 
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                            selectedFragment).commit();
+                            selectedFragment).addToBackStack(null).commit();
+
 
                     return true;
                 }
@@ -81,13 +82,28 @@ public class MainActivity extends AppCompatActivity implements ScanResultReceive
     @Override
     public void scanResultData(String codeFormat, String codeContent){
         // display it on screen
-        Log.d("FORMAT: ", codeFormat);
-        Log.d("CONTENT: ", codeContent);
+        if(codeContent != null && codeFormat != null) {
+            Log.d("FORMAT: ", codeFormat);
+            Log.d("CONTENT: ", codeContent);
+        }
     }
 
     @Override
     public void scanResultData(NoScanResultException noScanData) {
         //Toast.makeText(this, noScanData.getMessage(), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onBackPressed() {
+        MenuItem homeItem = bottomNav.getMenu().getItem(0);
+
+        if (bottomNav.getSelectedItemId() != homeItem.getItemId()) {
+
+            // Select home item
+            bottomNav.setSelectedItemId(homeItem.getItemId());
+        } else {
+            super.onBackPressed();
+        }
     }
 }
 

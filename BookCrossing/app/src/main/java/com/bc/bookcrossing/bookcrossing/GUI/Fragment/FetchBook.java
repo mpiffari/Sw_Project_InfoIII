@@ -1,9 +1,6 @@
 package com.bc.bookcrossing.bookcrossing.GUI.Fragment;
 
-import android.net.Uri;
 import android.os.AsyncTask;
-import android.os.Bundle;
-import android.os.Parcelable;
 import android.util.Log;
 
 import com.bc.bookcrossing.bookcrossing.Structure.Book;
@@ -23,7 +20,8 @@ public class FetchBook extends AsyncTask<String,Void,String> {
 
     // Class name for Log tag
     private static final String LOG_TAG = FetchBook.class.getSimpleName();
-    private Book sendBook;
+    private static Book sendBook;
+
 
     @Override
     protected String doInBackground(String... params) {
@@ -55,7 +53,7 @@ public class FetchBook extends AsyncTask<String,Void,String> {
                     .build();
             */
 
-            URL requestURL = new URL("https://www.googleapis.com/books/v1/volumes?q="+ queryString +":isbn&key=AIzaSyAi6ffwa0bpwcqM4t5vn1at47kqY_s9kIc");
+            URL requestURL = new URL("https://www.googleapis.com/books/v1/volumes?q=" + queryString + ":isbn&key=AIzaSyAi6ffwa0bpwcqM4t5vn1at47kqY_s9kIc");
 
             // Open the network connection.
             urlConnection = (HttpURLConnection) requestURL.openConnection();
@@ -114,9 +112,19 @@ public class FetchBook extends AsyncTask<String,Void,String> {
      * @param s Result from the doInBackground method containing the raw JSON response,
      *          or null if it failed.
      */
+
+
+
     @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
+        sendBook(s);
+
+
+    }
+
+
+    private Book sendBook(String s) {
         try {
             // Convert the response into a JSON object.
             JSONObject jsonObject = new JSONObject(s);
@@ -140,24 +148,19 @@ public class FetchBook extends AsyncTask<String,Void,String> {
                 try {
                     title = volumeInfo.getString("title");
 
-                    for(int i = 0; i < volumeInfo.getJSONArray("authors").length(); i++){
+                    for (int i = 0; i < volumeInfo.getJSONArray("authors").length(); i++) {
                         authors += volumeInfo.getJSONArray("authors").getString(i) + " ";
                     }
 
-                    yearOfPubblication  = volumeInfo.getInt("publishedDate");
+                    yearOfPubblication = volumeInfo.getInt("publishedDate");
 
                     Log.d("Result", title + " ; " + authors + " ; " + yearOfPubblication);
 
 
                     sendBook = new Book(title, authors, yearOfPubblication, 0, BookType.OTHER);
+                    Log.d("Result", sendBook.toString());
 
-                    Bundle bundle = new Bundle();
-                    bundle.putString("book", sendBook.toString());
-                    //set Fragmentclass Arguments
-                    BookRegistrationFragment fragobj = new BookRegistrationFragment();
-                    fragobj.setArguments(bundle);
-
-                } catch (Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
 
@@ -165,19 +168,21 @@ public class FetchBook extends AsyncTask<String,Void,String> {
             }
 
             // If both are found, display the result.
-            if (title != null && authors != ""){
+            if (title != null && authors != "") {
 
             } else {
                 // If none are found, update the UI to show failed results.
                 Log.d("Result: ", "NO");
             }
 
-        } catch (Exception e){
+        } catch (Exception e) {
             // If onPostExecute does not receive a proper JSON string,
             // update the UI to show failed results.
             Log.d("Result: ", "NO");
             e.printStackTrace();
         }
+
+        return sendBook;
     }
 
     public Book getSendBook() {
