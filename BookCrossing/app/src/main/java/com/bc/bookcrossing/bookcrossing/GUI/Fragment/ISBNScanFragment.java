@@ -5,7 +5,9 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +16,9 @@ import android.view.inputmethod.InputMethodManager;
 
 import com.bc.bookcrossing.bookcrossing.GUI.DataDispatcherSingleton;
 import com.bc.bookcrossing.bookcrossing.GUI.Observer.ObserverBookDataRegistration;
+import com.bc.bookcrossing.bookcrossing.MainActivity;
 import com.bc.bookcrossing.bookcrossing.R;
+import com.bc.bookcrossing.bookcrossing.Structure.Book;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
@@ -24,7 +28,7 @@ import com.google.zxing.integration.android.IntentResult;
 
 public class ISBNScanFragment extends Fragment implements ObserverBookDataRegistration {
 
-    private String codeFormat, codeContent;
+    private String codeFormat = null, codeContent = null;
     private final String noResultErrorMsg = "No scan data received!";
 
     private String ISBN = "";
@@ -75,11 +79,30 @@ public class ISBNScanFragment extends Fragment implements ObserverBookDataRegist
             codeFormat = scanningResult.getFormatName();
             // send received data
             parentActivity.scanResultData(codeFormat, codeContent);
-
             Log.d("Fragment content: ", codeContent);
-            ISBN = codeFormat;
+
+            if(codeContent != null){
+
+                Fragment bookRegistration = new BookRegistrationFragment();
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+                // Replace whatever is in the fragment_container view with this fragment,
+                // and add the transaction to the back stack if needed
+                transaction.replace(R.id.fragment_container, bookRegistration);
+                transaction.addToBackStack(null);
+
+                // Commit the transaction
+                transaction.commit();
+                BottomNavigationView bottomNavigationView;
+                bottomNavigationView = (BottomNavigationView) getActivity().findViewById(R.id.navigation);
+                bottomNavigationView.setSelectedItemId(R.id.book_registration);
+            }
+
+
+            ISBN = codeContent;
             Log.d("ISBN:", ISBN);
             searchBooks(ISBN);
+
 
         } else {
             // send exception
@@ -97,7 +120,7 @@ public class ISBNScanFragment extends Fragment implements ObserverBookDataRegist
     public void searchBooks(String isbn) {
         // Get the search string from the input field.
         String queryString = isbn;
-
+        FetchBook fetchBook = new FetchBook();
         // Hide the keyboard when the button is pushed.
 
 
@@ -109,7 +132,10 @@ public class ISBNScanFragment extends Fragment implements ObserverBookDataRegist
         // If the network is active and the search field is not empty, start a FetchBook AsyncTask.
         if (networkInfo != null && networkInfo.isConnected() && queryString.length()!=0) {
             Log.d("Result: ", "Search!");
-            new FetchBook().execute(queryString);
+            fetchBook.execute(queryString);
+            if(fetchBook.getSendBook() != null) {
+                Log.d("Receive: ", fetchBook.getSendBook().toString());
+            }
         }
         // Otherwise update the TextView to tell the user there is no connection or no search term.
         else {
@@ -119,5 +145,8 @@ public class ISBNScanFragment extends Fragment implements ObserverBookDataRegist
                 Log.d("Result: ", "NO");
             }
         }
+
+        Book receiveBook = fetchBook.getSendBook();
+
     }
 }

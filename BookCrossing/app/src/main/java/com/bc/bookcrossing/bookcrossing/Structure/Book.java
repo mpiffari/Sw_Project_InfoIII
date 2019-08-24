@@ -27,7 +27,7 @@ public class Book implements Serializable{
 	int yearOfPubblication;
 	private @Nullable int editionNumber;
 	private BookType type;
-
+	private String category;
 	
 	public Book(String title, String author, @Nullable int yearOfPubblication, @Nullable int editionNumber, BookType type) {
 		this.title = title;
@@ -40,6 +40,10 @@ public class Book implements Serializable{
 	public String getAuthor() {
 
 		return author;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
 	}
 
 	public void setAuthor(String author) {
@@ -77,6 +81,10 @@ public class Book implements Serializable{
 
 	public void setType(BookType type) {
 		this.type = type;
+	}
+
+	public String getCategory() {
+		return category;
 	}
 
 	public Book(){

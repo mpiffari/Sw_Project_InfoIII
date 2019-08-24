@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,6 +46,7 @@ public class BookRegistrationFragment extends Fragment implements ObserverBookDa
         super.onCreate(savedInstanceState);
         dispatcher = DataDispatcherSingleton.getInstance();
         dispatcher.register(this);
+        Log.d("BookRegistration:", "OnCreate");
     }
 
     @Override
@@ -55,9 +57,20 @@ public class BookRegistrationFragment extends Fragment implements ObserverBookDa
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        Log.d("BookRegistration:", "OnResume");
+        if(getArguments() != null){
+            String receiveBook = getArguments().getString("book");
+            Log.d("Receive: ", receiveBook);
+        }
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        Log.d("BookRegistration:", "OnCreateView");
         View myView = inflater.inflate(R.layout.fragment_book_registration, container, false);
 
         DataDispatcherSingleton.getInstance().register(this);
@@ -66,6 +79,8 @@ public class BookRegistrationFragment extends Fragment implements ObserverBookDa
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, Globals.BookTypes);
         adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         spinner.setAdapter(adapter);
+
+
 
         // Spinner click listener
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

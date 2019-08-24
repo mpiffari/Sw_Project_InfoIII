@@ -2,7 +2,12 @@ package com.bc.bookcrossing.bookcrossing.GUI.Fragment;
 
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
+
+import com.bc.bookcrossing.bookcrossing.Structure.Book;
+import com.bc.bookcrossing.bookcrossing.Structure.BookType;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -18,6 +23,7 @@ public class FetchBook extends AsyncTask<String,Void,String> {
 
     // Class name for Log tag
     private static final String LOG_TAG = FetchBook.class.getSimpleName();
+    private Book sendBook;
 
     @Override
     protected String doInBackground(String... params) {
@@ -33,6 +39,7 @@ public class FetchBook extends AsyncTask<String,Void,String> {
 
         // Attempt to query the Books API.
         try {
+            /*
             // Base URI for the Books API.
             final String BOOK_BASE_URL =  "https://www.googleapis.com/books/v1/volumes?";
 
@@ -46,8 +53,9 @@ public class FetchBook extends AsyncTask<String,Void,String> {
                     .appendQueryParameter(MAX_RESULTS, "10")
                     .appendQueryParameter(PRINT_TYPE, "books")
                     .build();
+            */
 
-            URL requestURL = new URL(builtURI.toString());
+            URL requestURL = new URL("https://www.googleapis.com/books/v1/volumes?q="+ queryString +":isbn&key=AIzaSyAi6ffwa0bpwcqM4t5vn1at47kqY_s9kIc");
 
             // Open the network connection.
             urlConnection = (HttpURLConnection) requestURL.openConnection();
@@ -115,36 +123,50 @@ public class FetchBook extends AsyncTask<String,Void,String> {
             // Get the JSONArray of book items.
             JSONArray itemsArray = jsonObject.getJSONArray("items");
 
-            // Initialize iterator and results fields.
-            int i = 0;
             String title = null;
-            String authors = null;
+            String authors = "";
+            int yearOfPubblication = 0;
+
 
             // Look for results in the items array, exiting when both the title and author
             // are found or when all items have been checked.
-            while (i < itemsArray.length() || (authors == null && title == null)) {
+            if (itemsArray.length() > 0 || (authors == "" && title == null && yearOfPubblication == 0)) {
                 // Get the current item information.
-                JSONObject book = itemsArray.getJSONObject(i);
+                JSONObject book = itemsArray.getJSONObject(0);
                 JSONObject volumeInfo = book.getJSONObject("volumeInfo");
 
                 // Try to get the author and title from the current item,
                 // catch if either field is empty and move on.
                 try {
                     title = volumeInfo.getString("title");
-                    authors = volumeInfo.getString("authors");
+
+                    for(int i = 0; i < volumeInfo.getJSONArray("authors").length(); i++){
+                        authors += volumeInfo.getJSONArray("authors").getString(i) + " ";
+                    }
+
+                    yearOfPubblication  = volumeInfo.getInt("publishedDate");
+
+                    Log.d("Result", title + " ; " + authors + " ; " + yearOfPubblication);
+
+
+                    sendBook = new Book(title, authors, yearOfPubblication, 0, BookType.OTHER);
+
+                    Bundle bundle = new Bundle();
+                    bundle.putString("book", sendBook.toString());
+                    //set Fragmentclass Arguments
+                    BookRegistrationFragment fragobj = new BookRegistrationFragment();
+                    fragobj.setArguments(bundle);
+
                 } catch (Exception e){
                     e.printStackTrace();
                 }
 
                 // Move to the next item.
-                i++;
             }
 
             // If both are found, display the result.
-            if (title != null && authors != null){
+            if (title != null && authors != ""){
 
-                Log.d("Titolo: ", title);
-               Log.d("Autore: ", authors);
             } else {
                 // If none are found, update the UI to show failed results.
                 Log.d("Result: ", "NO");
@@ -156,5 +178,9 @@ public class FetchBook extends AsyncTask<String,Void,String> {
             Log.d("Result: ", "NO");
             e.printStackTrace();
         }
+    }
+
+    public Book getSendBook() {
+        return sendBook;
     }
 }
