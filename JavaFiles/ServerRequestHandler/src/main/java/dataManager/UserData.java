@@ -34,7 +34,7 @@ public class UserData implements UserQuery{
 		
 		try {
 			// Debug all DB
-			if(true) {
+			if(false) {
 				stmt_debug_all = DBConnector.getDBConnector().prepareStatement("select * FROM Utente");
 				ResultSet rs_all_debug = stmt_debug_all.executeQuery();
 				ResultSetMetaData rsmd_all = rs_all_debug.getMetaData();
@@ -53,7 +53,7 @@ public class UserData implements UserQuery{
 				}
 			}
 			
-			if(true) {
+			if(false) {
 				// Debug query result
 				System.out.println("Debug query result");
 				stmt_debug = DBConnector.getDBConnector().prepareStatement(sql);
