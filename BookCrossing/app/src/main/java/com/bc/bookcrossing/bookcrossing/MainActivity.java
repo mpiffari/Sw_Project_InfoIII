@@ -1,19 +1,12 @@
 package com.bc.bookcrossing.bookcrossing;
 
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
-import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
 import com.bc.bookcrossing.bookcrossing.GUI.Fragment.BookRegistrationFragment;
@@ -57,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements ScanResultReceive
                     Fragment selectedFragment = null;
 
                     switch (item.getItemId()) {
-                        case R.id.login:
+                        case R.id.profile:
                             selectedFragment = new LoginFragment();
                             break;
                         case R.id.book_registration:
