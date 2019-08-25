@@ -8,5 +8,5 @@ public class Globals {
     public final static String reqType = "requestType:";
     public static String ISBN = "";
 
-    public static boolean isLoggedIn = true;
+    public static boolean isLoggedIn = false;
 }
