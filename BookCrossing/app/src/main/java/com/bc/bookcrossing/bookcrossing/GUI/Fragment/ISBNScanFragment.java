@@ -1,21 +1,28 @@
 package com.bc.bookcrossing.bookcrossing.GUI.Fragment;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.bc.bookcrossing.bookcrossing.GUI.DataDispatcherSingleton;
 import com.bc.bookcrossing.bookcrossing.GUI.Observer.ObserverBookDataRegistration;
 import com.bc.bookcrossing.bookcrossing.R;
+import com.bc.bookcrossing.bookcrossing.Structures.Book;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
@@ -27,7 +34,7 @@ public class ISBNScanFragment extends Fragment implements ObserverBookDataRegist
 
     private String codeFormat = null, codeContent = null;
     private final String noResultErrorMsg = "No scan data received!";
-
+    FetchBook fetchBook;
     private String ISBN = "";
 
     DataDispatcherSingleton dispatcher;
@@ -47,6 +54,8 @@ public class ISBNScanFragment extends Fragment implements ObserverBookDataRegist
 
         View v = inflater.inflate(R.layout.fragment_isbnscan, container, false);
 
+
+
         IntentIntegrator integrator = new IntentIntegrator(this.getActivity()).forSupportFragment(this);
         // use forSupportFragment or forFragment method to use fragments instead of activity
         integrator.setDesiredBarcodeFormats(IntentIntegrator.ONE_D_CODE_TYPES);
@@ -54,6 +63,13 @@ public class ISBNScanFragment extends Fragment implements ObserverBookDataRegist
         integrator.setResultDisplayDuration(0); // milliseconds to display result on screen after scan
         integrator.setCameraId(0);  // Use a specific camera of the device
         integrator.initiateScan();
+
+
+        if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CAMERA)
+                != PackageManager.PERMISSION_GRANTED) {
+            // here, Permission is not granted
+            ActivityCompat.requestPermissions(getActivity(), new String[] {android.Manifest.permission.CAMERA}, 50);
+        }
 
         return v;
     }
@@ -123,9 +139,8 @@ public class ISBNScanFragment extends Fragment implements ObserverBookDataRegist
     public void searchBooks(String isbn) {
         // Get the search string from the input field.
         String queryString = isbn;
-        FetchBook fetchBook = new FetchBook();
         // Hide the keyboard when the button is pushed.
-
+        fetchBook = new FetchBook();
 
         // Check the status of the network connection.
         ConnectivityManager connMgr = (ConnectivityManager)
@@ -144,9 +159,6 @@ public class ISBNScanFragment extends Fragment implements ObserverBookDataRegist
                 Log.d("Result: ", "NO");
             }
         }
-
-
-
 
     }
 }

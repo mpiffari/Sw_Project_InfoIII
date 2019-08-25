@@ -5,7 +5,7 @@
     android:id="@+id/BookRegistrationLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GUI.Fragment.BookRegistrationFragment">
+    tools:context=".GUI.Fragment.LoginFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -18,11 +18,11 @@
             android:id="@+id/user"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:autofillHints=""
             android:hint="@string/user"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display2"
             android:inputType="textEmailAddress"
-            tools:text="USERNAME"
-            android:autofillHints="" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+            tools:text="USERNAME" />
 
         <EditText
             android:id="@+id/password"
@@ -40,5 +40,24 @@
             android:layout_height="wrap_content"
             android:text="@string/login" />
 
+        <Button
+            android:id="@+id/signInButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/sign_in" />
+
+        <Button
+            android:id="@+id/leaveButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/leave" />
+
+        <TextView
+            android:id="@+id/loginStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Login status:" />
+
     </LinearLayout>
+
 </FrameLayout>

@@ -22,7 +22,6 @@ public class FetchBook extends AsyncTask<String,Void,String> {
     private static final String LOG_TAG = FetchBook.class.getSimpleName();
     private static Book sendBook;
 
-
     @Override
     protected String doInBackground(String... params) {
 
@@ -119,8 +118,6 @@ public class FetchBook extends AsyncTask<String,Void,String> {
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
         sendBook(s);
-
-
     }
 
 
