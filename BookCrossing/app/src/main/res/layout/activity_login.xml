@@ -70,7 +70,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="@string/action_sign_in"
+                android:text="@string/action_login"
+                android:textStyle="bold" />
+            <Button
+                android:id="@+id/btnSignIn"
+                style="?android:textAppearanceSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/no_account_yet"
                 android:textStyle="bold" />
 
         </LinearLayout>

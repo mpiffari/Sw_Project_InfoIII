@@ -71,6 +71,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        dispatcher = DataDispatcherSingleton.getInstance();
+        dispatcher.register(this);
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
@@ -190,7 +192,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         } else {
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
-            showProgress(true);
+            //showProgress(true);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
                 dispatcher.sendDataLogin(email, password);
             } else {
@@ -307,6 +309,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void run() {
+                //showProgress(false);
                 if(result){
                     //Toast.makeText(getActivity(), "Login OK", Toast.LENGTH_LONG).show();
                     Globals.isLoggedIn = true;
