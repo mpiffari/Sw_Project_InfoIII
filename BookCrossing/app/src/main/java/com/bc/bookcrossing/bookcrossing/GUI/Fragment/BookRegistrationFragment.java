@@ -1,5 +1,6 @@
 package com.bc.bookcrossing.bookcrossing.GUI.Fragment;
 
+import android.icu.util.IslamicCalendar;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -18,6 +19,10 @@ import com.bc.bookcrossing.bookcrossing.GUI.DataDispatcherSingleton;
 import com.bc.bookcrossing.bookcrossing.GUI.Observer.ObserverBookDataRegistration;
 import com.bc.bookcrossing.bookcrossing.Globals;
 import com.bc.bookcrossing.bookcrossing.R;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class BookRegistrationFragment extends Fragment implements ObserverBookDataRegistration, View.OnClickListener {
     private OnFragmentInteractionListener mListener;
@@ -46,6 +51,8 @@ public class BookRegistrationFragment extends Fragment implements ObserverBookDa
         dispatcher = DataDispatcherSingleton.getInstance();
         dispatcher.register(this);
         Log.d("BookRegistration:", "OnCreate");
+
+
     }
 
     @Override
@@ -70,13 +77,29 @@ public class BookRegistrationFragment extends Fragment implements ObserverBookDa
         DataDispatcherSingleton.getInstance().register(this);
 
         Spinner spinner = (Spinner) myView.findViewById(R.id.BookTypeSpinner);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, Globals.BookTypes);
+        ArrayList<String> bookTypes = new ArrayList<>();
+        bookTypes.addAll(Arrays.asList(Globals.types));
+
+
+        if(ISBNScanFragment.getScannedBook() != null){
+            Log.d("scan:", ISBNScanFragment.getScannedBook().toString());
+            bookTypes.add(ISBNScanFragment.getScannedBook().getType());
+            ((TextView) myView.findViewById(R.id.titleBook)).setText(ISBNScanFragment.getScannedBook().getTitle());
+            ((TextView) myView.findViewById(R.id.authorBook)).setText(ISBNScanFragment.getScannedBook().getAuthor());
+            ((TextView) myView.findViewById(R.id.Year_of_pubblication)).setText(String.valueOf(ISBNScanFragment.getScannedBook().getYearOfPubblication()));
+
+        }
+        else{
+            Log.d("scan:", "NO");
+        }
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, bookTypes);
         adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         spinner.setAdapter(adapter);
-
-
-
         // Spinner click listener
+        if(ISBNScanFragment.getScannedBook() != null){
+            spinner.setSelection(adapter.getCount() - 1);
+        }
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view,
                                        int position, long id) {

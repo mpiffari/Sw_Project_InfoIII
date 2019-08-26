@@ -17,10 +17,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bc.bookcrossing.bookcrossing.GUI.DataDispatcherSingleton;
 import com.bc.bookcrossing.bookcrossing.GUI.Observer.ObserverBookDataRegistration;
+import com.bc.bookcrossing.bookcrossing.Globals;
 import com.bc.bookcrossing.bookcrossing.R;
 import com.bc.bookcrossing.bookcrossing.Structures.Book;
 import com.google.zxing.integration.android.IntentIntegrator;
@@ -36,9 +39,8 @@ public class ISBNScanFragment extends Fragment implements ObserverBookDataRegist
     private final String noResultErrorMsg = "No scan data received!";
     FetchBook fetchBook;
     private String ISBN = "";
-
+    private static Book scannedBook = null;
     DataDispatcherSingleton dispatcher;
-
 
     @Override
     public void onDetach() {
@@ -53,8 +55,6 @@ public class ISBNScanFragment extends Fragment implements ObserverBookDataRegist
         // Inflate the layout for this fragment
 
         View v = inflater.inflate(R.layout.fragment_isbnscan, container, false);
-
-
 
         IntentIntegrator integrator = new IntentIntegrator(this.getActivity()).forSupportFragment(this);
         // use forSupportFragment or forFragment method to use fragments instead of activity
@@ -96,32 +96,23 @@ public class ISBNScanFragment extends Fragment implements ObserverBookDataRegist
 
             if(codeContent != null) {
                 Log.d("Fragment content: ", codeContent);
+                ISBN = codeContent;
+                searchBooks(ISBN);
             }
 
-            if(codeContent != null){
+            Fragment bookRegistration = new BookRegistrationFragment();
+            FragmentTransaction transaction = getFragmentManager().beginTransaction();
 
-                Fragment bookRegistration = new BookRegistrationFragment();
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+            // Replace whatever is in the fragment_container view with this fragment,
+            // and add the transaction to the back stack if needed
+            transaction.replace(R.id.fragment_container, bookRegistration);
+            transaction.addToBackStack(null);
 
-                // Replace whatever is in the fragment_container view with this fragment,
-                // and add the transaction to the back stack if needed
-                transaction.replace(R.id.fragment_container, bookRegistration);
-                transaction.addToBackStack(null);
-
-                // Commit the transaction
-                transaction.commit();
-                BottomNavigationView bottomNavigationView;
-                bottomNavigationView = (BottomNavigationView) getActivity().findViewById(R.id.navigation);
-                bottomNavigationView.setSelectedItemId(R.id.book_registration);
-
-            }
-
-            ISBN = codeContent;
-            if(ISBN != null){
-                Log.d("ISBN:", ISBN);
-            }
-            searchBooks(ISBN);
-
+            // Commit the transaction
+            transaction.commit();
+            BottomNavigationView bottomNavigationView;
+            bottomNavigationView = (BottomNavigationView) getActivity().findViewById(R.id.navigation);
+            bottomNavigationView.setSelectedItemId(R.id.book_registration);
 
         } else {
             // send exception
@@ -129,12 +120,24 @@ public class ISBNScanFragment extends Fragment implements ObserverBookDataRegist
         }
     }
 
-
     @Override
-    public void callbackRegistration(boolean result, String bookCodeID) {
+    public void callbackRegistration(final boolean result, final String bookCodeID) {getActivity().runOnUiThread(new Runnable() {
+        @Override
+        public void run() {
+            if(result){
+                Toast.makeText(getActivity(), "Book registration completed with BCID:" + bookCodeID, Toast.LENGTH_LONG).show();
+                ((TextView) getActivity().findViewById(R.id.titleBook)).setText("");
+                ((TextView) getActivity().findViewById(R.id.authorBook)).setText("");
+                ((TextView) getActivity().findViewById(R.id.Year_of_pubblication)).setText("");
+                ((TextView) getActivity().findViewById(R.id.EditionNumber)).setText("");
+                ((Spinner) getActivity().findViewById(R.id.BookTypeSpinner)).setSelection(0);
+            } else {
+                Toast.makeText(getActivity(), "Book registration failed", Toast.LENGTH_LONG).show();
+            }
+        }
+    });
 
     }
-
 
     public void searchBooks(String isbn) {
         // Get the search string from the input field.
@@ -159,6 +162,13 @@ public class ISBNScanFragment extends Fragment implements ObserverBookDataRegist
                 Log.d("Result: ", "NO");
             }
         }
+    }
 
+    public static Book getScannedBook() {
+        return scannedBook;
+    }
+
+    public static void setScannedBook(Book scannedBook) {
+        ISBNScanFragment.scannedBook = scannedBook;
     }
 }

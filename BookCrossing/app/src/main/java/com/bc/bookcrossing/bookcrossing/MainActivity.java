@@ -91,18 +91,7 @@ public class MainActivity extends AppCompatActivity implements ScanResultReceive
         //Toast.makeText(this, noScanData.getMessage(), Toast.LENGTH_SHORT).show();
     }
 
-    @Override
-    public void onBackPressed() {
-        MenuItem homeItem = bottomNav.getMenu().getItem(0);
 
-        if (bottomNav.getSelectedItemId() != homeItem.getItemId()) {
-
-            // Select home item
-            bottomNav.setSelectedItemId(homeItem.getItemId());
-        } else {
-            super.onBackPressed();
-        }
-    }
 }
 
 

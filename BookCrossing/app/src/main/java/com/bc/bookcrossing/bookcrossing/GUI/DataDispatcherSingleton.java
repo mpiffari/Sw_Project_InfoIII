@@ -103,8 +103,8 @@ public class DataDispatcherSingleton implements ReceiveData, DelegateSendData {
 
     @Override
     public void sendDataBookRegistration(String title, String author, String yearOfPubb, String edition, String bookTypeDesc) {
-        BookType bookType = BookType.fromString(bookTypeDesc);
-        Book newBook = new Book(title, author, Integer.parseInt(yearOfPubb), Integer.parseInt(edition), bookType);
+       // BookType bookType = BookType.fromString(bookTypeDesc);
+        Book newBook = new Book(title, author, Integer.parseInt(yearOfPubb), Integer.parseInt(edition), bookTypeDesc);
         p.generateRequestForDataBookRegistration(newBook);
     }
 
