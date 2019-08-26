@@ -56,7 +56,8 @@ public class Processing implements GenerateRequests, ReceiveAnswer {
 
     @Override
     public boolean generateRequestForDataBookRegistration(String ISBN) {
-        return singletonCommunication.send(RequestType.BOOK_REGISTRATION_AUTOMATIC.toString() + separator + ISBN);
+        String username = "Pippo";
+        return singletonCommunication.send(username + separator + Globals.reqType + RequestType.BOOK_REGISTRATION_AUTOMATIC.toString() + separator + ISBN);
     }
 
     @Override

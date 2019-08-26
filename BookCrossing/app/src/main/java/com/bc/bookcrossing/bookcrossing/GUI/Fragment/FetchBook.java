@@ -1,8 +1,10 @@
 package com.bc.bookcrossing.bookcrossing.GUI.Fragment;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.bc.bookcrossing.bookcrossing.Globals;
 import com.bc.bookcrossing.bookcrossing.Structures.Book;
 import com.bc.bookcrossing.bookcrossing.Structures.BookType;
 
@@ -130,12 +132,12 @@ public class FetchBook extends AsyncTask<String,Void,String> {
 
             String title = null;
             String authors = "";
-            int yearOfPubblication = 0;
-
+            String yearOfPubblication = null;
+            String type = "";
 
             // Look for results in the items array, exiting when both the title and author
             // are found or when all items have been checked.
-            if (itemsArray.length() > 0 || (authors == "" && title == null && yearOfPubblication == 0)) {
+            if (itemsArray.length() > 0 || (authors == "" && title == null && yearOfPubblication == null && type == "")) {
                 // Get the current item information.
                 JSONObject book = itemsArray.getJSONObject(0);
                 JSONObject volumeInfo = book.getJSONObject("volumeInfo");
@@ -149,13 +151,26 @@ public class FetchBook extends AsyncTask<String,Void,String> {
                         authors += volumeInfo.getJSONArray("authors").getString(i) + " ";
                     }
 
-                    yearOfPubblication = volumeInfo.getInt("publishedDate");
+                    yearOfPubblication = volumeInfo.getString("publishedDate");
+                    for (int i = 0; i < volumeInfo.getJSONArray("categories").length(); i++) {
+                        type += volumeInfo.getJSONArray("categories").getString(i) + " ";
+                    }
 
                     Log.d("Result", title + " ; " + authors + " ; " + yearOfPubblication);
 
+                    int indexOf = yearOfPubblication.indexOf("-");
+                    int year = 0;
 
-                    sendBook = new Book(title, authors, yearOfPubblication, 0, BookType.OTHER);
-                    Log.d("Result", sendBook.toString());
+                    if(indexOf != -1) {
+                        year = Integer.parseInt(yearOfPubblication.substring(0, indexOf));
+                    }
+                    else{
+                        year = Integer.parseInt(yearOfPubblication);
+                    }
+
+                    Log.d("year", "" + year);
+                    sendBook = new Book(title, authors, year, 1, type);
+                    ISBNScanFragment.setScannedBook(sendBook);
 
                 } catch (Exception e) {
                     e.printStackTrace();
