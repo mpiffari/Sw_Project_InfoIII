@@ -93,18 +93,6 @@ public class Communication implements SendRequests  {
         return singletonCommunication;
     }
 
-    private static boolean operationComplete(Future<? super Void> f) {
-        if (!f.isSuccess() && f.cause() instanceof ConnectException) {
-            System.out.println("[Info] The server is offline.");
-            sendResult = false;
-            return false;
-        } else {
-            System.out.println("[Info] The server is online.");
-            sendResult = true;
-            return true;
-        }
-    }
-
     @Override
     public boolean send(String data) {
         // Configure SSL.
@@ -128,8 +116,20 @@ public class Communication implements SendRequests  {
 
             try {
                 ch = b.connect(HOST, PORT);
-                ChannelFuture res = ch.addListener(Communication::operationComplete);
-                while(!res.isDone()) { }
+                ch.addListener(f -> {
+                    if (!f.isSuccess() && f.cause() instanceof ConnectException) {
+                        System.out.println("[Info] The server is offline.");
+                        sendResult = false;
+                    } else {
+                        System.out.println("[Info] The server is online.");
+                        sendResult = true;
+                    }
+                });
+
+                while(!ch.isDone()) {
+                    System.out.println("Wait");
+                }
+
                 if(sendResult == false) {
                     return false;
                 } else {
@@ -160,7 +160,7 @@ public class Communication implements SendRequests  {
             }
         } finally {
             //group.shutdownGracefully();
-            return true;
+            return sendResult;
         }
     }
 }

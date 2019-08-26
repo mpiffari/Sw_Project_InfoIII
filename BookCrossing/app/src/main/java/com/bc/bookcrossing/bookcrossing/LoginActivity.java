@@ -84,54 +84,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mLoginButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
+                showProgress(true);
                 attemptLogin();
             }
         });
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
-    }
-
-    private void populateAutoComplete() {
-        if (!mayRequestContacts()) {
-            return;
-        }
-        getLoaderManager().initLoader(0, null, this);
-    }
-
-    private boolean mayRequestContacts() {
-        /*if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-            return true;
-        }
-        if (checkSelfPermission(READ_CONTACTS) == PackageManager.PERMISSION_GRANTED) {
-            return true;
-        }
-        if (shouldShowRequestPermissionRationale(READ_CONTACTS)) {
-            Snackbar.make(mUsernameView, R.string.permission_rationale, Snackbar.LENGTH_INDEFINITE)
-                    .setAction(android.R.string.ok, new View.OnClickListener() {
-                        @Override
-                        @TargetApi(Build.VERSION_CODES.M)
-                        public void onClick(View v) {
-                            requestPermissions(new String[]{READ_CONTACTS}, REQUEST_READ_CONTACTS);
-                        }
-                    });
-        } else {
-            requestPermissions(new String[]{READ_CONTACTS}, REQUEST_READ_CONTACTS);
-        }*/
-        return false;
-    }
-
-    /**
-     * Callback received when a permissions request has been completed.
-     */
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-                                           @NonNull int[] grantResults) {
-        if (requestCode == REQUEST_READ_CONTACTS) {
-            if (grantResults.length == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                populateAutoComplete();
-            }
-        }
     }
 
     private void attemptLogin() {
@@ -178,9 +137,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
                 boolean result = dispatcher.sendDataLogin(email, password);
                 if(result == false) {
+                    showProgress(false);
                     Toast.makeText(LoginActivity.this, "Problem with Server connection!", Toast.LENGTH_LONG).show();
                 }
             } else {
+                showProgress(false);
                 Toast.makeText(LoginActivity.this, "Login not completed due to an old device version", Toast.LENGTH_LONG).show();
             }
         }
@@ -196,6 +157,80 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         //TODO: Replace this with your own logic
         //return password.length() > 4;
         return true;
+    }
+
+    @Override
+    public void callbackLogin(final boolean result, @Nullable final LoginStatus s) {
+        LoginActivity.this.runOnUiThread(new Runnable() {
+            @RequiresApi(api = Build.VERSION_CODES.M)
+            @Override
+            public void run() {
+                showProgress(false);
+                if(result){
+                    //Toast.makeText(getActivity(), "Login OK", Toast.LENGTH_LONG).show();
+                    Globals.isLoggedIn = true;
+                    Intent MainIntent = new Intent(LoginActivity.this, MainActivity.class);
+                    startActivity(MainIntent);
+                    Toast.makeText(LoginActivity.this,"Login completed successfully.", Toast.LENGTH_LONG).show();
+                } else {
+                    Globals.isLoggedIn = false;
+                    if(s == LoginStatus.WRONG_USERNAME) {
+                        //usernameText.setText("");
+                        mUsernameView.setError(getString(R.string.error_incorrect_username));
+                        mUsernameView.requestFocus();
+                    }
+                    if(s == LoginStatus.WRONG_PASSWORD) {
+                        //pwdText.setText("");
+                        mPasswordView.setError(getString(R.string.error_incorrect_password));
+                        mPasswordView.requestFocus();
+                    }
+                    //Toast.makeText(getActivity(), "Error during login", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+    }
+
+    // Function not really for us application
+
+    private void populateAutoComplete() {
+        if (!mayRequestContacts()) {
+            return;
+        }
+        getLoaderManager().initLoader(0, null, this);
+    }
+
+    private boolean mayRequestContacts() {
+        /*if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            return true;
+        }
+        if (checkSelfPermission(READ_CONTACTS) == PackageManager.PERMISSION_GRANTED) {
+            return true;
+        }
+        if (shouldShowRequestPermissionRationale(READ_CONTACTS)) {
+            Snackbar.make(mUsernameView, R.string.permission_rationale, Snackbar.LENGTH_INDEFINITE)
+                    .setAction(android.R.string.ok, new View.OnClickListener() {
+                        @Override
+                        @TargetApi(Build.VERSION_CODES.M)
+                        public void onClick(View v) {
+                            requestPermissions(new String[]{READ_CONTACTS}, REQUEST_READ_CONTACTS);
+                        }
+                    });
+        } else {
+            requestPermissions(new String[]{READ_CONTACTS}, REQUEST_READ_CONTACTS);
+        }*/
+        return false;
+    }
+    /**
+     * Callback received when a permissions request has been completed.
+     */
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
+        if (requestCode == REQUEST_READ_CONTACTS) {
+            if (grantResults.length == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                populateAutoComplete();
+            }
+        }
     }
 
     /**
@@ -259,21 +294,17 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             emails.add(cursor.getString(ProfileQuery.ADDRESS));
             cursor.moveToNext();
         }
-
         addEmailsToAutoComplete(emails);
     }
 
     @Override
-    public void onLoaderReset(Loader<Cursor> cursorLoader) {
-
-    }
+    public void onLoaderReset(Loader<Cursor> cursorLoader) {}
 
     private void addEmailsToAutoComplete(List<String> emailAddressCollection) {
         //Create adapter to tell the AutoCompleteTextView what to show in its dropdown list.
         ArrayAdapter<String> adapter =
                 new ArrayAdapter<>(LoginActivity.this,
                         android.R.layout.simple_dropdown_item_1line, emailAddressCollection);
-
         mUsernameView.setAdapter(adapter);
     }
 
@@ -284,38 +315,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         };
         int ADDRESS = 0;
         int IS_PRIMARY = 1;
-    }
-
-
-    @Override
-    public void callbackLogin(final boolean result, @Nullable final LoginStatus s) {
-        LoginActivity.this.runOnUiThread(new Runnable() {
-            @RequiresApi(api = Build.VERSION_CODES.M)
-            @Override
-            public void run() {
-                //showProgress(false);
-                if(result){
-                    //Toast.makeText(getActivity(), "Login OK", Toast.LENGTH_LONG).show();
-                    Globals.isLoggedIn = true;
-                    Intent MainIntent = new Intent(LoginActivity.this, MainActivity.class);
-                    startActivity(MainIntent);
-                    Toast.makeText(LoginActivity.this,"Login completed successfully.", Toast.LENGTH_LONG).show();
-                } else {
-                    Globals.isLoggedIn = false;
-                    if(s == LoginStatus.WRONG_USERNAME) {
-                        //usernameText.setText("");
-                        mUsernameView.setError(getString(R.string.error_incorrect_username));
-                        mUsernameView.requestFocus();
-                    }
-                    if(s == LoginStatus.WRONG_PASSWORD) {
-                        //pwdText.setText("");
-                        mPasswordView.setError(getString(R.string.error_incorrect_password));
-                        mPasswordView.requestFocus();
-                    }
-                    //Toast.makeText(getActivity(), "Error during login", Toast.LENGTH_LONG).show();
-                }
-            }
-        });
     }
 }
 
