@@ -23,12 +23,13 @@ public class FetchBook extends AsyncTask<String,Void,String> {
     // Class name for Log tag
     private static final String LOG_TAG = FetchBook.class.getSimpleName();
     private static Book sendBook;
+    private String queryString;
 
     @Override
     protected String doInBackground(String... params) {
 
         // Get the search string
-        String queryString = params[0];
+        queryString = params[0];
 
 
         // Set up variables for the try block that need to be closed in the finally block.
@@ -169,7 +170,7 @@ public class FetchBook extends AsyncTask<String,Void,String> {
                     }
 
                     Log.d("year", "" + year);
-                    sendBook = new Book(title, authors, year, 1, type);
+                    sendBook = new Book(title, authors, year, 1, type, queryString);
                     ISBNScanFragment.setScannedBook(sendBook);
 
                 } catch (Exception e) {

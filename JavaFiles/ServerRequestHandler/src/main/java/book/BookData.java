@@ -116,7 +116,7 @@ public class BookData implements BookQuery{
 			
 			while(rs.next()) {
 				//System.out.println("#_ " + rs.getString(1) +"  " +rs.getString(2));
-				result.add(new Book(rs.getString(1), rs.getString(2), 0,0,BookType.ACTION));
+				result.add(new Book(rs.getString(1), rs.getString(2), 0,0, "ACTION"));
 			}
 			
 		} catch (SQLException e) {

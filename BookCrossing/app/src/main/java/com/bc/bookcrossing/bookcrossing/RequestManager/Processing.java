@@ -57,7 +57,7 @@ public class Processing implements GenerateRequests, ReceiveAnswer {
     @Override
     public boolean generateRequestForDataBookRegistrationAuto(Book book, String ISBN) {
         String username = "Pippo";
-        return singletonCommunication.send(username + separator + Globals.reqType + RequestType.BOOK_REGISTRATION_AUTOMATIC.toString() + separator + book.toString() + separator + ISBN);
+        return singletonCommunication.send(username + separator + Globals.reqType + RequestType.BOOK_REGISTRATION_AUTOMATIC.toString() + separator + book.toString() + "," + ISBN);
     }
 
     @Override
@@ -97,6 +97,7 @@ public class Processing implements GenerateRequests, ReceiveAnswer {
                 DataDispatcherSingleton.getInstance().callbackRegistration(res == 1 ? true : false, BCID);
                 break;
             case BOOK_RESERVATION:
+
                 break;
             case LOGIN:
                 int result = data.indexOf(":", i+1);
@@ -122,6 +123,11 @@ public class Processing implements GenerateRequests, ReceiveAnswer {
             case SIGN_IN:
                 break;
             case BOOK_REGISTRATION_AUTOMATIC:
+                k = data.indexOf(":", i+1);
+                kk = data.indexOf(":", k+1);
+                res = Integer.parseInt(data.substring(k+1,k+2));
+                BCID = data.substring(kk+1);
+                DataDispatcherSingleton.getInstance().callbackRegistration(res == 1 ? true : false, BCID);
                 break;
             case PROFILE_INFO:
                 break;
