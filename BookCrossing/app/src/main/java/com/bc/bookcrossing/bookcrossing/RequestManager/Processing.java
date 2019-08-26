@@ -36,21 +36,33 @@ public class Processing implements GenerateRequests, ReceiveAnswer {
 
     @Override
     public boolean generateRequestForDataBookSearch(String title, String author) {
-        if(Globals.usernameLoggedIn == null) {
+        if (Globals.usernameLoggedIn == null) {
             Log.d("Processing", "[ASSERT]: no username saved!");
             return false;
         } else {
             String username = Globals.usernameLoggedIn;
             String request = "";
-            if(title.length() == 0) {
-                request = "AUTHOR:"+ author;
-            } else if(author.length() == 0) {
+            if (title.length() == 0) {
+                request = "AUTHOR:" + author;
+            } else if (author.length() == 0) {
                 request = "TITLE:" + title;
             } else {
-                request = "TITLE:" + title + separator + "AUTHOR:"+ author;
+                request = "TITLE:" + title + separator + "AUTHOR:" + author;
             }
             return singletonCommunication.send(username + separator + Globals.reqType + RequestType.BOOK_SEARCH.toString() + separator + request);
         }
+    }
+
+    @Override
+    public boolean generateRequestForDataBookRegistrationAuto(Book book, String ISBN) {
+        if (Globals.usernameLoggedIn == null) {
+            Log.d("Processing", "[ASSERT]: no username saved!");
+            return false;
+        } else {
+            String username = Globals.usernameLoggedIn;
+            return singletonCommunication.send(username + separator + Globals.reqType + RequestType.BOOK_REGISTRATION_AUTOMATIC.toString() + separator + book.toString() + "," + ISBN);
+        }
+    }
 
     public boolean generateRequestForDataBookRegistrationManual(Book book) {
         if (Globals.usernameLoggedIn == null) {
@@ -77,12 +89,6 @@ public class Processing implements GenerateRequests, ReceiveAnswer {
     @Override
     public boolean generateRequestForDataTakenBooks() {
         return singletonCommunication.send(RequestType.TAKEN_BOOKS.toString());
-    }
-
-    @Override
-    public boolean generateRequestForDataBookRegistrationAuto(Book book, String ISBN) {
-        String username = "Pippo";
-        return singletonCommunication.send(username + separator + Globals.reqType + RequestType.BOOK_REGISTRATION_AUTOMATIC.toString() + separator + book.toString() + "," + ISBN);
     }
 
     @Override
