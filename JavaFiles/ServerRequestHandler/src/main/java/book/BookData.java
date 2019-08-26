@@ -79,7 +79,7 @@ public class BookData implements BookQuery{
 	 */
 	
 	public int reserveBook(Book book, String username) {
-		if(searchBook(book.getTitle()) != null) {
+		if(searchBookByTitle(book.getTitle()) != null) {
 			//ResultSet rs = searchBook(book.getTitle()); //ho i libri che cerco e relative posizioni
 			
 			//algoritmo->da sopra ho posizione del libro. con query database sfruttando param user ricavo posizione di chi prenota
@@ -94,21 +94,16 @@ public class BookData implements BookQuery{
 		
 	}
 	
-	/*public static void main(String[] args) {
-		BookData.getInstance().searchBook("SS");
-	}*/
-	
 	/**
 	 * ricerca il libro per titolo
 	 * @param book
 	 * @return 
-	 */
-	
-	public ArrayList<Book> searchBook(String title) {
+	 */	
+	public static ArrayList<Book> searchBookByTitle(String title) {
 		ArrayList<Book> result = new ArrayList<Book>();
 		
 		//String sql = "SELECT Titolo, Autore FROM Libro AS L JOIN Possesso AS P ON L.BCID = P.LIBRO WHERE Titolo = ?";
-		String sql = "SELECT Titolo, Autore FROM Libro L WHERE Titolo = ?";
+		String sql = "SELECT * FROM Libro L WHERE Titolo = ?";
 		PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(sql);
 		try {
 			stmt.setString(1, title);
@@ -116,7 +111,19 @@ public class BookData implements BookQuery{
 			
 			while(rs.next()) {
 				//System.out.println("#_ " + rs.getString(1) +"  " +rs.getString(2));
-				result.add(new Book(rs.getString(1), rs.getString(2), 0,0, "ACTION"));
+				String BCID = rs.getString(1);
+				String t = rs.getString(2);
+				String author = rs.getString(3);
+				int pubbDate = Integer.parseInt(rs.getString(4) == null ? "0" : rs.getString(4));
+				String isbn = rs.getString(5);
+				String proprietario = rs.getString(6);
+				
+				//TODO: gestire Type e Edition number
+				Book b = new Book(t,author, pubbDate, 0, "Other...");
+				b.setProprietario(proprietario);
+				b.setBCID(BCID);
+				b.setISBN(isbn);
+				result.add(b);
 			}
 			
 		} catch (SQLException e) {
@@ -125,5 +132,83 @@ public class BookData implements BookQuery{
 		
 		return result;
 	}
-
+	
+	/**
+	 * ricerca il libro per autore
+	 * @param book
+	 * @return 
+	 */
+	public static ArrayList<Book> searchBookByAuthor(String author) {
+		ArrayList<Book> result = new ArrayList<Book>();
+		
+		//String sql = "SELECT Titolo, Autore FROM Libro AS L JOIN Possesso AS P ON L.BCID = P.LIBRO WHERE Titolo = ?";
+		String sql = "SELECT Titolo, Autore FROM Libro L WHERE Autore = ?";
+		PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(sql);
+		try {
+			stmt.setString(1, author);
+			ResultSet rs = stmt.executeQuery();
+			
+			while(rs.next()) {
+				//System.out.println("#_ " + rs.getString(1) +"  " +rs.getString(2));
+				String BCID = rs.getString(1);
+				String t = rs.getString(2);
+				String a = rs.getString(3);
+				int pubbDate = Integer.parseInt(rs.getString(4) == null ? "0" : rs.getString(4));
+				String isbn = rs.getString(5);
+				String proprietario = rs.getString(6);
+				
+				//TODO: gestire Type e Edition number
+				Book b = new Book(t,a, pubbDate, 0, "Other...");
+				b.setProprietario(proprietario);
+				b.setBCID(BCID);
+				b.setISBN(isbn);
+				result.add(b);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	
+	/**
+	 * ricerca il libro per titolo AND autore
+	 * @param book
+	 * @return 
+	 */
+	public static ArrayList<Book> searchBook(String title, String author) {
+		ArrayList<Book> result = new ArrayList<Book>();
+		
+		//String sql = "SELECT Titolo, Autore FROM Libro AS L JOIN Possesso AS P ON L.BCID = P.LIBRO WHERE Titolo = ?";
+		String sql = "SELECT * FROM Libro L WHERE Titlo = ? AND Autore = ?";
+		PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(sql);
+		try {
+			stmt.setString(1, title);
+			stmt.setString(2, author);
+			ResultSet rs = stmt.executeQuery();
+			
+			while(rs.next()) {
+				//System.out.println("#_ " + rs.getString(1) +"  " +rs.getString(2));
+				String BCID = rs.getString(1);
+				String t = rs.getString(2);
+				String a = rs.getString(3);
+				int pubbDate = Integer.parseInt(rs.getString(4) == null ? "0" : rs.getString(4));
+				String isbn = rs.getString(5);
+				String proprietario = rs.getString(6);
+				
+				//TODO: gestire Type e Edition number
+				Book b = new Book(t,a, pubbDate, 0, "Other...");
+				b.setProprietario(proprietario);
+				b.setBCID(BCID);
+				b.setISBN(isbn);
+				result.add(b);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
 }

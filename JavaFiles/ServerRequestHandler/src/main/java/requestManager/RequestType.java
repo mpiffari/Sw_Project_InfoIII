@@ -8,7 +8,8 @@ public enum RequestType {
     BOOK_REGISTRATION_AUTOMATIC("4"),
     PROFILE_INFO("5"),
     TAKEN_BOOKS("6"),
-    PICK_UP("7");
+    PICK_UP("7"),
+	BOOK_SEARCH("8");
 
     public String description;
 
