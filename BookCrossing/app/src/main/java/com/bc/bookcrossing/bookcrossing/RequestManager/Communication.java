@@ -1,5 +1,7 @@
 package com.bc.bookcrossing.bookcrossing.RequestManager;
 
+import java.net.ConnectException;
+
 import javax.net.ssl.SSLException;
 
 import io.netty.bootstrap.Bootstrap;
@@ -21,6 +23,7 @@ import io.netty.handler.codec.string.StringEncoder;
 import io.netty.handler.ssl.SslContext;
 import io.netty.handler.ssl.SslContextBuilder;
 import io.netty.handler.ssl.util.InsecureTrustManagerFactory;
+import io.netty.util.concurrent.Future;
 
 @ChannelHandler.Sharable
 class ClientHandler extends SimpleChannelInboundHandler<String> {
@@ -76,6 +79,7 @@ public class Communication implements SendRequests  {
     public static final Communication singletonCommunication = new Communication();
     private static final String port = "5000";
     private static final String ip = "35.180.103.132";
+    private static boolean sendResult = true;
 
     private static final boolean SSL = System.getProperty("ssl") != null;
     public static final String HOST = System.getProperty("host", ip);
@@ -90,7 +94,7 @@ public class Communication implements SendRequests  {
     }
 
     @Override
-    public void send(String data) {
+    public boolean send(String data) {
         // Configure SSL.
         SslContext sslCtx = null;
         if (SSL) {
@@ -107,25 +111,42 @@ public class Communication implements SendRequests  {
         try {
             Bootstrap b = new Bootstrap();
             b.group(group).channel(NioSocketChannel.class).handler(new ClientInitializer(sslCtx));
-
             // Start the connection attempt.
-            Channel ch = null;
+            ChannelFuture ch = null;
 
-            while(ch  == null || !ch.isOpen()) {
-                try {
-                    ch = b.connect(HOST, PORT).sync().channel();
-                } catch (InterruptedException e) {
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e1) {
-                        // TODO Auto-generated catch block
-                        e1.printStackTrace();
+            try {
+                ch = b.connect(HOST, PORT);
+                ch.addListener(f -> {
+                    if (!f.isSuccess() && f.cause() instanceof ConnectException) {
+                        System.out.println("[Info] The server is offline.");
+                        sendResult = false;
+                    } else {
+                        System.out.println("[Info] The server is online.");
+                        sendResult = true;
                     }
+                });
+
+                while(!ch.isDone()) {
+                    System.out.println("Wait");
+                }
+
+                if(sendResult == false) {
+                    return false;
+                } else {
+                    ch.await();
+                }
+            } catch (InterruptedException e) {
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e1) {
+                    // TODO Auto-generated catch block
+                    e1.printStackTrace();
+                    return false;
                 }
             }
 
             ChannelFuture lastWriteFuture = null;
-            lastWriteFuture = ch.writeAndFlush(data + "\r\n");
+            lastWriteFuture = ch.channel().writeAndFlush(data + "\r\n");
 
             // Wait until all messages are flushed before closing the channel.
             if (lastWriteFuture != null) {
@@ -134,10 +155,12 @@ public class Communication implements SendRequests  {
                 } catch (InterruptedException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
+                    return false;
                 }
             }
         } finally {
             //group.shutdownGracefully();
+            return sendResult;
         }
     }
 }

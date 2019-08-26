@@ -5,11 +5,11 @@ import com.bc.bookcrossing.bookcrossing.Structures.User;
 import java.util.Date;
 
 public interface GenerateRequests {
-    public void generateRequestForDataSignIn(String name, String lastName, String username, Date DOB, String[] contacts, String password, int actionArea); //TODO : LAT e LONG
-    public void generateRequestForDataPickUp(String BCID);
-    public void generateRequestForDataTakenBooks();
-    public void generateRequestForDataBookRegistration(String ISBN);
-    public void generateRequestForDataLogin(User user);
-    public void generateRequestForDataProfileInformations(String username, String password);
-    public void generateRequestForDataBookRegistration(Book book);
+    public boolean generateRequestForDataSignIn(String name, String lastName, String username, Date DOB, String[] contacts, String password, int actionArea); //TODO : LAT e LONG
+    public boolean generateRequestForDataPickUp(String BCID);
+    public boolean generateRequestForDataTakenBooks();
+    public boolean generateRequestForDataBookRegistration(String ISBN);
+    public boolean generateRequestForDataLogin(User user);
+    public boolean generateRequestForDataProfileInformations(String username, String password);
+    public boolean generateRequestForDataBookRegistration(Book book);
 }

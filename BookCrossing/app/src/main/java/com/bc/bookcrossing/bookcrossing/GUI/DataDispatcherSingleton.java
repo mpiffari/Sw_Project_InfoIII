@@ -51,7 +51,7 @@ public class DataDispatcherSingleton implements ReceiveData, DelegateSendData {
     //region Delegate SendData functions
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
-    public void sendDataLogin(String username, String password) {
+    public boolean sendDataLogin(String username, String password) {
 
         // HASH 256
         MessageDigest digest = null;
@@ -63,7 +63,7 @@ public class DataDispatcherSingleton implements ReceiveData, DelegateSendData {
         byte[] encodedPsw = digest.digest(password.getBytes(StandardCharsets.UTF_8));
 
         User u = new  User(username, this.bytesToHex(encodedPsw));
-        p.generateRequestForDataLogin(u);
+        return p.generateRequestForDataLogin(u);
     }
 
     private static String bytesToHex(byte[] hash) {
@@ -78,40 +78,40 @@ public class DataDispatcherSingleton implements ReceiveData, DelegateSendData {
 
 
     @Override
-    public void sendDataSignIn(String name, String lastName, String username, Date DOB, String[] contacts, String password, int actionArea) {
+    public boolean sendDataSignIn(String name, String lastName, String username, Date DOB, String[] contacts, String password, int actionArea) {
         //TODO CONTROLLO MINIMO
-        p.generateRequestForDataSignIn(name, lastName, username, DOB, contacts, password, actionArea);
+        return p.generateRequestForDataSignIn(name, lastName, username, DOB, contacts, password, actionArea);
     }
 
     @Override
-    public void sendDataPickUp(String BCID) {
+    public boolean sendDataPickUp(String BCID) {
         //TODO CONTROLLO MINIMO
-        p.generateRequestForDataPickUp(BCID);
+        return p.generateRequestForDataPickUp(BCID);
     }
 
     @Override
-    public void sendDataTakenBooks() {
+    public boolean sendDataTakenBooks() {
         //TODO CONTROLLO MINIMO
-        p.generateRequestForDataTakenBooks();
+        return p.generateRequestForDataTakenBooks();
     }
 
     @Override
-    public void sendDataBookRegistration(String ISBN) {
+    public boolean sendDataBookRegistration(String ISBN) {
         //TODO CONTROLLO MINIMO
-        p.generateRequestForDataBookRegistration(ISBN);
+        return p.generateRequestForDataBookRegistration(ISBN);
     }
 
     @Override
-    public void sendDataBookRegistration(String title, String author, String yearOfPubb, String edition, String bookTypeDesc) {
+    public boolean sendDataBookRegistration(String title, String author, String yearOfPubb, String edition, String bookTypeDesc) {
        // BookType bookType = BookType.fromString(bookTypeDesc);
         Book newBook = new Book(title, author, Integer.parseInt(yearOfPubb), Integer.parseInt(edition), bookTypeDesc);
-        p.generateRequestForDataBookRegistration(newBook);
+        return p.generateRequestForDataBookRegistration(newBook);
     }
 
     @Override
-    public void sendDataProfileInformations(String username, String password) {
+    public boolean sendDataProfileInformations(String username, String password) {
         //TODO CONTROLLO MINIMO
-        p.generateRequestForDataProfileInformations(username, password);
+        return p.generateRequestForDataProfileInformations(username, password);
     }
     //endregion
 
