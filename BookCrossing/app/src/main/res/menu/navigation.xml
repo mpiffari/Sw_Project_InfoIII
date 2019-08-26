@@ -1,27 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
         android:id="@+id/profile"
         android:icon="@drawable/ic_person_outline_black_24dp"
-        android:title="Profile" />
+        android:title="@string/profile" />
 
     <item
         android:id="@+id/book_registration"
         android:icon="@drawable/ic_library_books_black_24dp"
-        android:title="Book registration" />
+        android:title="@string/book_registration" />
 
     <item
         android:id="@+id/isbn_scan"
         android:icon="@drawable/ic_border_left_black_24dp"
-        android:title="Scan ISBN" />
+        android:title="@string/scan_isbn" />
 
     <item
-        android:id="@+id/book_reservation"
-        android:icon="@drawable/ic_notifications_black_24dp"
-        android:title="Book reservation" />
+        android:id="@+id/book_search"
+        android:icon="@drawable/ic_action_search"
+        android:title="@string/book_research" />
     <item
         android:id="@+id/navigation_notifications"
         android:icon="@drawable/ic_notifications_black_24dp"
-        android:title="Null" />
+        android:title="@string/foo" />
 </menu>

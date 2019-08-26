@@ -1,5 +1,7 @@
 package com.bc.bookcrossing.bookcrossing.RequestManager;
 
+import android.util.Log;
+
 import com.bc.bookcrossing.bookcrossing.GUI.DataDispatcherSingleton;
 import com.bc.bookcrossing.bookcrossing.Globals;
 import com.bc.bookcrossing.bookcrossing.Structures.Book;
@@ -11,6 +13,8 @@ import java.security.NoSuchAlgorithmException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
+
 import static com.bc.bookcrossing.bookcrossing.RequestManager.Communication.singletonCommunication;
 
 public class Processing implements GenerateRequests, ReceiveAnswer {
@@ -32,9 +36,32 @@ public class Processing implements GenerateRequests, ReceiveAnswer {
 
     @Override
     public boolean generateRequestForDataBookRegistration(Book book) {
-        //TODO: check username
-        String username = "Pippo";
-        return singletonCommunication.send(username + separator + Globals.reqType + RequestType.BOOK_REGISTRATION_MANUAL.toString() + separator + book.toString());
+        if (Globals.usernameLoggedIn == null) {
+            Log.d("Processing", "[ASSERT]: no username saved!");
+            return false;
+        } else {
+            String username = Globals.usernameLoggedIn;
+            return singletonCommunication.send(username + separator + Globals.reqType + RequestType.BOOK_REGISTRATION_MANUAL.toString() + separator + book.toString());
+        }
+    }
+
+    @Override
+    public boolean generateRequestForDataBookSearch(String title, String author) {
+        if(Globals.usernameLoggedIn == null) {
+            Log.d("Processing", "[ASSERT]: no username saved!");
+            return false;
+        } else {
+            String username = Globals.usernameLoggedIn;
+            String request = "";
+            if(title.length() == 0) {
+                request = "AUTHOR:"+ author;
+            } else if(author.length() == 0) {
+                request = "TITLE:" + title;
+            } else {
+                request = "TITLE:" + title + separator + "AUTHOR:"+ author;
+            }
+            return singletonCommunication.send(username + separator + Globals.reqType + RequestType.BOOK_SEARCH.toString() + separator + request);
+        }
     }
 
     @Override
@@ -128,6 +155,10 @@ public class Processing implements GenerateRequests, ReceiveAnswer {
             case TAKEN_BOOKS:
                 break;
             case PICK_UP:
+                break;
+            case BOOK_SEARCH:
+                List<Book> booksFound = null;
+                DataDispatcherSingleton.getInstance().callbackBookSearch(booksFound);
                 break;
         }
     }

@@ -6,5 +6,4 @@ import java.util.List;
 
 public interface ObserverDataSignIn extends ObserverForUiInformation {
     public void callbackSignIn(List<SignInStatus> status);
-
 }

@@ -8,7 +8,6 @@ import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.app.LoaderManager.LoaderCallbacks;
 
@@ -38,8 +37,6 @@ import com.bc.bookcrossing.bookcrossing.Structures.LoginStatus;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static android.Manifest.permission.READ_CONTACTS;
 
 /**
  * A login screen that offers login via email/password.
@@ -101,7 +98,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mUsernameView.setError(null);
         mPasswordView.setError(null);
         // Store values at the time of the login attempt.
-        String email = mUsernameView.getText().toString();
+        String username = mUsernameView.getText().toString();
         String password = mPasswordView.getText().toString();
 
         // Check for a valid password.
@@ -115,12 +112,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             cancel = true;
         }
 
-        // Check for a valid email address.
-        if (TextUtils.isEmpty(email)) {
+        // Check for a valid username address.
+        if (TextUtils.isEmpty(username)) {
             mUsernameView.setError(getString(R.string.error_field_required));
             focusView = mUsernameView;
             cancel = true;
-        } else if (!isEmailValid(email)) {
+        } else if (!isUsernameValid(username)) {
             mUsernameView.setError(getString(R.string.error_invalid_email));
             focusView = mUsernameView;
             cancel = true;
@@ -135,7 +132,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             // perform the user login attempt.
             //showProgress(true);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                boolean result = dispatcher.sendDataLogin(email, password);
+                boolean result = dispatcher.sendDataLogin(username, password);
                 if(result == false) {
                     showProgress(false);
                     Toast.makeText(LoginActivity.this, "Problem with Server connection!", Toast.LENGTH_LONG).show();
@@ -147,9 +144,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         }
     }
 
-    private boolean isEmailValid(String email) {
+    private boolean isUsernameValid(String username) {
         //TODO: Replace this with your own logic
-        //return email.contains("@");
+        //return username.contains("@");
         return true;
     }
 
@@ -169,6 +166,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 if(result){
                     //Toast.makeText(getActivity(), "Login OK", Toast.LENGTH_LONG).show();
                     Globals.isLoggedIn = true;
+                    //TODO: make repository for user informations
+                    Globals.usernameLoggedIn = mUsernameView.getText().toString();
                     Intent MainIntent = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(MainIntent);
                     Toast.makeText(LoginActivity.this,"Login completed successfully.", Toast.LENGTH_LONG).show();

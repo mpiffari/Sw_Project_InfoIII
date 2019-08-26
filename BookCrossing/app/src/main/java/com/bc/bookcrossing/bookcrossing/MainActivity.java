@@ -14,6 +14,7 @@ import com.bc.bookcrossing.bookcrossing.GUI.Fragment.ISBNScanFragment;
 import com.bc.bookcrossing.bookcrossing.GUI.Fragment.LoginFragment;
 import com.bc.bookcrossing.bookcrossing.GUI.Fragment.NoScanResultException;
 import com.bc.bookcrossing.bookcrossing.GUI.Fragment.ScanResultReceiver;
+import com.bc.bookcrossing.bookcrossing.GUI.Fragment.SearchFragment;
 
 public class MainActivity extends AppCompatActivity implements ScanResultReceiver{
 
@@ -59,8 +60,8 @@ public class MainActivity extends AppCompatActivity implements ScanResultReceive
                         case R.id.isbn_scan:
                             selectedFragment = new ISBNScanFragment();
                             break;
-                        case R.id.book_reservation:
-                            //selectedFragment = new SearchFragment();
+                        case R.id.book_search:
+                            selectedFragment = new SearchFragment();
                             break;
                         case R.id.navigation_notifications:
                             //selectedFragment = new SearchFragment();

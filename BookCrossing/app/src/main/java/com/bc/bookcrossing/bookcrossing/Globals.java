@@ -10,6 +10,6 @@ public class Globals {
     public final static String[] types = {"","Action","Adventure","Thriller","Fantasy","Horror","Fairy story","Other..."};
     public final static String reqType = "requestType:";
 
-    public static boolean isLoggedIn = true;
-
+    public static boolean isLoggedIn = false;
+    public static String usernameLoggedIn = null;
 }

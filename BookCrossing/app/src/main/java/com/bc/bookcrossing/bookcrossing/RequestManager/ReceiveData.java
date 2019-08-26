@@ -2,6 +2,7 @@ package com.bc.bookcrossing.bookcrossing.RequestManager;
 
 import android.support.annotation.Nullable;
 
+import com.bc.bookcrossing.bookcrossing.Structures.Book;
 import com.bc.bookcrossing.bookcrossing.Structures.BookInfo;
 import com.bc.bookcrossing.bookcrossing.Structures.LoginStatus;
 import com.bc.bookcrossing.bookcrossing.Structures.SignInStatus;
@@ -17,4 +18,5 @@ public interface ReceiveData {
     void callbackLogin(final boolean result,@Nullable LoginStatus s);
     void callbackProfile(UserInformations userInformations);
     void callbackSignIn(List<SignInStatus> status);
+    void callbackBookSearch(List<Book> booksFound);
 }

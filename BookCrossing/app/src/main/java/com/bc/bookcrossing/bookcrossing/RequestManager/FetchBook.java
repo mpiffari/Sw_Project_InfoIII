@@ -1,12 +1,10 @@
-package com.bc.bookcrossing.bookcrossing.GUI.Fragment;
+package com.bc.bookcrossing.bookcrossing.RequestManager;
 
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.bc.bookcrossing.bookcrossing.Globals;
+import com.bc.bookcrossing.bookcrossing.GUI.Fragment.ISBNScanFragment;
 import com.bc.bookcrossing.bookcrossing.Structures.Book;
-import com.bc.bookcrossing.bookcrossing.Structures.BookType;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

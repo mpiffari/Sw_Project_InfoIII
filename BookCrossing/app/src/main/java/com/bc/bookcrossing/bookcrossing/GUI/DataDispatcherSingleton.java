@@ -3,6 +3,7 @@ package com.bc.bookcrossing.bookcrossing.GUI;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 
+import com.bc.bookcrossing.bookcrossing.GUI.Observer.ObserverDataBookResearch;
 import com.bc.bookcrossing.bookcrossing.Structures.BookInfo;
 import com.bc.bookcrossing.bookcrossing.RequestManager.ReceiveData;
 import com.bc.bookcrossing.bookcrossing.GUI.Observer.ObserverBookDataRegistration;
@@ -18,7 +19,6 @@ import com.bc.bookcrossing.bookcrossing.Structures.User;
 import com.bc.bookcrossing.bookcrossing.Structures.UserInformations;
 import com.bc.bookcrossing.bookcrossing.RequestManager.Processing;
 import com.bc.bookcrossing.bookcrossing.Structures.Book;
-import com.bc.bookcrossing.bookcrossing.Structures.BookType;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
@@ -44,9 +44,19 @@ public class DataDispatcherSingleton implements ReceiveData, DelegateSendData {
     private List<ObserverDataLogin> observersDataLogin = new ArrayList<>();
     private List<ObserverDataSignIn> observersDataSignIn = new ArrayList<>();
     private List<ObserverDataProfile> observersDataProfile = new ArrayList<>();
+    private List<ObserverDataBookResearch> observarDataBookResearch = new ArrayList<>();
     //endregion
 
-    //Metodi per piccolo controllo: stringhe vuote o in formato non valido
+    //Function related to SHA-256 encoding
+    private static String bytesToHex(byte[] hash) {
+        StringBuffer hexString = new StringBuffer();
+        for (int i = 0; i < hash.length; i++) {
+            String hex = Integer.toHexString(0xff & hash[i]);
+            if(hex.length() == 1) hexString.append('0');
+            hexString.append(hex);
+        }
+        return hexString.toString();
+    }
 
     //region Delegate SendData functions
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -65,17 +75,6 @@ public class DataDispatcherSingleton implements ReceiveData, DelegateSendData {
         User u = new  User(username, this.bytesToHex(encodedPsw));
         return p.generateRequestForDataLogin(u);
     }
-
-    private static String bytesToHex(byte[] hash) {
-        StringBuffer hexString = new StringBuffer();
-        for (int i = 0; i < hash.length; i++) {
-            String hex = Integer.toHexString(0xff & hash[i]);
-            if(hex.length() == 1) hexString.append('0');
-            hexString.append(hex);
-        }
-        return hexString.toString();
-    }
-
 
     @Override
     public boolean sendDataSignIn(String name, String lastName, String username, Date DOB, String[] contacts, String password, int actionArea) {
@@ -113,15 +112,18 @@ public class DataDispatcherSingleton implements ReceiveData, DelegateSendData {
         //TODO CONTROLLO MINIMO
         return p.generateRequestForDataProfileInformations(username, password);
     }
-    //endregion
 
+    @Override
+    public boolean sendDataBookSearch(String title, String author) {
+         return p.generateRequestForDataBookSearch(title, author);
+    }
+    //endregion
 
     //region callback ReceiveData functions
     @Override
     public void callbackRegistration(boolean result, String bookCodeID) {
         for (ObserverBookDataRegistration obs : observersBookDataRegistration) {
             obs.callbackRegistration(result, bookCodeID);
-
         }
     }
 
@@ -129,9 +131,7 @@ public class DataDispatcherSingleton implements ReceiveData, DelegateSendData {
     public void callbackPickUp(short bookStatus) {
         for (ObserverDataBookPickUp obs : observersDataBookPickUp) {
             obs.callbackPickUp(bookStatus);
-
         }
-
     }
 
     @Override
@@ -139,7 +139,6 @@ public class DataDispatcherSingleton implements ReceiveData, DelegateSendData {
         for (ObserverDataBookTaken obs : observersDataBookTaken) {
             obs.callbackBookTaken(bookInformations);
         }
-
     }
 
     @Override
@@ -147,27 +146,32 @@ public class DataDispatcherSingleton implements ReceiveData, DelegateSendData {
         for (ObserverDataLogin obs : observersDataLogin) {
             obs.callbackLogin(result,s);
         }
-
     }
 
     @Override
     public void callbackProfile(UserInformations userInformations) {
         for (ObserverDataProfile obs : observersDataProfile) {
             obs.callbackProfile(userInformations);
-
         }
-
     }
 
     @Override
     public void callbackSignIn(List<SignInStatus> status) {
+        for (ObserverDataSignIn obs : observersDataSignIn) {
+            obs.callbackSignIn(status);
+        }
+    }
 
+    @Override
+    public void callbackBookSearch(List<Book> booksFound) {
+        for (ObserverDataBookResearch obs : observarDataBookResearch) {
+            obs.callbackBookSearch(booksFound);
+        }
     }
     //endregion
 
     @Override
     public void register(ObserverForUiInformation observerForUiInformation) {
-
         if ((observerForUiInformation instanceof ObserverBookDataRegistration) && (!observersBookDataRegistration.contains(observerForUiInformation))) {
             observersBookDataRegistration.add((ObserverBookDataRegistration) observerForUiInformation);
         } else if ((observerForUiInformation instanceof ObserverDataBookPickUp) && (!observersDataBookPickUp.contains(observerForUiInformation))) {
@@ -180,30 +184,28 @@ public class DataDispatcherSingleton implements ReceiveData, DelegateSendData {
             observersDataSignIn.add((ObserverDataSignIn) observerForUiInformation);
         } else if ((observerForUiInformation instanceof ObserverDataProfile) && (!observersDataProfile.contains(observerForUiInformation))) {
             observersDataProfile.add((ObserverDataProfile) observerForUiInformation);
+        } else if ((observerForUiInformation instanceof ObserverDataBookResearch) && (!observarDataBookResearch.contains(observerForUiInformation))) {
+            observarDataBookResearch.add((ObserverDataBookResearch) observerForUiInformation);
         }
     }
 
     @Override
     public boolean unRegister(ObserverForUiInformation observerForUiInformation) {
-
-        if (observerForUiInformation instanceof ObserverBookDataRegistration)
+        if (observerForUiInformation instanceof ObserverBookDataRegistration) {
             return observersBookDataRegistration.remove(observerForUiInformation);
-
-        else if (observerForUiInformation instanceof ObserverDataBookPickUp)
+        } else if (observerForUiInformation instanceof ObserverDataBookPickUp) {
             return observersDataBookPickUp.remove(observerForUiInformation);
-
-        else if (observerForUiInformation instanceof ObserverDataBookTaken)
+        } else if (observerForUiInformation instanceof ObserverDataBookTaken) {
             return observersDataBookTaken.remove(observerForUiInformation);
-
-        else if (observerForUiInformation instanceof ObserverDataLogin)
+        } else if (observerForUiInformation instanceof ObserverDataLogin) {
             return observersDataLogin.remove(observerForUiInformation);
-
-        else if (observerForUiInformation instanceof ObserverDataProfile)
+        } else if (observerForUiInformation instanceof ObserverDataProfile) {
             return observersDataProfile.remove(observerForUiInformation);
-
-        else
-            return observersDataSignIn.remove(observerForUiInformation);
-
-
+        } else if (observerForUiInformation instanceof ObserverDataSignIn) {
+                return observersDataSignIn.remove(observerForUiInformation);
+        } else if (observerForUiInformation instanceof ObserverDataBookResearch) {
+                return observarDataBookResearch.remove(observerForUiInformation);
+        }
+        return false;
     }
 }
