@@ -16,7 +16,6 @@ import android.content.CursorLoader;
 import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
-import android.os.AsyncTask;
 
 import android.os.Build;
 import android.os.Bundle;
@@ -50,19 +49,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     /**
      * Id to identity READ_CONTACTS permission request.
      */
-    private DataDispatcherSingleton dispatcher;
     private static final int REQUEST_READ_CONTACTS = 0;
-
-    /**
-     * A dummy authentication store containing known user names and passwords.
-     * TODO: remove after connecting to a real authentication system.
-     */
-    private static final String[] DUMMY_CREDENTIALS = new String[]{
-            "foo@example.com:hello", "bar@example.com:world"
-    };
+    private DataDispatcherSingleton dispatcher;
 
     // UI references.
-    private AutoCompleteTextView mEmailView;
+    private AutoCompleteTextView mUsernameView;
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
@@ -74,7 +65,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         dispatcher = DataDispatcherSingleton.getInstance();
         dispatcher.register(this);
         // Set up the login form.
-        mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
+        mUsernameView = (AutoCompleteTextView) findViewById(R.id.username);
         populateAutoComplete();
 
         mPasswordView = (EditText) findViewById(R.id.password);
@@ -89,8 +80,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             }
         });
 
-        Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
-        mEmailSignInButton.setOnClickListener(new OnClickListener() {
+        Button mLoginButton = (Button) findViewById(R.id.login_button);
+        mLoginButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 attemptLogin();
@@ -105,19 +96,18 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         if (!mayRequestContacts()) {
             return;
         }
-
         getLoaderManager().initLoader(0, null, this);
     }
 
     private boolean mayRequestContacts() {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+        /*if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
             return true;
         }
         if (checkSelfPermission(READ_CONTACTS) == PackageManager.PERMISSION_GRANTED) {
             return true;
         }
         if (shouldShowRequestPermissionRationale(READ_CONTACTS)) {
-            Snackbar.make(mEmailView, R.string.permission_rationale, Snackbar.LENGTH_INDEFINITE)
+            Snackbar.make(mUsernameView, R.string.permission_rationale, Snackbar.LENGTH_INDEFINITE)
                     .setAction(android.R.string.ok, new View.OnClickListener() {
                         @Override
                         @TargetApi(Build.VERSION_CODES.M)
@@ -127,7 +117,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                     });
         } else {
             requestPermissions(new String[]{READ_CONTACTS}, REQUEST_READ_CONTACTS);
-        }
+        }*/
         return false;
     }
 
@@ -144,24 +134,16 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         }
     }
 
-
-    /**
-     * Attempts to sign in or register the account specified by the login form.
-     * If there are form errors (invalid email, missing fields, etc.), the
-     * errors are presented and no actual login attempt is made.
-     */
     private void attemptLogin() {
-
-        // Reset errors.
-        mEmailView.setError(null);
-        mPasswordView.setError(null);
-
-        // Store values at the time of the login attempt.
-        String email = mEmailView.getText().toString();
-        String password = mPasswordView.getText().toString();
 
         boolean cancel = false;
         View focusView = null;
+        // Reset errors.
+        mUsernameView.setError(null);
+        mPasswordView.setError(null);
+        // Store values at the time of the login attempt.
+        String email = mUsernameView.getText().toString();
+        String password = mPasswordView.getText().toString();
 
         // Check for a valid password.
         if (TextUtils.isEmpty(password)) {
@@ -176,12 +158,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         // Check for a valid email address.
         if (TextUtils.isEmpty(email)) {
-            mEmailView.setError(getString(R.string.error_field_required));
-            focusView = mEmailView;
+            mUsernameView.setError(getString(R.string.error_field_required));
+            focusView = mUsernameView;
             cancel = true;
         } else if (!isEmailValid(email)) {
-            mEmailView.setError(getString(R.string.error_invalid_email));
-            focusView = mEmailView;
+            mUsernameView.setError(getString(R.string.error_invalid_email));
+            focusView = mUsernameView;
             cancel = true;
         }
 
@@ -194,7 +176,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             // perform the user login attempt.
             //showProgress(true);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                dispatcher.sendDataLogin(email, password);
+                boolean result = dispatcher.sendDataLogin(email, password);
+                if(result == false) {
+                    Toast.makeText(LoginActivity.this, "Problem with Server connection!", Toast.LENGTH_LONG).show();
+                }
             } else {
                 Toast.makeText(LoginActivity.this, "Login not completed due to an old device version", Toast.LENGTH_LONG).show();
             }
@@ -289,7 +274,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 new ArrayAdapter<>(LoginActivity.this,
                         android.R.layout.simple_dropdown_item_1line, emailAddressCollection);
 
-        mEmailView.setAdapter(adapter);
+        mUsernameView.setAdapter(adapter);
     }
 
     private interface ProfileQuery {
@@ -297,7 +282,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 ContactsContract.CommonDataKinds.Email.ADDRESS,
                 ContactsContract.CommonDataKinds.Email.IS_PRIMARY,
         };
-
         int ADDRESS = 0;
         int IS_PRIMARY = 1;
     }
@@ -320,8 +304,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                     Globals.isLoggedIn = false;
                     if(s == LoginStatus.WRONG_USERNAME) {
                         //usernameText.setText("");
-                        mEmailView.setError(getString(R.string.error_incorrect_username));
-                        mEmailView.requestFocus();
+                        mUsernameView.setError(getString(R.string.error_incorrect_username));
+                        mUsernameView.requestFocus();
                     }
                     if(s == LoginStatus.WRONG_PASSWORD) {
                         //pwdText.setText("");

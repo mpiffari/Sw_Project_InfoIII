@@ -25,43 +25,43 @@ public class Processing implements GenerateRequests, ReceiveAnswer {
     }
 
     @Override
-    public void generateRequestForDataLogin(User user) {
+    public boolean generateRequestForDataLogin(User user) {
         String username = user.getUsername();
-        singletonCommunication.send(username + separator + Globals.reqType  + RequestType.LOGIN.toString() + separator + user.toString());
+        return singletonCommunication.send(username + separator + Globals.reqType  + RequestType.LOGIN.toString() + separator + user.toString());
     }
 
     @Override
-    public void generateRequestForDataBookRegistration(Book book) {
+    public boolean generateRequestForDataBookRegistration(Book book) {
         //TODO: check username
         String username = "Pippo";
-        singletonCommunication.send(username + separator + Globals.reqType + RequestType.BOOK_REGISTRATION_MANUAL.toString() + separator + book.toString());
+        return singletonCommunication.send(username + separator + Globals.reqType + RequestType.BOOK_REGISTRATION_MANUAL.toString() + separator + book.toString());
     }
 
     @Override
-    public void generateRequestForDataSignIn(String name, String lastName, String username, Date DOB, String[] contacts, String password, int actionArea) {
+    public boolean generateRequestForDataSignIn(String name, String lastName, String username, Date DOB, String[] contacts, String password, int actionArea) {
         DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
-        singletonCommunication.send(RequestType.SIGN_IN.toString() + separator + name + separator + lastName + separator + df.format(DOB) +
+        return singletonCommunication.send(RequestType.SIGN_IN.toString() + separator + name + separator + lastName + separator + df.format(DOB) +
                 separator + contacts.toString() + separator + hash(password) + separator + actionArea);
     }
 
     @Override
-    public void generateRequestForDataPickUp(String BCID) {
-        singletonCommunication.send(RequestType.PICK_UP.toString() + BCID);
+    public boolean generateRequestForDataPickUp(String BCID) {
+        return singletonCommunication.send(RequestType.PICK_UP.toString() + BCID);
     }
 
     @Override
-    public void generateRequestForDataTakenBooks() {
-        singletonCommunication.send(RequestType.TAKEN_BOOKS.toString());
+    public boolean generateRequestForDataTakenBooks() {
+        return singletonCommunication.send(RequestType.TAKEN_BOOKS.toString());
     }
 
     @Override
-    public void generateRequestForDataBookRegistration(String ISBN) {
-        singletonCommunication.send(RequestType.BOOK_REGISTRATION_AUTOMATIC.toString() + separator + ISBN);
+    public boolean generateRequestForDataBookRegistration(String ISBN) {
+        return singletonCommunication.send(RequestType.BOOK_REGISTRATION_AUTOMATIC.toString() + separator + ISBN);
     }
 
     @Override
-    public void generateRequestForDataProfileInformations(String username, String password) {
-        singletonCommunication.send(RequestType.PROFILE_INFO.toString() + separator + username + separator + hash(password));
+    public boolean generateRequestForDataProfileInformations(String username, String password) {
+        return singletonCommunication.send(RequestType.PROFILE_INFO.toString() + separator + username + separator + hash(password));
     }
 
     /*
