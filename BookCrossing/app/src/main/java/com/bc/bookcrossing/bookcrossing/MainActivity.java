@@ -1,5 +1,6 @@
 package com.bc.bookcrossing.bookcrossing;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -16,7 +17,7 @@ import com.bc.bookcrossing.bookcrossing.GUI.Fragment.NoScanResultException;
 import com.bc.bookcrossing.bookcrossing.GUI.Fragment.ScanResultReceiver;
 import com.bc.bookcrossing.bookcrossing.GUI.Fragment.SearchFragment;
 
-public class MainActivity extends AppCompatActivity implements ScanResultReceiver{
+public class MainActivity extends AppCompatActivity implements ScanResultReceiver {
 
     public static BottomNavigationView bottomNav;
     @Override
@@ -91,8 +92,6 @@ public class MainActivity extends AppCompatActivity implements ScanResultReceive
     public void scanResultData(NoScanResultException noScanData) {
         //Toast.makeText(this, noScanData.getMessage(), Toast.LENGTH_SHORT).show();
     }
-
-
 }
 
 
