@@ -21,7 +21,7 @@ public class Book {
 	private String author;
     private int yearOfPubblication;
     private int editionNumber;
-    private BookType type;
+    private String type;
     private String BCID;
     private String ISBN;
     private String proprietario;
@@ -47,7 +47,7 @@ public class Book {
     }
     
     
-    public Book(String title, String author, int yearOfPubblication, int editionNumber, BookType type) {
+    public Book(String title, String author, int yearOfPubblication, int editionNumber, String type) {
         this();
     	this.title = title;
         this.author = author;
@@ -125,11 +125,11 @@ public class Book {
 		this.editionNumber = editionNumber;
 	}
 
-	public BookType getType() {
+	public String getType() {
 		return type;
 	}
 
-	public void setType(BookType type) {
+	public void setType(String type) {
 		this.type = type;
 	}
 	
@@ -161,9 +161,9 @@ public class Book {
 		}
 	}
 	
-	private BookType getBookTypeFromString(String msg) {
+	private String getBookTypeFromString(String msg) {
 		String words[] = msg.split(":");
-		return BookType.valueOf(words[1]);
+		return words[1];
 	}
 
 	public String generateBCID() {

@@ -128,9 +128,14 @@ public class BookRegistrationFragment extends Fragment implements ObserverBookDa
         String yearOfPubb = ((TextView) getActivity().findViewById(R.id.Year_of_pubblication)).getText().toString();
         String edition = (((TextView) getActivity().findViewById(R.id.EditionNumber)).getText().toString());
         String bookTypeDesc = ((Spinner) getActivity().findViewById(R.id.BookTypeSpinner)).getSelectedItem().toString();
-
+        boolean result = false;
         if (title.length() > 0 && author.length() > 0 && yearOfPubb.length() > 0 && edition.length() > 0 && bookTypeDesc.length() > 0) {
-            boolean result = dispatcher.sendDataBookRegistration(title, author, yearOfPubb, edition, bookTypeDesc);
+            if(ISBNScanFragment.getScannedBook() == null) {
+                result = dispatcher.sendDataBookRegistrationManual(title, author, yearOfPubb, edition, bookTypeDesc);
+            }
+            else{
+                result = dispatcher.sendDataBookRegistrationAuto(title, author, yearOfPubb, edition, bookTypeDesc, ISBNScanFragment.getScannedBook().getISBN());
+            }
             if(result == false) {
                 Toast.makeText(getActivity(), "Problem with Server connection!", Toast.LENGTH_LONG).show();
             }
@@ -152,6 +157,7 @@ public class BookRegistrationFragment extends Fragment implements ObserverBookDa
                     ((TextView) getActivity().findViewById(R.id.Year_of_pubblication)).setText("");
                     ((TextView) getActivity().findViewById(R.id.EditionNumber)).setText("");
                     ((Spinner) getActivity().findViewById(R.id.BookTypeSpinner)).setSelection(0);
+                    ISBNScanFragment.setScannedBook(null);
                 } else {
                     Toast.makeText(getActivity(), "Book registration failed", Toast.LENGTH_LONG).show();
                 }

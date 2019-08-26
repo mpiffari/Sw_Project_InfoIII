@@ -62,7 +62,7 @@ public class ISBNScanFragment extends Fragment implements ObserverBookDataRegist
         integrator.setResultDisplayDuration(0); // milliseconds to display result on screen after scan
         integrator.setCameraId(0);  // Use a specific camera of the device
         integrator.initiateScan();
-
+        codeContent = null;
 
         if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CAMERA)
                 != PackageManager.PERMISSION_GRANTED) {
@@ -113,6 +113,7 @@ public class ISBNScanFragment extends Fragment implements ObserverBookDataRegist
             bottomNavigationView = (BottomNavigationView) getActivity().findViewById(R.id.navigation);
             bottomNavigationView.setSelectedItemId(R.id.book_registration);
 
+
         } else {
             // send exception
             parentActivity.scanResultData(new NoScanResultException(noResultErrorMsg));
@@ -162,6 +163,7 @@ public class ISBNScanFragment extends Fragment implements ObserverBookDataRegist
             }
         }
     }
+
 
     public static Book getScannedBook() {
         return scannedBook;

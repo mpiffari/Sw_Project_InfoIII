@@ -27,7 +27,7 @@ public class Book implements Serializable{
 	int yearOfPubblication;
 	private @Nullable int editionNumber;
 	private String type;
-
+	private String ISBN;
 	
 	public Book(String title, String author, @Nullable int yearOfPubblication, @Nullable int editionNumber, String type) {
 		this.title = title;
@@ -35,6 +35,19 @@ public class Book implements Serializable{
 		this.yearOfPubblication = yearOfPubblication;
 		this.editionNumber = editionNumber;
 		this.type = type;
+	}
+
+	public Book(String title, String author, @Nullable int yearOfPubblication, @Nullable int editionNumber, String type, String ISBN) {
+		this.title = title;
+		this.author = author;
+		this.yearOfPubblication = yearOfPubblication;
+		this.editionNumber = editionNumber;
+		this.type = type;
+		this.ISBN = ISBN;
+	}
+
+	public String getISBN() {
+		return ISBN;
 	}
 
 	public String getAuthor() {

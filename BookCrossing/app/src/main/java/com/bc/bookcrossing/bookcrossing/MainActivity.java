@@ -39,10 +39,6 @@ public class MainActivity extends AppCompatActivity implements ScanResultReceive
                     new LoginFragment()).commit();
         }
 
-        if (getIntent().getStringExtra("isbn") != null) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                    new ISBNScanFragment()).commit();
-        }
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =

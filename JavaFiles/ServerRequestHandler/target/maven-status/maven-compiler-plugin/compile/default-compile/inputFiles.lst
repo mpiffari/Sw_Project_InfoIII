@@ -1,15 +1,15 @@
-C:\Users\miche\OneDrive\Desktop\I anno Magistrale\Informatica III - Modulo di progettazione ed algoritmi\WalkingBooks_ProgettoInfoIIIB\JavaFiles\ServerRequestHandler\src\main\java\user\UserData.java
-C:\Users\miche\OneDrive\Desktop\I anno Magistrale\Informatica III - Modulo di progettazione ed algoritmi\WalkingBooks_ProgettoInfoIIIB\JavaFiles\ServerRequestHandler\src\main\java\requestManager\ComputeRequest.java
-C:\Users\miche\OneDrive\Desktop\I anno Magistrale\Informatica III - Modulo di progettazione ed algoritmi\WalkingBooks_ProgettoInfoIIIB\JavaFiles\ServerRequestHandler\src\main\java\book\BookQuery.java
-C:\Users\miche\OneDrive\Desktop\I anno Magistrale\Informatica III - Modulo di progettazione ed algoritmi\WalkingBooks_ProgettoInfoIIIB\JavaFiles\ServerRequestHandler\src\main\java\requestManager\SendAnswer.java
-C:\Users\miche\OneDrive\Desktop\I anno Magistrale\Informatica III - Modulo di progettazione ed algoritmi\WalkingBooks_ProgettoInfoIIIB\JavaFiles\ServerRequestHandler\src\main\java\requestManager\ProcessRequest.java
-C:\Users\miche\OneDrive\Desktop\I anno Magistrale\Informatica III - Modulo di progettazione ed algoritmi\WalkingBooks_ProgettoInfoIIIB\JavaFiles\ServerRequestHandler\src\main\java\dataManager\QueryPerformer.java
-C:\Users\miche\OneDrive\Desktop\I anno Magistrale\Informatica III - Modulo di progettazione ed algoritmi\WalkingBooks_ProgettoInfoIIIB\JavaFiles\ServerRequestHandler\src\main\java\book\BookType.java
-C:\Users\miche\OneDrive\Desktop\I anno Magistrale\Informatica III - Modulo di progettazione ed algoritmi\WalkingBooks_ProgettoInfoIIIB\JavaFiles\ServerRequestHandler\src\main\java\user\LoginStatus.java
-C:\Users\miche\OneDrive\Desktop\I anno Magistrale\Informatica III - Modulo di progettazione ed algoritmi\WalkingBooks_ProgettoInfoIIIB\JavaFiles\ServerRequestHandler\src\main\java\book\Book.java
-C:\Users\miche\OneDrive\Desktop\I anno Magistrale\Informatica III - Modulo di progettazione ed algoritmi\WalkingBooks_ProgettoInfoIIIB\JavaFiles\ServerRequestHandler\src\main\java\requestManager\RequestType.java
-C:\Users\miche\OneDrive\Desktop\I anno Magistrale\Informatica III - Modulo di progettazione ed algoritmi\WalkingBooks_ProgettoInfoIIIB\JavaFiles\ServerRequestHandler\src\main\java\dataManager\DBConnector.java
-C:\Users\miche\OneDrive\Desktop\I anno Magistrale\Informatica III - Modulo di progettazione ed algoritmi\WalkingBooks_ProgettoInfoIIIB\JavaFiles\ServerRequestHandler\src\main\java\user\UserQuery.java
-C:\Users\miche\OneDrive\Desktop\I anno Magistrale\Informatica III - Modulo di progettazione ed algoritmi\WalkingBooks_ProgettoInfoIIIB\JavaFiles\ServerRequestHandler\src\main\java\book\BookData.java
-C:\Users\miche\OneDrive\Desktop\I anno Magistrale\Informatica III - Modulo di progettazione ed algoritmi\WalkingBooks_ProgettoInfoIIIB\JavaFiles\ServerRequestHandler\src\main\java\user\User.java
-C:\Users\miche\OneDrive\Desktop\I anno Magistrale\Informatica III - Modulo di progettazione ed algoritmi\WalkingBooks_ProgettoInfoIIIB\JavaFiles\ServerRequestHandler\src\main\java\requestManager\Communication.java
+C:\Users\Stefano Villa\Desktop\Sw_Project_InfoIII\JavaFiles\ServerRequestHandler\src\main\java\book\BookData.java
+C:\Users\Stefano Villa\Desktop\Sw_Project_InfoIII\JavaFiles\ServerRequestHandler\src\main\java\requestManager\ProcessRequest.java
+C:\Users\Stefano Villa\Desktop\Sw_Project_InfoIII\JavaFiles\ServerRequestHandler\src\main\java\user\UserData.java
+C:\Users\Stefano Villa\Desktop\Sw_Project_InfoIII\JavaFiles\ServerRequestHandler\src\main\java\user\LoginStatus.java
+C:\Users\Stefano Villa\Desktop\Sw_Project_InfoIII\JavaFiles\ServerRequestHandler\src\main\java\requestManager\Communication.java
+C:\Users\Stefano Villa\Desktop\Sw_Project_InfoIII\JavaFiles\ServerRequestHandler\src\main\java\requestManager\SendAnswer.java
+C:\Users\Stefano Villa\Desktop\Sw_Project_InfoIII\JavaFiles\ServerRequestHandler\src\main\java\book\BookType.java
+C:\Users\Stefano Villa\Desktop\Sw_Project_InfoIII\JavaFiles\ServerRequestHandler\src\main\java\user\UserQuery.java
+C:\Users\Stefano Villa\Desktop\Sw_Project_InfoIII\JavaFiles\ServerRequestHandler\src\main\java\book\BookQuery.java
+C:\Users\Stefano Villa\Desktop\Sw_Project_InfoIII\JavaFiles\ServerRequestHandler\src\main\java\requestManager\RequestType.java
+C:\Users\Stefano Villa\Desktop\Sw_Project_InfoIII\JavaFiles\ServerRequestHandler\src\main\java\requestManager\ComputeRequest.java
+C:\Users\Stefano Villa\Desktop\Sw_Project_InfoIII\JavaFiles\ServerRequestHandler\src\main\java\dataManager\DBConnector.java
+C:\Users\Stefano Villa\Desktop\Sw_Project_InfoIII\JavaFiles\ServerRequestHandler\src\main\java\dataManager\QueryPerformer.java
+C:\Users\Stefano Villa\Desktop\Sw_Project_InfoIII\JavaFiles\ServerRequestHandler\src\main\java\user\User.java
+C:\Users\Stefano Villa\Desktop\Sw_Project_InfoIII\JavaFiles\ServerRequestHandler\src\main\java\book\Book.java
