@@ -130,7 +130,7 @@ public class BookRegistrationFragment extends Fragment implements ObserverBookDa
         String bookTypeDesc = ((Spinner) getActivity().findViewById(R.id.BookTypeSpinner)).getSelectedItem().toString();
 
         if (title.length() > 0 && author.length() > 0 && yearOfPubb.length() > 0 && edition.length() > 0 && bookTypeDesc.length() > 0) {
-            boolean result = dispatcher.sendDataBookRegistration(title, author, yearOfPubb, edition, bookTypeDesc);
+            boolean result = dispatcher.sendDataBookRegistrationManual(title, author, yearOfPubb, edition, bookTypeDesc);
             if(result == false) {
                 Toast.makeText(getActivity(), "Problem with Server connection!", Toast.LENGTH_LONG).show();
             }

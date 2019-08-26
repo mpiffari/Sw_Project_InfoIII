@@ -31,7 +31,7 @@ public class Processing implements GenerateRequests, ReceiveAnswer {
     }
 
     @Override
-    public boolean generateRequestForDataBookRegistration(Book book) {
+    public boolean generateRequestForDataBookRegistrationManual(Book book) {
         //TODO: check username
         String username = "Pippo";
         return singletonCommunication.send(username + separator + Globals.reqType + RequestType.BOOK_REGISTRATION_MANUAL.toString() + separator + book.toString());
@@ -55,9 +55,9 @@ public class Processing implements GenerateRequests, ReceiveAnswer {
     }
 
     @Override
-    public boolean generateRequestForDataBookRegistration(String ISBN) {
+    public boolean generateRequestForDataBookRegistrationAuto(Book book, String ISBN) {
         String username = "Pippo";
-        return singletonCommunication.send(username + separator + Globals.reqType + RequestType.BOOK_REGISTRATION_AUTOMATIC.toString() + separator + ISBN);
+        return singletonCommunication.send(username + separator + Globals.reqType + RequestType.BOOK_REGISTRATION_AUTOMATIC.toString() + separator + book.toString() + separator + ISBN);
     }
 
     @Override
