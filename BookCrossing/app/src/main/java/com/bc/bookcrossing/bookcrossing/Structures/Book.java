@@ -37,6 +37,16 @@ public class Book implements Serializable{
 		this.type = type;
 	}
 
+	public Book(String msg) {
+		this();
+		String lines[] = msg.split(";");
+		this.title = getTitleFromString(lines[0]);
+		this.author = getAuthorFromString(lines[1]);
+		this.yearOfPubblication = getYearOfPubblicationFromString(lines[2]);
+		this.editionNumber = getEditionNumberFromString(lines[3]);
+		this.type = getBookTypeFromString(lines[4]);
+	}
+
 	public Book(String title, String author, @Nullable int yearOfPubblication, @Nullable int editionNumber, String type, String ISBN) {
 		this.title = title;
 		this.author = author;
@@ -106,6 +116,39 @@ public class Book implements Serializable{
 				"YEAR:" + yearOfPubblication + ";" +
 				"EDITION:" + editionNumber + ";" +
 				"TYPE:" + type + ";";
+	}
+
+	private String getTitleFromString(String msg) {
+		String words[] = msg.split(":");
+		return words[1];
+	}
+
+	private String getAuthorFromString(String msg) {
+		String words[] = msg.split(":");
+		return words[1];
+	}
+
+	private Integer getYearOfPubblicationFromString(String msg) {
+		String words[] = msg.split(":");
+		if (words[1].equalsIgnoreCase("null")) {
+			return null;
+		} else {
+			return Integer.parseInt(words[1]);
+		}
+	}
+
+	private Integer getEditionNumberFromString(String msg) {
+		String words[] = msg.split(":");
+		if (words[1].equalsIgnoreCase("null")) {
+			return null;
+		} else {
+			return Integer.parseInt(words[1]);
+		}
+	}
+
+	private String getBookTypeFromString(String msg) {
+		String words[] = msg.split(":");
+		return words[1];
 	}
 
 }

@@ -14,19 +14,19 @@
             android:id="@+id/title_search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:autofillHints=""
             android:ems="10"
-            android:inputType="textPersonName"
-            android:text="@string/title_search"
-            android:autofillHints="" />
+            android:hint="@string/title_search"
+            android:inputType="textPersonName" />
 
         <EditText
             android:id="@+id/author_search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:hint="Search by author..."
             android:importantForAutofill="no"
-            android:inputType="textPersonName"
-            android:text="@string/author_search" />
+            android:inputType="textPersonName" />
 
         <Button
             android:id="@+id/search_button"
@@ -35,16 +35,15 @@
             android:text="@string/search" />
 
         <Button
-            android:id="@+id/book_button"
+            android:id="@+id/reservation_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/reserve_book" />
 
-        <ScrollView
+        <ListView
+            android:id="@+id/books_found"
             android:layout_width="match_parent"
-            android:layout_height="402dp">
-
-        </ScrollView>
+            android:layout_height="match_parent" />
 
     </LinearLayout>
 

@@ -181,5 +181,15 @@ public class Book {
 		return generatedString;
 	}
 	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return "TITLE:" + title + ";" +
+				"AUTHOR:" + author + ";" +
+				"YEAR:" + yearOfPubblication + ";" +
+				"EDITION:" + editionNumber + ";" +
+				"TYPE:" + type + ";";
+	}
+	
 	
 }

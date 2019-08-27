@@ -30,7 +30,7 @@ public class BookData implements BookQuery{
 	}*/
 	
 	public boolean insertBook(Book book) {
-		String sql = "INSERT INTO LIBRO (BCID, TITOLO, AUTORE, ISBN, PROPRIETARIO) VALUES (?,?,?,?,?)";
+		String sql = "INSERT INTO LIBRO (BCID, TITOLO, AUTORE, ISBN, PROPRIETARIO, GENERE) VALUES (?,?,?,?,?,?)";
 		PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(sql);
 		
 		int result = 0;
@@ -41,7 +41,7 @@ public class BookData implements BookQuery{
 			stmt.setString(3, book.getAuthor());
 			stmt.setString(4, book.getISBN());
 			stmt.setString(5, book.getProprietario());
-
+			stmt.setString(6, book.getType());	
 			result = stmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -142,7 +142,7 @@ public class BookData implements BookQuery{
 		ArrayList<Book> result = new ArrayList<Book>();
 		
 		//String sql = "SELECT Titolo, Autore FROM Libro AS L JOIN Possesso AS P ON L.BCID = P.LIBRO WHERE Titolo = ?";
-		String sql = "SELECT Titolo, Autore FROM Libro L WHERE Autore = ?";
+		String sql = "SELECT * FROM Libro L WHERE Autore = ?";
 		PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(sql);
 		try {
 			stmt.setString(1, author);
@@ -181,7 +181,7 @@ public class BookData implements BookQuery{
 		ArrayList<Book> result = new ArrayList<Book>();
 		
 		//String sql = "SELECT Titolo, Autore FROM Libro AS L JOIN Possesso AS P ON L.BCID = P.LIBRO WHERE Titolo = ?";
-		String sql = "SELECT * FROM Libro L WHERE Titlo = ? AND Autore = ?";
+		String sql = "SELECT * FROM Libro L WHERE Titolo = ? AND Autore = ?";
 		PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(sql);
 		try {
 			stmt.setString(1, title);

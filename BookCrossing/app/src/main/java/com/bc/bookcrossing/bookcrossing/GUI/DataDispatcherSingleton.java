@@ -164,9 +164,9 @@ public class DataDispatcherSingleton implements ReceiveData, DelegateSendData {
     }
 
     @Override
-    public void callbackBookSearch(List<Book> booksFound) {
+    public void callbackBookSearch(boolean b, List<Book> booksFound) {
         for (ObserverDataBookResearch obs : observarDataBookResearch) {
-            obs.callbackBookSearch(booksFound);
+            obs.callbackBookSearch(b, booksFound);
         }
     }
     //endregion

@@ -4,5 +4,5 @@ import com.bc.bookcrossing.bookcrossing.Structures.Book;
 import java.util.List;
 
 public interface ObserverDataBookResearch extends ObserverForUiInformation {
-    void callbackBookSearch(List<Book> books);
+    void callbackBookSearch(boolean result, List<Book> books);
 }

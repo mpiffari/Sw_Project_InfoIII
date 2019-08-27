@@ -7,7 +7,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,6 +19,7 @@ import com.bc.bookcrossing.bookcrossing.GUI.Observer.ObserverDataBookResearch;
 import com.bc.bookcrossing.bookcrossing.R;
 import com.bc.bookcrossing.bookcrossing.Structures.Book;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -30,6 +34,7 @@ import java.util.List;
 public class SearchFragment extends Fragment implements ObserverDataBookResearch, View.OnClickListener {
     private DataDispatcherSingleton dispatcher;
     private OnFragmentInteractionListener mListener;
+    private static ArrayList<Book> booksForListview;
 
     public SearchFragment() {
         // Required empty public constructor
@@ -54,6 +59,10 @@ public class SearchFragment extends Fragment implements ObserverDataBookResearch
         super.onCreate(savedInstanceState);
         dispatcher = DataDispatcherSingleton.getInstance();
         dispatcher.register(this);
+    }
+
+    public static ArrayList<Book> getBooks() {
+        return booksForListview;
     }
 
     @Override
@@ -83,8 +92,19 @@ public class SearchFragment extends Fragment implements ObserverDataBookResearch
     }
 
     @Override
-    public void callbackBookSearch(List<Book> books) {
+    public void callbackBookSearch(boolean result, List<Book> books) {
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if(result){
+                    getFragmentManager().beginTransaction().replace(R.id.fragment_container, new ResultSearchFragment()).addToBackStack(null).commit();
+                    booksForListview = (ArrayList<Book>) books;
 
+                } else {
+                    Toast.makeText(getActivity(), "NOT FOUND", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
     }
 
     @Override

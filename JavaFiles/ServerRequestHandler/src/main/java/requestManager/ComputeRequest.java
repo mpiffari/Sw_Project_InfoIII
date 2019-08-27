@@ -2,6 +2,9 @@ package requestManager;
 
 import java.util.ArrayList;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import book.Book;
 import book.BookData;
 import user.LoginStatus;
@@ -79,25 +82,44 @@ public class ComputeRequest implements ProcessRequest{
 			case BOOK_SEARCH:
 				// msg = TITLE:xxxxxxx;AUTHOR:xxxxxxxx --> at least one of this two fields
 				String request = msg.substring(i + 1);
-				int y = request.indexOf(":", 0);
-				int k = request.indexOf(";", 0);
+				System.out.println("request: " + request);
+				//request: TITLE: titolo; AUTHOR: autore
+				
+				int y = request.indexOf(":", 0); //posizione :
+				int k = request.indexOf(";", 0); //posizione ;
 				ArrayList<Book> books = new ArrayList<Book>();;
+				
+				System.out.println("index: " + (i) + " " + y);
+				
+				
+				System.out.println("titolo: " + request.substring(y + 1)); // stampa type: titolo
+				System.out.println(request.substring(0, y));
+				System.out.println(k);
+				
+				
+				String type = request.substring(0, y); 
 				
 				if(k == -1) {
 					//Search only by TITLE OR AUTHOR
-					String type = msg.substring(i + 1, y);
-					if(type == "TITLE") {
-						String title = msg.substring(y+1);
+					if(type.equals("TITLE")) {
+						System.out.println("RICERCA PER TITOLO");
+						String title = request.substring(y + 1);
 						books = BookData.searchBookByTitle(title);
-					} else if (type =="AUTHOR") {
-						String author = msg.substring(y+1);
-						books = BookData.searchBookByTitle(author);
+						
+					} else if (type.equals("AUTHOR")) {
+						System.out.println("RICERCA PER AUTORE");
+						String author = request.substring(y + 1);
+						System.out.println(author);
+						books = BookData.searchBookByAuthor(author);
 					}
 				} else {
 					//Search by TITLE AND AUTHOR
-					String title = msg.substring(y+1, k);
+					System.out.println("RICERCA PER TUTTO");
+					String title = request.substring(y+1, k);
+					System.out.println(title);
 					int z = request.indexOf(":", k);
-					String author = msg.substring(z+1);
+					String author = request.substring(z+1);
+					System.out.println(author + "");
 					books = BookData.searchBook(title, author);
 				}
 				
@@ -105,13 +127,22 @@ public class ComputeRequest implements ProcessRequest{
 					Communication.getInstance().send(username, "requestType:8;result:" + 0 + ";Books:");
 				} else {
 					// Response: Books:1;(books[1].toString());2;(books[2].toString());.......;(books[n].toString());
-					int index = 1;
+					int count = 0; //conta libri trovati
 					String resres = "";
+					//write as JSON
+					JSONObject sendMsg = new JSONObject();
+					JSONArray booksInMsg = new JSONArray();
 					for (Book bb : books) 
 					{ 
-					    resres = resres + index + ";" + bb.toString() + ";";
+						booksInMsg.put(bb.toString());
+					    count++;
+					    
 					}
-					Communication.getInstance().send(username, "requestType:8;result:" + 1 + ";Books:" + resres);
+					
+					sendMsg.put("size", count);
+					sendMsg.put("books", booksInMsg);
+					
+					Communication.getInstance().send(username, "requestType:8;result:" + 1 + ";Books:" + sendMsg);
 				}
 				
 				break;
