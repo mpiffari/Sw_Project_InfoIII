@@ -7,8 +7,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.bc.bookcrossing.bookcrossing.R;
 import com.bc.bookcrossing.bookcrossing.Structures.Book;
@@ -23,7 +25,7 @@ import java.util.ArrayList;
  * Use the {@link ResultSearchFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ResultSearchFragment extends Fragment {
+public class ResultSearchFragment extends Fragment implements AdapterView.OnItemClickListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -34,6 +36,7 @@ public class ResultSearchFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    private static Book selectedBook;
     private OnFragmentInteractionListener mListener;
 
     public ResultSearchFragment() {
@@ -75,6 +78,7 @@ public class ResultSearchFragment extends Fragment {
         listView = (ListView) v.findViewById(R.id.books_found);
         ArrayAdapter<Book> arrayAdapter = new ArrayAdapter<Book>(getActivity(), android.R.layout.simple_list_item_1, SearchFragment.getBooks());
         listView.setAdapter(arrayAdapter);
+        listView.setOnItemClickListener(this);
         return v;
     }
 
@@ -91,6 +95,21 @@ public class ResultSearchFragment extends Fragment {
         mListener = null;
     }
 
+
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        if(SearchFragment.getBooks().get(i).isUnderReading()){
+            Toast.makeText(getActivity(), "PRENOTABILE!", Toast.LENGTH_SHORT).show();
+            selectedBook = SearchFragment.getBooks().get(i);
+            getFragmentManager().beginTransaction().replace(R.id.fragment_container, new ReserveBookFragment()).addToBackStack(null).commit();
+        }
+        else {
+            Toast.makeText(getActivity(), "NO!", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
@@ -104,5 +123,9 @@ public class ResultSearchFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    public static Book getSelectedBook() {
+        return selectedBook;
     }
 }

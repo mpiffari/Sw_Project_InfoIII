@@ -1,6 +1,7 @@
 package com.bc.bookcrossing.bookcrossing.Structures;
 
 import android.support.annotation.Nullable;
+import android.util.Log;
 
 import java.io.Serializable;
 
@@ -21,6 +22,7 @@ import java.io.Serializable;
 
 public class Book implements Serializable{
 
+	private String BCID;
 	private String title;
 	private String author;
 	private @Nullable
@@ -28,7 +30,10 @@ public class Book implements Serializable{
 	private @Nullable int editionNumber;
 	private String type;
 	private String ISBN;
-	
+	private String user;
+	private boolean underReading;
+	private String urlImage;
+
 	public Book(String title, String author, @Nullable int yearOfPubblication, @Nullable int editionNumber, String type) {
 		this.title = title;
 		this.author = author;
@@ -45,15 +50,24 @@ public class Book implements Serializable{
 		this.yearOfPubblication = getYearOfPubblicationFromString(lines[2]);
 		this.editionNumber = getEditionNumberFromString(lines[3]);
 		this.type = getBookTypeFromString(lines[4]);
+        this.user = getUserFromString(lines[5]);
+        this.ISBN = getISBNFromString(lines[6]);
+        this.underReading = getStateFromString(lines[7]);
+        this.BCID = getBCIDFromString(lines[8]);
 	}
 
-	public Book(String title, String author, @Nullable int yearOfPubblication, @Nullable int editionNumber, String type, String ISBN) {
+	public Book(String title, String author, @Nullable int yearOfPubblication, @Nullable int editionNumber, String type, String ISBN, String urlImage) {
 		this.title = title;
 		this.author = author;
 		this.yearOfPubblication = yearOfPubblication;
 		this.editionNumber = editionNumber;
 		this.type = type;
 		this.ISBN = ISBN;
+		this.urlImage = urlImage;
+	}
+
+	public String getUrlImage() {
+		return urlImage;
 	}
 
 	public String getISBN() {
@@ -107,9 +121,12 @@ public class Book implements Serializable{
 	public Book(){
 
 	}
-	
-	@Override
-	public String toString() {
+
+	public String getBCID() {
+		return BCID;
+	}
+
+	public String encode() {
 		// TODO Auto-generated method stub
 		return "TITLE:" + title + ";" +
 				"AUTHOR:" + author + ";" +
@@ -118,7 +135,12 @@ public class Book implements Serializable{
 				"TYPE:" + type + ";";
 	}
 
-	private String getTitleFromString(String msg) {
+    @Override
+    public String toString() {
+        return title + " di " + author + " : " + " inserito da " + user +  " " + underReading + " " + BCID + " " + user;
+    }
+
+    private String getTitleFromString(String msg) {
 		String words[] = msg.split(":");
 		return words[1];
 	}
@@ -151,4 +173,36 @@ public class Book implements Serializable{
 		return words[1];
 	}
 
+    private String getISBNFromString(String msg) {
+        String words[] = msg.split(":");
+        if (words[1].equals("null")) {
+            return "";
+        } else {
+            return words[1];
+        }
+    }
+
+
+    private String getUserFromString(String msg) {
+        String words[] = msg.split(":");
+        return words[1];
+    }
+
+	private String getBCIDFromString(String msg) {
+		String words[] = msg.split(":");
+		return words[1];
+	}
+
+    private boolean getStateFromString(String msg){
+		String words[] = msg.split(":");
+		return words[1].equals("1");
+	}
+
+	public boolean isUnderReading() {
+		return underReading;
+	}
+
+	public String getUser() {
+		return user;
+	}
 }

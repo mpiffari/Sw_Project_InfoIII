@@ -25,6 +25,7 @@ public class Book {
     private String BCID;
     private String ISBN;
     private String proprietario;
+    private boolean underReading;
     
     public String getProprietario() {
 		return proprietario;
@@ -181,6 +182,10 @@ public class Book {
 		return generatedString;
 	}
 	
+	public void setUnderReading(boolean underReading) {
+		this.underReading = underReading;
+	}
+	
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
@@ -188,7 +193,11 @@ public class Book {
 				"AUTHOR:" + author + ";" +
 				"YEAR:" + yearOfPubblication + ";" +
 				"EDITION:" + editionNumber + ";" +
-				"TYPE:" + type + ";";
+				"TYPE:" + type + ";" + 
+				"USER: " + proprietario + ";" +
+				"ISBN: " + ISBN + ";" + 
+				"STATE:" + (underReading == true ? 1:0) + ";" +
+				"BCID: " + BCID;
 	}
 	
 	

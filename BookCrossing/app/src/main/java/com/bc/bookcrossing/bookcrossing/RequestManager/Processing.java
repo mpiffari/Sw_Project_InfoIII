@@ -64,7 +64,7 @@ public class Processing implements GenerateRequests, ReceiveAnswer {
             return false;
         } else {
             String username = Globals.usernameLoggedIn;
-            return singletonCommunication.send(username + separator + Globals.reqType + RequestType.BOOK_REGISTRATION_AUTOMATIC.toString() + separator + book.toString() + "," + ISBN);
+            return singletonCommunication.send(username + separator + Globals.reqType + RequestType.BOOK_REGISTRATION_AUTOMATIC.toString() + separator + book.encode() + "," + ISBN);
         }
     }
 
@@ -74,7 +74,7 @@ public class Processing implements GenerateRequests, ReceiveAnswer {
             return false;
         } else {
             String username = Globals.usernameLoggedIn;
-            return singletonCommunication.send(username + separator + Globals.reqType + RequestType.BOOK_REGISTRATION_MANUAL.toString() + separator + book.toString());
+            return singletonCommunication.send(username + separator + Globals.reqType + RequestType.BOOK_REGISTRATION_MANUAL.toString() + separator + book.encode());
 		}
     }
 
