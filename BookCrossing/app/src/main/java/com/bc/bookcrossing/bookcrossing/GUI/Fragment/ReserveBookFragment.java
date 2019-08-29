@@ -72,10 +72,6 @@ public class ReserveBookFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_reserve_book, container, false);
         TextView txt = v.findViewById(R.id.res);
         txt.setText(ResultSearchFragment.getSelectedBook().toString());
-        ImageView imageView = (ImageView) v.findViewById(R.id.image);
-        if(ResultSearchFragment.getSelectedBook().getUrlImage() != null){
-            Picasso.with(getContext()).load(ResultSearchFragment.getSelectedBook().getUrlImage()).into(imageView);
-        }
         return v;
     }
 

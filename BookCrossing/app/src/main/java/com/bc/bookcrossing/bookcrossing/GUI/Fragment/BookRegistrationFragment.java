@@ -151,7 +151,7 @@ public class BookRegistrationFragment extends Fragment implements ObserverBookDa
             @Override
             public void run() {
                 if(result){
-                    Toast.makeText(getActivity(), "Book registration completed with BCID:" + bookCodeID, Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Book registration completed with BCID:" + bookCodeID, Toast.LENGTH_SHORT).show();
                     ((TextView) getActivity().findViewById(R.id.titleBook)).setText("");
                     ((TextView) getActivity().findViewById(R.id.authorBook)).setText("");
                     ((TextView) getActivity().findViewById(R.id.Year_of_pubblication)).setText("");

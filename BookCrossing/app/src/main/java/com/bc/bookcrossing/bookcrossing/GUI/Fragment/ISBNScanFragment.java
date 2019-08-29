@@ -54,9 +54,9 @@ public class ISBNScanFragment extends Fragment implements ObserverBookDataRegist
         // Inflate the layout for this fragment
 
         View v = inflater.inflate(R.layout.fragment_isbnscan, container, false);
-
         IntentIntegrator integrator = new IntentIntegrator(this.getActivity()).forSupportFragment(this);
         // use forSupportFragment or forFragment method to use fragments instead of activity
+
         integrator.setDesiredBarcodeFormats(IntentIntegrator.ONE_D_CODE_TYPES);
         integrator.setPrompt(this.getString(R.string.scan_bar_code));
         integrator.setResultDisplayDuration(0); // milliseconds to display result on screen after scan

@@ -137,7 +137,10 @@ public class Book implements Serializable{
 
     @Override
     public String toString() {
-        return title + " di " + author + " : " + " inserito da " + user +  " " + underReading + " " + BCID + " " + user;
+        return "BCID: " + BCID + "\n" +
+                title + " di " + author + "\n" +
+                "Categoria: " + type + "\n" +
+                "inserito da " + user;
     }
 
     private String getTitleFromString(String msg) {
