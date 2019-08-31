@@ -71,9 +71,7 @@ public class SearchFragment extends Fragment implements ObserverDataBookResearch
         // Inflate the layout for this fragment
         View myView = inflater.inflate(R.layout.fragment_search, container, false);
 
-        Button reservationBtn = myView.findViewById(R.id.reservation_button);
         Button searchBtn = myView.findViewById(R.id.search_button);
-        reservationBtn.setOnClickListener(this);
         searchBtn.setOnClickListener(this);
 
         return myView;
@@ -123,8 +121,6 @@ public class SearchFragment extends Fragment implements ObserverDataBookResearch
                     }
                 }
 
-                break;
-            case R.id.reservation_button:
                 break;
         }
     }

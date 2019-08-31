@@ -161,6 +161,8 @@ public class ComputeRequest implements ProcessRequest{
 				break;
 			case LOGIN:
 				reqTypeResponse = "2";
+			case BOOK_SEARCH:
+				reqTypeResponse = "8";
 				break;
 			default:
 				break;

@@ -26,16 +26,7 @@ import java.util.ArrayList;
  * create an instance of this fragment.
  */
 public class ResultSearchFragment extends Fragment implements AdapterView.OnItemClickListener {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
     private ListView listView;
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
     private static Book selectedBook;
     private OnFragmentInteractionListener mListener;
 
@@ -47,16 +38,12 @@ public class ResultSearchFragment extends Fragment implements AdapterView.OnItem
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
      * @return A new instance of fragment ResultSearchFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static ResultSearchFragment newInstance(String param1, String param2) {
+    public static ResultSearchFragment newInstance() {
         ResultSearchFragment fragment = new ResultSearchFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -64,10 +51,6 @@ public class ResultSearchFragment extends Fragment implements AdapterView.OnItem
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
@@ -82,30 +65,21 @@ public class ResultSearchFragment extends Fragment implements AdapterView.OnItem
         return v;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
-
     @Override
     public void onDetach() {
         super.onDetach();
         mListener = null;
     }
 
-
-
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         if(SearchFragment.getBooks().get(i).isUnderReading()){
-            Toast.makeText(getActivity(), "PRENOTABILE!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "BOOKABLE!", Toast.LENGTH_SHORT).show();
             selectedBook = SearchFragment.getBooks().get(i);
             getFragmentManager().beginTransaction().replace(R.id.fragment_container, new ReserveBookFragment()).addToBackStack(null).commit();
         }
         else {
-            Toast.makeText(getActivity(), "NO!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "BOOKING NOT POSSIBLE!", Toast.LENGTH_SHORT).show();
         }
     }
 
