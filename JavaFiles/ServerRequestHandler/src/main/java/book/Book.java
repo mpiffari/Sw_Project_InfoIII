@@ -1,8 +1,12 @@
 package book;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Random;
-import book.BookType;
+import dataManager.DBConnector;
+import dataManager.Queries;
 import user.User;
 
 /**
@@ -26,7 +30,7 @@ public class Book {
     private String type;
     private String BCID;
     private String ISBN;
-    private String proprietario;
+    private String owner;
     private boolean underReading;
     private ArrayList<User> prenotanti = new ArrayList<User>();
     
@@ -50,6 +54,12 @@ public class Book {
         this.type = type;
     }
     
+    public Book(String BCID, String owner) {
+    	this();
+    	this.BCID = BCID;
+    	this.owner = owner;
+    }
+    
     public Book() {
     	do {
     		BCID = generateBCID();
@@ -61,24 +71,50 @@ public class Book {
     	return BookData.getInstance().insertBook(this);
     }
     
-    public boolean reserve(User user) {
-    	return BookData.getInstance().reserveBook(this, user.getUsername());
+    public boolean reserve(String username) {
+    	return BookData.getInstance().reserveBook(this, username);
     }
     
     public ArrayList<User> getPrenotanti() {
+		PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(Queries.getReservationQuery);
+		try {
+			stmt.setString(1, this.BCID);
+			ResultSet rs = stmt.executeQuery();
+			prenotanti.clear();
+			User u;
+			while(rs.next()) {
+				u = new User();
+				u.setUsername(rs.getString(1));
+				prenotanti.add(u);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return this.prenotanti;
 	}
 
-	public void setPrenotante(User user) {
+	public boolean setPrenotante(User user) {
 		this.prenotanti.add(user);
+		PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(Queries.insertNewReservationQuery);
+
+		int result = 0;
+		try {
+			stmt.setString(1, user.getUsername());
+			stmt.setString(2, this.BCID);
+			stmt.setDouble(3, Math.random());	
+			result = stmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result==1 ? true : false;
 	}
     
     public String getProprietario() {
-		return proprietario;
+		return owner;
 	}
 
 	public void setProprietario(String proprietario) {
-		this.proprietario = proprietario;
+		this.owner = proprietario;
 	}
     
     public String getAuthor() {
@@ -197,13 +233,12 @@ public class Book {
 	
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
 		return "TITLE:" + title + ";" +
 				"AUTHOR:" + author + ";" +
 				"YEAR:" + yearOfPubblication + ";" +
 				"EDITION:" + editionNumber + ";" +
 				"TYPE:" + type + ";" + 
-				"USER: " + proprietario + ";" +
+				"USER: " + owner + ";" +
 				"ISBN: " + ISBN + ";" + 
 				"STATE:" + (underReading == true ? 1:0) + ";" +
 				"BCID: " + BCID;

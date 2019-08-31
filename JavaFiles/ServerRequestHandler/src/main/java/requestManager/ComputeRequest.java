@@ -13,12 +13,6 @@ import user.User;
 
 public class ComputeRequest implements ProcessRequest{
 
-	/**
-	 * @param msg: is a string something like this 
-	 * <request-Type>: number that specifies type of request;
-	 * <other data>
-	 */
-	
 	public final static ComputeRequest computeRequestSingleton = new ComputeRequest();
 	
 	public final void process(String msg, String username) {
@@ -42,9 +36,12 @@ public class ComputeRequest implements ProcessRequest{
 				Communication.getInstance().send(username, "requestType:0;result:" + (result?1:0) + ";BCID:" + b.getBCID());
 				break;
 			case BOOK_RESERVATION:
-				//TODO: add structure of message for a better understanding of indexes
+				// msg = book.toString
 				Book book = new Book(msg.substring(i + 1));
-				Communication.getInstance().send(username, "requestType:1;result:" + book.reserve(username));
+				
+				boolean rs = book.reserve(username);
+				//TODO: valuate which kind of response send back to user
+				Communication.getInstance().send(username, "requestType:1;result:" + (rs?1:0));
 				break;
 			case LOGIN:
 				//TODO: add structure of message for a better understanding of indexes
@@ -128,7 +125,6 @@ public class ComputeRequest implements ProcessRequest{
 				} else {
 					// Response: Books:1;(books[1].toString());2;(books[2].toString());.......;(books[n].toString());
 					int count = 0; //conta libri trovati
-					String resres = "";
 					//write as JSON
 					JSONObject sendMsg = new JSONObject();
 					JSONArray booksInMsg = new JSONArray();
@@ -136,12 +132,10 @@ public class ComputeRequest implements ProcessRequest{
 					{ 
 						booksInMsg.put(bb.toString());
 					    count++;
-					    
 					}
 					
 					sendMsg.put("size", count);
 					sendMsg.put("books", booksInMsg);
-					
 					Communication.getInstance().send(username, "requestType:8;result:" + 1 + ";Books:" + sendMsg);
 				}
 				

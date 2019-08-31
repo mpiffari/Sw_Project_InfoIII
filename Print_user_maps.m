@@ -1,46 +1,75 @@
 close all
-clear all
+clearvars
 clc
-x = [1
-    6
+x = [6
+65
 8
 43
 8
 34
-45
 10
-56
 1
-65
 77
 21
-65]
-y = [1
-3
+21
+45
+1
+42
+23
+65
+45
+9
+74
+-20
+10
+100
+1];
+y = [3
+41
 4
 3
 4
 5
-6
-8
 4
 30
-8
-59
-76
+89
 100
-105];
-raggi = [1
-5
-45
+12
+7
+65
+39
+38
+19
+17
+54
+63
+-20
+40
+20
+1];
+raggi = [5
+8
+32
 2
 3
 9
 3
-40
+21
 3
 9
-8];
+20
+14
+1
+7
+33
+6
+12
+25
+35
+15
+22
+30
+12];
 % 
 % [x y]
 % %scatter(x(:), y(:), raggi(:).^2)
@@ -60,8 +89,8 @@ for k = 1:1
     cla
 
     % Fix the axis limits.
-    xlim([-120 120])
-    ylim([-120 120])
+    xlim([-50 120])
+    ylim([-50 120])
 
     % Set the axis aspect ratio to 1:1.
     axis square
@@ -70,7 +99,7 @@ for k = 1:1
     title(['k = ' num2str(k)])
 
     % Display the circles.
-    viscircles(centers,radii,'Color',colors{k});
+    viscircles(centers,radii,'Color',colors{k}, 'LineStyle','-','LineWidth',0.5);
     hold on
     scatter(x(:), y(:),5,'k','+')
     % Pause for 1 second.

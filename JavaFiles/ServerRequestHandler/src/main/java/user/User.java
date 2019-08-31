@@ -1,9 +1,14 @@
 package user;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 
 import book.Book;
+import dataManager.DBConnector;
+import dataManager.Queries;
 
 public class User {
 
@@ -12,8 +17,8 @@ public class User {
 	private String lastName;
 	private Date dateOfBirth;
 	private String password;
-	private UserLocalizer localization;
-	//TODO: valutare di togliere, e fare query a tabella "POSSESSO"
+	private UserLocalizationInfo localization;
+	
 	private ArrayList<Book> booksOwned = new ArrayList<Book>();
 
 	public User(String username, String firstName, String lastName, Date dateOfBirth, String password, double latitude,
@@ -125,6 +130,19 @@ public class User {
 	}
 	
 	public ArrayList<Book> getChasingBooks() {
+		PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(Queries.getBooksOwnedBy);
+		try {
+			stmt.setString(1, this.username);
+			ResultSet rs = stmt.executeQuery();
+			booksOwned.clear();
+			Book b;
+			while(rs.next()) {
+				b = new Book(rs.getString(2), rs.getString(1));
+				booksOwned.add(b);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return this.booksOwned;
 	}
 	

@@ -1,12 +1,13 @@
-package algorithm_reservation_handler;
+package algorithmReservationHandler;
 
 import java.awt.List;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import dataManager.DBConnector;
+import dataManager.Queries;
 import user.User;
-import user.UserLocalizer;
+import user.UserLocalizationInfo;
 
 import java.util.*;
 
@@ -28,7 +29,7 @@ public class Algorithm {
 	}
 	
 	@SuppressWarnings("unchecked")
-	private TreeMap<User,Double> step_0(User L, Book book) {
+	public static TreeMap<User,Double> step_0(User L, Book book) {
 		Book bookRequested = null;
 		for (Book b : L.getChasingBooks()) {
 			if(b.getBCID().equals(book.getBCID())) {
@@ -38,10 +39,8 @@ public class Algorithm {
 		}
 		TreeMap<User, Double> distancePrenotantiFromReader = new TreeMap<User, Double>();
 		if(bookRequested == null) {
-			//Error
-			return distancePrenotantiFromReader;
+			return null;
 		} else {
-			//ArrayList<Double> distancePrenotantiFromRead = new ArrayList<Double>();
 			ArrayList<User> prenotantiForSpecificBook = bookRequested.getPrenotanti();
 			for (User u : prenotantiForSpecificBook) {
 				distancePrenotantiFromReader.put(u, u.computeDistance(L));
@@ -51,21 +50,15 @@ public class Algorithm {
 		return distancePrenotantiFromReader;
 	}
 	
-	private void step_1(User L, Book b) {
+	public static void step_1(User L, User nearestUser) {
 		// Raggi si sovrappongono --> scambio direttamente
-		
-		TreeMap<User,Double> personWhoBooks = step_0(L, b);
-		Map.Entry<User,Double> entry = personWhoBooks.entrySet().iterator().next();
-		User nearestUser = entry.getKey();
-		Double distance = entry.getValue();
-		
 		boolean isOverlapping = VerificaPuntoIncontro(L, nearestUser);
 		
 		if(isOverlapping) {
 			// Incontro fisico: notificare utente L e utente nearestUser
 		} else {
 			// Cerco tutti gli utenti che si trovano tra lettore e prenotante
-			double radiusUserSearchArea = 0.5 * distance;
+			double radiusUserSearchArea = 0.5 * L.computeDistance(nearestUser);
 			ArrayList<User> allUsers = getAllUsers();
 			ArrayList<User> handToHandUsers = new ArrayList<User>();
 			for (User u : allUsers) {
@@ -112,13 +105,13 @@ public class Algorithm {
 	}
 	
 	private ArrayList<User> getAllUsers() {
-		String queryAllUsers = "SELECT * FROM UTENTE";
-		PreparedStatement stmtState = DBConnector.getDBConnector().prepareStatement(queryAllUsers);
+		PreparedStatement stmtState = DBConnector.getDBConnector().prepareStatement(Queries.allUsersQuery);
 		try {
 			ResultSet rs = stmtState.executeQuery();
 			ArrayList<User> users = new ArrayList<User>();
-			User u = new User();
+			User u;
 			while(rs.next()) {
+				u = new User();
 				u.setUsername(rs.getString(1));
 				u.setFirstName(rs.getString(2));
 				u.setLastName(rs.getString(3));
@@ -144,62 +137,64 @@ public class Algorithm {
 		return isOverlapping;
 	}
 	
-	private UserLocalizer dataPersonWhoBooks(String username) {
-		UserLocalizer personWhoBooksPosition = new UserLocalizer();
-		
-		// Ricerca dati prenotante
-		String query1 = "SELECT RESIDENZALAT, RESIDENZALONG, RAGGIOAZIONE FROM Utente Where USERNAME = ?";
-		PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(query1);
-
+	public static User getUserFromUsername(String username) {
+		PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(Queries.getUserInformationsQuery);
+		User u = null;
 		try {
-			stmt = DBConnector.getDBConnector().prepareStatement(query1);
 			stmt.setString(1, username);
 			ResultSet rs = stmt.executeQuery();
 			if(rs.next()) {
-				personWhoBooksPosition.lat = rs.getDouble(1);
-				personWhoBooksPosition.longit = rs.getDouble(2); 
-				personWhoBooksPosition.radius = rs.getDouble(3);
+				u = new User();
+				u.setUsername(rs.getString(1));
+				u.setFirstName(rs.getString(2));
+				u.setLastName(rs.getString(3));
+				u.setLatitude(rs.getDouble(7));
+				u.setLongitude(rs.getDouble(8));
+				u.setActionArea(rs.getDouble(9));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+			return null;
 		}
-		
-		return personWhoBooksPosition;
+		return u;
 	}
 	
-	private UserLocalizer dataReader(Book book) {
-		UserLocalizer readerPosition = new UserLocalizer();
+	public static UserLocalizationInfo userLocalization(String username) {
+		UserLocalizationInfo userLocalization = new UserLocalizationInfo();
 		
-		// Ricerca dati lettore
-		String bookBCIDForReservation = book.getBCID();
-		String query1 = "SELECT USERNAME FROM Possesso Where BCID = ?";
-		PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(query1);
+		// Research data of the user that required the book owned by someone throw a reservation
+		PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(Queries.readerLocationQuery);
 
 		try {
-			stmt.setString(1, bookBCIDForReservation);
+			stmt.setString(1, username);
 			ResultSet rs = stmt.executeQuery();
-			String readerUsername = null;
+			if(rs.next()) {
+				userLocalization.lat = rs.getDouble(1);
+				userLocalization.longit = rs.getDouble(2); 
+				userLocalization.radius = rs.getDouble(3);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+		return userLocalization;
+	}
+	
+	public static String retrievingReader(Book ownedBook) {
+		// Research data of reader that own the book requested by other user throw a reservation
+		PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(Queries.readerBookQuery);
+		String readerUsername = null;
+		
+		try {
+			stmt.setString(1, ownedBook.getBCID());
+			ResultSet rs = stmt.executeQuery();
 			if(rs.next()) {
 				readerUsername = rs.getString(1);
 			}
-			
-			if(readerUsername == null) {
-				//return false;
-			} else {
-				String query2 = "SELECT RESIDENZALAT, RESIDENZALONG, RAGGIOAZIONE FROM Utente Where USERNAME = ?";
-				stmt = DBConnector.getDBConnector().prepareStatement(query2);
-				stmt.setString(1, readerUsername);
-				rs = stmt.executeQuery();
-				if(rs.next()) {
-					readerPosition.lat = rs.getDouble(1);
-					readerPosition.longit = rs.getDouble(2); 
-					readerPosition.radius = rs.getDouble(3);
-				}
-			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} 
-		
-		return readerPosition;
+			return null;
+		}
+		return readerUsername;
 	}
 }
