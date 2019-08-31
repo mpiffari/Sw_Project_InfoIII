@@ -3,10 +3,11 @@ package com.bc.bookcrossing.bookcrossing.GUI;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 
+import com.bc.bookcrossing.bookcrossing.GUI.Observer.ObserverDataBookReservation;
 import com.bc.bookcrossing.bookcrossing.GUI.Observer.ObserverDataBookResearch;
 import com.bc.bookcrossing.bookcrossing.Structures.BookInfo;
 import com.bc.bookcrossing.bookcrossing.RequestManager.ReceiveData;
-import com.bc.bookcrossing.bookcrossing.GUI.Observer.ObserverBookDataRegistration;
+import com.bc.bookcrossing.bookcrossing.GUI.Observer.ObserverDataBookRegistration;
 import com.bc.bookcrossing.bookcrossing.GUI.Observer.ObserverDataBookPickUp;
 import com.bc.bookcrossing.bookcrossing.GUI.Observer.ObserverDataBookTaken;
 import com.bc.bookcrossing.bookcrossing.GUI.Observer.ObserverDataLogin;
@@ -38,13 +39,14 @@ public class DataDispatcherSingleton implements ReceiveData, DelegateSendData {
 
     private Processing p = Processing.getInstance();
     //region Declaration of vector of observer
-    private List<ObserverBookDataRegistration> observersBookDataRegistration = new ArrayList<>();
+    private List<ObserverDataBookRegistration> observersDataBookRegistration = new ArrayList<>();
     private List<ObserverDataBookPickUp> observersDataBookPickUp = new ArrayList<>();
     private List<ObserverDataBookTaken> observersDataBookTaken = new ArrayList<>();
     private List<ObserverDataLogin> observersDataLogin = new ArrayList<>();
     private List<ObserverDataSignIn> observersDataSignIn = new ArrayList<>();
     private List<ObserverDataProfile> observersDataProfile = new ArrayList<>();
     private List<ObserverDataBookResearch> observarDataBookResearch = new ArrayList<>();
+    private List<ObserverDataBookReservation> observarDataBookReservation = new ArrayList<>();
     //endregion
 
     //Function related to SHA-256 encoding
@@ -118,12 +120,17 @@ public class DataDispatcherSingleton implements ReceiveData, DelegateSendData {
     public boolean sendDataBookSearch(String title, String author) {
          return p.generateRequestForDataBookSearch(title, author);
     }
+
+    @Override
+    public boolean sendDataBookReservation(Book bookForReservation) {
+        return p.generateRequestForDataBookReservation(bookForReservation);
+    }
     //endregion
 
     //region callback ReceiveData functions
     @Override
     public void callbackRegistration(boolean result, String bookCodeID) {
-        for (ObserverBookDataRegistration obs : observersBookDataRegistration) {
+        for (ObserverDataBookRegistration obs : observersDataBookRegistration) {
             obs.callbackRegistration(result, bookCodeID);
         }
     }
@@ -173,8 +180,8 @@ public class DataDispatcherSingleton implements ReceiveData, DelegateSendData {
 
     @Override
     public void register(ObserverForUiInformation observerForUiInformation) {
-        if ((observerForUiInformation instanceof ObserverBookDataRegistration) && (!observersBookDataRegistration.contains(observerForUiInformation))) {
-            observersBookDataRegistration.add((ObserverBookDataRegistration) observerForUiInformation);
+        if ((observerForUiInformation instanceof ObserverDataBookRegistration) && (!observersDataBookRegistration.contains(observerForUiInformation))) {
+            observersDataBookRegistration.add((ObserverDataBookRegistration) observerForUiInformation);
         } else if ((observerForUiInformation instanceof ObserverDataBookPickUp) && (!observersDataBookPickUp.contains(observerForUiInformation))) {
             observersDataBookPickUp.add((ObserverDataBookPickUp) observerForUiInformation);
         } else if ((observerForUiInformation instanceof ObserverDataBookTaken) && (!observersDataBookTaken.contains(observerForUiInformation))) {
@@ -187,13 +194,15 @@ public class DataDispatcherSingleton implements ReceiveData, DelegateSendData {
             observersDataProfile.add((ObserverDataProfile) observerForUiInformation);
         } else if ((observerForUiInformation instanceof ObserverDataBookResearch) && (!observarDataBookResearch.contains(observerForUiInformation))) {
             observarDataBookResearch.add((ObserverDataBookResearch) observerForUiInformation);
+        } else if ((observerForUiInformation instanceof ObserverDataBookReservation) && (!observarDataBookReservation.contains(observerForUiInformation))) {
+            observarDataBookReservation.add((ObserverDataBookReservation) observerForUiInformation);
         }
     }
 
     @Override
     public boolean unRegister(ObserverForUiInformation observerForUiInformation) {
-        if (observerForUiInformation instanceof ObserverBookDataRegistration) {
-            return observersBookDataRegistration.remove(observerForUiInformation);
+        if (observerForUiInformation instanceof ObserverDataBookRegistration) {
+            return observersDataBookRegistration.remove(observerForUiInformation);
         } else if (observerForUiInformation instanceof ObserverDataBookPickUp) {
             return observersDataBookPickUp.remove(observerForUiInformation);
         } else if (observerForUiInformation instanceof ObserverDataBookTaken) {
@@ -206,6 +215,8 @@ public class DataDispatcherSingleton implements ReceiveData, DelegateSendData {
                 return observersDataSignIn.remove(observerForUiInformation);
         } else if (observerForUiInformation instanceof ObserverDataBookResearch) {
                 return observarDataBookResearch.remove(observerForUiInformation);
+        } else if (observerForUiInformation instanceof ObserverDataBookReservation) {
+            return observarDataBookReservation.remove(observerForUiInformation);
         }
         return false;
     }

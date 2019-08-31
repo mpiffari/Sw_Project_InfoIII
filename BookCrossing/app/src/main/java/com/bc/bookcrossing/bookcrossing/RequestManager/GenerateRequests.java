@@ -13,4 +13,5 @@ public interface GenerateRequests {
    boolean generateRequestForDataLogin(User user);
    boolean generateRequestForDataProfileInformations(String username, String password);
    boolean generateRequestForDataBookSearch(String title, String author);
+   boolean generateRequestForDataBookReservation(Book bookForReservation);
 }

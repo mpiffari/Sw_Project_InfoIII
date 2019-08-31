@@ -14,7 +14,8 @@ public interface DelegateSendData {
    boolean sendDataBookRegistrationAuto(String title, String author, String yearOfPubb, String edition, String bookTypeDesc, String ISBN);
    boolean sendDataBookRegistrationManual(String title, String author, String yearOfPubb, String edition, String bookTypeDesc);
    boolean sendDataProfileInformations(String username, String password);
-   boolean sendDataBookSearch(String title, String author);	
+   boolean sendDataBookSearch(String title, String author);
+   boolean sendDataBookReservation(Book bookForReservation);
 
    void register(ObserverForUiInformation observerForUiInformation);
    boolean unRegister(ObserverForUiInformation observerForUiInformation);

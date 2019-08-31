@@ -58,6 +58,17 @@ public class Processing implements GenerateRequests, ReceiveAnswer {
     }
 
     @Override
+    public boolean generateRequestForDataBookReservation(Book bookForReservation) {
+        if (Globals.usernameLoggedIn == null) {
+            Log.d("Processing", "[ASSERT]: no username saved!");
+            return false;
+        } else {
+            String username = Globals.usernameLoggedIn;
+            return singletonCommunication.send(username + separator + Globals.reqType + RequestType.BOOK_RESERVATION.toString() + separator + bookForReservation.encode());
+        }
+    }
+
+    @Override
     public boolean generateRequestForDataBookRegistrationAuto(Book book, String ISBN) {
         if (Globals.usernameLoggedIn == null) {
             Log.d("Processing", "[ASSERT]: no username saved!");

@@ -1,6 +1,5 @@
 package com.bc.bookcrossing.bookcrossing.GUI.Fragment;
 
-import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -14,8 +13,6 @@ import android.widget.Toast;
 
 import com.bc.bookcrossing.bookcrossing.R;
 import com.bc.bookcrossing.bookcrossing.Structures.Book;
-
-import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -76,7 +73,7 @@ public class ResultSearchFragment extends Fragment implements AdapterView.OnItem
         if(SearchFragment.getBooks().get(i).isUnderReading()){
             Toast.makeText(getActivity(), "BOOKABLE!", Toast.LENGTH_SHORT).show();
             selectedBook = SearchFragment.getBooks().get(i);
-            getFragmentManager().beginTransaction().replace(R.id.fragment_container, new ReserveBookFragment()).addToBackStack(null).commit();
+            getFragmentManager().beginTransaction().replace(R.id.fragment_container, new ReserveDataBookFragment()).addToBackStack(null).commit();
         }
         else {
             Toast.makeText(getActivity(), "BOOKING NOT POSSIBLE!", Toast.LENGTH_SHORT).show();

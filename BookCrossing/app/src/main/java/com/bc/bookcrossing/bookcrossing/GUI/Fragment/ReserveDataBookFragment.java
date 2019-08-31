@@ -1,30 +1,33 @@
 package com.bc.bookcrossing.bookcrossing.GUI.Fragment;
 
-import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.bc.bookcrossing.bookcrossing.GUI.DataDispatcherSingleton;
+import com.bc.bookcrossing.bookcrossing.GUI.Observer.ObserverDataBookReservation;
 import com.bc.bookcrossing.bookcrossing.R;
-import com.squareup.picasso.Picasso;
+import com.bc.bookcrossing.bookcrossing.Structures.Book;
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link ReserveBookFragment.OnFragmentInteractionListener} interface
+ * {@link ReserveDataBookFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link ReserveBookFragment#newInstance} factory method to
+ * Use the {@link ReserveDataBookFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ReserveBookFragment extends Fragment {
+public class ReserveDataBookFragment extends Fragment implements ObserverDataBookReservation, View.OnClickListener {
     private OnFragmentInteractionListener mListener;
+    private DataDispatcherSingleton dispatcher;
 
-    public ReserveBookFragment() {
+    public ReserveDataBookFragment() {
         // Required empty public constructor
     }
 
@@ -32,11 +35,11 @@ public class ReserveBookFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @return A new instance of fragment ReserveBookFragment.
+     * @return A new instance of fragment ReserveDataBookFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static ReserveBookFragment newInstance() {
-        ReserveBookFragment fragment = new ReserveBookFragment();
+    public static ReserveDataBookFragment newInstance() {
+        ReserveDataBookFragment fragment = new ReserveDataBookFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -51,10 +54,14 @@ public class ReserveBookFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        dispatcher = DataDispatcherSingleton.getInstance();
+        dispatcher.register(this);
 
         View v = inflater.inflate(R.layout.fragment_reserve_book, container, false);
         TextView txt = v.findViewById(R.id.res);
         txt.setText(ResultSearchFragment.getSelectedBook().toString());
+        Button reserveBtn = v.findViewById(R.id.reservation_button);
+        reserveBtn.setOnClickListener(this);
         return v;
     }
 
@@ -68,7 +75,27 @@ public class ReserveBookFragment extends Fragment {
     @Override
     public void onDetach() {
         super.onDetach();
+        dispatcher.unRegister(this);
         mListener = null;
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.reservation_button:
+                Book bookSelected = ResultSearchFragment.getSelectedBook();
+                boolean result = dispatcher.sendDataBookReservation(bookSelected);
+                if(result == false) {
+                    Toast.makeText(getActivity(), "Problem with Server connection!", Toast.LENGTH_LONG).show();
+                }
+                break;
+        }
+
+    }
+
+    @Override
+    public void callbackreservation() {
+
     }
 
     /**

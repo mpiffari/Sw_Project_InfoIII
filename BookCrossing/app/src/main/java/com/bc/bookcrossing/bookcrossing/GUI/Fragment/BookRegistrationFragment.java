@@ -1,6 +1,5 @@
 package com.bc.bookcrossing.bookcrossing.GUI.Fragment;
 
-import android.icu.util.IslamicCalendar;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -16,15 +15,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bc.bookcrossing.bookcrossing.GUI.DataDispatcherSingleton;
-import com.bc.bookcrossing.bookcrossing.GUI.Observer.ObserverBookDataRegistration;
+import com.bc.bookcrossing.bookcrossing.GUI.Observer.ObserverDataBookRegistration;
 import com.bc.bookcrossing.bookcrossing.Globals;
 import com.bc.bookcrossing.bookcrossing.R;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class BookRegistrationFragment extends Fragment implements ObserverBookDataRegistration, View.OnClickListener {
+public class BookRegistrationFragment extends Fragment implements ObserverDataBookRegistration, View.OnClickListener {
     private OnFragmentInteractionListener mListener;
     private DataDispatcherSingleton dispatcher;
 

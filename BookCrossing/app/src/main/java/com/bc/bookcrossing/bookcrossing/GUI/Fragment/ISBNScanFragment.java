@@ -21,7 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bc.bookcrossing.bookcrossing.GUI.DataDispatcherSingleton;
-import com.bc.bookcrossing.bookcrossing.GUI.Observer.ObserverBookDataRegistration;
+import com.bc.bookcrossing.bookcrossing.GUI.Observer.ObserverDataBookRegistration;
 import com.bc.bookcrossing.bookcrossing.R;
 import com.bc.bookcrossing.bookcrossing.RequestManager.FetchBook;
 import com.bc.bookcrossing.bookcrossing.Structures.Book;
@@ -32,7 +32,7 @@ import com.google.zxing.integration.android.IntentResult;
  * Created by rajinders on 2/12/16.
  */
 
-public class ISBNScanFragment extends Fragment implements ObserverBookDataRegistration {
+public class ISBNScanFragment extends Fragment implements ObserverDataBookRegistration {
 
     private String codeFormat = null, codeContent = null;
     private final String noResultErrorMsg = "No scan data received!";
