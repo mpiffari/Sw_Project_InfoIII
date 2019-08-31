@@ -1,7 +1,9 @@
 package book;
 
+import java.util.ArrayList;
 import java.util.Random;
 import book.BookType;
+import user.User;
 
 /**
  * 
@@ -26,16 +28,8 @@ public class Book {
     private String ISBN;
     private String proprietario;
     private boolean underReading;
+    private ArrayList<User> prenotanti = new ArrayList<User>();
     
-    public String getProprietario() {
-		return proprietario;
-	}
-
-
-	public void setProprietario(String proprietario) {
-		this.proprietario = proprietario;
-	}
-
 
 	public Book(String msg) {	
     	this();
@@ -46,7 +40,6 @@ public class Book {
         this.editionNumber = getEditionNumberFromString(lines[3]);
         this.type = getBookTypeFromString(lines[4]);
     }
-    
     
     public Book(String title, String author, int yearOfPubblication, int editionNumber, String type) {
         this();
@@ -68,9 +61,25 @@ public class Book {
     	return BookData.getInstance().insertBook(this);
     }
     
-    public int reserve(String username) {
-    	return BookData.getInstance().reserveBook(this, username);
+    public boolean reserve(User user) {
+    	return BookData.getInstance().reserveBook(this, user.getUsername());
     }
+    
+    public ArrayList<User> getPrenotanti() {
+		return this.prenotanti;
+	}
+
+	public void setPrenotante(User user) {
+		this.prenotanti.add(user);
+	}
+    
+    public String getProprietario() {
+		return proprietario;
+	}
+
+	public void setProprietario(String proprietario) {
+		this.proprietario = proprietario;
+	}
     
     public String getAuthor() {
 
@@ -166,7 +175,11 @@ public class Book {
 		String words[] = msg.split(":");
 		return words[1];
 	}
-
+	
+	public void setUnderReading(boolean underReading) {
+		this.underReading = underReading;
+	}
+	
 	public String generateBCID() {
 		
 		int leftLimit = 97; // letter 'a'
@@ -180,10 +193,6 @@ public class Book {
 		}
 		String generatedString = buffer.toString();
 		return generatedString;
-	}
-	
-	public void setUnderReading(boolean underReading) {
-		this.underReading = underReading;
 	}
 	
 	@Override

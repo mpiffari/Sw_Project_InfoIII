@@ -1,6 +1,9 @@
 package user;
 
+import java.util.ArrayList;
 import java.util.Date;
+
+import book.Book;
 
 public class User {
 
@@ -9,9 +12,9 @@ public class User {
 	private String lastName;
 	private Date dateOfBirth;
 	private String password;
-	private double latitude;
-	private double longitude;
-	private double action;
+	private UserLocalizer localization;
+	//TODO: valutare di togliere, e fare query a tabella "POSSESSO"
+	private ArrayList<Book> booksOwned = new ArrayList<Book>();
 
 	public User(String username, String firstName, String lastName, Date dateOfBirth, String password, double latitude,
 			double longitude, double action) {
@@ -21,9 +24,9 @@ public class User {
 		this.lastName = lastName;
 		this.dateOfBirth = dateOfBirth;
 		this.password = password;
-		this.latitude = latitude;
-		this.longitude = longitude;
-		this.action = action;
+		this.localization.lat = latitude;
+		this.localization.longit = longitude;
+		this.localization.radius = action;
 	}
 	
 	public User(String username, String password){
@@ -89,31 +92,39 @@ public class User {
 	}
 
 	public double getLatitude() {
-		return latitude;
+		return localization.lat;
 	}
 
 	public void setLatitude(double latitude) {
-		this.latitude = latitude;
+		this.localization.lat = latitude;
 	}
 
 	public double getLongitude() {
-		return longitude;
+		return localization.longit;
 	}
 
 	public void setLongitude(double longitude) {
-		this.longitude = longitude;
+		this.localization.longit = longitude;
 	}
 
 	public double getAction() {
-		return action;
+		return localization.radius;
 	}
 
 	public void setAction(double action) {
-		this.action = action;
+		this.localization.radius = action;
 	}
 	
 	public LoginStatus login() {
 		return UserData.getInstance().login(this);
+	}
+	
+	public void setChasingBook(Book book) {
+		this.booksOwned.add(book);
+	}
+	
+	public ArrayList<Book> getChasingBooks() {
+		return this.booksOwned;
 	}
 	
 	@Override
@@ -122,4 +133,13 @@ public class User {
 				+ "PASSWORD: " + password;
 	}
 
+	public double computeDistance(User o) {
+		double lat_this = this.localization.lat;
+		double long_this = this.localization.longit;
+		double lat_o = o.localization.lat;
+		double long_o = o.localization.longit;
+		
+		double distance = Math.sqrt(Math.pow((lat_this - lat_o), 2) + Math.pow((long_this - long_o),2));
+		return distance;
+	}
 }
