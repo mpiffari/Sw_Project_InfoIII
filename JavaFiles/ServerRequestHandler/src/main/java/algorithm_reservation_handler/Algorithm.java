@@ -14,16 +14,68 @@ import book.Book;
 
 public class Algorithm {
 	
-	private void step_0(User L, Book book) {
-		Book bookRequested;
+	static <K,V extends Comparable<? super V>> SortedSet<Map.Entry<K,V>> entriesSortedByValues(Map<K,V> map) {
+	    SortedSet<Map.Entry<K,V>> sortedEntries = new TreeSet<Map.Entry<K,V>>(
+	        new Comparator<Map.Entry<K,V>>() {
+	            public int compare(Map.Entry<K,V> e1, Map.Entry<K,V> e2) {
+	                int res = e1.getValue().compareTo(e2.getValue());
+	                return res != 0 ? res : 1;
+	            }
+	        }
+	    );
+	    sortedEntries.addAll(map.entrySet());
+	    return sortedEntries;
+	}
+	
+	@SuppressWarnings("unchecked")
+	private TreeMap<User,Double> step_0(User L, Book book) {
+		Book bookRequested = null;
 		for (Book b : L.getChasingBooks()) {
 			if(b.getBCID().equals(book.getBCID())) {
 				bookRequested = b;
 				break;
 			}
 		}
+		TreeMap<User, Double> distancePrenotantiFromRead = new TreeMap<User, Double>();
+		if(bookRequested == null) {
+			//Error
+			return distancePrenotantiFromRead;
+		} else {
+			//ArrayList<Double> distancePrenotantiFromRead = new ArrayList<Double>();
+			ArrayList<User> prenotantiForSpecificBook = bookRequested.getPrenotanti();
+			for (User u : prenotantiForSpecificBook) {
+				distancePrenotantiFromRead.put(u, u.computeDistance(L));
+			}
+			distancePrenotantiFromRead = (TreeMap<User, Double>) entriesSortedByValues(distancePrenotantiFromRead);
+		}
+		return distancePrenotantiFromRead;
+	}
+	
+	private void step_1(User L, Book b) {
+		// Raggi si sovrappongono --> scambio direttamente
 		
+		TreeMap<User,Double> personWhoBooks = step_0(L, b);
+		Map.Entry<User,Double> entry = personWhoBooks.entrySet().iterator().next();
+		User nearestUser = entry.getKey();
+		Double distance = entry.getValue();
 		
+		boolean isOverlapping = VerificaPuntoIncontro(L, nearestUser);
+		
+		if(isOverlapping) {
+			// Incontro fisico: notificare utente L e utente nearestUser
+		} else {
+			// else algorithm
+		}
+	}
+	
+	//TODO: rename this function
+	private boolean VerificaPuntoIncontro(User L, User p) {
+		
+		double r_L = L.getActionArea();
+		double r_p = p.getActionArea();
+		double distance = L.computeDistance(p) - r_L - r_p;
+		boolean isOverlapping = distance <= 0;
+		return isOverlapping;
 	}
 	
 	private UserLocalizer dataPersonWhoBooks(String username) {

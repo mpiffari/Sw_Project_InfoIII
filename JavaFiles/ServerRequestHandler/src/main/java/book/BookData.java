@@ -7,15 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import dataManager.DBConnector;
 
-class Coordinate {
-	public double lat;
-	public double longit;
-	
-	public Coordinate() {
-		
-	}
-}
-
 public class BookData implements BookQuery {
 
 	private static BookData instance = null;
@@ -89,38 +80,7 @@ public class BookData implements BookQuery {
 	@SuppressWarnings("null")
 	public boolean reserveBook(Book book, String username) {
 		//TODO: cercare informazioni sul lettore che ha in possesso il libro
-		double r_l = 0.0; // Raggio d'azione lettore
-		Coordinate z_l = new Coordinate(); // Zona di residenza lettore
-		
-		// Ricerca dati lettore
-		String bookBCIDForReservation = book.getBCID();
-		String query1 = "SELECT USERNAME FROM Possesso Where BCID = ?";
-		PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(query1);
 
-		try {
-			stmt.setString(1, bookBCIDForReservation);
-			ResultSet rs = stmt.executeQuery();
-			String readerUsername = null;
-			if(rs.next()) {
-				readerUsername = rs.getString(1);
-			}
-			
-			if(readerUsername == null) {
-				return false;
-			} else {
-				String query2 = "SELECT RESIDENZALAT, RESIDENZALONG, RAGGIOAZIONE FROM Utente Where USERNAME = ?";
-				stmt = DBConnector.getDBConnector().prepareStatement(query2);
-				stmt.setString(1, readerUsername);
-				rs = stmt.executeQuery();
-				if(rs.next()) {
-					z_l.lat = rs.getDouble(1);
-					z_l.longit = rs.getDouble(2); 
-					r_l = rs.getDouble(3);
-				}
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
 		
 		if(searchBookByTitle(book.getTitle()) != null) {
 			//ResultSet rs = searchBook(book.getTitle()); //ho i libri che cerco e relative posizioni

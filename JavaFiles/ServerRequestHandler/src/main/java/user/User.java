@@ -107,11 +107,11 @@ public class User {
 		this.localization.longit = longitude;
 	}
 
-	public double getAction() {
+	public double getActionArea() {
 		return localization.radius;
 	}
 
-	public void setAction(double action) {
+	public void setActionArea(double action) {
 		this.localization.radius = action;
 	}
 	
