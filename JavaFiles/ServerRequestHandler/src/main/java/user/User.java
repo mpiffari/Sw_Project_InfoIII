@@ -37,9 +37,10 @@ public class User {
 	public User(String msg) {	
     	String lines[] = msg.split(";");
         this.username = getUserFromString(lines[0]);
-        this.password = getPasswordFromString(lines[1]);
-        
+        this.password = getPasswordFromString(lines[1]);   
     }
+	
+	public User() {}
 
 	private String getUserFromString(String msg) {
 		String words[] = msg.split(":");

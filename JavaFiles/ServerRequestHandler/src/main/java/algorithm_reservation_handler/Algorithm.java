@@ -36,19 +36,19 @@ public class Algorithm {
 				break;
 			}
 		}
-		TreeMap<User, Double> distancePrenotantiFromRead = new TreeMap<User, Double>();
+		TreeMap<User, Double> distancePrenotantiFromReader = new TreeMap<User, Double>();
 		if(bookRequested == null) {
 			//Error
-			return distancePrenotantiFromRead;
+			return distancePrenotantiFromReader;
 		} else {
 			//ArrayList<Double> distancePrenotantiFromRead = new ArrayList<Double>();
 			ArrayList<User> prenotantiForSpecificBook = bookRequested.getPrenotanti();
 			for (User u : prenotantiForSpecificBook) {
-				distancePrenotantiFromRead.put(u, u.computeDistance(L));
+				distancePrenotantiFromReader.put(u, u.computeDistance(L));
 			}
-			distancePrenotantiFromRead = (TreeMap<User, Double>) entriesSortedByValues(distancePrenotantiFromRead);
+			distancePrenotantiFromReader = (TreeMap<User, Double>) entriesSortedByValues(distancePrenotantiFromReader);
 		}
-		return distancePrenotantiFromRead;
+		return distancePrenotantiFromReader;
 	}
 	
 	private void step_1(User L, Book b) {
@@ -64,7 +64,73 @@ public class Algorithm {
 		if(isOverlapping) {
 			// Incontro fisico: notificare utente L e utente nearestUser
 		} else {
-			// else algorithm
+			// Cerco tutti gli utenti che si trovano tra lettore e prenotante
+			double radiusUserSearchArea = 0.5 * distance;
+			ArrayList<User> allUsers = getAllUsers();
+			ArrayList<User> handToHandUsers = new ArrayList<User>();
+			for (User u : allUsers) {
+				if(u.computeDistance(L) <= radiusUserSearchArea || u.computeDistance(nearestUser) <= radiusUserSearchArea) {
+					handToHandUsers.add(u);
+				}
+			}
+			
+			
+			// Ordino hand to hand user per distanza dal reader (ovvero il Lettore L)
+			TreeMap<User, Double> distanceUsersFromReader = new TreeMap<User, Double>();
+			for (User u : handToHandUsers) {
+				distanceUsersFromReader.put(u, u.computeDistance(L));
+			}
+			distanceUsersFromReader = (TreeMap<User, Double>) entriesSortedByValues(distanceUsersFromReader);
+			
+			// Creo il link tra gli utenti che hanno l'area di azione in comune
+			ArrayList<User> userPath = new ArrayList<User>();
+			User u = handToHandUsers.get(0);
+			userPath.add(u);
+			boolean overlappingFound = false;
+			
+			ArrayList<User> handToHandUsersCopy = new ArrayList<User>();
+			Collections.copy(handToHandUsersCopy, handToHandUsers);
+			handToHandUsersCopy.remove(0);
+			while(true) {
+				overlappingFound = false;
+				
+				for(User uu: handToHandUsersCopy) {
+					if(VerificaPuntoIncontro(u, uu)) {
+						userPath.add(uu);
+						u = uu;
+						handToHandUsersCopy.remove(uu);
+						overlappingFound = true;
+						break;
+					}
+				}
+				
+				if(!overlappingFound || handToHandUsersCopy.isEmpty()) {
+					break;
+				}
+			}
+		}
+	}
+	
+	private ArrayList<User> getAllUsers() {
+		String queryAllUsers = "SELECT * FROM UTENTE";
+		PreparedStatement stmtState = DBConnector.getDBConnector().prepareStatement(queryAllUsers);
+		try {
+			ResultSet rs = stmtState.executeQuery();
+			ArrayList<User> users = new ArrayList<User>();
+			User u = new User();
+			while(rs.next()) {
+				u.setUsername(rs.getString(1));
+				u.setFirstName(rs.getString(2));
+				u.setLastName(rs.getString(3));
+				u.setLatitude(rs.getDouble(7));
+				u.setLongitude(rs.getDouble(8));
+				u.setActionArea(rs.getDouble(9));
+				users.add(u);
+			}
+			return users;	
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return new ArrayList<User>();
 		}
 	}
 	
