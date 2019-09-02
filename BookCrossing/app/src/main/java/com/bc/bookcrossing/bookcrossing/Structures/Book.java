@@ -127,12 +127,15 @@ public class Book implements Serializable{
 	}
 
 	public String encode() {
-		// TODO Auto-generated method stub
-		return "TITLE:" + title + ";" +
-				"AUTHOR:" + author + ";" +
+		return "TITLE:" + title.trim() + ";" +
+				"AUTHOR:" + author.trim() + ";" +
 				"YEAR:" + yearOfPubblication + ";" +
-				"EDITION:" + editionNumber + ";" +
-				"TYPE:" + type + ";";
+				"EDITION:" + editionNumber + ";" + 
+				"TYPE:" + type.trim() + ";" +
+				"USER:" + user.trim() + ";" +
+				"ISBN:" + ISBN.trim() + ";" +
+				"STATE:" + (underReading == true ? 1:0) + ";" +
+				"BCID:" + BCID.trim();
 	}
 
     @Override
