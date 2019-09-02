@@ -80,7 +80,7 @@ public class Book {
 	}
 
 	public ArrayList<User> getPrenotanti() {
-		PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(Queries.getReservationQuery);
+		PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(Queries.getUserInfoByJoin);
 		try {
 			stmt.setString(1, this.BCID);
 			ResultSet rs = stmt.executeQuery();
@@ -89,6 +89,13 @@ public class Book {
 			while(rs.next()) {
 				u = new User();
 				u.setUsername(rs.getString(1));
+				u.setFirstName(rs.getString(5));
+				u.setLastName(rs.getString(6));
+				u.setDateOfBirth(rs.getDate(7));
+				u.setPassword(rs.getString(9));
+				u.setLatitude(rs.getBigDecimal(10).doubleValue());
+				u.setLongitude(rs.getBigDecimal(11).doubleValue());
+				u.setActionArea(rs.getBigDecimal(12).doubleValue());
 				prenotanti.add(u);
 			}
 		} catch (SQLException e) {

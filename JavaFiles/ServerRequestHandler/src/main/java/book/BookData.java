@@ -91,6 +91,10 @@ public class BookData implements BookQuery {
 			return false;
 		}
 		System.out.println("Prenotanti ordered by position:\r\n" + orderedUsers.toString());
+		System.out.println("Distance of prenotanti from " + L.getUsername()); 
+		for(User o: orderedUsers) {
+			System.out.println("Name: " + o.getUsername() + " Pos: " + o.getLatitude() + "," + o.getLongitude() + " and distance is: " + o.computeDistance(L));
+		}
 		
 		User nearestUser = orderedUsers.get(0);
 		ArrayList<User> result = Algorithm.step_1(L, nearestUser);

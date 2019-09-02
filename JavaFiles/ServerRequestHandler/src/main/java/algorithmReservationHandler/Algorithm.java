@@ -119,7 +119,7 @@ public class Algorithm {
 					}
 				}
 			} else {
-				System.out.println("Reader L è isolato da tutti gli utenti");
+				System.out.println("Reader è isolato da tutti gli altri utenti");
 			}
 			return userPath;
 		}
