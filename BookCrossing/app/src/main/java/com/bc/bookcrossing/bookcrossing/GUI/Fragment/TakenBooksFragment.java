@@ -36,6 +36,7 @@ public class TakenBooksFragment extends Fragment implements ObserverDataBookTake
 
     public TakenBooksFragment() {
         // Required empty public constructor
+        
     }
 
     /**

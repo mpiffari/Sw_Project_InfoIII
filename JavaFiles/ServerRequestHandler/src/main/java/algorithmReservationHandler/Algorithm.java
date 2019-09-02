@@ -66,8 +66,7 @@ public class Algorithm {
 					handToHandUsers.add(u);
 				}
 			}
-			
-			
+						
 			// Ordino hand to hand user per distanza dal reader (ovvero il Lettore L)
 			TreeMap<User, Double> distanceUsersFromReader = new TreeMap<User, Double>();
 			for (User u : handToHandUsers) {
@@ -104,7 +103,7 @@ public class Algorithm {
 		}
 	}
 	
-	private ArrayList<User> getAllUsers() {
+	private static ArrayList<User> getAllUsers() {
 		PreparedStatement stmtState = DBConnector.getDBConnector().prepareStatement(Queries.allUsersQuery);
 		try {
 			ResultSet rs = stmtState.executeQuery();
@@ -128,7 +127,7 @@ public class Algorithm {
 	}
 	
 	//TODO: rename this function
-	private boolean VerificaPuntoIncontro(User L, User p) {
+	private static boolean VerificaPuntoIncontro(User L, User p) {
 		
 		double r_L = L.getActionArea();
 		double r_p = p.getActionArea();
