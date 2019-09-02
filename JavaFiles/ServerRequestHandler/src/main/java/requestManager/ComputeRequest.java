@@ -86,12 +86,12 @@ public class ComputeRequest implements ProcessRequest{
 				int k = request.indexOf(";", 0); //posizione ;
 				ArrayList<Book> books = new ArrayList<Book>();;
 				
-				System.out.println("index: " + (i) + " " + y);
+				//System.out.println("index: " + (i) + " " + y);
 				
 				
-				System.out.println("titolo: " + request.substring(y + 1)); // stampa type: titolo
-				System.out.println(request.substring(0, y));
-				System.out.println(k);
+				//System.out.println("titolo: " + request.substring(y + 1)); // stampa type: titolo
+				//System.out.println(request.substring(0, y));
+				//System.out.println(k);
 				
 				
 				String type = request.substring(0, y); 

@@ -32,12 +32,12 @@ public class BookData implements BookQuery {
 
 		int result = 0;
 		try {
-			stmt.setString(1, book.getBCID());
-			stmt.setString(2, book.getTitle());
-			stmt.setString(3, book.getAuthor());
-			stmt.setString(4, book.getISBN());
-			stmt.setString(5, book.getProprietario());
-			stmt.setString(6, book.getType());	
+			stmt.setString(1, book.getBCID().toLowerCase());
+			stmt.setString(2, book.getTitle().toLowerCase());
+			stmt.setString(3, book.getAuthor().toLowerCase());
+			stmt.setString(4, book.getISBN().toLowerCase());
+			stmt.setString(5, book.getProprietario().toLowerCase());
+			stmt.setString(6, book.getType().toLowerCase());	
 			result = stmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -85,19 +85,22 @@ public class BookData implements BookQuery {
 		System.out.println("Position of booker (p): " + userPos.toString());
 		
 		User L = Algorithm.getUserFromUsername(readerUsername);
-		TreeMap<User,Double> orderedUser = Algorithm.step_0(L, book);
-		if(orderedUser == null) {
+		ArrayList<User> orderedUsers = Algorithm.step_0(L, book);
+		if(orderedUsers == null) {
 			System.out.println("Error on ordering user by distance");
 			return false;
 		}
-		System.out.println("User ordered by position:\r\n" + orderedUser.toString());
+		System.out.println("Prenotanti ordered by position:\r\n" + orderedUsers.toString());
 		
-
-		Map.Entry<User,Double> entry = orderedUser.entrySet().iterator().next();
-		User nearestUser = entry.getKey();
-		Algorithm.step_1(L, nearestUser);
+		User nearestUser = orderedUsers.get(0);
+		ArrayList<User> result = Algorithm.step_1(L, nearestUser);
 		
-		//TODO: use the result of the algorithm...
+		for(User u: result) {
+			System.out.println("Name: " + u.getFirstName() + " Surname: " 
+		+ u.getLastName() + " Latitudine: " + u.getLatitude() + " Longit: " + u.getLongitude());
+		}
+		
+		return true;
 	}
 
 	private static boolean isUnderReading(String bcid) {
@@ -123,7 +126,7 @@ public class BookData implements BookQuery {
 		PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(Queries.searchByTitleQuery);
 
 		try {
-			stmt.setString(1, title);
+			stmt.setString(1, title.toLowerCase());
 			ResultSet rs = stmt.executeQuery();
 
 			while(rs.next()) {
@@ -157,7 +160,7 @@ public class BookData implements BookQuery {
 		PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(Queries.searchByAuthorQuery);
 
 		try {
-			stmt.setString(1, author);
+			stmt.setString(1, author.toLowerCase());
 			ResultSet rs = stmt.executeQuery();
 
 
@@ -191,8 +194,8 @@ public class BookData implements BookQuery {
 		PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(Queries.searchByTitleAndAuthorQuery);
 
 		try {
-			stmt.setString(1, title);
-			stmt.setString(2, author);
+			stmt.setString(1, title.toLowerCase());
+			stmt.setString(2, author.toLowerCase());
 			ResultSet rs = stmt.executeQuery();
 			
 			while(rs.next()) {

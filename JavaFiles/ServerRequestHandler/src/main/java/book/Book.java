@@ -23,59 +23,63 @@ import user.User;
 
 public class Book {
 
-    private String title;
+	private String title;
 	private String author;
-    private int yearOfPubblication;
-    private int editionNumber;
-    private String type;
-    private String BCID;
-    private String ISBN;
-    private String owner;
-    private boolean underReading;
-    private ArrayList<User> prenotanti = new ArrayList<User>();
-    
+	private int yearOfPubblication;
+	private int editionNumber;
+	private String type;
+	private String BCID;
+	private String ISBN;
+	private String owner;
+	private boolean underReading;
+	private ArrayList<User> prenotanti = new ArrayList<User>();
+
 
 	public Book(String msg) {	
-    	this();
-    	String lines[] = msg.split(";");
-        this.title = getTitleFromString(lines[0]);
-        this.author = getAuthorFromString(lines[1]);
-        this.yearOfPubblication = getYearOfPubblicationFromString(lines[2]);
-        this.editionNumber = getEditionNumberFromString(lines[3]);
-        this.type = getBookTypeFromString(lines[4]);
-    }
-    
-    public Book(String title, String author, int yearOfPubblication, int editionNumber, String type) {
-        this();
-    	this.title = title;
-        this.author = author;
-        this.yearOfPubblication = yearOfPubblication;
-        this.editionNumber = editionNumber;
-        this.type = type;
-    }
-    
-    public Book(String BCID, String owner) {
-    	this();
-    	this.BCID = BCID;
-    	this.owner = owner;
-    }
-    
-    public Book() {
-    	do {
-    		BCID = generateBCID();
-    	}while(!BookData.getInstance().isBCIDavailable(BCID));
-    }
-    
-    
-    public boolean insert() {
-    	return BookData.getInstance().insertBook(this);
-    }
-    
-    public boolean reserve(String username) {
-    	return BookData.getInstance().reserveBook(this, username);
-    }
-    
-    public ArrayList<User> getPrenotanti() {
+		this();        
+		String lines[] = msg.split(";");
+		this.title = getTitleFromString(lines[0]);
+		this.author = getAuthorFromString(lines[1]);
+		this.yearOfPubblication = getYearOfPubblicationFromString(lines[2]);
+		this.editionNumber = getEditionNumberFromString(lines[3]);
+		this.type = getBookTypeFromString(lines[4]);
+		this.owner = getUserFromString(lines[5]);
+		this.ISBN = getISBNFromString(lines[6]);
+		this.underReading = getStateFromString(lines[7]);
+		this.BCID = getBCIDFromString(lines[8]);
+	}
+
+	public Book(String title, String author, int yearOfPubblication, int editionNumber, String type) {
+		this();
+		this.title = title;
+		this.author = author;
+		this.yearOfPubblication = yearOfPubblication;
+		this.editionNumber = editionNumber;
+		this.type = type;
+	}
+
+	public Book(String BCID, String owner) {
+		this();
+		this.BCID = BCID;
+		this.owner = owner;
+	}
+
+	public Book() {
+		do {
+			BCID = generateBCID();
+		}while(!BookData.getInstance().isBCIDavailable(BCID));
+	}
+
+
+	public boolean insert() {
+		return BookData.getInstance().insertBook(this);
+	}
+
+	public boolean reserve(String username) {
+		return BookData.getInstance().reserveBook(this, username);
+	}
+
+	public ArrayList<User> getPrenotanti() {
 		PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(Queries.getReservationQuery);
 		try {
 			stmt.setString(1, this.BCID);
@@ -108,30 +112,30 @@ public class Book {
 		}
 		return result==1 ? true : false;
 	}
-    
-    public String getProprietario() {
+
+	public String getProprietario() {
 		return owner;
 	}
 
 	public void setProprietario(String proprietario) {
 		this.owner = proprietario;
 	}
-    
-    public String getAuthor() {
 
-        return author;
-    }
+	public String getAuthor() {
 
-    public void setAuthor(String author) {
-        this.author = author;
-    }
+		return author;
+	}
 
-    public String getTitle() {
+	public void setAuthor(String author) {
+		this.author = author;
+	}
 
-        return title;
-    }
+	public String getTitle() {
 
-    public String getBCID() {
+		return title;
+	}
+
+	public String getBCID() {
 		return BCID;
 	}
 
@@ -152,10 +156,10 @@ public class Book {
 
 
 	public void setTitle(String title) {
-        this.title = title;
-    }
-    
-    public int getYearOfPubblication() {
+		this.title = title;
+	}
+
+	public int getYearOfPubblication() {
 		return yearOfPubblication;
 	}
 
@@ -178,17 +182,17 @@ public class Book {
 	public void setType(String type) {
 		this.type = type;
 	}
-	
+
 	private String getTitleFromString(String msg) {
 		String words[] = msg.split(":");
 		return words[1];
 	}
-	
+
 	private String getAuthorFromString(String msg) {
 		String words[] = msg.split(":");
 		return words[1];
 	}
-	
+
 	private Integer getYearOfPubblicationFromString(String msg) {
 		String words[] = msg.split(":");
 		if (words[1].equalsIgnoreCase("null")) {
@@ -197,7 +201,7 @@ public class Book {
 			return Integer.parseInt(words[1]);
 		}
 	}
-	
+
 	private Integer getEditionNumberFromString(String msg) {
 		String words[] = msg.split(":");
 		if (words[1].equalsIgnoreCase("null")) {
@@ -206,18 +210,46 @@ public class Book {
 			return Integer.parseInt(words[1]);
 		}
 	}
-	
+
 	private String getBookTypeFromString(String msg) {
 		String words[] = msg.split(":");
 		return words[1];
 	}
-	
+
 	public void setUnderReading(boolean underReading) {
 		this.underReading = underReading;
 	}
-	
+
+	private String getUserFromString(String msg) {
+		String words[] = msg.split(":");
+		return words[1];
+	}
+
+	private String getBCIDFromString(String msg) {
+		String words[] = msg.split(":");
+		return words[1];
+	}
+
+	private boolean getStateFromString(String msg){
+		String words[] = msg.split(":");
+		return words[1].equals("1");
+	}
+
+	private String getISBNFromString(String msg) {
+		String words[] = msg.split(":");
+		if (words[1].equals("null")) {
+			return "";
+		} else {
+			return words[1];
+		}
+	}
+
+	public boolean isUnderReading() {
+		return underReading;
+	}
+
 	public String generateBCID() {
-		
+
 		int leftLimit = 97; // letter 'a'
 		int rightLimit = 122; // letter 'z'
 		int targetStringLength = 10;
@@ -230,7 +262,7 @@ public class Book {
 		String generatedString = buffer.toString();
 		return generatedString;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "TITLE:" + title + ";" +
@@ -243,6 +275,6 @@ public class Book {
 				"STATE:" + (underReading == true ? 1:0) + ";" +
 				"BCID: " + BCID;
 	}
-	
-	
+
+
 }

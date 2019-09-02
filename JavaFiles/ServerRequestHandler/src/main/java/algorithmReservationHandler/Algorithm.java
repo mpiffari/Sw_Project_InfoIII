@@ -15,7 +15,7 @@ import book.Book;
 
 public class Algorithm {
 	
-	static <K,V extends Comparable<? super V>> SortedSet<Map.Entry<K,V>> entriesSortedByValues(Map<K,V> map) {
+	static <K,V extends Comparable<? super V>> Map<K,V> entriesSortedByValues(Map<K,V> map) {
 	    SortedSet<Map.Entry<K,V>> sortedEntries = new TreeSet<Map.Entry<K,V>>(
 	        new Comparator<Map.Entry<K,V>>() {
 	            public int compare(Map.Entry<K,V> e1, Map.Entry<K,V> e2) {
@@ -25,37 +25,46 @@ public class Algorithm {
 	        }
 	    );
 	    sortedEntries.addAll(map.entrySet());
-	    return sortedEntries;
+	    return map;
 	}
 	
 	@SuppressWarnings("unchecked")
-	public static TreeMap<User,Double> step_0(User L, Book book) {
+	public static ArrayList<User> step_0(User L, Book book) {
 		Book bookRequested = null;
-		for (Book b : L.getChasingBooks()) {
+		ArrayList<Book> books = L.getChasingBooks();
+		System.out.println("Books owned by " + L.toString() + " are: " + books.toString());
+		for (Book b : books) {
 			if(b.getBCID().equals(book.getBCID())) {
 				bookRequested = b;
 				break;
 			}
 		}
+		
 		TreeMap<User, Double> distancePrenotantiFromReader = new TreeMap<User, Double>();
 		if(bookRequested == null) {
+			System.out.println("Book requested for reservation: NULL");
 			return null;
 		} else {
+			System.out.println("Book requested for reservation: " + bookRequested.toString());
 			ArrayList<User> prenotantiForSpecificBook = bookRequested.getPrenotanti();
 			for (User u : prenotantiForSpecificBook) {
 				distancePrenotantiFromReader.put(u, u.computeDistance(L));
 			}
-			distancePrenotantiFromReader = (TreeMap<User, Double>) entriesSortedByValues(distancePrenotantiFromReader);
+			ArrayList<User> temp = new ArrayList<User>((distancePrenotantiFromReader).keySet());
+			return temp;
 		}
-		return distancePrenotantiFromReader;
 	}
 	
-	public static void step_1(User L, User nearestUser) {
+	public static ArrayList<User> step_1(User L, User nearestUser) {
 		// Raggi si sovrappongono --> scambio direttamente
 		boolean isOverlapping = VerificaPuntoIncontro(L, nearestUser);
+		ArrayList<User> userPath = new ArrayList<User>();
 		
 		if(isOverlapping) {
 			// Incontro fisico: notificare utente L e utente nearestUser
+			ArrayList<User> a = new ArrayList<User>();
+			a.add(nearestUser);
+			return a;
 		} else {
 			// Cerco tutti gli utenti che si trovano tra lettore e prenotante
 			double radiusUserSearchArea = 0.5 * L.computeDistance(nearestUser);
@@ -73,33 +82,46 @@ public class Algorithm {
 				distanceUsersFromReader.put(u, u.computeDistance(L));
 			}
 			distanceUsersFromReader = (TreeMap<User, Double>) entriesSortedByValues(distanceUsersFromReader);
+			Set<User> temp = distanceUsersFromReader.keySet();
+			handToHandUsers.clear();
+			handToHandUsers = new ArrayList<User>(temp);
 			
 			// Creo il link tra gli utenti che hanno l'area di azione in comune
-			ArrayList<User> userPath = new ArrayList<User>();
 			User u = handToHandUsers.get(0);
 			userPath.add(u);
 			boolean overlappingFound = false;
 			
-			ArrayList<User> handToHandUsersCopy = new ArrayList<User>();
-			Collections.copy(handToHandUsersCopy, handToHandUsers);
-			handToHandUsersCopy.remove(0);
-			while(true) {
-				overlappingFound = false;
+			if(VerificaPuntoIncontro(L, u)) {
 				
-				for(User uu: handToHandUsersCopy) {
-					if(VerificaPuntoIncontro(u, uu)) {
-						userPath.add(uu);
-						u = uu;
-						handToHandUsersCopy.remove(uu);
-						overlappingFound = true;
+				ArrayList<User> handToHandUsersCopy = new ArrayList<User>();
+				Collections.copy(handToHandUsersCopy, handToHandUsers);
+				handToHandUsersCopy.remove(0);
+				while(true) {
+					overlappingFound = false;
+					
+					for(User uu: handToHandUsersCopy) {
+						if(VerificaPuntoIncontro(u, uu)) {
+							userPath.add(uu);
+							u = uu;
+							handToHandUsersCopy.remove(uu);
+							overlappingFound = true;
+							break;
+						}
+					}
+					
+					if(handToHandUsersCopy.isEmpty()) {
+						System.out.println("Percorso trovato!");
+						break;
+					}
+					if(!overlappingFound) {
+						System.out.println("Percorso non definibile");
 						break;
 					}
 				}
-				
-				if(!overlappingFound || handToHandUsersCopy.isEmpty()) {
-					break;
-				}
+			} else {
+				System.out.println("Reader L è isolato da tutti gli utenti");
 			}
+			return userPath;
 		}
 	}
 	
@@ -147,9 +169,9 @@ public class Algorithm {
 				u.setUsername(rs.getString(1));
 				u.setFirstName(rs.getString(2));
 				u.setLastName(rs.getString(3));
-				u.setLatitude(rs.getDouble(7));
-				u.setLongitude(rs.getDouble(8));
-				u.setActionArea(rs.getDouble(9));
+				u.setLatitude(rs.getBigDecimal(7).doubleValue());
+				u.setLongitude(rs.getBigDecimal(8).doubleValue());
+				u.setActionArea(rs.getBigDecimal(9).doubleValue());
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -185,6 +207,7 @@ public class Algorithm {
 		String readerUsername = null;
 		
 		try {
+			System.out.println("BCID cercato in possesso: " + ownedBook.getBCID());
 			stmt.setString(1, ownedBook.getBCID());
 			ResultSet rs = stmt.executeQuery();
 			if(rs.next()) {

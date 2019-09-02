@@ -10,14 +10,14 @@ import book.Book;
 import dataManager.DBConnector;
 import dataManager.Queries;
 
-public class User {
+public class User implements Comparable<User> {
 
 	private String username;
 	private String firstName;
 	private String lastName;
 	private Date dateOfBirth;
 	private String password;
-	private UserLocalizationInfo localization;
+	private UserLocalizationInfo localization = new UserLocalizationInfo();
 	
 	private ArrayList<Book> booksOwned = new ArrayList<Book>();
 
@@ -137,7 +137,7 @@ public class User {
 			booksOwned.clear();
 			Book b;
 			while(rs.next()) {
-				b = new Book(rs.getString(2), rs.getString(1));
+				b = new Book(rs.getString(1), rs.getString(2));
 				booksOwned.add(b);
 			}
 		} catch (SQLException e) {
@@ -160,5 +160,15 @@ public class User {
 		
 		double distance = Math.sqrt(Math.pow((lat_this - lat_o), 2) + Math.pow((long_this - long_o),2));
 		return distance;
+	}
+
+	public int compareTo(User o) {
+		if(this.username.compareTo(o.getUsername()) > 0) {
+			return 1;
+		} else if(this.username.compareTo(o.getUsername()) < 0) {
+			return -1;
+		} else {
+			return 0;
+		}
 	}
 }
