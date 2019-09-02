@@ -130,7 +130,7 @@ public class Book implements Serializable{
 		return "TITLE:" + title.trim() + ";" +
 				"AUTHOR:" + author.trim() + ";" +
 				"YEAR:" + yearOfPubblication + ";" +
-				"EDITION:" + editionNumber + ";" + 
+				"EDITION:" + editionNumber + ";" +
 				"TYPE:" + type.trim() + ";" +
 				"USER:" + user.trim() + ";" +
 				"ISBN:" + ISBN.trim() + ";" +

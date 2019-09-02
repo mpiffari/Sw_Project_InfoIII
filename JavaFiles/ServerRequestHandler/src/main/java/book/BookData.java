@@ -62,8 +62,15 @@ public class BookData implements BookQuery {
 	}
 
 	public boolean reserveBook(Book book, String userThatMadeReservation) {
+		String readerUsername = "";
+		ArrayList<User> booker = book.getPrenotanti();
+		if(booker.isEmpty()) {
+			readerUsername = Algorithm.retrievingReader(book);
+		} else {
+			User lastBookerBeforeMe = booker.get(booker.size()-1);
+			readerUsername = lastBookerBeforeMe.getUsername();
+		}
 		
-		String readerUsername = Algorithm.retrievingReader(book);
 		if(readerUsername == null) {
 			System.out.println("Error on retrieving reader L from POSSESSO table");
 			return false;
