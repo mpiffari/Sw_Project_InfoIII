@@ -171,12 +171,16 @@ public class Book {
 			statement.execute();
 			 
 			PreparedStatement ps =  DBConnector.getDBConnector()
-			        .prepareStatement("select your_table_id_sequence.currval from dual");
+			        .prepareStatement("PRENOTAZIONE_SEQ3.currval");
 			
-			ResultSet rs = ps.executeQuery();
+			/*ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
 			    id = (double) rs.getLong(1);
-			}
+			}*/
+			ResultSet generatedKeys = statement.getGeneratedKeys();
+			if (generatedKeys.next()) {
+              id = generatedKeys.getBigDecimal(3).doubleValue();
+            }
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
