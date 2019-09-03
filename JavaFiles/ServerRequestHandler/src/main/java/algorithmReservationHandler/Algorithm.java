@@ -241,7 +241,7 @@ public class Algorithm {
 		return u;
 	}
 	
-	public static boolean savePath(ArrayList<User> users, String string) {
+	public static boolean savePath(ArrayList<User> users, BigDecimal id) {
 		PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(Queries.storePath);
 		
 		int result = 0;
@@ -252,7 +252,7 @@ public class Algorithm {
 		
 		try {
 			stmt.setString(1, path);
-			stmt.setBigDecimal(2, new BigDecimal(string));
+			stmt.setBigDecimal(2, id);
 			result = stmt.executeUpdate();
 		}catch (SQLException e) {
 			e.printStackTrace();
