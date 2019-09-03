@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import algorithmReservationHandler.Algorithm;
+import algorithmReservationHandler.AlgorithmResult;
 import dataManager.DBConnector;
 import dataManager.Queries;
 import user.User;
@@ -27,7 +28,6 @@ public class BookData implements BookQuery {
 		return instance;
 	}
 	
-	
 	public boolean insertBook(Book book) {
 		PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(Queries.insertBookQuery);
 
@@ -38,7 +38,7 @@ public class BookData implements BookQuery {
 			stmt.setString(3, book.getAuthor().toLowerCase());
 			stmt.setString(4, String.valueOf(book.getYearOfPubblication()).toLowerCase());
 			stmt.setString(5, book.getISBN().toLowerCase());
-			stmt.setString(6, book.getActualOwner().toLowerCase());
+			stmt.setString(6, book.getActualOwnerUsername().toLowerCase());
 			stmt.setString(7, book.getType().toLowerCase());	
 			result = stmt.executeUpdate();
 		} catch (SQLException e) {
@@ -52,7 +52,6 @@ public class BookData implements BookQuery {
 
 		try {
 			stmt.setString(1, BCID);
-
 			ResultSet rs = stmt.executeQuery();
 			if(rs.next() && rs.getInt(1) == 0)	//if rs is not empty and query result is 0 then the BCID is available
 				return true;
@@ -63,11 +62,12 @@ public class BookData implements BookQuery {
 		return false;
 	}
 
-	public boolean reserveBook(Book book, String userThatMadeReservation) {
+	public AlgorithmResult reserveBook(Book book, String userThatMadeReservation) {
+		AlgorithmResult result = new AlgorithmResult();
 		String readerUsername = "";
 		ArrayList<User> booker = book.getPrenotanti();
 		if(booker.isEmpty()) {
-			readerUsername = Algorithm.retrievingReader(book);
+			readerUsername = book.getActualOwnerUsername();
 		} else {
 			User lastBookerBeforeMe = booker.get(booker.size()-1);
 			readerUsername = lastBookerBeforeMe.getUsername();
@@ -75,36 +75,28 @@ public class BookData implements BookQuery {
 		
 		if(readerUsername == null) {
 			System.out.println("Error on retrieving reader L from POSSESSO table");
-			return false;
+			result.resultFlag = false;
+			return result;
 		}
 		System.out.println("User that own the book request is " + readerUsername);
 		
-		UserLocalizationInfo readerPos = Algorithm.userLocalization(readerUsername);
-		if(readerPos == null) {
-			System.out.println("Error on localization of reader L");
-			return false;
-		}
-		UserLocalizationInfo userPos = Algorithm.userLocalization(userThatMadeReservation);
-		if(userPos == null) {
-			System.out.println("Error on localization of user");
-			return false;
-		}
-		
-		System.out.println("Position of reader (L): " + readerPos.toString());
-		System.out.println("Position of me: " + userPos.toString());
-		
 		User L = Algorithm.getUserFromUsername(readerUsername);
 		User me = Algorithm.getUserFromUsername(userThatMadeReservation);
+		UserLocalizationInfo readerPos = new UserLocalizationInfo(L.getLatitude(), L.getLongitude());
+		UserLocalizationInfo userPos = new UserLocalizationInfo(me.getLatitude(), me.getLongitude());
+
+		System.out.println("Position of reader (L): " + readerPos.toString());
+		System.out.println("Position of me: " + userPos.toString());
 		System.out.println("Distance of mine from " + L.getUsername() +" = " + me.computeDistance(L));
 		
-		ArrayList<User> result = Algorithm.step_1(L, me);
+		result = Algorithm.step_1(L, me);
 		
-		for(User u: result) {
+		for(User u: result.userPath) {
 			System.out.println("Name: " + u.getFirstName() + " Surname: " 
 		+ u.getLastName() + " Latitudine: " + u.getLatitude() + " Longit: " + u.getLongitude());
 		}
 		
-		return true;
+		return result;
 	}
 
 	private static boolean isUnderReading(String bcid) {
@@ -146,7 +138,7 @@ public class BookData implements BookQuery {
 				
 				//TODO: gestire Type e Edition number
 				Book b = new Book(t,a, pubbDate, editionNumber, bookType);
-				b.setActualOwner(actualOwner);
+				b.setActualOwnerUsername(actualOwner);
 				b.setBCID(BCID);
 				b.setISBN(isbn);
 				b.setUnderReading(isUnderReading(BCID));
@@ -182,7 +174,7 @@ public class BookData implements BookQuery {
 				
 				//TODO: gestire Type e Edition number
 				Book b = new Book(t,a, pubbDate, editionNumber, bookType);
-				b.setActualOwner(actualOwner);
+				b.setActualOwnerUsername(actualOwner);
 				b.setBCID(BCID);
 				b.setISBN(isbn);
 				b.setUnderReading(isUnderReading(BCID));
@@ -218,7 +210,7 @@ public class BookData implements BookQuery {
 				
 				//TODO: gestire Type e Edition number
 				Book b = new Book(t,a, pubbDate, editionNumber, bookType);
-				b.setActualOwner(actualOwner);
+				b.setActualOwnerUsername(actualOwner);
 				b.setBCID(BCID);
 				b.setISBN(isbn);
 				b.setUnderReading(actualOwner.equals("null")? false : true);

@@ -161,6 +161,16 @@ public class User implements Comparable<User> {
 		double distance = Math.sqrt(Math.pow((lat_this - lat_o), 2) + Math.pow((long_this - long_o),2));
 		return distance;
 	}
+	
+	public double computeDistance(UserLocalizationInfo o) {
+		double lat_this = this.localization.lat;
+		double long_this = this.localization.longit;
+		double lat_o = o.lat;
+		double long_o = o.longit;
+		
+		double distance = Math.sqrt(Math.pow((lat_this - lat_o), 2) + Math.pow((long_this - long_o),2));
+		return distance;
+	}
 
 	public int compareTo(User o) {
 		if(this.username.compareTo(o.getUsername()) > 0) {
