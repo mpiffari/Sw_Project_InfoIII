@@ -16,20 +16,7 @@ import book.Book;
 
 public class Algorithm {
 	
-	static <K,V extends Comparable<? super V>> SortedSet<Map.Entry<K,V>> entriesSortedByValues(Map<K,V> map) {
-	    SortedSet<Map.Entry<K,V>> sortedEntries = new TreeSet<Map.Entry<K,V>>(
-	        new Comparator<Map.Entry<K,V>>() {
-	            public int compare(Map.Entry<K,V> e1, Map.Entry<K,V> e2) {
-	                int res = e1.getValue().compareTo(e2.getValue());
-	                return res != 0 ? res : 1;
-	            }
-	        }
-	    );
-	    sortedEntries.addAll(map.entrySet());
-	    return sortedEntries;
-	}
-	
-	@SuppressWarnings("unchecked")
+	// Unused
 	public static ArrayList<User> step_0(User L, Book book) {
 		Book bookRequested = null;
 		ArrayList<Book> books = L.getChasingBooks();
@@ -56,40 +43,35 @@ public class Algorithm {
 		}
 	}
 	
-	public static ArrayList<User> step_1(User L, User me) {
+	public static AlgorithmResult step_1(User L, User me) {
 		// Raggi si sovrappongono --> scambio direttamente
+		AlgorithmResult result = new AlgorithmResult();
 		boolean isOverlapping = VerificaPuntoIncontro(L, me);
 		ArrayList<User> userPath = new ArrayList<User>();
 		
 		if(isOverlapping) {
-			// Incontro fisico: notificare utente L e utente nearestUser
-			ArrayList<User> a = new ArrayList<User>();
-			a.add(me);
-			return a;
+			result.directMeetingIsPossible = true;
+			result.resultFlag = true;
 		} else {
 			// Cerco tutti gli utenti che si trovano tra lettore e prenotante
 			double radiusUserSearchArea = 0.5 * me.computeDistance(L);
 			
 			//Creo utente fittizio che rappresenta il punto medio tra utente L e utente "me"
-			double latCenter = (L.getLatitude() + me.getLatitude()) / 2;
-			double longitCenter = (L.getLongitude() + me.getLongitude()) / 2;
-			User userFittizio = new User();
-			userFittizio.setUsername("Fittizio");
-			userFittizio.setLatitude(latCenter);
-			userFittizio.setLongitude(longitCenter);
+
+			UserLocalizationInfo center = centerOfInterestArea(L, me);
 			
-			System.out.println("User fittizio position --> lat: " + latCenter + " long: " + longitCenter);
+			System.out.println("User fittizio position --> lat: " + center.lat + " long: " + center.longit);
 			System.out.println("radius search area: " + radiusUserSearchArea);
 			ArrayList<User> allUsers = getAllUsers();
 			ArrayList<User> handToHandUsers = new ArrayList<User>();
 			for (User u : allUsers) {
-				System.out.println("User u: " + u.getUsername() + " distance from " + userFittizio.getUsername()
-				+ " " + u.computeDistance(userFittizio) + " and distance from me " + u.computeDistance(me));
-				if((u.computeDistance(userFittizio) <= radiusUserSearchArea)
+				System.out.println("User u: " + u.getUsername() + " distance from center "
+				+ " " + u.computeDistance(center) + " and distance from me " + u.computeDistance(me));
+				if((u.computeDistance(center) <= radiusUserSearchArea)
 						&& !(u.getUsername().equals(L.getUsername()))) {
 					handToHandUsers.add(u);
 				}
-			}	
+			}
 			
 			// Ordino hand to hand user per distanza dal reader (ovvero il Lettore L)
 			TreeMap<User, Double> distanceUsersFromReader = new TreeMap<User, Double>();
@@ -119,6 +101,7 @@ public class Algorithm {
 				double max_radius = 0.0;
 				double min_distance = Double.POSITIVE_INFINITY;
 				
+				//TODO: move this comment to documentation
 				// Epsilon for epsilon greedy algorithm: during the path calculation for the reservation
 				// we choose usually the next user, as the nearest one.
 				// Using the greedy algorithm, with a probability that depends on the epsilon variable value, we choose the user
@@ -141,10 +124,14 @@ public class Algorithm {
 					System.out.println("Users that overlap for user " + previousUser.getUsername() + " : " + overlappingUsers.toString());
 					
 					if(overlappingUsers.isEmpty()) {
-						System.out.println("Not existing path from user " + previousUser.getUsername() + " to me");
+						System.out.println("Not exists complete path from user " + previousUser.getUsername() + " to me");
+						result.directMeetingIsPossible = false;
+						result.resultFlag = false;
 						break;
 					} else if(overlappingUsers.contains(me)) {
-						System.out.println("Percorso trovato");
+						System.out.println("Path found");
+						result.directMeetingIsPossible = false;
+						result.resultFlag = true;
 						break;
 					} else {
 						for(User overLapUser: overlappingUsers) {
@@ -165,17 +152,37 @@ public class Algorithm {
 						userPath.add(nextUser);
 						previousUser = nextUser;
 						handToHandUsersCopy.remove(nextUser);
-						if(nextUser.getUsername().equals(me.getUsername())) {
-							System.out.println("Percorso trovato");
-							break;
-						}
 					}
 				}
 			} else {
-				System.out.println("Reader è isolato da tutti gli altri utenti");
+				System.out.println("Book request cannot automatically move away from user " + L.getUsername());
+				userPath.clear();
+				result.directMeetingIsPossible = false;
+				result.resultFlag = false;
 			}
-			return userPath;
 		}
+		result.userPath = userPath;
+		return result;
+	}
+	
+	private static <K,V extends Comparable<? super V>> SortedSet<Map.Entry<K,V>> entriesSortedByValues(Map<K,V> map) {
+	    SortedSet<Map.Entry<K,V>> sortedEntries = new TreeSet<Map.Entry<K,V>>(
+	        new Comparator<Map.Entry<K,V>>() {
+	            public int compare(Map.Entry<K,V> e1, Map.Entry<K,V> e2) {
+	                int res = e1.getValue().compareTo(e2.getValue());
+	                return res != 0 ? res : 1;
+	            }
+	        }
+	    );
+	    sortedEntries.addAll(map.entrySet());
+	    return sortedEntries;
+	}
+	
+	private static UserLocalizationInfo centerOfInterestArea(User L, User me) {
+		double latCenter = (L.getLatitude() + me.getLatitude()) / 2;
+		double longitCenter = (L.getLongitude() + me.getLongitude()) / 2;
+		UserLocalizationInfo u = new UserLocalizationInfo(latCenter, longitCenter);
+		return u;
 	}
 	
 	private static ArrayList<User> getAllUsers() {
@@ -230,45 +237,5 @@ public class Algorithm {
 			return null;
 		}
 		return u;
-	}
-	
-	public static UserLocalizationInfo userLocalization(String username) {
-		UserLocalizationInfo userLocalization = new UserLocalizationInfo();
-		
-		// Research data of the user that required the book owned by someone throw a reservation
-		PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(Queries.readerLocationQuery);
-
-		try {
-			stmt.setString(1, username);
-			ResultSet rs = stmt.executeQuery();
-			if(rs.next()) {
-				userLocalization.lat = rs.getDouble(1);
-				userLocalization.longit = rs.getDouble(2); 
-				userLocalization.radius = rs.getDouble(3);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return null;
-		}
-		return userLocalization;
-	}
-	
-	public static String retrievingReader(Book ownedBook) {
-		// Research data of reader that own the book requested by other user throw a reservation
-		PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(Queries.readerBookQuery);
-		String readerUsername = null;
-		
-		try {
-			System.out.println("BCID cercato in possesso: " + ownedBook.getBCID());
-			stmt.setString(1, ownedBook.getBCID());
-			ResultSet rs = stmt.executeQuery();
-			if(rs.next()) {
-				readerUsername = rs.getString(1);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return null;
-		}
-		return readerUsername;
 	}
 }
