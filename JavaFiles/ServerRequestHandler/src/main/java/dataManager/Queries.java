@@ -16,7 +16,7 @@ public class Queries {
 	public static String getBooksOwnedBy = "SELECT BCID,USERNAME FROM Possesso WHERE Username = ?";
 	public static String insertNewReservationQuery = "INSERT INTO PRENOTAZIONE (USERNAME, BCID) VALUES (?, ?)";
 	public static String getUserInfoByJoin = "SELECT * FROM Prenotazione P INNER JOIN Utente U ON P.Username = U.Username WHERE BCID = ?";
-	public static String storePath = "INSERT INTO PASSAGGIO (IDPRENOTAZIONE, UTENTI) VALUES(?, ?)";
+	public static String storePath = "INSERT INTO PASSAGGIO (UTENTI, ID) VALUES(?, ?)";
 	
 	
 }

@@ -1,6 +1,7 @@
 package algorithmReservationHandler;
 
 import java.awt.List;
+import java.math.BigDecimal;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -108,7 +109,7 @@ public class Algorithm {
 				// with the biggest radius.
 				// epsilon lower --> algorithm stronger (always foound path to me)
 				// epsilon higher --> algorithm found sorthest path
-				double epsilon = 0.1; 
+				double epsilon = 0.1;
 				//= new ArrayList<User>(handToHandUsers.size());
 				//Collections.copy(handToHandUsersCopy, handToHandUsers);
 				while(true) {
@@ -127,11 +128,6 @@ public class Algorithm {
 						System.out.println("Not exists complete path from user " + previousUser.getUsername() + " to me");
 						result.directMeetingIsPossible = false;
 						result.resultFlag = false;
-						break;
-					} else if(overlappingUsers.contains(me)) {
-						System.out.println("Path found");
-						result.directMeetingIsPossible = false;
-						result.resultFlag = true;
 						break;
 					} else {
 						for(User overLapUser: overlappingUsers) {
@@ -152,6 +148,12 @@ public class Algorithm {
 						userPath.add(nextUser);
 						previousUser = nextUser;
 						handToHandUsersCopy.remove(nextUser);
+						if(nextUser.getUsername().equals(me.getUsername())) {
+							System.out.println("Path found");
+							result.directMeetingIsPossible = false;
+							result.resultFlag = true;
+							break;
+						}
 					}
 				}
 			} else {
@@ -237,5 +239,24 @@ public class Algorithm {
 			return null;
 		}
 		return u;
+	}
+	
+	public static boolean savePath(ArrayList<User> users, String string) {
+		PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(Queries.storePath);
+		
+		int result = 0;
+		String path = "";
+		for(User i : users) {
+			path += i.getUsername() + ";";
+		}
+		
+		try {
+			stmt.setString(1, path);
+			stmt.setBigDecimal(2, new BigDecimal(string));
+			result = stmt.executeUpdate();
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result==1 ? true : false;
 	}
 }

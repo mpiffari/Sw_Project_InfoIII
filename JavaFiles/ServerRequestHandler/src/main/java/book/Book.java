@@ -5,6 +5,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Random;
+
+import algorithmReservationHandler.Algorithm;
+import algorithmReservationHandler.AlgorithmResult;
 import dataManager.DBConnector;
 import dataManager.Queries;
 import user.User;
@@ -78,8 +81,17 @@ public class Book {
 	public boolean reserve(String username) {
 		User u = new User();
 		u.setUsername(username);
-		setPrenotante(u); //TODO: Controllo???
-		return BookData.getInstance().reserveBook(this, username);
+		AlgorithmResult res = BookData.getInstance().reserveBook(this, username);
+		if(!(res.userPath.isEmpty()) && res.resultFlag == true){
+			if(Algorithm.savePath(res.userPath, String.valueOf(setPrenotante(u)))) {
+				return true;
+			} else {
+				return false;
+			}
+		} else if(res.resultFlag == false) {
+			return false;
+		}
+		return false;
 	}
 
 	public ArrayList<User> getPrenotanti() {
@@ -110,13 +122,13 @@ public class Book {
 	
 	
 	public double setPrenotante(User user) {
-		PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(Queries.insertNewReservationQuery);
-		int result = 0;
+		/*PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(Queries.insertNewReservationQuery);
+
 		double id = 0;
 		try {
 			stmt.setString(1, user.getUsername());
 			stmt.setString(2, this.BCID);
-			result = stmt.executeUpdate();
+			stmt.executeUpdate();
 			ResultSet generatedKeys = stmt.getGeneratedKeys();
 			if (generatedKeys.next()) {
               id = generatedKeys.getBigDecimal(3).doubleValue();
@@ -126,7 +138,52 @@ public class Book {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		System.out.println("___  ID possesso: " + id + " ____");
+		return id;*/
+
+		// pass an array of column names to be returned by the driver instead of the int value
+		// this assumes the column is named ID (I think it has to be all uppercase)
+		
+		/*PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(Queries.insertNewReservationQuery,
+				java.sql.Statement.RETURN_GENERATED_KEYS);
+		double id = Double.POSITIVE_INFINITY;
+		try {
+			stmt.setString(1, user.getUsername());
+			stmt.setString(2, this.BCID);
+		    stmt.executeUpdate();
+
+			ResultSet generatedKeys = stmt.getGeneratedKeys();
+			if (generatedKeys.next()) {
+			    id = generatedKeys.getBigDecimal(3).doubleValue();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		System.out.println("___  ID possesso: " + id + " ____");
+		return id;*/
+		double id= 0;
+		try {	
+			PreparedStatement statement = DBConnector.getDBConnector().prepareStatement(Queries.insertNewReservationQuery,
+			        java.sql.Statement.RETURN_GENERATED_KEYS);
+			statement.setString(1, user.getUsername());
+			statement.setString(2, this.BCID);
+			statement.execute();
+			 
+			PreparedStatement ps =  DBConnector.getDBConnector()
+			        .prepareStatement("select your_table_id_sequence.currval from dual");
+			
+			ResultSet rs = ps.executeQuery();
+			if (rs.next()) {
+			    id = (double) rs.getLong(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		System.out.println("Inserted record's ID: " + id);
 		return id;
+		
 	}
 
 	public String getActualOwnerUsername() {

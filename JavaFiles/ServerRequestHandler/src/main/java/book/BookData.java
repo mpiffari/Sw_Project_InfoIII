@@ -72,7 +72,13 @@ public class BookData implements BookQuery {
 		} else {
 			User lastBookerBeforeMe = booker.get(booker.size()-1);
 			readerUsername = lastBookerBeforeMe.getUsername();
+			if(readerUsername.equals(userThatMadeReservation)) {
+				System.out.println("You are the last user that made reservation for this book!!!");
+				result.resultFlag = true;
+				return result;
+			}
 		}
+		
 		
 		if(readerUsername == null) {
 			System.out.println("Error on retrieving reader L from POSSESSO table");
@@ -83,6 +89,13 @@ public class BookData implements BookQuery {
 		
 		User L = Algorithm.getUserFromUsername(readerUsername);
 		User me = Algorithm.getUserFromUsername(userThatMadeReservation);
+		
+		if(booker.contains(me)) {
+			System.out.println("You've already done the reservation!!!");
+			result.resultFlag = true;
+			return result;
+		}
+		
 		UserLocalizationInfo readerPos = new UserLocalizationInfo(L.getLatitude(), L.getLongitude());
 		UserLocalizationInfo userPos = new UserLocalizationInfo(me.getLatitude(), me.getLongitude());
 
@@ -95,12 +108,6 @@ public class BookData implements BookQuery {
 		for(User u: result.userPath) {
 			System.out.println("Name: " + u.getFirstName() + " Surname: " 
 		+ u.getLastName() + " Latitudine: " + u.getLatitude() + " Longit: " + u.getLongitude());
-		}
-
-		if(!(result.userPath.isEmpty()) && result.resultFlag == true){
-			User u = new User();
-			u.setUsername(userThatMadeReservation);
-			savePath(result.userPath, book.setPrenotante(u));
 		}
 		
 		return result;
@@ -228,21 +235,5 @@ public class BookData implements BookQuery {
 			e.printStackTrace();
 		}
 		return result;
-	}
-	
-	private static void savePath(ArrayList<User> users, double id) {
-		PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(Queries.storePath);
-		
-		String path = "";
-		for(User i : users) {
-			path += i.getUsername() + ";";
-		}
-		
-		try {
-			stmt.setString(1, path);
-			stmt.setBigDecimal(2, new BigDecimal(id));
-		}catch (SQLException e) {
-			e.printStackTrace();
-		}
 	}
 }

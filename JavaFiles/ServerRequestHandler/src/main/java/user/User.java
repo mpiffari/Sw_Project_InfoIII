@@ -90,7 +90,11 @@ public class User implements Comparable<User> {
 	}
 
 	public String getPassword() {
-		return password.trim();
+		if(password == null) {
+			return "null";
+		} else {
+			return password.trim();	
+		}
 	}
 
 	public void setPassword(String password) {
