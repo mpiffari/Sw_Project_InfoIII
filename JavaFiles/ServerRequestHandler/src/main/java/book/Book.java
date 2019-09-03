@@ -76,6 +76,9 @@ public class Book {
 	}
 
 	public boolean reserve(String username) {
+		User u = new User();
+		u.setUsername(username);
+		setPrenotante(u); //TODO: Controllo???
 		return BookData.getInstance().reserveBook(this, username);
 	}
 
@@ -104,7 +107,7 @@ public class Book {
 		return this.prenotanti;
 	}
 
-	public boolean setPrenotante(User user) {
+	private boolean setPrenotante(User user) {
 		this.prenotanti.add(user);
 		PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(Queries.insertNewReservationQuery);
 
@@ -112,7 +115,6 @@ public class Book {
 		try {
 			stmt.setString(1, user.getUsername());
 			stmt.setString(2, this.BCID);
-			stmt.setDouble(3, Math.random());	
 			result = stmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

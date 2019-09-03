@@ -14,6 +14,9 @@ public class Queries {
 	public static String insertBookQuery = "INSERT INTO LIBRO (BCID, TITOLO, AUTORE, DATAPUBBLICAZIONE, ISBN, PROPRIETARIO, GENERE) VALUES (?,?,?,?,?,?)";
 	public static String getUserInformationsQuery = "SELECT * FROM Utente WHERE Username = ?";
 	public static String getBooksOwnedBy = "SELECT BCID,USERNAME FROM Possesso WHERE Username = ?";
-	public static String insertNewReservationQuery = "INSERT INTO PRENOTAZIONE (UTENTE, LIBRO, ID) VALUES (?,?,?)";
+	public static String insertNewReservationQuery = "INSERT INTO PRENOTAZIONE (USERNAME, BCID) VALUES (?, ?)";
 	public static String getUserInfoByJoin = "SELECT * FROM Prenotazione P INNER JOIN Utente U ON P.Username = U.Username WHERE BCID = ?";
+	
+	
+	
 }

@@ -38,7 +38,6 @@ public class ComputeRequest implements ProcessRequest{
 			case BOOK_RESERVATION:
 				// msg = book.toString
 				Book book = new Book(msg.substring(i + 1));
-				
 				boolean rs = book.reserve(username);
 				//TODO: valuate which kind of response send back to user
 				Communication.getInstance().send(username, "requestType:1;result:" + (rs?1:0));

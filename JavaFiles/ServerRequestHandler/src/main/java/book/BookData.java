@@ -26,7 +26,8 @@ public class BookData implements BookQuery {
 			instance = new BookData();
 		return instance;
 	}
-
+	
+	
 	public boolean insertBook(Book book) {
 		PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(Queries.insertBookQuery);
 
