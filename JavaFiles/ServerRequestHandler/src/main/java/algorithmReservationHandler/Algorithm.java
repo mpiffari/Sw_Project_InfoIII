@@ -10,12 +10,13 @@ import user.User;
 import user.UserLocalizationInfo;
 
 import java.util.*;
+import java.util.Map.Entry;
 
 import book.Book;
 
 public class Algorithm {
 	
-	static <K,V extends Comparable<? super V>> Map<K,V> entriesSortedByValues(Map<K,V> map) {
+	static <K,V extends Comparable<? super V>> SortedSet<Map.Entry<K,V>> entriesSortedByValues(Map<K,V> map) {
 	    SortedSet<Map.Entry<K,V>> sortedEntries = new TreeSet<Map.Entry<K,V>>(
 	        new Comparator<Map.Entry<K,V>>() {
 	            public int compare(Map.Entry<K,V> e1, Map.Entry<K,V> e2) {
@@ -25,7 +26,7 @@ public class Algorithm {
 	        }
 	    );
 	    sortedEntries.addAll(map.entrySet());
-	    return map;
+	    return sortedEntries;
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -70,12 +71,12 @@ public class Algorithm {
 			double radiusUserSearchArea = 0.5 * me.computeDistance(L);
 			System.out.println("radius search area: " + radiusUserSearchArea);
 			ArrayList<User> allUsers = getAllUsers();
-			allUsers.remove(L);
 			ArrayList<User> handToHandUsers = new ArrayList<User>();
 			for (User u : allUsers) {
 				System.out.println("User u: " + u.getUsername() + " distance from " + L.getUsername()
 				+ " " + u.computeDistance(L) + " and distance from me " + u.computeDistance(me));
-				if(u.computeDistance(L) <= radiusUserSearchArea || u.computeDistance(me) <= radiusUserSearchArea) {
+				if((u.computeDistance(L) <= radiusUserSearchArea || u.computeDistance(me) <= radiusUserSearchArea)
+						&& !(u.getUsername().equals(L.getUsername()))) {
 					handToHandUsers.add(u);
 				}
 			}
@@ -84,12 +85,19 @@ public class Algorithm {
 			TreeMap<User, Double> distanceUsersFromReader = new TreeMap<User, Double>();
 			for (User u : handToHandUsers) {
 				distanceUsersFromReader.put(u, u.computeDistance(L));
+			}			
+			SortedSet<Map.Entry<User,Double>> res = entriesSortedByValues(distanceUsersFromReader);
+			ArrayList<User> temp = new ArrayList<User>();
+		
+			Iterator<Entry<User,Double>> it = res.iterator();
+			while(it.hasNext()) {
+				 temp.add(it.next().getKey());
 			}
-			distanceUsersFromReader = (TreeMap<User, Double>) entriesSortedByValues(distanceUsersFromReader);
-			System.out.println("User between me and reader " + L.getUsername() + " ordered by distance: " + handToHandUsers.toString());
-			Set<User> temp = distanceUsersFromReader.keySet();
+			System.out.println(res.toString());
+			System.out.println(temp.toString());
 			handToHandUsers.clear();
 			handToHandUsers = new ArrayList<User>(temp);
+			System.out.println("User between me and reader " + L.getUsername() + " ordered by distance: " + handToHandUsers.toString());
 			
 			// Creo il link tra gli utenti che hanno l'area di azione in comune
 			User u = handToHandUsers.get(0);
