@@ -33,8 +33,8 @@ public class Book {
 	private String actualOwner;
 	private boolean underReading;
 	private ArrayList<User> prenotanti = new ArrayList<User>();
-
-
+	private int idPrenotazione; 
+	
 	public Book(String msg) {	
 		this();        
 		String lines[] = msg.split(";");
@@ -107,19 +107,26 @@ public class Book {
 		return this.prenotanti;
 	}
 
-	private boolean setPrenotante(User user) {
-		this.prenotanti.add(user);
+	
+	
+	public double setPrenotante(User user) {
 		PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(Queries.insertNewReservationQuery);
-
 		int result = 0;
+		double id = 0;
 		try {
 			stmt.setString(1, user.getUsername());
 			stmt.setString(2, this.BCID);
 			result = stmt.executeUpdate();
+			ResultSet generatedKeys = stmt.getGeneratedKeys();
+			if (generatedKeys.next()) {
+              id = generatedKeys.getBigDecimal(3).doubleValue();
+            }
+			
+	        
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return result==1 ? true : false;
+		return id;
 	}
 
 	public String getActualOwner() {
