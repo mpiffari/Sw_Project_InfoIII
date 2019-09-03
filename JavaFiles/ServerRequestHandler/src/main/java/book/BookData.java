@@ -35,9 +35,10 @@ public class BookData implements BookQuery {
 			stmt.setString(1, book.getBCID().toLowerCase());
 			stmt.setString(2, book.getTitle().toLowerCase());
 			stmt.setString(3, book.getAuthor().toLowerCase());
-			stmt.setString(4, book.getISBN().toLowerCase());
-			stmt.setString(5, book.getProprietario().toLowerCase());
-			stmt.setString(6, book.getType().toLowerCase());	
+			stmt.setString(4, String.valueOf(book.getYearOfPubblication()).toLowerCase());
+			stmt.setString(5, book.getISBN().toLowerCase());
+			stmt.setString(6, book.getActualOwner().toLowerCase());
+			stmt.setString(7, book.getType().toLowerCase());	
 			result = stmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -89,22 +90,13 @@ public class BookData implements BookQuery {
 		}
 		
 		System.out.println("Position of reader (L): " + readerPos.toString());
-		System.out.println("Position of booker (p): " + userPos.toString());
+		System.out.println("Position of me: " + userPos.toString());
 		
 		User L = Algorithm.getUserFromUsername(readerUsername);
-		ArrayList<User> orderedUsers = Algorithm.step_0(L, book);
-		if(orderedUsers == null) {
-			System.out.println("Error on ordering user by distance");
-			return false;
-		}
-		System.out.println("Prenotanti ordered by position:\r\n" + orderedUsers.toString());
-		System.out.println("Distance of prenotanti from " + L.getUsername()); 
-		for(User o: orderedUsers) {
-			System.out.println("Name: " + o.getUsername() + " Pos: " + o.getLatitude() + "," + o.getLongitude() + " and distance is: " + o.computeDistance(L));
-		}
+		User me = Algorithm.getUserFromUsername(userThatMadeReservation);
+		System.out.println("Distance of mine from " + L.getUsername() +" = " + me.computeDistance(L));
 		
-		User nearestUser = orderedUsers.get(0);
-		ArrayList<User> result = Algorithm.step_1(L, nearestUser);
+		ArrayList<User> result = Algorithm.step_1(L, me);
 		
 		for(User u: result) {
 			System.out.println("Name: " + u.getFirstName() + " Surname: " 
@@ -144,17 +136,18 @@ public class BookData implements BookQuery {
 				//System.out.println("#_ " + rs.getString(1) +"  " +rs.getString(2));
 				String BCID = rs.getString(1);
 				String t = rs.getString(2);
-				String author = rs.getString(3);
+				String a = rs.getString(3);
 				int pubbDate = Integer.parseInt(rs.getString(4) == null ? "0" : rs.getString(4));
+				int editionNumber = 0; //TODO
 				String isbn = rs.getString(5);
-				String proprietario = rs.getString(6);
-
+				String bookType = rs.getString(6);
+				String actualOwner = rs.getString(7);
+				
 				//TODO: gestire Type e Edition number
-				Book b = new Book(t,author, pubbDate, 0, rs.getString(7));
-				b.setProprietario(proprietario);
+				Book b = new Book(t,a, pubbDate, editionNumber, bookType);
+				b.setActualOwner(actualOwner);
 				b.setBCID(BCID);
 				b.setISBN(isbn);
-
 				b.setUnderReading(isUnderReading(BCID));
 				result.add(b);
 			}
@@ -181,12 +174,14 @@ public class BookData implements BookQuery {
 				String t = rs.getString(2);
 				String a = rs.getString(3);
 				int pubbDate = Integer.parseInt(rs.getString(4) == null ? "0" : rs.getString(4));
+				int editionNumber = 0; //TODO
 				String isbn = rs.getString(5);
-				String proprietario = rs.getString(6);
-
+				String bookType = rs.getString(6);
+				String actualOwner = rs.getString(7);
+				
 				//TODO: gestire Type e Edition number
-				Book b = new Book(t,a, pubbDate, 0, rs.getString(7));
-				b.setProprietario(proprietario);
+				Book b = new Book(t,a, pubbDate, editionNumber, bookType);
+				b.setActualOwner(actualOwner);
 				b.setBCID(BCID);
 				b.setISBN(isbn);
 				b.setUnderReading(isUnderReading(BCID));
@@ -214,17 +209,18 @@ public class BookData implements BookQuery {
 				String BCID = rs.getString(1);
 				String t = rs.getString(2);
 				String a = rs.getString(3);
-				int pubbDate = Integer.parseInt(rs.getString(4) == null ? "0" : rs.getString(4));
+				int pubbDate = Integer.parseInt(rs.getString(4).equals("null") ? "0" : rs.getString(4));
+				int editionNumber = 0; //TODO
 				String isbn = rs.getString(5);
-				String proprietario = rs.getString(6);
+				String bookType = rs.getString(6);
+				String actualOwner = rs.getString(7);
 				
-
 				//TODO: gestire Type e Edition number
-				Book b = new Book(t,a, pubbDate, 0, rs.getString(7));
-				b.setProprietario(proprietario);
+				Book b = new Book(t,a, pubbDate, editionNumber, bookType);
+				b.setActualOwner(actualOwner);
 				b.setBCID(BCID);
 				b.setISBN(isbn);
-				b.setUnderReading(isUnderReading(BCID));
+				b.setUnderReading(actualOwner.equals("null")? false : true);
 				result.add(b);
 			}
 

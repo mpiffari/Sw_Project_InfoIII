@@ -149,7 +149,7 @@ public class User implements Comparable<User> {
 	@Override
 	public String toString() {
 		return "USER: " + username + ";"
-				+ "PASSWORD: " + password;
+				+ "PASSWORD: " + password + "\r\n";
 	}
 
 	public double computeDistance(User o) {
@@ -158,7 +158,7 @@ public class User implements Comparable<User> {
 		double lat_o = Math.abs(o.localization.lat);
 		double long_o = Math.abs(o.localization.longit);
 		
-		double distance = Math.sqrt(Math.pow((lat_this + lat_o), 2) + Math.pow((long_this + long_o),2));
+		double distance = Math.sqrt(Math.pow((lat_this - lat_o), 2) + Math.pow((long_this - long_o),2));
 		return distance;
 	}
 

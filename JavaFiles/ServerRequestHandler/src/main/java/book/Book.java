@@ -30,7 +30,7 @@ public class Book {
 	private String type;
 	private String BCID;
 	private String ISBN;
-	private String owner;
+	private String actualOwner;
 	private boolean underReading;
 	private ArrayList<User> prenotanti = new ArrayList<User>();
 
@@ -43,7 +43,7 @@ public class Book {
 		this.yearOfPubblication = getYearOfPubblicationFromString(lines[2]);
 		this.editionNumber = getEditionNumberFromString(lines[3]);
 		this.type = getBookTypeFromString(lines[4]);
-		this.owner = getUserFromString(lines[5]);
+		this.actualOwner = getUserFromString(lines[5]);
 		this.ISBN = getISBNFromString(lines[6]);
 		this.underReading = getStateFromString(lines[7]);
 		this.BCID = getBCIDFromString(lines[8]);
@@ -61,7 +61,7 @@ public class Book {
 	public Book(String BCID, String owner) {
 		this();
 		this.BCID = BCID;
-		this.owner = owner;
+		this.actualOwner = owner;
 	}
 
 	public Book() {
@@ -120,16 +120,15 @@ public class Book {
 		return result==1 ? true : false;
 	}
 
-	public String getProprietario() {
-		return owner;
+	public String getActualOwner() {
+		return actualOwner;
 	}
 
-	public void setProprietario(String proprietario) {
-		this.owner = proprietario;
+	public void setActualOwner(String actualOwner) {
+		this.actualOwner = actualOwner;
 	}
 
 	public String getAuthor() {
-
 		return author;
 	}
 
@@ -138,7 +137,6 @@ public class Book {
 	}
 
 	public String getTitle() {
-
 		return title;
 	}
 
@@ -277,10 +275,10 @@ public class Book {
 				"YEAR:" + yearOfPubblication + ";" +
 				"EDITION:" + editionNumber + ";" +
 				"TYPE:" + type + ";" + 
-				"USER: " + owner + ";" +
-				"ISBN: " + ISBN + ";" + 
+				"ACTUALOWNER:" + actualOwner + ";" +
+				"ISBN:" + ISBN + ";" + 
 				"STATE:" + (underReading == true ? 1:0) + ";" +
-				"BCID: " + BCID;
+				"BCID:" + BCID;
 	}
 
 

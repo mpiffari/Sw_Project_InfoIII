@@ -23,8 +23,8 @@ public final class Client {
 
 	static final String port = "5000";
 	static final boolean SSL = System.getProperty("ssl") != null;
-	static final String HOST = System.getProperty("host", "35.180.103.132");
-	//static final String HOST = System.getProperty("host", "127.0.0.1");
+	//static final String HOST = System.getProperty("host", "35.180.103.132");
+	static final String HOST = System.getProperty("host", "127.0.0.1");
 	static final int PORT = Integer.parseInt(System.getProperty("port", port));
 
 	public static void main(String[] args)  {
@@ -78,8 +78,8 @@ public final class Client {
 				}
 
 				// Sends the received line to the server.
-				Book obj = new Book("Piccolo Principe", "Antoine de Saint-Exupèry", 1854, 1, BookType.ACTION);
-				lastWriteFuture = ch.writeAndFlush("Pippo;requestType:0;" + obj.toString() + "\r\n");
+				//Book obj = new Book("Piccolo Principe", "Antoine de Saint-Exupèry", 1854, 1, BookType.ACTION);
+				lastWriteFuture = ch.writeAndFlush("V;requestType:1;TITLE:questa storia;AUTHOR:Alessandro Baricco;YEAR:0;EDITION:0;TYPE:Fiction;USER:A;ISBN:9788860440075;STATE:1;BCID:otaexxgvtz" + "\r\n");
 				//System.out.print(obj.toString());
 				// If user typed the 'bye' command, wait until the server closes
 				// the connection.

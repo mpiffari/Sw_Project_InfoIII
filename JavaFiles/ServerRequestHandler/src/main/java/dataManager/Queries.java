@@ -5,11 +5,13 @@ public class Queries {
 	public static String readerLocationQuery = "SELECT RESIDENZALAT, RESIDENZALONG, RAGGIOAZIONE FROM Utente Where USERNAME = ?";
 	public static String allUsersQuery = "SELECT * FROM UTENTE";
 	public static String underReadingBookQuery = "SELECT COUNT(BCID) FROM Possesso WHERE BCID = ? AND DATAFINE IS NULL AND LUOGORILASCIO IS NULL";
-	public static String searchByTitleQuery = "SELECT * FROM Libro L WHERE Titolo = ?";
-	public static String searchByAuthorQuery = "SELECT * FROM Libro L WHERE Autore = ?";
-	public static String searchByTitleAndAuthorQuery = "SELECT * FROM Libro L WHERE Titolo = ? AND Autore = ?";
+	
+	public static String searchByTitleQuery = "SELECT L.bcid, L.titolo, L.autore, L.datapubblicazione, L.isbn, L.genere, P.username as actualOwner FROM Libro L LEFT JOIN Possesso P on l.bcid = p.bcid where l.Titolo = ?";
+	public static String searchByAuthorQuery = "SELECT L.bcid, L.titolo, L.autore, L.datapubblicazione, L.isbn, L.genere, P.username as actualOwner FROM Libro L LEFT JOIN Possesso P on l.bcid = p.bcid where l.Autore = ?";
+	public static String searchByTitleAndAuthorQuery = "SELECT L.bcid, L.titolo, L.autore, L.datapubblicazione, L.isbn, L.genere, P.username as actualOwner FROM Libro L LEFT JOIN Possesso P on l.bcid = p.bcid where l.Titolo = ? AND l.Autore = ?";
+	
 	public static String bcidAvailableQuery = "SELECT Count(BCID) AS Result FROM Libro Where BCID = ?";
-	public static String insertBookQuery = "INSERT INTO LIBRO (BCID, TITOLO, AUTORE, ISBN, PROPRIETARIO, GENERE) VALUES (?,?,?,?,?,?)";
+	public static String insertBookQuery = "INSERT INTO LIBRO (BCID, TITOLO, AUTORE, DATAPUBBLICAZIONE, ISBN, PROPRIETARIO, GENERE) VALUES (?,?,?,?,?,?)";
 	public static String getUserInformationsQuery = "SELECT * FROM Utente WHERE Username = ?";
 	public static String getBooksOwnedBy = "SELECT BCID,USERNAME FROM Possesso WHERE Username = ?";
 	public static String insertNewReservationQuery = "INSERT INTO PRENOTAZIONE (UTENTE, LIBRO, ID) VALUES (?,?,?)";

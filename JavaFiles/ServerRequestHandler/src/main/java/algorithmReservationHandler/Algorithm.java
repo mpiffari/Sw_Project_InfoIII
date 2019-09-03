@@ -55,33 +55,38 @@ public class Algorithm {
 		}
 	}
 	
-	public static ArrayList<User> step_1(User L, User nearestUser) {
+	public static ArrayList<User> step_1(User L, User me) {
 		// Raggi si sovrappongono --> scambio direttamente
-		boolean isOverlapping = VerificaPuntoIncontro(L, nearestUser);
+		boolean isOverlapping = VerificaPuntoIncontro(L, me);
 		ArrayList<User> userPath = new ArrayList<User>();
 		
 		if(isOverlapping) {
 			// Incontro fisico: notificare utente L e utente nearestUser
 			ArrayList<User> a = new ArrayList<User>();
-			a.add(nearestUser);
+			a.add(me);
 			return a;
 		} else {
 			// Cerco tutti gli utenti che si trovano tra lettore e prenotante
-			double radiusUserSearchArea = 0.5 * L.computeDistance(nearestUser);
+			double radiusUserSearchArea = 0.5 * me.computeDistance(L);
+			System.out.println("radius search area: " + radiusUserSearchArea);
 			ArrayList<User> allUsers = getAllUsers();
+			allUsers.remove(L);
 			ArrayList<User> handToHandUsers = new ArrayList<User>();
 			for (User u : allUsers) {
-				if(u.computeDistance(L) <= radiusUserSearchArea || u.computeDistance(nearestUser) <= radiusUserSearchArea) {
+				System.out.println("User u: " + u.getUsername() + " distance from " + L.getUsername()
+				+ " " + u.computeDistance(L) + " and distance from me " + u.computeDistance(me));
+				if(u.computeDistance(L) <= radiusUserSearchArea || u.computeDistance(me) <= radiusUserSearchArea) {
 					handToHandUsers.add(u);
 				}
 			}
-						
+			System.out.println("User between me and reader " + L.getUsername() + " : " + handToHandUsers.toString());		
 			// Ordino hand to hand user per distanza dal reader (ovvero il Lettore L)
 			TreeMap<User, Double> distanceUsersFromReader = new TreeMap<User, Double>();
 			for (User u : handToHandUsers) {
 				distanceUsersFromReader.put(u, u.computeDistance(L));
 			}
 			distanceUsersFromReader = (TreeMap<User, Double>) entriesSortedByValues(distanceUsersFromReader);
+			System.out.println("User between me and reader " + L.getUsername() + " ordered by distance: " + handToHandUsers.toString());
 			Set<User> temp = distanceUsersFromReader.keySet();
 			handToHandUsers.clear();
 			handToHandUsers = new ArrayList<User>(temp);
@@ -136,9 +141,9 @@ public class Algorithm {
 				u.setUsername(rs.getString(1));
 				u.setFirstName(rs.getString(2));
 				u.setLastName(rs.getString(3));
-				u.setLatitude(rs.getDouble(7));
-				u.setLongitude(rs.getDouble(8));
-				u.setActionArea(rs.getDouble(9));
+				u.setLatitude(rs.getBigDecimal(7).doubleValue());
+				u.setLongitude(rs.getBigDecimal(8).doubleValue());
+				u.setActionArea(rs.getBigDecimal(9).doubleValue());
 				users.add(u);
 			}
 			return users;	

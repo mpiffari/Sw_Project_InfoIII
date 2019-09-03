@@ -28,7 +28,7 @@ public class ComputeRequest implements ProcessRequest{
 			switch(requestType) {
 			case BOOK_REGISTRATION_MANUAL:
 				Book b = new Book(msg.substring(i + 1));
-				b.setProprietario(username);
+				b.setActualOwner(username);
 				//TODO: add check of ISBN (iteration 2)
 				b.setISBN("null");
 
@@ -70,7 +70,7 @@ public class ComputeRequest implements ProcessRequest{
 			case BOOK_REGISTRATION_AUTOMATIC:
 				//TODO: add structure of message for a better understanding of indexes
 				b = new Book(msg.substring(i + 1));
-				b.setProprietario(username);
+				b.setActualOwner(username);
 				int pos_ISBN = msg.indexOf(",", i + 1);
 				b.setISBN(msg.substring(pos_ISBN + 1));
 				result = b.insert();
