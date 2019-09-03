@@ -77,7 +77,7 @@ raggi = [5
 
 figure
 colors = {'b','r','g','y','k'};
-label = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Pippo', 'Q', 'R', 'S', 'T', 'U', 'V'};
+label = {'A
 
 for k = 1:1
     % Create 5 random circles to display,
@@ -103,7 +103,7 @@ for k = 1:1
     viscircles(centers,radii,'Color',colors{k}, 'LineStyle','-','LineWidth',0.5);
     hold on
     scatter(x(:), y(:),5,'k','+')
-    labelpoints(x,y,label)
+    
     centro = [((21 + 100)/2) ((100 + 10)/2)];
     viscircles(centro,60,'Color',colors{2}, 'LineStyle','-','LineWidth',1);
     scatter(centro(1),centro(2),5,'k','+')
