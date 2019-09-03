@@ -69,66 +69,83 @@ public class Algorithm {
 		} else {
 			// Cerco tutti gli utenti che si trovano tra lettore e prenotante
 			double radiusUserSearchArea = 0.5 * me.computeDistance(L);
+			
+			//Creo utente fittizio che rappresenta il punto medio tra utente L e utente "me"
+			double latCenter = (L.getLatitude() + me.getLatitude()) / 2;
+			double longitCenter = (L.getLongitude() + me.getLongitude()) / 2;
+			User userFittizio = new User();
+			userFittizio.setUsername("Fittizio");
+			userFittizio.setLatitude(latCenter);
+			userFittizio.setLongitude(longitCenter);
+			
+			System.out.println("User fittizio position --> lat: " + latCenter + " long: " + longitCenter);
 			System.out.println("radius search area: " + radiusUserSearchArea);
 			ArrayList<User> allUsers = getAllUsers();
 			ArrayList<User> handToHandUsers = new ArrayList<User>();
 			for (User u : allUsers) {
-				System.out.println("User u: " + u.getUsername() + " distance from " + L.getUsername()
-				+ " " + u.computeDistance(L) + " and distance from me " + u.computeDistance(me));
-				if((u.computeDistance(L) <= radiusUserSearchArea || u.computeDistance(me) <= radiusUserSearchArea)
+				System.out.println("User u: " + u.getUsername() + " distance from " + userFittizio.getUsername()
+				+ " " + u.computeDistance(userFittizio) + " and distance from me " + u.computeDistance(me));
+				if((u.computeDistance(userFittizio) <= radiusUserSearchArea)
 						&& !(u.getUsername().equals(L.getUsername()))) {
 					handToHandUsers.add(u);
 				}
-			}
-			System.out.println("User between me and reader " + L.getUsername() + " : " + handToHandUsers.toString());		
+			}	
+			
 			// Ordino hand to hand user per distanza dal reader (ovvero il Lettore L)
 			TreeMap<User, Double> distanceUsersFromReader = new TreeMap<User, Double>();
 			for (User u : handToHandUsers) {
 				distanceUsersFromReader.put(u, u.computeDistance(L));
 			}			
 			SortedSet<Map.Entry<User,Double>> res = entriesSortedByValues(distanceUsersFromReader);
+			System.out.println("Res:  " + res.toString());	
 			ArrayList<User> temp = new ArrayList<User>();
 		
 			Iterator<Entry<User,Double>> it = res.iterator();
 			while(it.hasNext()) {
 				 temp.add(it.next().getKey());
 			}
-			System.out.println(res.toString());
-			System.out.println(temp.toString());
 			handToHandUsers.clear();
 			handToHandUsers = new ArrayList<User>(temp);
 			System.out.println("User between me and reader " + L.getUsername() + " ordered by distance: " + handToHandUsers.toString());
 			
 			// Creo il link tra gli utenti che hanno l'area di azione in comune
-			User u = handToHandUsers.get(0);
-			userPath.add(u);
-			boolean overlappingFound = false;
+			User previousUser = L;
+			User nextUser = new User();
 			
-			if(VerificaPuntoIncontro(L, u)) {
-				
-				ArrayList<User> handToHandUsersCopy = new ArrayList<User>();
-				Collections.copy(handToHandUsersCopy, handToHandUsers);
-				handToHandUsersCopy.remove(0);
+			if(VerificaPuntoIncontro(L, previousUser)) {
+				userPath.add(previousUser);
+				ArrayList<User> handToHandUsersCopy =(ArrayList<User>) handToHandUsers.clone();
+				ArrayList<User> overlappingUsers = new ArrayList<User>();
+				double max_radius = 0.0;
+				//= new ArrayList<User>(handToHandUsers.size());
+				//Collections.copy(handToHandUsersCopy, handToHandUsers);
 				while(true) {
-					overlappingFound = false;
+					max_radius = 0.0;
+					overlappingUsers.clear();
 					
 					for(User uu: handToHandUsersCopy) {
-						if(VerificaPuntoIncontro(u, uu)) {
-							userPath.add(uu);
-							u = uu;
-							handToHandUsersCopy.remove(uu);
-							overlappingFound = true;
-							break;
+						if(VerificaPuntoIncontro(previousUser, uu)) {
+							overlappingUsers.add(uu);
 						}
 					}
+					System.out.println("Users that overlap for user " + previousUser.getUsername() + " : " + overlappingUsers.toString());
 					
-					if(handToHandUsersCopy.isEmpty()) {
-						System.out.println("Percorso trovato!");
+					if(overlappingUsers.isEmpty()) {
+						System.out.println("Not existing path from user " + previousUser.getUsername() + " to me");
 						break;
-					}
-					if(!overlappingFound) {
-						System.out.println("Percorso non definibile");
-						break;
+					} else {
+						for(User overLapUser: overlappingUsers) {
+							if(overLapUser.getActionArea() > max_radius) {
+								nextUser = overLapUser;
+								max_radius = overLapUser.getActionArea();
+							}
+						}
+						userPath.add(nextUser);
+						previousUser = nextUser;
+						handToHandUsersCopy.remove(nextUser);
+						if(nextUser.getUsername().equals(me.getUsername())) {
+							System.out.println("Percorso trovato");
+						}
 					}
 				}
 			} else {
@@ -163,7 +180,6 @@ public class Algorithm {
 	
 	//TODO: rename this function
 	private static boolean VerificaPuntoIncontro(User L, User p) {
-		
 		double r_L = L.getActionArea();
 		double r_p = p.getActionArea();
 		double distance = L.computeDistance(p) - r_L - r_p;

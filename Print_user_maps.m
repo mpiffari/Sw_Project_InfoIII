@@ -3,7 +3,7 @@ clearvars
 clc
 x = [6
 65
-8
+15
 43
 8
 34
@@ -23,7 +23,8 @@ x = [6
 74
 -20
 10
-100];
+100
+60];
 y = [3
 41
 4
@@ -46,7 +47,8 @@ y = [3
 63
 -20
 40
-10];
+10
+5];
 raggi = [5
 8
 32
@@ -69,7 +71,8 @@ raggi = [5
 35
 15
 22
-30];
+30
+15];
 % 
 % [x y]
 % %scatter(x(:), y(:), raggi(:).^2)
@@ -77,7 +80,7 @@ raggi = [5
 
 figure
 colors = {'b','r','g','y','k'};
-label = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Pippo', 'Q', 'R', 'S', 'T', 'U', 'V'};
+label = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Pippo', 'Q', 'R', 'S', 'T', 'U', 'V', 'Z'};
 
 for k = 1:1
     % Create 5 random circles to display,
@@ -104,9 +107,9 @@ for k = 1:1
     hold on
     scatter(x(:), y(:),5,'k','+')
     labelpoints(x,y,label)
-    centro = [((21 + 100)/2) ((100 + 10)/2)];
-    viscircles(centro,60,'Color',colors{2}, 'LineStyle','-','LineWidth',1);
-    scatter(centro(1),centro(2),5,'k','+')
+    centro = [((10 + 100)/2) ((4 + 10)/2)];
+    viscircles(centro,45,'Color',colors{2}, 'LineStyle','-','LineWidth',1);
+    scatter(centro(1),centro(2),5,'k','*')
     % Pause for 1 second.
     pause(1)
     

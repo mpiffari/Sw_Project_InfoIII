@@ -153,10 +153,10 @@ public class User implements Comparable<User> {
 	}
 
 	public double computeDistance(User o) {
-		double lat_this = Math.abs(this.localization.lat);
-		double long_this = Math.abs(this.localization.longit);
-		double lat_o = Math.abs(o.localization.lat);
-		double long_o = Math.abs(o.localization.longit);
+		double lat_this = this.localization.lat;
+		double long_this = this.localization.longit;
+		double lat_o = o.localization.lat;
+		double long_o = o.localization.longit;
 		
 		double distance = Math.sqrt(Math.pow((lat_this - lat_o), 2) + Math.pow((long_this - long_o),2));
 		return distance;
