@@ -117,10 +117,20 @@ public class Algorithm {
 				ArrayList<User> handToHandUsersCopy =(ArrayList<User>) handToHandUsers.clone();
 				ArrayList<User> overlappingUsers = new ArrayList<User>();
 				double max_radius = 0.0;
+				double min_distance = Double.POSITIVE_INFINITY;
+				
+				// Epsilon for epsilon greedy algorithm: during the path calculation for the reservation
+				// we choose usually the next user, as the nearest one.
+				// Using the greedy algorithm, with a probability that depends on the epsilon variable value, we choose the user
+				// with the biggest radius.
+				// epsilon lower --> algorithm stronger (always foound path to me)
+				// epsilon higher --> algorithm found sorthest path
+				double epsilon = 0.1; 
 				//= new ArrayList<User>(handToHandUsers.size());
 				//Collections.copy(handToHandUsersCopy, handToHandUsers);
 				while(true) {
 					max_radius = 0.0;
+					min_distance = Double.POSITIVE_INFINITY;
 					overlappingUsers.clear();
 					
 					for(User uu: handToHandUsersCopy) {
@@ -133,18 +143,31 @@ public class Algorithm {
 					if(overlappingUsers.isEmpty()) {
 						System.out.println("Not existing path from user " + previousUser.getUsername() + " to me");
 						break;
+					} else if(overlappingUsers.contains(me)) {
+						System.out.println("Percorso trovato");
+						break;
 					} else {
 						for(User overLapUser: overlappingUsers) {
-							if(overLapUser.getActionArea() > max_radius) {
-								nextUser = overLapUser;
-								max_radius = overLapUser.getActionArea();
+							if(Math.random() < epsilon) {
+								double dist = overLapUser.computeDistance(previousUser);
+								if(overLapUser.computeDistance(previousUser) < min_distance) {
+									nextUser = overLapUser;
+									min_distance = dist;
+								}
+							} else {
+								if(overLapUser.getActionArea() > max_radius) {
+									nextUser = overLapUser;
+									max_radius = overLapUser.getActionArea();
+								}
 							}
+							
 						}
 						userPath.add(nextUser);
 						previousUser = nextUser;
 						handToHandUsersCopy.remove(nextUser);
 						if(nextUser.getUsername().equals(me.getUsername())) {
 							System.out.println("Percorso trovato");
+							break;
 						}
 					}
 				}
