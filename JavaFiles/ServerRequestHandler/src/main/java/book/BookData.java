@@ -1,6 +1,7 @@
 package book;
 
 
+import java.math.BigDecimal;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -90,10 +91,16 @@ public class BookData implements BookQuery {
 		System.out.println("Distance of mine from " + L.getUsername() +" = " + me.computeDistance(L));
 		
 		result = Algorithm.step_1(L, me);
-		
+
 		for(User u: result.userPath) {
 			System.out.println("Name: " + u.getFirstName() + " Surname: " 
 		+ u.getLastName() + " Latitudine: " + u.getLatitude() + " Longit: " + u.getLongitude());
+		}
+
+		if(!(result.userPath.isEmpty()) && result.resultFlag == true){
+			User u = new User();
+			u.setUsername(userThatMadeReservation);
+			savePath(result.userPath, book.setPrenotante(u));
 		}
 		
 		return result;
@@ -221,5 +228,21 @@ public class BookData implements BookQuery {
 			e.printStackTrace();
 		}
 		return result;
+	}
+	
+	private static void savePath(ArrayList<User> users, double id) {
+		PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(Queries.storePath);
+		
+		String path = "";
+		for(User i : users) {
+			path += i.getUsername() + ";";
+		}
+		
+		try {
+			stmt.setString(1, path);
+			stmt.setBigDecimal(2, new BigDecimal(id));
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }
