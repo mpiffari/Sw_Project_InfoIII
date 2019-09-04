@@ -143,7 +143,7 @@ public class Book implements Serializable{
         return "BCID: " + BCID + "\n" +
                 title + " di " + author + "\n" +
                 "Categoria: " + type + "\n" +
-                "inserito da " + user;
+                "in mano adesso a " + user;
     }
 
     private String getTitleFromString(String msg) {
