@@ -236,4 +236,26 @@ public class BookData implements BookQuery {
 		}
 		return result;
 	}
+
+
+	
+	public ArrayList<Book> onRouteBooks(String user) {
+		ArrayList<Book> booksOnRoute = new ArrayList<Book>();
+		PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(Queries.queryForUserNotifications);
+		try {
+			ResultSet rs = stmt.executeQuery();
+			while(rs.next()) {
+				if(rs.getString(3).contains(user)){
+					Book b = new Book();
+					b.setTitle(rs.getString(1));
+					b.setAuthor(rs.getString(2));
+					booksOnRoute.add(b);
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return booksOnRoute;
+	}
 }

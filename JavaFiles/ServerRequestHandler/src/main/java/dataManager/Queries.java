@@ -18,6 +18,6 @@ public class Queries {
 	public static String getUserInfoByJoin = "SELECT * FROM Prenotazione P INNER JOIN Utente U ON P.Username = U.Username WHERE BCID = ?";
 	public static String storePath = "INSERT INTO PASSAGGIO (UTENTI, ID) VALUES(?, ?)";
 	public static String getId = "SELECT MAX(ID) AS LAST_ID FROM PRENOTAZIONE";
-	
+	public static String queryForUserNotifications = "SELECT Titolo, Autore, Utenti FROM PASSAGGIO PA JOIN PRENOTAZIONE PR ON PR.ID = PA.ID JOIN LIBRO L ON PR.BCID = L.BCID";
 	
 }

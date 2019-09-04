@@ -67,7 +67,7 @@ public class Book {
 		this.BCID = BCID;
 		this.actualOwnerUsername = owner;
 	}
-
+	
 	public Book() {
 		do {
 			BCID = generateBCID();

@@ -46,12 +46,14 @@ public class ComputeRequest implements ProcessRequest{
 				//TODO: add structure of message for a better understanding of indexes
 				User user = new User(msg.substring(i + 1));
 				
+				
 				LoginStatus res = user.login();
 				String r = "";
 				switch (res) {
 				case SUCCESS:
 					r = "Success";
 					System.out.println("Login ok for user "+ user.getUsername() + " with pwd " + user.getPassword());
+					System.out.println(buildStringForUser(username));
 					break;
 				case WRONG_USERNAME:
 					r = "KO_Username";
@@ -165,5 +167,27 @@ public class ComputeRequest implements ProcessRequest{
 
 	}
 
+	
+	private static String buildStringForUser(String username) {
+		String msg = "";
+		String previous = "";
+		String next = "";
+		for(String s : UserData.getInstance().pathOfUsers(username)) {
+			int pos = UserData.getInstance().pathOfUsers(username).indexOf(s);
+			if(s.indexOf(username) - 2 > 0 && s.indexOf(username) + 2 < s.length()) {
+				previous = "" + s.charAt(s.indexOf(username) - 2);
+				next = "" + s.charAt(s.indexOf(username) + 2);
+			}else if(s.indexOf(username) == 0){
+				next = "" + s.charAt(s.indexOf(username) + 2);
+			}else if(s.indexOf(username) == s.length() - 2) {
+				previous = "" + s.charAt(s.indexOf(username) - 2);
+			}
+			
+			
+			msg += previous + "," + next + "," + BookData.getInstance().onRouteBooks(username).get(pos).getTitle() + " di " + BookData.getInstance().onRouteBooks(username).get(pos).getAuthor() + ",";
+		}
+		return msg;
+	}
+	
 
 }
