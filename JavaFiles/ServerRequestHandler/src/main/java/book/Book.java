@@ -84,7 +84,8 @@ public class Book {
 		u.setUsername(username);
 		AlgorithmResult res = BookData.getInstance().reserveBook(this, username);
 		if(!(res.userPath.isEmpty()) && res.resultFlag == true){
-			if(Algorithm.savePath(res.userPath, setPrenotante(u))) {
+			setPrenotante(u);
+			if(Algorithm.savePath(res.userPath)) {
 				return true;
 			} else {
 				return false;
@@ -122,29 +123,21 @@ public class Book {
 
 	
 	
-	public BigDecimal setPrenotante(User user) {
+	public boolean setPrenotante(User user) {
 
-		BigDecimal id= new BigDecimal(0);
-		PreparedStatement statement = DBConnector.getDBConnector().prepareStatement(Queries.insertNewReservationQuery,
-		        java.sql.Statement.RETURN_GENERATED_KEYS);
-
-		ResultSet result;
+		PreparedStatement statement = DBConnector.getDBConnector().prepareStatement(Queries.insertNewReservationQuery);
+		        
+		int result = 0;
 		try {			
 			statement.setString(1, user.getUsername());
 			statement.setString(2, this.BCID);
-			statement.executeUpdate();
-			result = statement.getGeneratedKeys();
-			if(result.next() && result != null){
-				System.out.println("Key: " + result.getBigDecimal(3));
-				id = result.getBigDecimal(3);
-			} else {
-				System.out.println("No, Nop nada");
-			}
+			result = statement.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return id;
+		return result == 1 ? true : false;
+		
 	}
 
 	public String getActualOwnerUsername() {

@@ -241,7 +241,7 @@ public class Algorithm {
 		return u;
 	}
 	
-	public static boolean savePath(ArrayList<User> users, BigDecimal id) {
+	public static boolean savePath(ArrayList<User> users) {
 		PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(Queries.storePath);
 		
 		int result = 0;
@@ -252,11 +252,26 @@ public class Algorithm {
 		
 		try {
 			stmt.setString(1, path);
-			stmt.setBigDecimal(2, id);
+			stmt.setBigDecimal(2, new BigDecimal(getLastId()));
 			result = stmt.executeUpdate();
 		}catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return result==1 ? true : false;
+		return result == 1 ? true : false;
+	}
+	
+	private static double getLastId() {
+		PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(Queries.getId);
+		double id = 0;
+		try {
+			ResultSet rs = stmt.executeQuery();
+			if(rs.next()) {
+				id = rs.getBigDecimal(1).doubleValue();
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return id;
 	}
 }
