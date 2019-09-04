@@ -176,6 +176,15 @@ public class DataDispatcherSingleton implements ReceiveData, DelegateSendData {
             obs.callbackBookSearch(b, booksFound);
         }
     }
+
+    @Override
+    public void callbackReservetion(boolean result) {
+        for (ObserverDataBookReservation obs : observarDataBookReservation) {
+            obs.callbackReservetion(result);
+        }
+    }
+
+
     //endregion
 
     @Override

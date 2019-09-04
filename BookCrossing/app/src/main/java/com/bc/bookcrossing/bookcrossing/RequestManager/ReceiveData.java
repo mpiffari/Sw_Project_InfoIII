@@ -19,4 +19,5 @@ public interface ReceiveData {
     void callbackProfile(UserInformations userInformations);
     void callbackSignIn(List<SignInStatus> status);
     void callbackBookSearch(boolean result, List<Book> booksFound);
+    void callbackReservetion(boolean result);
 }

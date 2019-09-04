@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -94,8 +95,17 @@ public class ReserveDataBookFragment extends Fragment implements ObserverDataBoo
     }
 
     @Override
-    public void callbackreservation() {
-
+    public void callbackReservetion(boolean result) {
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if (result) {
+                    Toast.makeText(getActivity(), "Reservetion done", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getActivity(), "Reservetion failed", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
     }
 
     /**

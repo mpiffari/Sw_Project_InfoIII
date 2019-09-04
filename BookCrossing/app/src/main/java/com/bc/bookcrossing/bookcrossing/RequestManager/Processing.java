@@ -143,7 +143,10 @@ public class Processing implements GenerateRequests, ReceiveAnswer {
                 DataDispatcherSingleton.getInstance().callbackRegistration(res == 1 ? true : false, BCID);
                 break;
             case BOOK_RESERVATION:
-
+                k = data.indexOf(":", i+1);
+                kk = data.indexOf(":", k+1);
+                res = Integer.parseInt(data.substring(k+1,k+2));
+                DataDispatcherSingleton.getInstance().callbackReservetion(res == 1 ? true : false);
                 break;
             case LOGIN:
                 int result = data.indexOf(":", i+1);
