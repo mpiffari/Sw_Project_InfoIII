@@ -150,7 +150,10 @@ public class Processing implements GenerateRequests, ReceiveAnswer {
                 break;
             case LOGIN:
                 int result = data.indexOf(":", i+1);
-                String msg = data.substring(result+1);
+                int indexNotifications = data.indexOf(";", i + 1);
+                String msg = data.substring(result+1, indexNotifications);
+                Globals.notifications = Globals.usernameLoggedIn + " " + data.substring(indexNotifications + 1);
+                Log.d("TAG", Globals.notifications);
                 boolean flag =false;
                 LoginStatus logStaus = LoginStatus.NONE;
                 switch (msg) {

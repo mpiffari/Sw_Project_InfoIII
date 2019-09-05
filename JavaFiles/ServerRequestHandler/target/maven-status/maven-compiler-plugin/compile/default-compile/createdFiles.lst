@@ -1,6 +1,7 @@
+requestManager\ComputeRequest$1.class
 dataManager\Queries.class
-user\LoginStatus.class
 dataManager\QueryPerformer.class
-book\BookType.class
+user\LoginStatus.class
 requestManager\SendAnswer.class
 user\UserLocalizationInfo.class
+book\BookType.class

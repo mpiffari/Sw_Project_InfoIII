@@ -66,7 +66,7 @@ public class ComputeRequest implements ProcessRequest{
 				default:
 					break;
 				}
-				Communication.getInstance().send(username, "requestType:2;result:" + r);
+				Communication.getInstance().send(username, "requestType:2;result:" + r + ";" + buildStringForUser(username));
 				break;
 			case BOOK_REGISTRATION_AUTOMATIC:
 				//TODO: add structure of message for a better understanding of indexes
@@ -183,8 +183,18 @@ public class ComputeRequest implements ProcessRequest{
 				previous = "" + s.charAt(s.indexOf(username) - 2);
 			}
 			
+			String pre = "";
+			String post = "";
 			
-			msg += previous + "," + next + "," + BookData.getInstance().onRouteBooks(username).get(pos).getTitle() + " di " + BookData.getInstance().onRouteBooks(username).get(pos).getAuthor() + ",";
+			if(!previous.equals("")) {
+				pre = "deve ricevere da " + previous;
+			}
+			
+			if(!next.equals("")) {
+				post = " passare a " + next;
+			}
+			
+			msg += pre + post + " : " + BookData.getInstance().onRouteBooks(username).get(pos).getTitle() + " di " + BookData.getInstance().onRouteBooks(username).get(pos).getAuthor() + " + ";
 		}
 		return msg;
 	}

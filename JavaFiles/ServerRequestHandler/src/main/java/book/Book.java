@@ -50,7 +50,7 @@ public class Book {
 		this.actualOwnerUsername = getUserFromString(lines[5]);
 		this.ISBN = getISBNFromString(lines[6]);
 		this.underReading = getStateFromString(lines[7]);
-		this.BCID = getBCIDFromString(lines[8]);
+		//this.BCID = getBCIDFromString(lines[8]);
 	}
 
 	public Book(String title, String author, int yearOfPubblication, int editionNumber, String type) {

@@ -39,7 +39,7 @@ public class BookData implements BookQuery {
 			stmt.setString(3, book.getAuthor().toLowerCase());
 			stmt.setString(4, String.valueOf(book.getYearOfPubblication()).toLowerCase());
 			stmt.setString(5, book.getISBN().toLowerCase());
-			stmt.setString(6, book.getActualOwnerUsername().toLowerCase());
+			stmt.setString(6, book.getActualOwnerUsername());
 			stmt.setString(7, book.getType().toLowerCase());	
 			result = stmt.executeUpdate();
 		} catch (SQLException e) {

@@ -127,15 +127,15 @@ public class Book implements Serializable{
 	}
 
 	public String encode() {
-		return "TITLE:" + title.trim() + ";" +
-				"AUTHOR:" + author.trim() + ";" +
+		return "TITLE:" + title + ";" +
+				"AUTHOR:" + author + ";" +
 				"YEAR:" + yearOfPubblication + ";" +
 				"EDITION:" + editionNumber + ";" +
-				"TYPE:" + type.trim() + ";" +
-				"USER:" + user.trim() + ";" +
-				"ISBN:" + ISBN.trim() + ";" +
+				"TYPE:" + type + ";" +
+				"USER:" + user + ";" +
+				"ISBN:" + ISBN + ";" +
 				"STATE:" + (underReading == true ? 1:0) + ";" +
-				"BCID:" + BCID.trim();
+				"BCID:" + BCID;
 	}
 
     @Override

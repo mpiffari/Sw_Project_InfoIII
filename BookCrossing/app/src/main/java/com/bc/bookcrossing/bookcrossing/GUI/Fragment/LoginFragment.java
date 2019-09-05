@@ -23,6 +23,8 @@ import com.bc.bookcrossing.bookcrossing.R;
 import com.bc.bookcrossing.bookcrossing.Structures.LoginStatus;
 import com.bc.bookcrossing.bookcrossing.Structures.UserInformations;
 
+import static com.bc.bookcrossing.bookcrossing.Globals.notifications;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -83,6 +85,10 @@ public class LoginFragment extends Fragment implements ObserverDataProfile, View
 
         leaveButton = (Button) v.findViewById(R.id.leaveButton);
         leaveButton.setOnClickListener(this);
+        if(!Globals.notifications.equals("")){
+            TextView notifications = v.findViewById(R.id.notifications);
+            notifications.setText(Globals.notifications);
+        }
         return v;
     }
 

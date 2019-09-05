@@ -12,4 +12,5 @@ public class Globals {
 
     public static boolean isLoggedIn = false;
     public static String usernameLoggedIn = null;
+    public static String notifications = "";
 }
