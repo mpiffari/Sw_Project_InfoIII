@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.TreeMap;
 
+import org.json.JSONArray;
+
 import algorithmReservationHandler.Algorithm;
 import algorithmReservationHandler.AlgorithmResult;
 import dataManager.DBConnector;
@@ -236,7 +238,6 @@ public class BookData implements BookQuery {
 		}
 		return result;
 	}
-
 
 	
 	public ArrayList<Book> onRouteBooks(String user) {

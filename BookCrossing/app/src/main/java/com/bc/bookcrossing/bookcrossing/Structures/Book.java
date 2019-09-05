@@ -22,7 +22,7 @@ import java.io.Serializable;
 
 public class Book implements Serializable{
 
-	private String BCID;
+	private String BCID = "";
 	private String title;
 	private String author;
 	private @Nullable
@@ -56,14 +56,13 @@ public class Book implements Serializable{
         this.BCID = getBCIDFromString(lines[8]);
 	}
 
-	public Book(String title, String author, @Nullable int yearOfPubblication, @Nullable int editionNumber, String type, String ISBN, String urlImage) {
+	public Book(String title, String author, @Nullable int yearOfPubblication, @Nullable int editionNumber, String type, String ISBN) {
 		this.title = title;
 		this.author = author;
 		this.yearOfPubblication = yearOfPubblication;
 		this.editionNumber = editionNumber;
 		this.type = type;
 		this.ISBN = ISBN;
-		this.urlImage = urlImage;
 	}
 
 	public String getUrlImage() {
@@ -79,7 +78,9 @@ public class Book implements Serializable{
 		return author;
 	}
 
-
+	public void setBCID(String BCID) {
+		this.BCID = BCID;
+	}
 
 	public void setAuthor(String author) {
 		this.author = author;

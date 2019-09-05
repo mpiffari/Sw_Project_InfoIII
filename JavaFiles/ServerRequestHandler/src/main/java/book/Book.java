@@ -40,7 +40,7 @@ public class Book {
 	private int idPrenotazione; 
 	
 	public Book(String msg) {	
-		this();        
+		
 		String lines[] = msg.split(";");
 		this.title = getTitleFromString(lines[0]);
 		this.author = getAuthorFromString(lines[1]);
@@ -50,7 +50,16 @@ public class Book {
 		this.actualOwnerUsername = getUserFromString(lines[5]);
 		this.ISBN = getISBNFromString(lines[6]);
 		this.underReading = getStateFromString(lines[7]);
-		//this.BCID = getBCIDFromString(lines[8]);
+		String temp = getBCIDFromString(lines[8]);
+		if(temp.equals("")) {
+			do {
+				BCID = generateBCID();
+			}while(!BookData.getInstance().isBCIDavailable(BCID));
+		}
+		else {
+			this.BCID = temp;
+		}      
+		
 	}
 
 	public Book(String title, String author, int yearOfPubblication, int editionNumber, String type) {
@@ -131,6 +140,7 @@ public class Book {
 		try {			
 			statement.setString(1, user.getUsername());
 			statement.setString(2, this.BCID);
+			System.out.println(this.BCID + ",nbvjv");
 			result = statement.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -252,7 +262,15 @@ public class Book {
 
 	private String getBCIDFromString(String msg) {
 		String words[] = msg.split(":");
-		return words[1];
+		System.out.println(words.toString());
+		if(words.length == 1) {
+			return "";
+		}
+		else if (words[1].equals("")) {
+			return "";
+		} else {
+			return words[1];
+		}
 	}
 
 	private boolean getStateFromString(String msg){
@@ -262,7 +280,11 @@ public class Book {
 
 	private String getISBNFromString(String msg) {
 		String words[] = msg.split(":");
-		if (words[1].equals("null")) {
+		System.out.println(words.toString());
+		if(words.length == 1) {
+			return "";
+		}
+		else if (words[1].equals("")) {
 			return "";
 		} else {
 			return words[1];

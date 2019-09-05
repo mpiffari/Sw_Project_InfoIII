@@ -170,7 +170,7 @@ public class FetchBook extends AsyncTask<String,Void,String> {
                     Log.d("year", "" + year);
                     Log.d("link" , volumeInfo.getJSONObject("imageLinks").getString("smallThumbnail"));
 
-                    sendBook = new Book(title, authors, year, 1, type, queryString, volumeInfo.getJSONObject("imageLinks").getString("smallThumbnail") + ".png");
+                    sendBook = new Book(title, authors, year, 1, type, queryString);
                     ISBNScanFragment.setScannedBook(sendBook);
 
                 } catch (Exception e) {

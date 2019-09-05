@@ -31,6 +31,7 @@ public class ComputeRequest implements ProcessRequest{
 				b.setActualOwnerUsername(username);
 				//TODO: add check of ISBN (iteration 2)
 				b.setISBN("null");
+				
 
 				boolean result = b.insert();
 				Communication.getInstance().send(username, "requestType:0;result:" + (result?1:0) + ";BCID:" + b.getBCID());
@@ -72,8 +73,6 @@ public class ComputeRequest implements ProcessRequest{
 				//TODO: add structure of message for a better understanding of indexes
 				b = new Book(msg.substring(i + 1));
 				b.setActualOwnerUsername(username);
-				int pos_ISBN = msg.indexOf(",", i + 1);
-				b.setISBN(msg.substring(pos_ISBN + 1));
 				result = b.insert();
 				Communication.getInstance().send(username, "requestType:4;result:" + (result?1:0) + ";BCID:" + b.getBCID());
 				break;
@@ -194,7 +193,7 @@ public class ComputeRequest implements ProcessRequest{
 				post = " passare a " + next;
 			}
 			
-			msg += pre + post + " : " + BookData.getInstance().onRouteBooks(username).get(pos).getTitle() + " di " + BookData.getInstance().onRouteBooks(username).get(pos).getAuthor() + " + ";
+			msg += username + " " + pre + post + " : " + BookData.getInstance().onRouteBooks(username).get(pos).getTitle() + " di " + BookData.getInstance().onRouteBooks(username).get(pos).getAuthor() + " + ";
 		}
 		return msg;
 	}

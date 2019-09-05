@@ -69,13 +69,13 @@ public class Processing implements GenerateRequests, ReceiveAnswer {
     }
 
     @Override
-    public boolean generateRequestForDataBookRegistrationAuto(Book book, String ISBN) {
+    public boolean generateRequestForDataBookRegistrationAuto(Book book) {
         if (Globals.usernameLoggedIn == null) {
             Log.d("Processing", "[ASSERT]: no username saved!");
             return false;
         } else {
             String username = Globals.usernameLoggedIn;
-            return singletonCommunication.send(username + separator + Globals.reqType + RequestType.BOOK_REGISTRATION_AUTOMATIC.toString() + separator + book.encode() + "," + ISBN);
+            return singletonCommunication.send(username + separator + Globals.reqType + RequestType.BOOK_REGISTRATION_AUTOMATIC.toString() + separator + book.encode());
         }
     }
 
@@ -152,8 +152,15 @@ public class Processing implements GenerateRequests, ReceiveAnswer {
                 int result = data.indexOf(":", i+1);
                 int indexNotifications = data.indexOf(";", i + 1);
                 String msg = data.substring(result+1, indexNotifications);
-                Globals.notifications = Globals.usernameLoggedIn + " " + data.substring(indexNotifications + 1);
+
+
+                String notifications = data.substring(indexNotifications + 1);
+                Globals.notifications = notifications;
+
+
+
                 Log.d("TAG", Globals.notifications);
+
                 boolean flag =false;
                 LoginStatus logStaus = LoginStatus.NONE;
                 switch (msg) {
