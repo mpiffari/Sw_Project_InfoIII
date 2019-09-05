@@ -107,3 +107,17 @@ Andiamo ad evidenziare gli attori coinvolti in questa operazione:
 		
 	\end{itemize}
 \end{itemize}
+
+//TODO: move this comment to documentation
+
+// Insieme di candidati: users == overlapping users
+// Funzione obbiettivo: minimizzare i km che il libro deve fare / minimizzare il numero di utenti tra cui fare
+// il passamano --> la scelgo in maniera epsilon - greedy
+
+
+// Epsilon for epsilon greedy algorithm: during the path calculation for the reservation
+// we choose usually the next user, as the nearest one.
+// Using the greedy algorithm, with a probability that depends on the epsilon variable value, we choose the user
+// with the biggest radius.
+// epsilon lower --> algorithm stronger (always foound path to me)
+// epsilon higher --> algorithm found sorthest path

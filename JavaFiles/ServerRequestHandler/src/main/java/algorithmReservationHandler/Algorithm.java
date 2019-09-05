@@ -99,17 +99,7 @@ public class Algorithm {
 				userPath.add(previousUser);
 				ArrayList<User> handToHandUsersCopy =(ArrayList<User>) handToHandUsers.clone();
 				ArrayList<User> overlappingUsers = new ArrayList<User>();
-				double max_radius = 0.0;
-				double min_distance = Double.POSITIVE_INFINITY;
 				
-				//TODO: move this comment to documentation
-				// Epsilon for epsilon greedy algorithm: during the path calculation for the reservation
-				// we choose usually the next user, as the nearest one.
-				// Using the greedy algorithm, with a probability that depends on the epsilon variable value, we choose the user
-				// with the biggest radius.
-				// epsilon lower --> algorithm stronger (always foound path to me)
-				// epsilon higher --> algorithm found sorthest path
-				double epsilon = 0.1;
 				//= new ArrayList<User>(handToHandUsers.size());
 				//Collections.copy(handToHandUsersCopy, handToHandUsers);
 				while(true) {
@@ -130,21 +120,12 @@ public class Algorithm {
 						result.resultFlag = false;
 						break;
 					} else {
-						for(User overLapUser: overlappingUsers) {
-							if(Math.random() < epsilon) {
-								double dist = overLapUser.computeDistance(previousUser);
-								if(overLapUser.computeDistance(previousUser) < min_distance) {
-									nextUser = overLapUser;
-									min_distance = dist;
-								}
-							} else {
-								if(overLapUser.getActionArea() > max_radius) {
-									nextUser = overLapUser;
-									max_radius = overLapUser.getActionArea();
-								}
-							}
-							
-						}
+						
+						nextUser = Algorithm.greedyParadigm(overlappingUsers);
+						
+						
+						
+						
 						userPath.add(nextUser);
 						previousUser = nextUser;
 						handToHandUsersCopy.remove(nextUser);
@@ -165,6 +146,37 @@ public class Algorithm {
 		}
 		result.userPath = userPath;
 		return result;
+	}
+	
+	private static User greedyParadigm(User previousUser, ArrayList<User> users) {
+		double epsilon = 0.1;
+		double max_radius = 0.0;
+		double min_distance = Double.POSITIVE_INFINITY;
+		User result = null;
+		
+		for(User overLapUser: users) {
+			if(Math.random() < epsilon) {
+				double dist = overLapUser.computeDistance(previousUser);
+				if(dist < min_distance) {
+					result = overLapUser;
+					min_distance = dist;
+				}
+			} else {
+				double area = overLapUser.getActionArea();
+				if(area > max_radius) {
+					result = overLapUser;
+					max_radius = area;
+				}
+			}
+		}
+		
+		if(result == null) {
+			//Non ho trovato soluzioni --> l'utente è isolato
+			return null; 
+		} else {
+			return result;
+		}
+		
 	}
 	
 	private static <K,V extends Comparable<? super V>> SortedSet<Map.Entry<K,V>> entriesSortedByValues(Map<K,V> map) {
