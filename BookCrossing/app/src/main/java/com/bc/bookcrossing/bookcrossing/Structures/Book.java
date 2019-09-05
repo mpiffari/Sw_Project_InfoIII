@@ -2,10 +2,7 @@ package com.bc.bookcrossing.bookcrossing.Structures;
 
 import android.support.annotation.Nullable;
 import android.util.Log;
-
 import java.io.Serializable;
-
-
 
 /**
  * 
@@ -32,7 +29,8 @@ public class Book implements Serializable{
 	private String ISBN;
 	private String user;
 	private boolean underReading;
-	private String urlImage;
+
+    public Book(){}
 
 	public Book(String title, String author, @Nullable int yearOfPubblication, @Nullable int editionNumber, String type) {
 		this.title = title;
@@ -43,7 +41,6 @@ public class Book implements Serializable{
 	}
 
 	public Book(String msg) {
-		this();
 		String lines[] = msg.split(";");
 		this.title = getTitleFromString(lines[0]);
 		this.author = getAuthorFromString(lines[1]);
@@ -65,67 +62,58 @@ public class Book implements Serializable{
 		this.ISBN = ISBN;
 	}
 
-	public String getUrlImage() {
-		return urlImage;
-	}
-
+    public void setISBN(String ISBN) {
+        this.ISBN  = ISBN;
+    }
 	public String getISBN() {
 		return ISBN;
 	}
 
-	public String getAuthor() {
+    public void setBCID(String BCID) {
+        this.BCID = BCID;
+    }
+    public String getBCID() {
+        return BCID;
+    }
 
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+	public String getAuthor() {
 		return author;
 	}
 
-	public void setBCID(String BCID) {
-		this.BCID = BCID;
-	}
-
-	public void setAuthor(String author) {
-		this.author = author;
-	}
-
+    public void setTitle(String title) {
+        this.title = title;
+    }
 	public String getTitle() {
-
 		return title;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
+    public void setYearOfPubblication(int yearOfPubblication) {
+        this.yearOfPubblication = yearOfPubblication;
+    }
 	public int getYearOfPubblication() {
 		return yearOfPubblication;
 	}
 
-	public void setYearOfPubblication(int yearOfPubblication) {
-		this.yearOfPubblication = yearOfPubblication;
-	}
-
+    public void setEditionNumber(int editionNumber) {
+        this.editionNumber = editionNumber;
+    }
 	public int getEditionNumber() {
 		return editionNumber;
 	}
 
-	public void setEditionNumber(int editionNumber) {
-		this.editionNumber = editionNumber;
-	}
-
+    public void setType(String type) {
+        this.type = type;
+    }
 	public String getType() {
 		return type;
 	}
 
-	public void setType(String type) {
-		this.type = type;
-	}
-
-	public Book(){
-
-	}
-
-	public String getBCID() {
-		return BCID;
-	}
+    public String getUser() {
+        return user;
+    }
 
 	public String encode() {
 		return "TITLE:" + title + ";" +
@@ -142,9 +130,9 @@ public class Book implements Serializable{
     @Override
     public String toString() {
         return "BCID: " + BCID + "\n" +
-                title + " di " + author + "\n" +
-                "Categoria: " + type + "\n" +
-                "in mano adesso a " + user;
+                title + " di " + author + ".\n" +
+                "Categoria: " + type + ".\n" +
+                "Libro raccolto dall'utente: " + user + ".";
     }
 
     private String getTitleFromString(String msg) {
@@ -189,7 +177,6 @@ public class Book implements Serializable{
         }
     }
 
-
     private String getUserFromString(String msg) {
         String words[] = msg.split(":");
         return words[1];
@@ -207,9 +194,5 @@ public class Book implements Serializable{
 
 	public boolean isUnderReading() {
 		return underReading;
-	}
-
-	public String getUser() {
-		return user;
 	}
 }
