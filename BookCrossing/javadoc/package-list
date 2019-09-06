@@ -1,6 +1,7 @@
-com.bc.bookcrossing.bookcrossing
-com.bc.bookcrossing.bookcrossing.GUI
-com.bc.bookcrossing.bookcrossing.GUI.Fragment
-com.bc.bookcrossing.bookcrossing.GUI.Observer
-com.bc.bookcrossing.bookcrossing.RequestManager
-com.bc.bookcrossing.bookcrossing.Structures
+com.bc.bookcrossing.src
+com.bc.bookcrossing.src.Controllers
+com.bc.bookcrossing.src.UnitTest
+com.bc.bookcrossing.src.UnitTest.Enums
+com.bc.bookcrossing.src.View.Delegate
+com.bc.bookcrossing.src.View.Fragment
+com.bc.bookcrossing.src.View.Observer

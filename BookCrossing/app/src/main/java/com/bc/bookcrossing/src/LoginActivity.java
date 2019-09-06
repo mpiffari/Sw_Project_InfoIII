@@ -39,7 +39,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * A login screen that offers login via email/password.
+ *
+ * Schermata di login che permette all'utente di autenticarsi nel sistema, potendo usufruire dello
+ * sharing dei libri.
  *
  * @author Paganessi Andrea - Piffari Michele - Villa Stefano
  * @version 1.0
@@ -48,23 +50,34 @@ import java.util.List;
 public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor>, ObserverDataLogin {
 
     /**
-     * Id to identity READ_CONTACTS permission request.
+     * Id per idnetificare il permesso READ_CONTACTS: utilizzato nel caso in cui si vada
+     * a riattivare il suggerimento automatico dello username, scegliendo tra i contatti.
      */
     private static final int REQUEST_READ_CONTACTS = 0;
-    private DataDispatcherSingleton dispatcher;
-
-    // UI references.
+    /**
+     * UI references
+      */
     private AutoCompleteTextView mUsernameView;
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
 
+    /**
+     * Delegato a ricevere la domanda e a mandare indietro la risposta, a tutti gli observers
+     * che risultano essere registrati per una certa tipologia di informazioni.
+     */
+    private DataDispatcherSingleton dispatcher;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        //Register for receiving back information from server in async way
         dispatcher = DataDispatcherSingleton.getInstance();
         dispatcher.register(this);
+
         // Set up the login form.
         mUsernameView = (AutoCompleteTextView) findViewById(R.id.username);
         populateAutoComplete();
@@ -89,18 +102,22 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 attemptLogin();
             }
         });
-
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
     }
 
+    /**
+     * Funzione che controlla la correttezza dei dati inseriti tramite text view, e che, nel caso di
+     * esito positivo, emette una comunicazione verso il server.
+     */
     private void attemptLogin() {
-
         boolean cancel = false;
         View focusView = null;
+
         // Reset errors.
         mUsernameView.setError(null);
         mPasswordView.setError(null);
+
         // Store values at the time of the login attempt.
         String username = mUsernameView.getText().toString();
         String password = mPasswordView.getText().toString();
@@ -116,7 +133,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             cancel = true;
         }
 
-        // Check for a valid username address.
+        // Check for a valid username
         if (TextUtils.isEmpty(username)) {
             mUsernameView.setError(getString(R.string.error_field_required));
             focusView = mUsernameView;
@@ -128,13 +145,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         }
 
         if (cancel) {
-            // There was an error; don't attempt login and focus the first
-            // form field with an error.
+            // Se finiamo qua significa che c'è stato un errore: non dobbiamo quindi eseguire il
+            // login, evidenziando con un errore il primo campo.
             focusView.requestFocus();
         } else {
-            // Show a progress spinner, and kick off a background task to
-            // perform the user login attempt.
-            //showProgress(true);
+            // Emette la comunicazione relativa al login
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
                 boolean result = dispatcher.sendDataLogin(username, password);
                 if(result == false) {
@@ -148,18 +163,35 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         }
     }
 
+    /**
+     *
+     * Next iteration.
+     *
+     * @param username
+     * @return Flag che indica se l'username immesso rispetta i vincoli o meno
+     */
     private boolean isUsernameValid(String username) {
-        //TODO: Replace this with your own logic
-        //return username.contains("@");
+        //return username.contains("@"); --> example
         return true;
     }
 
+    /**
+     *
+     * Next iteration.
+     *
+     * @param password
+     * @return Flag che indica se la password immessa rispetta i vincoli o meno
+     */
     private boolean isPasswordValid(String password) {
-        //TODO: Replace this with your own logic
-        //return password.length() > 4;
+        //return password.length() > 4; --> example
         return true;
     }
 
+    /**
+     *  Risposta ricevuta dal server a seguito della pressione da parte dell'utente del tasto "Login"
+     * @param result
+     * @param s
+     */
     @Override
     public void notifyLogin(final boolean result, @Nullable final LoginStatus s) {
         LoginActivity.this.runOnUiThread(new Runnable() {
@@ -168,33 +200,31 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             public void run() {
                 showProgress(false);
                 if(result){
-                    //Toast.makeText(getActivity(), "Login OK", Toast.LENGTH_LONG).show();
                     Globals.isLoggedIn = true;
-                    //TODO: make repository for user informations
                     Globals.usernameLoggedIn = mUsernameView.getText().toString();
+                    Toast.makeText(LoginActivity.this,"Login completed successfully.", Toast.LENGTH_LONG).show();
                     Intent MainIntent = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(MainIntent);
-                    Toast.makeText(LoginActivity.this,"Login completed successfully.", Toast.LENGTH_LONG).show();
                 } else {
                     Globals.isLoggedIn = false;
+                    // Il server ci dice anche qualche errore specifico ha riscontrato
                     if(s == LoginStatus.WRONG_USERNAME) {
-                        //usernameText.setText("");
                         mUsernameView.setError(getString(R.string.error_incorrect_username));
                         mUsernameView.requestFocus();
                     }
                     if(s == LoginStatus.WRONG_PASSWORD) {
-                        //pwdText.setText("");
                         mPasswordView.setError(getString(R.string.error_incorrect_password));
                         mPasswordView.requestFocus();
                     }
-                    //Toast.makeText(getActivity(), "Error during login", Toast.LENGTH_LONG).show();
                 }
             }
         });
     }
 
-    // Function not really for us application
-
+    /**
+     *  Next iteration.
+     *  Auto completion della text view con il nome ut4ente
+     */
     private void populateAutoComplete() {
         if (!mayRequestContacts()) {
             return;
@@ -223,8 +253,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         }*/
         return false;
     }
+
     /**
-     * Callback received when a permissions request has been completed.
+     * Callback ricevuta quando sono stati ottenuti i permessi per l'accesso ai contatti.
      */
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
@@ -237,7 +268,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     }
 
     /**
-     * Shows the progress UI and hides the login form.
+     * Next iteration.
+     *
+     * Mostra un activity indicator durante il fetching delle informazioni di login.
      */
     @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
     private void showProgress(final boolean show) {

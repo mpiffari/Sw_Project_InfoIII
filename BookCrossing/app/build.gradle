@@ -4,7 +4,7 @@ apply plugin: 'com.amazonaws.appsync'
 android {
     compileSdkVersion 29
     defaultConfig {
-        applicationId "com.bc.bookcrossing.bookcrossing"
+        applicationId "com.bc.bookcrossing.src"
         minSdkVersion 15
         targetSdkVersion 28
         multiDexEnabled true

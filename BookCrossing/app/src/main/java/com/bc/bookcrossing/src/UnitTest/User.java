@@ -3,6 +3,9 @@ package com.bc.bookcrossing.src.UnitTest;
 //import dataManager.UserData;
 
 /**
+ *
+ * Utente che può partecipare alla community di sharing del book crossing.
+ *
  * @author Paganessi Andrea - Piffari Michele - Villa Stefano
  * @version 1.0
  * @since 2018/2019
@@ -19,6 +22,19 @@ public class User {
     private double longitude;
     private int action;
 
+    /**
+     *
+     * Init completo dell'utente, con tutte le informazioni che lo caratterizzano.
+     *
+     * @param username
+     * @param firstName
+     * @param lastName
+     * @param dateOfBirth
+     * @param password
+     * @param latitude
+     * @param longitude
+     * @param action
+     */
     public User(String username, String firstName, String lastName, String dateOfBirth, String password, double latitude,
                 double longitude, int action) {
 
@@ -32,26 +48,14 @@ public class User {
         this.action = action;
     }
 
+    /**
+     * Init semplificato dell'utente: essendo che sul database ogni user ha come chiave l'username,
+     * esso è sufficiente per poter accedere a tute le informazioni, tramite una query.
+     * @param username
+     */
     public User(String username, String password){
         this.username = username;
         this.password = password;
-    }
-
-    public User(String msg) {
-        String lines[] = msg.split(";");
-        this.username = getUserFromString(lines[0]);
-        this.password = getPasswordFromString(lines[1]);
-
-    }
-
-    private String getUserFromString(String msg) {
-        String words[] = msg.split(":");
-        return words[1];
-    }
-
-    private String getPasswordFromString(String msg) {
-        String words[] = msg.split(":");
-        return words[1];
     }
 
     public String getUsername() {
@@ -117,16 +121,15 @@ public class User {
     public void setAction(int action) {
         this.action = action;
     }
-	/*
-	public boolean login(String username, String password) {
-		return UserData.getInstance().login(this);
-	}*/
 
+    /**
+     * Metodo toString utilizzato per stampe di debug
+     * @return Debug description di questo utente.
+     */
     @Override
     public String toString() {
         return  "USER:" + username + ";" +
                 "PASSWORD:" + password;
     }
-
 }
 
