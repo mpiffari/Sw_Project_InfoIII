@@ -26,6 +26,12 @@
             android:layout_height="wrap_content"
             android:text="@string/leave" />
 
+        <TextView
+            android:id="@+id/profileInformationHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/profile_informations" />
+
     </LinearLayout>
 
 </FrameLayout>

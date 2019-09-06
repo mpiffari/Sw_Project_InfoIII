@@ -1,0 +1,23 @@
+package com.bc.bookcrossing.src.Controllers;
+
+import com.bc.bookcrossing.src.UnitTest.Book;
+import com.bc.bookcrossing.src.UnitTest.User;
+import java.util.Date;
+
+/**
+ * @author Paganessi Andrea - Piffari Michele - Villa Stefano
+ * @version 1.0
+ * @since 2018/2019
+ */
+
+public interface GenerateRequests {
+   boolean generateRequestForDataSignIn(String name, String lastName, String username, Date DOB, String[] contacts, String password, int actionArea); //TODO : LAT e LONG
+   boolean generateRequestForDataPickUp(String BCID);
+   boolean generateRequestForDataTakenBooks();
+   boolean generateRequestForDataBookRegistrationAuto(Book book);
+   boolean generateRequestForDataBookRegistrationManual(Book book);
+   boolean generateRequestForDataLogin(User user);
+   boolean generateRequestForDataProfileInformations(String username, String password);
+   boolean generateRequestForDataBookSearch(String title, String author);
+   boolean generateRequestForDataBookReservation(Book bookForReservation);
+}

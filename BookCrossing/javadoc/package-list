@@ -1,0 +1,6 @@
+com.bc.bookcrossing.bookcrossing
+com.bc.bookcrossing.bookcrossing.GUI
+com.bc.bookcrossing.bookcrossing.GUI.Fragment
+com.bc.bookcrossing.bookcrossing.GUI.Observer
+com.bc.bookcrossing.bookcrossing.RequestManager
+com.bc.bookcrossing.bookcrossing.Structures

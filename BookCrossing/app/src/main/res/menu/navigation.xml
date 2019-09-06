@@ -21,8 +21,4 @@
         android:id="@+id/book_search"
         android:icon="@drawable/ic_action_search"
         android:title="@string/book_research" />
-    <item
-        android:id="@+id/navigation_notifications"
-        android:icon="@drawable/ic_notifications_black_24dp"
-        android:title="@string/foo" />
 </menu>
