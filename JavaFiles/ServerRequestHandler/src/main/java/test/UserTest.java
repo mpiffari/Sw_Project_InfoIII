@@ -24,6 +24,8 @@ public class UserTest {
 		localization.lat = 10;
 		localization.longit = 20;
 		localization.radius = 30;
+		
+		
 		User u = new User(username, firstName, lastName, dateOfBirth, password, localization.lat, localization.longit, localization.radius);
 		
 		assertTrue(u.toString().equals("USER: " + username + ";"
@@ -69,7 +71,7 @@ public class UserTest {
 		String usernameA = "A";
 		String password = "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b";
 		String msg = "USER: " + usernameA + ";" + "PASSWORD: " + password;
-		User uA = new User(msg);
+		User uA = new User(usernameA, password);
 		uA.setLongitude(10);
 		uA.setLatitude(10);
 		
@@ -82,7 +84,32 @@ public class UserTest {
 		assertTrue(uA.computeDistance(uA) == 0);
 		assertTrue(uA.computeDistance(uB) > 0);
 		assertTrue(uA.computeDistance(uB) == Math.sqrt(100 + 100));
+	}
+	
+	@Test
+	public void computeDistanceLocTest() {
+		String usernameA = "A";
+		String password = "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b";
+		String msg = "USER: " + usernameA + ";" + "PASSWORD: " + password;
+		User uA = new User(msg);
 		
+		
+		String usernameB = "B";
+		msg = "USER: " + usernameB + ";" + "PASSWORD: " + password;
+		User uB = new User(msg);
+		
+		
+		UserLocalizationInfo localizationInfoA = new UserLocalizationInfo(10, 10);
+		UserLocalizationInfo localizationInfoB = new UserLocalizationInfo(20, 20);
+		
+		uA.setLatitude(localizationInfoA.lat);
+		uA.setLongitude(localizationInfoA.longit);
+		uB.setLatitude(localizationInfoB.lat);
+		uB.setLongitude(localizationInfoB.longit);
+		
+		assertTrue(uA.computeDistance(localizationInfoA) == 0);
+		assertTrue(uA.computeDistance(localizationInfoB) > 0);
+		assertTrue(uA.computeDistance(localizationInfoB) == Math.sqrt(100 + 100));
 	}
 	
 

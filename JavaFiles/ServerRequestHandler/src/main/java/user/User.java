@@ -10,6 +10,12 @@ import book.Book;
 import dataManager.DBConnector;
 import dataManager.Queries;
 
+/**
+ * 
+ * @author Gruppo Paganessi - Piffari - Villa
+ * User class - an instance of this class describes an user of BookCrossing service
+ */
+
 public class User implements Comparable<User> {
 
 	private String username;
@@ -21,6 +27,18 @@ public class User implements Comparable<User> {
 	
 	private ArrayList<Book> booksOwned = new ArrayList<Book>();
 
+	
+	/**
+	 * 
+	 * @param username
+	 * @param firstName
+	 * @param lastName
+	 * @param dateOfBirth
+	 * @param password
+	 * @param latitude
+	 * @param longitude
+	 * @param action
+	 */
 	public User(String username, String firstName, String lastName, Date dateOfBirth, String password, double latitude,
 			double longitude, double action) {
 		
@@ -34,11 +52,20 @@ public class User implements Comparable<User> {
 		this.localization.radius = action;
 	}
 	
+	/**
+	 * 
+	 * @param username
+	 * @param password
+	 */
 	public User(String username, String password){
         this.username = username;
         this.password = password;
     }
 	
+	/**
+	 * 
+	 * @param msg
+	 */
 	public User(String msg) {	
     	String lines[] = msg.split(";");
         this.username = getUserFromString(lines[0]);
@@ -132,7 +159,10 @@ public class User implements Comparable<User> {
 	public void setChasingBook(Book book) {
 		this.booksOwned.add(book);
 	}
-	
+	/**
+	 * 
+	 * @return ArrayList<Book> contains books which are handled by user
+	 */
 	public ArrayList<Book> getChasingBooks() {
 		PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(Queries.getBooksOwnedBy);
 		try {
@@ -156,6 +186,11 @@ public class User implements Comparable<User> {
 				+ "PASSWORD: " + password + "\r\n";
 	}
 
+	/**
+	 * 
+	 * @param o other user
+	 * @return distance between users
+	 */
 	public double computeDistance(User o) {
 		double lat_this = this.localization.lat;
 		double long_this = this.localization.longit;
@@ -165,6 +200,12 @@ public class User implements Comparable<User> {
 		double distance = Math.sqrt(Math.pow((lat_this - lat_o), 2) + Math.pow((long_this - long_o),2));
 		return distance;
 	}
+	
+	/**
+	 * 
+	 * @param o other user
+	 * @return distance between users
+	 */
 	
 	public double computeDistance(UserLocalizationInfo o) {
 		double lat_this = this.localization.lat;
@@ -176,6 +217,7 @@ public class User implements Comparable<User> {
 		return distance;
 	}
 
+	
 	public int compareTo(User o) {
 		if(this.username.compareTo(o.getUsername()) > 0) {
 			return 1;

@@ -7,14 +7,24 @@ import java.util.ArrayList;
 
 import dataManager.DBConnector;
 import dataManager.Queries;
+/**
+ * 
+ * @author Gruppo Paganessi - Piffari - Villa
+ * UserData class implements UserQuery interface for obtaing status about user that is connected to server
+ * Implemented as Singleton
+ */
+public final class UserData implements UserQuery {
 
-public class UserData implements UserQuery {
-
+	
 	private static UserData instance;
 
 	private UserData() {
 	}
 
+	/**
+	 * 
+	 * @return instance if it is null.
+	 */
 	public static UserData getInstance() {
 		if (instance == null) {
 			instance = new UserData();
@@ -22,6 +32,12 @@ public class UserData implements UserQuery {
 		return instance;
 	}
 
+	/**
+	 * @param User user: user who is connected to server and uses apk services
+	 * @return LoginStatus-Success if connection is done(user and password are correct)
+	 * @return LoginStatus-WRONG_PWD if password is wrong
+	 * @return LoginStatus-WRONG_USERNAME if user is wrong
+	 */
 	public LoginStatus login(User user) {
 		try {
 			PreparedStatement stmt;
@@ -91,6 +107,11 @@ public class UserData implements UserQuery {
 		}
 		return LoginStatus.UNSUCCES;
 	}
+	
+	/**
+	 * @param username string that describes username of connected user
+	 * @return true if user exist, false if user does not exist
+	 */
 
 	public boolean exist(String username) {
 		// TODO Auto-generated method stub
@@ -109,7 +130,10 @@ public class UserData implements UserQuery {
 
 		return false;
 	}
-	
+	/**
+	 * @param user string that describes username of connected user
+	 * @return ArrayList<String> that contains paths where user is in
+	 */
 	public ArrayList<String> pathOfUsers(String user) {
 		ArrayList<String> usersForNotifications = new ArrayList<String>();
 		PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(Queries.queryForUserNotifications);

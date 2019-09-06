@@ -1,15 +1,11 @@
 package book;
 
 
-import java.math.BigDecimal;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Map;
-import java.util.TreeMap;
 
-import org.json.JSONArray;
 
 import algorithmReservationHandler.Algorithm;
 import algorithmReservationHandler.AlgorithmResult;
@@ -18,19 +14,33 @@ import dataManager.Queries;
 import user.User;
 import user.UserLocalizationInfo;
 
-public class BookData implements BookQuery {
+/**
+ * 
+ * @author Gruppo Paganessi - Piffari - Villa
+ * BookData class. Implementing as singleton object and implies method of BookQuery interface
+ */
+
+public final class BookData implements BookQuery {
 
 	private static BookData instance = null;
 
 	private BookData() {}
 
 
+	/**
+	 * 
+	 * @return BookData instance
+	 */
 	public static BookData getInstance() {
 		if(instance == null)
 			instance = new BookData();
 		return instance;
 	}
 	
+	/**
+	 * @param book book that has to insert in book crossing
+	 * @return true if insert is done
+	 */
 	public boolean insertBook(Book book) {
 		PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(Queries.insertBookQuery);
 
@@ -50,11 +60,16 @@ public class BookData implements BookQuery {
 		return result==1 ? true : false;
 	}
 
-	public boolean isBCIDavailable(String BCID) {
+	/**
+	 * 
+	 * @param bcid
+	 * @return true if generated bcid is available
+	 */
+	public boolean isBCIDavailable(final String bcid) {
 		PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(Queries.bcidAvailableQuery);
 
 		try {
-			stmt.setString(1, BCID);
+			stmt.setString(1, bcid);
 			ResultSet rs = stmt.executeQuery();
 			if(rs.next() && rs.getInt(1) == 0)	//if rs is not empty and query result is 0 then the BCID is available
 				return true;
@@ -89,7 +104,7 @@ public class BookData implements BookQuery {
 		}
 		System.out.println("User that own the book request is " + readerUsername);
 		
-		User L = Algorithm.getUserFromUsername(readerUsername);
+		User l = Algorithm.getUserFromUsername(readerUsername);
 		User me = Algorithm.getUserFromUsername(userThatMadeReservation);
 		
 		if(booker.contains(me)) {
@@ -98,14 +113,14 @@ public class BookData implements BookQuery {
 			return result;
 		}
 		
-		UserLocalizationInfo readerPos = new UserLocalizationInfo(L.getLatitude(), L.getLongitude());
+		UserLocalizationInfo readerPos = new UserLocalizationInfo(l.getLatitude(), l.getLongitude());
 		UserLocalizationInfo userPos = new UserLocalizationInfo(me.getLatitude(), me.getLongitude());
 
 		System.out.println("Position of reader (L): " + readerPos.toString());
 		System.out.println("Position of me: " + userPos.toString());
-		System.out.println("Distance of mine from " + L.getUsername() +" = " + me.computeDistance(L));
+		System.out.println("Distance of mine from " + l.getUsername() +" = " + me.computeDistance(l));
 		
-		result = Algorithm.step_1(L, me);
+		result = Algorithm.step_1(l, me);
 
 		for(User u: result.userPath) {
 			System.out.println("Name: " + u.getFirstName() + " Surname: " 
@@ -115,6 +130,11 @@ public class BookData implements BookQuery {
 		return result;
 	}
 
+	/**
+	 * 
+	 * @param bcid
+	 * @return true if book is under reading by other user
+	 */
 	private static boolean isUnderReading(String bcid) {
 		PreparedStatement stmtState = DBConnector.getDBConnector().prepareStatement(Queries.underReadingBookQuery);
 		try {
@@ -133,6 +153,11 @@ public class BookData implements BookQuery {
 		}
 	}
 
+	/**
+	 * 
+	 * @param title
+	 * @return list of books that has title passed as parameter
+	 */
 	public static ArrayList<Book> searchBookByTitle(String title) {
 		ArrayList<Book> result = new ArrayList<Book>();
 		PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(Queries.searchByTitleQuery);
@@ -143,7 +168,7 @@ public class BookData implements BookQuery {
 
 			while(rs.next()) {
 				//System.out.println("#_ " + rs.getString(1) +"  " +rs.getString(2));
-				String BCID = rs.getString(1);
+				String bcid = rs.getString(1);
 				String t = rs.getString(2);
 				String a = rs.getString(3);
 				int pubbDate = Integer.parseInt(rs.getString(4) == null ? "0" : rs.getString(4));
@@ -155,9 +180,9 @@ public class BookData implements BookQuery {
 				//TODO: gestire Type e Edition number
 				Book b = new Book(t,a, pubbDate, editionNumber, bookType);
 				b.setActualOwnerUsername(actualOwner);
-				b.setBCID(BCID);
+				b.setBCID(bcid);
 				b.setISBN(isbn);
-				b.setUnderReading(isUnderReading(BCID));
+				b.setUnderReading(isUnderReading(bcid));
 				result.add(b);
 			}
 
@@ -168,6 +193,11 @@ public class BookData implements BookQuery {
 		return result;
 	}
 
+	/**
+	 * 
+	 * @param author
+	 * @return list of books that have author passed as parameter
+	 */
 	public static ArrayList<Book> searchBookByAuthor(String author) {
 		ArrayList<Book> result = new ArrayList<Book>();
 		PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(Queries.searchByAuthorQuery);
@@ -179,7 +209,7 @@ public class BookData implements BookQuery {
 
 			while(rs.next()) {
 				//System.out.println("#_ " + rs.getString(1) +"  " +rs.getString(2));
-				String BCID = rs.getString(1);
+				String bcid = rs.getString(1);
 				String t = rs.getString(2);
 				String a = rs.getString(3);
 				int pubbDate = Integer.parseInt(rs.getString(4) == null ? "0" : rs.getString(4));
@@ -191,9 +221,9 @@ public class BookData implements BookQuery {
 				//TODO: gestire Type e Edition number
 				Book b = new Book(t,a, pubbDate, editionNumber, bookType);
 				b.setActualOwnerUsername(actualOwner);
-				b.setBCID(BCID);
+				b.setBCID(bcid);
 				b.setISBN(isbn);
-				b.setUnderReading(isUnderReading(BCID));
+				b.setUnderReading(isUnderReading(bcid));
 				result.add(b);
 			}
 
@@ -204,6 +234,12 @@ public class BookData implements BookQuery {
 		return result;
 	}
 
+	/**
+	 * 
+	 * @param title
+	 * @param author
+	 * @return list of books which has title and author passed as parameters
+	 */
 	public static ArrayList<Book> searchBook(String title, String author) {
 		ArrayList<Book> result = new ArrayList<Book>();
 		PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(Queries.searchByTitleAndAuthorQuery);
@@ -215,7 +251,7 @@ public class BookData implements BookQuery {
 			
 			while(rs.next()) {
 				//System.out.println("#_ " + rs.getString(1) +"  " +rs.getString(2));
-				String BCID = rs.getString(1);
+				String bcid = rs.getString(1);
 				String t = rs.getString(2);
 				String a = rs.getString(3);
 				int pubbDate = Integer.parseInt(rs.getString(4).equals("null") ? "0" : rs.getString(4));
@@ -227,7 +263,7 @@ public class BookData implements BookQuery {
 				//TODO: gestire Type e Edition number
 				Book b = new Book(t,a, pubbDate, editionNumber, bookType);
 				b.setActualOwnerUsername(actualOwner);
-				b.setBCID(BCID);
+				b.setBCID(bcid);
 				b.setISBN(isbn);
 				b.setUnderReading(actualOwner.equals("null")? false : true);
 				result.add(b);
@@ -239,6 +275,10 @@ public class BookData implements BookQuery {
 		return result;
 	}
 
+	/**
+	 * @param user
+	 * @return list of books that user has reserved
+	 */
 	
 	public ArrayList<Book> onRouteBooks(String user) {
 		ArrayList<Book> booksOnRoute = new ArrayList<Book>();

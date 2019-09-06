@@ -1,5 +1,9 @@
 package user;
-
+/**
+ * 
+ * @author Gruppo Paganessi - Piffari - Villa
+ * class used as data structure for storing position informations of user
+ */
 public class UserLocalizationInfo {
 	public double radius;
 	public double lat;

@@ -8,8 +8,13 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
 
+/**
+ * 
+ * @author  Gruppo Paganessi - Piffari - Villa
+ * DBConnector class. Singleton object. Contains methods for establishing a connection with database
+ */
 
-public class DBConnector implements QueryPerformer{
+public final class DBConnector implements QueryPerformer{
 	
 	 //Configuration parameters for the generation of the IAM Database Authentication token
     private static final String RDS_INSTANCE_HOSTNAME = "dbinfo3.ckadinof62hi.eu-west-3.rds.amazonaws.com";
@@ -30,6 +35,7 @@ public class DBConnector implements QueryPerformer{
     private static DBConnector instance = null;
     private Connection conn;
     private Statement stmt;
+    
     
     private DBConnector()  {
     	
@@ -88,7 +94,13 @@ public class DBConnector implements QueryPerformer{
 		return null;
 	}
 	
-	public PreparedStatement prepareStatement(String sql) {
+	
+	/**
+	 * 
+	 * @param sql query that is executed
+	 * @return PreparamedStatment object for parsing the result of query
+	 */
+	public PreparedStatement prepareStatement(final String sql) {
 		try {
 			return conn.prepareStatement(sql);
 		} catch (SQLException e) {
@@ -108,7 +120,7 @@ public class DBConnector implements QueryPerformer{
 	}*/
 	
 	
-	
+	/*
 	public void PROVA() throws SQLException {
 		ResultSet rs = stmt.executeQuery("SELECT *  FROM UTENTE");
         
@@ -116,7 +128,8 @@ public class DBConnector implements QueryPerformer{
         	String id = rs.getString(1);
             System.out.println(id);
         }
-	}
+	}*/
+	
 	
 	
 	

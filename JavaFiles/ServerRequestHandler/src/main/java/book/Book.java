@@ -1,6 +1,6 @@
 package book;
 
-import java.math.BigDecimal;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -24,7 +24,12 @@ import user.User;
  * - TYPE:.....;
  *
  */
-
+/**
+ * 
+ * @author  Gruppo Paganessi - Piffari - Villa
+ * Book class: an instance of this class describes a book that is inserted in book crossing program
+ *
+ */
 public class Book {
 
 	private String title;
@@ -32,36 +37,49 @@ public class Book {
 	private int yearOfPubblication;
 	private int editionNumber;
 	private String type;
-	private String BCID;
-	private String ISBN;
+	private String bcid;
+	private String isbn;
 	private String actualOwnerUsername;
 	private boolean underReading;
 	private ArrayList<User> prenotanti = new ArrayList<User>();
 	private int idPrenotazione; 
 	
+	/**
+	 * 
+	 * @param msg - string with a specific format permits to construct a book
+	 */
 	public Book(String msg) {	
 		
-		String lines[] = msg.split(";");
+		final String lines[] = msg.split(";");
 		this.title = getTitleFromString(lines[0]);
 		this.author = getAuthorFromString(lines[1]);
 		this.yearOfPubblication = getYearOfPubblicationFromString(lines[2]);
 		this.editionNumber = getEditionNumberFromString(lines[3]);
 		this.type = getBookTypeFromString(lines[4]);
 		this.actualOwnerUsername = getUserFromString(lines[5]);
-		this.ISBN = getISBNFromString(lines[6]);
+		this.isbn = getISBNFromString(lines[6]);
 		this.underReading = getStateFromString(lines[7]);
 		String temp = getBCIDFromString(lines[8]);
 		if(temp.equals("")) {
 			do {
-				BCID = generateBCID();
-			}while(!BookData.getInstance().isBCIDavailable(BCID));
+				bcid = generateBCID();
+			}while(!BookData.getInstance().isBCIDavailable(bcid));
 		}
 		else {
-			this.BCID = temp;
+			this.bcid = temp;
 		}      
 		
 	}
 
+	/**
+	 * 
+	 * @param title
+	 * @param author
+	 * @param yearOfPubblication
+	 * @param editionNumber
+	 * @param type
+	 */
+	
 	public Book(String title, String author, int yearOfPubblication, int editionNumber, String type) {
 		this();
 		this.title = title;
@@ -71,23 +89,37 @@ public class Book {
 		this.type = type;
 	}
 
-	public Book(String BCID, String owner) {
+	/**
+	 * 
+	 * @param bcid
+	 * @param owner
+	 */
+	public Book(String bcid, String owner) {
 		this();
-		this.BCID = BCID;
+		this.bcid = bcid;
 		this.actualOwnerUsername = owner;
 	}
 	
 	public Book() {
 		do {
-			BCID = generateBCID();
-		}while(!BookData.getInstance().isBCIDavailable(BCID));
+			bcid = generateBCID();
+		}while(!BookData.getInstance().isBCIDavailable(bcid));
 	}
 
 
+	/**
+	 * 
+	 * @return true if book is insert in db else false
+	 */
 	public boolean insert() {
 		return BookData.getInstance().insertBook(this);
 	}
 
+	/**
+	 * 
+	 * @param username
+	 * @return true if reservetion is done
+	 */
 	public boolean reserve(String username) {
 		User u = new User();
 		u.setUsername(username);
@@ -105,10 +137,14 @@ public class Book {
 		return false;
 	}
 
+	/**
+	 * 
+	 * @return list of bookers of book
+	 */
 	public ArrayList<User> getPrenotanti() {
 		PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(Queries.getUserInfoByJoin);
 		try {
-			stmt.setString(1, this.BCID);
+			stmt.setString(1, this.bcid);
 			ResultSet rs = stmt.executeQuery();
 			prenotanti.clear();
 			User u;
@@ -139,8 +175,8 @@ public class Book {
 		int result = 0;
 		try {			
 			statement.setString(1, user.getUsername());
-			statement.setString(2, this.BCID);
-			System.out.println(this.BCID + ",nbvjv");
+			statement.setString(2, this.bcid);
+			System.out.println(this.bcid + ",nbvjv");
 			result = statement.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -171,22 +207,22 @@ public class Book {
 	}
 
 	public String getBCID() {
-		return BCID;
+		return bcid;
 	}
 
 
 	public void setBCID(String bCID) {
-		BCID = bCID;
+		bcid = bCID;
 	}
 
 
 	public String getISBN() {
-		return ISBN;
+		return isbn;
 	}
 
 
 	public void setISBN(String iSBN) {
-		ISBN = iSBN;
+		isbn = iSBN;
 	}
 
 
@@ -295,7 +331,7 @@ public class Book {
 		return underReading;
 	}
 
-	public String generateBCID() {
+	private String generateBCID() {
 
 		int leftLimit = 97; // letter 'a'
 		int rightLimit = 122; // letter 'z'
@@ -318,9 +354,9 @@ public class Book {
 				"EDITION:" + editionNumber + ";" +
 				"TYPE:" + type + ";" + 
 				"ACTUALOWNER:" + actualOwnerUsername + ";" +
-				"ISBN:" + ISBN + ";" + 
+				"ISBN:" + isbn + ";" + 
 				"STATE:" + (underReading == true ? 1:0) + ";" +
-				"BCID:" + BCID;
+				"BCID:" + bcid;
 	}
 
 
