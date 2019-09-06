@@ -2,10 +2,12 @@ package test;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import org.junit.Test;
 
+import book.Book;
 import user.User;
 import user.UserLocalizationInfo;
 
@@ -43,5 +45,45 @@ public class UserTest {
 		assertTrue(B.compareTo(B) == 0);
 		assertTrue(B.compareTo(A) > 0);
 	}
+	
+	
+	@Test
+	public void getChasingBookTest() {
+		String username = "A";
+		String password = "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b";
+		String msg = "USER: " + username + ";" + "PASSWORD: " + password;
+		User u = new User(msg);
+		
+		ArrayList<Book> chasingBooks = u.getChasingBooks();
+		
+		assertTrue(chasingBooks.isEmpty()); //da db osservo che A non ha in mano nessun libro
+		
+		u.setUsername("T");
+		//da db so che ci sono 3 libri in mano a T
+		assertTrue(u.getChasingBooks().size() == 3);
+		
+	}
+	
+	@Test
+	public void computeDistanceTest() {
+		String usernameA = "A";
+		String password = "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b";
+		String msg = "USER: " + usernameA + ";" + "PASSWORD: " + password;
+		User uA = new User(msg);
+		uA.setLongitude(10);
+		uA.setLatitude(10);
+		
+		String usernameB = "B";
+		msg = "USER: " + usernameB + ";" + "PASSWORD: " + password;
+		User uB = new User(msg);
+		uB.setLatitude(20);
+		uB.setLongitude(20);
+		
+		assertTrue(uA.computeDistance(uA) == 0);
+		assertTrue(uA.computeDistance(uB) > 0);
+		assertTrue(uA.computeDistance(uB) == Math.sqrt(100 + 100));
+		
+	}
+	
 
 }
