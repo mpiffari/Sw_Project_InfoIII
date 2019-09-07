@@ -57,4 +57,5 @@
     <string name="reserve_book">Reserve Book</string>
     <string name="search">Search</string>
     <string name="profile_informations">PROFILE INFORMATIONS</string>
+    <string name = "login_ok">Login completed successfully</string>
 </resources>
