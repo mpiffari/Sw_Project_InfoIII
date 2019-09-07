@@ -5,7 +5,7 @@ import android.support.annotation.RequiresApi;
 
 import com.bc.bookcrossing.src.View.Observer.ObserverDataBookReservation;
 import com.bc.bookcrossing.src.View.Observer.ObserverDataBookResearch;
-import com.bc.bookcrossing.src.UnitTest.BookInfo;
+import com.bc.bookcrossing.src.ClientModels.BookInfo;
 import com.bc.bookcrossing.src.Controllers.ReceiveData;
 import com.bc.bookcrossing.src.View.Observer.ObserverDataBookRegistration;
 import com.bc.bookcrossing.src.View.Observer.ObserverDataBookPickUp;
@@ -14,12 +14,12 @@ import com.bc.bookcrossing.src.View.Observer.ObserverDataLogin;
 import com.bc.bookcrossing.src.View.Observer.ObserverDataProfile;
 import com.bc.bookcrossing.src.View.Observer.ObserverDataSignIn;
 import com.bc.bookcrossing.src.View.Observer.ObserverForUiInformation;
-import com.bc.bookcrossing.src.UnitTest.Enums.LoginStatus;
-import com.bc.bookcrossing.src.UnitTest.Enums.SignInStatus;
-import com.bc.bookcrossing.src.UnitTest.User;
-import com.bc.bookcrossing.src.UnitTest.UserInformations;
+import com.bc.bookcrossing.src.ClientModels.Enums.LoginStatus;
+import com.bc.bookcrossing.src.ClientModels.Enums.SignInStatus;
+import com.bc.bookcrossing.src.ClientModels.User;
+import com.bc.bookcrossing.src.ClientModels.UserInformations;
 import com.bc.bookcrossing.src.Controllers.Processing;
-import com.bc.bookcrossing.src.UnitTest.Book;
+import com.bc.bookcrossing.src.ClientModels.Book;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
@@ -29,6 +29,12 @@ import java.util.Date;
 import java.util.List;
 
 /**
+ *
+ * Implementazione dei metodi per poter offrire un interfaccia a tutti coloro che
+ * desiderano spedire richieste al server.
+ * Presenta inoltre strutture dati per poter gestire le registrazione/deregistrazione dei fragments
+ * e notificarne la presenza delle risposte.
+ *
  * @author Paganessi Andrea - Piffari Michele - Villa Stefano
  * @version 1.0
  * @since 2018/2019
@@ -36,15 +42,14 @@ import java.util.List;
 
 public class DataDispatcherSingleton implements ReceiveData, DelegateSendData {
     public static final DataDispatcherSingleton ourInstance = new DataDispatcherSingleton();
-    private DataDispatcherSingleton() {
-    }
+    private DataDispatcherSingleton() { }
 
     public static DataDispatcherSingleton getInstance(){
         return ourInstance;
     }
-
     private Processing p = Processing.getInstance();
-    //region Declaration of vector of observer
+
+    //region Declaration of vector of observers
     private List<ObserverDataBookRegistration> observersDataBookRegistration = new ArrayList<>();
     private List<ObserverDataBookPickUp> observersDataBookPickUp = new ArrayList<>();
     private List<ObserverDataBookTaken> observersDataBookTaken = new ArrayList<>();
@@ -55,22 +60,10 @@ public class DataDispatcherSingleton implements ReceiveData, DelegateSendData {
     private List<ObserverDataBookReservation> observarDataBookReservation = new ArrayList<>();
     //endregion
 
-    //Function related to SHA-256 encoding
-    private static String bytesToHex(byte[] hash) {
-        StringBuffer hexString = new StringBuffer();
-        for (int i = 0; i < hash.length; i++) {
-            String hex = Integer.toHexString(0xff & hash[i]);
-            if(hex.length() == 1) hexString.append('0');
-            hexString.append(hex);
-        }
-        return hexString.toString();
-    }
-
     //region Delegate SendData functions
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public boolean sendDataLogin(String username, String password) {
-
         // HASH 256
         MessageDigest digest = null;
         try {
@@ -85,26 +78,7 @@ public class DataDispatcherSingleton implements ReceiveData, DelegateSendData {
     }
 
     @Override
-    public boolean sendDataSignIn(String name, String lastName, String username, Date DOB, String[] contacts, String password, int actionArea) {
-        //TODO CONTROLLO MINIMO
-        return p.generateRequestForDataSignIn(name, lastName, username, DOB, contacts, password, actionArea);
-    }
-
-    @Override
-    public boolean sendDataPickUp(String BCID) {
-        //TODO CONTROLLO MINIMO
-        return p.generateRequestForDataPickUp(BCID);
-    }
-
-    @Override
-    public boolean sendDataTakenBooks() {
-        //TODO CONTROLLO MINIMO
-        return p.generateRequestForDataTakenBooks();
-    }
-
-    @Override
     public boolean sendDataBookRegistrationAuto(String title, String author, String yearOfPubb, String edition, String bookTypeDesc, String ISBN) {
-        //TODO CONTROLLO MINIMO
         Book newBook = new Book(title, author, Integer.parseInt(yearOfPubb), Integer.parseInt(edition), bookTypeDesc, ISBN);
         newBook.setBCID("");
         return p.generateRequestForDataBookRegistrationAuto(newBook);
@@ -120,19 +94,35 @@ public class DataDispatcherSingleton implements ReceiveData, DelegateSendData {
     }
 
     @Override
-    public boolean sendDataProfileInformations(String username, String password) {
-        //TODO CONTROLLO MINIMO
-        return p.generateRequestForDataProfileInformations(username, password);
-    }
-
-    @Override
     public boolean sendDataBookSearch(String title, String author) {
-         return p.generateRequestForDataBookSearch(title, author);
+        return p.generateRequestForDataBookSearch(title, author);
     }
 
     @Override
     public boolean sendDataBookReservation(Book bookForReservation) {
         return p.generateRequestForDataBookReservation(bookForReservation);
+    }
+
+
+
+    @Override
+    public boolean sendDataSignIn(String name, String lastName, String username, Date DOB, String[] contacts, String password, int actionArea) {
+        return p.generateRequestForDataSignIn(name, lastName, username, DOB, contacts, password, actionArea);
+    }
+
+    @Override
+    public boolean sendDataPickUp(String BCID) {
+        return p.generateRequestForDataPickUp(BCID);
+    }
+
+    @Override
+    public boolean sendDataTakenBooks() {
+        return p.generateRequestForDataTakenBooks();
+    }
+
+    @Override
+    public boolean sendDataProfileInformations(String username, String password) {
+        return p.generateRequestForDataProfileInformations(username, password);
     }
     //endregion
 
@@ -196,6 +186,21 @@ public class DataDispatcherSingleton implements ReceiveData, DelegateSendData {
 
     //endregion
 
+    //Function related to SHA-256 encoding: encode password
+    private static String bytesToHex(byte[] hash) {
+        StringBuffer hexString = new StringBuffer();
+        for (int i = 0; i < hash.length; i++) {
+            String hex = Integer.toHexString(0xff & hash[i]);
+            if(hex.length() == 1) hexString.append('0');
+            hexString.append(hex);
+        }
+        return hexString.toString();
+    }
+
+    /**
+     * Register observer for receiving back data
+     * @param observerForUiInformation
+     */
     @Override
     public void register(ObserverForUiInformation observerForUiInformation) {
         if ((observerForUiInformation instanceof ObserverDataBookRegistration) && (!observersDataBookRegistration.contains(observerForUiInformation))) {
@@ -217,6 +222,11 @@ public class DataDispatcherSingleton implements ReceiveData, DelegateSendData {
         }
     }
 
+    /**
+     * deRegister observer from receiving data
+     * @param observerForUiInformation
+     * @return
+     */
     @Override
     public boolean unRegister(ObserverForUiInformation observerForUiInformation) {
         if (observerForUiInformation instanceof ObserverDataBookRegistration) {

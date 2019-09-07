@@ -33,7 +33,7 @@ import android.widget.Toast;
 
 import com.bc.bookcrossing.src.View.Delegate.DataDispatcherSingleton;
 import com.bc.bookcrossing.src.View.Observer.ObserverDataLogin;
-import com.bc.bookcrossing.src.UnitTest.Enums.LoginStatus;
+import com.bc.bookcrossing.src.ClientModels.Enums.LoginStatus;
 
 import java.util.ArrayList;
 import java.util.List;

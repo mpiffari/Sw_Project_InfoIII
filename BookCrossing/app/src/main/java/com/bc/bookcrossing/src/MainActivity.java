@@ -2,6 +2,7 @@ package com.bc.bookcrossing.src;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
@@ -9,12 +10,12 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.bc.bookcrossing.src.View.Fragment.BookRegistrationFragment;
-import com.bc.bookcrossing.src.View.Fragment.ISBNScanFragment;
-import com.bc.bookcrossing.src.View.Fragment.LoginFragment;
-import com.bc.bookcrossing.src.UnitTest.NoScanResultException;
-import com.bc.bookcrossing.src.View.Fragment.ScanResultReceiver;
-import com.bc.bookcrossing.src.View.Fragment.SearchFragment;
+import com.bc.bookcrossing.src.View.Fragment.Iteration_1.BookRegistrationFragment;
+import com.bc.bookcrossing.src.View.Fragment.Iteration_1.ISBNScanFragment;
+import com.bc.bookcrossing.src.View.Fragment.Iteration_1.LoginFragment;
+import com.bc.bookcrossing.src.ClientModels.NoScanResultException;
+import com.bc.bookcrossing.src.View.Fragment.Iteration_1.ScanResultReceiver;
+import com.bc.bookcrossing.src.View.Fragment.Iteration_1.SearchFragment;
 
 /**
  * <h1>The walking books</h1>
@@ -28,6 +29,10 @@ import com.bc.bookcrossing.src.View.Fragment.SearchFragment;
  *     al lato client di un sistema di condivisione di libri.
  *     App delegate, il quale riceve gli eventi di interazione principali dell'utente con l'applicazione,
  *     andando poi a spostare il content dell'app stessa da un tab all'altra.
+ * </p>
+ * <p>
+ *     javadoc --> ita
+ *     code comments --> eng
  * </p>
  *
  * @author Paganessi Andrea - Piffari Michele - Villa Stefano
@@ -78,9 +83,6 @@ public class MainActivity extends AppCompatActivity implements ScanResultReceive
                         case R.id.book_search:
                             selectedFragment = new SearchFragment();
                             break;
-                        case R.id.navigation_notifications:
-                            //selectedFragment = new SearchFragment();
-                            break;
                     }
 
                     if(Globals.isLoggedIn == true) {
@@ -94,7 +96,7 @@ public class MainActivity extends AppCompatActivity implements ScanResultReceive
             };
 
     @Override
-    public void scanResultData(String codeFormat, String codeContent){
+    public void scanResultData(@Nullable String codeFormat,@Nullable String codeContent){
         // display it on screen
         if(codeContent != null && codeFormat != null) {
             Log.d("FORMAT: ", codeFormat);

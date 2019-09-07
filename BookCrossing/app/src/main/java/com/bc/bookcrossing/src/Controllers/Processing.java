@@ -4,9 +4,9 @@ import android.util.Log;
 
 import com.bc.bookcrossing.src.View.Delegate.DataDispatcherSingleton;
 import com.bc.bookcrossing.src.Globals;
-import com.bc.bookcrossing.src.UnitTest.Book;
-import com.bc.bookcrossing.src.UnitTest.Enums.LoginStatus;
-import com.bc.bookcrossing.src.UnitTest.User;
+import com.bc.bookcrossing.src.ClientModels.Book;
+import com.bc.bookcrossing.src.ClientModels.Enums.LoginStatus;
+import com.bc.bookcrossing.src.ClientModels.User;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -22,6 +22,8 @@ import java.util.List;
 import static com.bc.bookcrossing.src.Controllers.Communication.singletonCommunication;
 
 /**
+ *
+ *
  * @author Paganessi Andrea - Piffari Michele - Villa Stefano
  * @version 1.0
  * @since 2018/2019
@@ -31,8 +33,7 @@ public class Processing implements GenerateRequests, ReceiveAnswer {
     private static final Processing singletonProcessing = new Processing();
     private static final String separator = ";";
 
-    private Processing() {
-    }
+    private Processing() {}
 
     public static Processing getInstance(){
         return singletonProcessing;

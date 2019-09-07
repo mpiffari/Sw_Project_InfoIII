@@ -1,6 +1,6 @@
 package com.bc.bookcrossing.src.View.Observer;
 
-import com.bc.bookcrossing.src.UnitTest.Book;
+import com.bc.bookcrossing.src.ClientModels.Book;
 import java.util.List;
 
 /**

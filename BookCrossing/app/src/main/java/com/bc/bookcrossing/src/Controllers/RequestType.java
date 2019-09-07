@@ -1,6 +1,9 @@
 package com.bc.bookcrossing.src.Controllers;
 
 /**
+ *
+ * Enum utilizzato per caratterizzare la tipologia della richiesta che si sta eseguendo verso il server.
+ *
  * @author Paganessi Andrea - Piffari Michele - Villa Stefano
  * @version 1.0
  * @since 2018/2019

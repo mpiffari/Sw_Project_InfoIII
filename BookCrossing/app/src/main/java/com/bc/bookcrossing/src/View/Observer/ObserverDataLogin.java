@@ -1,7 +1,7 @@
 package com.bc.bookcrossing.src.View.Observer;
 
 import android.support.annotation.Nullable;
-import com.bc.bookcrossing.src.UnitTest.Enums.LoginStatus;
+import com.bc.bookcrossing.src.ClientModels.Enums.LoginStatus;
 
 /**
  * @author Paganessi Andrea - Piffari Michele - Villa Stefano

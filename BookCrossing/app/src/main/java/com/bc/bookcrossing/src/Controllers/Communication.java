@@ -24,6 +24,10 @@ import io.netty.handler.ssl.SslContextBuilder;
 import io.netty.handler.ssl.util.InsecureTrustManagerFactory;
 
 /**
+ *
+ * Classe che si occupa di andare a gestire la connessione e la comunicazione verso il server
+ * a basso livello.
+ *
  * @author Paganessi Andrea - Piffari Michele - Villa Stefano
  * @version 1.0
  * @since 2018/2019
@@ -163,7 +167,6 @@ public class Communication implements SendRequests  {
                 }
             }
         } finally {
-            //group.shutdownGracefully();
             return sendResult;
         }
     }

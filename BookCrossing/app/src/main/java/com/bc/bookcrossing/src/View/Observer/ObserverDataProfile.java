@@ -1,6 +1,6 @@
 package com.bc.bookcrossing.src.View.Observer;
 
-import com.bc.bookcrossing.src.UnitTest.UserInformations;
+import com.bc.bookcrossing.src.ClientModels.UserInformations;
 
 /**
  * @author Paganessi Andrea - Piffari Michele - Villa Stefano

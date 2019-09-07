@@ -23,8 +23,9 @@
     <string name="login">LOGIN</string>
 
     //Scan ISBN
+    <string name="noScanResult">No scan data received!</string>
     <string name="isbn">SCAN ISBN</string>
-    <string name="scan_bar_code">Scan ISBN Code</string>
+    <string name="scan_bar_code">Scan ISBN code with your camera</string>
     <string name="leave">Leave</string>
     <string name="sign_in">Sign In</string>
     <string name="title_activity_login">Sign in</string>
@@ -56,5 +57,4 @@
     <string name="reserve_book">Reserve Book</string>
     <string name="search">Search</string>
     <string name="profile_informations">PROFILE INFORMATIONS</string>
-
 </resources>

@@ -1,11 +1,15 @@
 package com.bc.bookcrossing.src.View.Delegate;
 
 import com.bc.bookcrossing.src.View.Observer.ObserverForUiInformation;
-import com.bc.bookcrossing.src.UnitTest.Book;
+import com.bc.bookcrossing.src.ClientModels.Book;
 
 import java.util.Date;
 
 /**
+ *
+ * Classe che offre interfaccie in ingresso e in uscita per gestire la comunicazione
+ * da/verso i fragment/server.
+ *
  * @author Paganessi Andrea - Piffari Michele - Villa Stefano
  * @version 1.0
  * @since 2018/2019

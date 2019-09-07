@@ -1,6 +1,6 @@
 package com.bc.bookcrossing.src.View.Observer;
 
-import com.bc.bookcrossing.src.UnitTest.Enums.SignInStatus;
+import com.bc.bookcrossing.src.ClientModels.Enums.SignInStatus;
 
 import java.util.List;
 

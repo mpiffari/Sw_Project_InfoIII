@@ -1,7 +1,8 @@
 com.bc.bookcrossing.src
+com.bc.bookcrossing.src.ClientModels
+com.bc.bookcrossing.src.ClientModels.Enums
 com.bc.bookcrossing.src.Controllers
-com.bc.bookcrossing.src.UnitTest
-com.bc.bookcrossing.src.UnitTest.Enums
 com.bc.bookcrossing.src.View.Delegate
-com.bc.bookcrossing.src.View.Fragment
+com.bc.bookcrossing.src.View.Fragment.Iteration_1
+com.bc.bookcrossing.src.View.Fragment.Next_iteration
 com.bc.bookcrossing.src.View.Observer

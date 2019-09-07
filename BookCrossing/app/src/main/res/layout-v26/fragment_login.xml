@@ -5,7 +5,7 @@
     android:id="@+id/BookRegistrationLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".View.Fragment.BookRegistrationFragment">
+    tools:context=".View.Fragment.Iteration_1.BookRegistrationFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
