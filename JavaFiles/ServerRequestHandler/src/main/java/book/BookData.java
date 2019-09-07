@@ -16,8 +16,11 @@ import user.UserLocalizationInfo;
 
 /**
  * 
- * @author Gruppo Paganessi - Piffari - Villa
  * BookData class. Implementing as singleton object and implies method of BookQuery interface
+ *
+ * @author Paganessi Andrea - Piffari Michele - Villa Stefano
+ * @version 1.0
+ * @since 2018/2019
  */
 
 public final class BookData implements BookQuery {
@@ -36,7 +39,7 @@ public final class BookData implements BookQuery {
 			instance = new BookData();
 		return instance;
 	}
-	
+
 	/**
 	 * @param book book that has to insert in book crossing
 	 * @return true if insert is done
@@ -95,38 +98,38 @@ public final class BookData implements BookQuery {
 				return result;
 			}
 		}
-		
-		
+
+
 		if(readerUsername == null) {
 			System.out.println("Error on retrieving reader L from POSSESSO table");
 			result.resultFlag = false;
 			return result;
 		}
 		System.out.println("User that own the book request is " + readerUsername);
-		
+
 		User l = Algorithm.getUserFromUsername(readerUsername);
 		User me = Algorithm.getUserFromUsername(userThatMadeReservation);
-		
+
 		if(booker.contains(me)) {
 			System.out.println("You've already done the reservation!!!");
 			result.resultFlag = true;
 			return result;
 		}
-		
+
 		UserLocalizationInfo readerPos = new UserLocalizationInfo(l.getLatitude(), l.getLongitude());
 		UserLocalizationInfo userPos = new UserLocalizationInfo(me.getLatitude(), me.getLongitude());
 
 		System.out.println("Position of reader (L): " + readerPos.toString());
 		System.out.println("Position of me: " + userPos.toString());
 		System.out.println("Distance of mine from " + l.getUsername() +" = " + me.computeDistance(l));
-		
+
 		result = Algorithm.step_1(l, me);
 
 		for(User u: result.userPath) {
 			System.out.println("Name: " + u.getFirstName() + " Surname: " 
-		+ u.getLastName() + " Latitudine: " + u.getLatitude() + " Longit: " + u.getLongitude());
+					+ u.getLastName() + " Latitudine: " + u.getLatitude() + " Longit: " + u.getLongitude());
 		}
-		
+
 		return result;
 	}
 
@@ -176,7 +179,7 @@ public final class BookData implements BookQuery {
 				String isbn = rs.getString(5);
 				String bookType = rs.getString(6);
 				String actualOwner = rs.getString(7);
-				
+
 				//TODO: gestire Type e Edition number
 				Book b = new Book(t,a, pubbDate, editionNumber, bookType);
 				b.setActualOwnerUsername(actualOwner);
@@ -217,7 +220,7 @@ public final class BookData implements BookQuery {
 				String isbn = rs.getString(5);
 				String bookType = rs.getString(6);
 				String actualOwner = rs.getString(7);
-				
+
 				//TODO: gestire Type e Edition number
 				Book b = new Book(t,a, pubbDate, editionNumber, bookType);
 				b.setActualOwnerUsername(actualOwner);
@@ -248,7 +251,7 @@ public final class BookData implements BookQuery {
 			stmt.setString(1, title.toLowerCase());
 			stmt.setString(2, author.toLowerCase());
 			ResultSet rs = stmt.executeQuery();
-			
+
 			while(rs.next()) {
 				//System.out.println("#_ " + rs.getString(1) +"  " +rs.getString(2));
 				String bcid = rs.getString(1);
@@ -259,7 +262,7 @@ public final class BookData implements BookQuery {
 				String isbn = rs.getString(5);
 				String bookType = rs.getString(6);
 				String actualOwner = rs.getString(7);
-				
+
 				//TODO: gestire Type e Edition number
 				Book b = new Book(t,a, pubbDate, editionNumber, bookType);
 				b.setActualOwnerUsername(actualOwner);
@@ -279,7 +282,7 @@ public final class BookData implements BookQuery {
 	 * @param user
 	 * @return list of books that user has reserved
 	 */
-	
+
 	public ArrayList<Book> onRouteBooks(String user) {
 		ArrayList<Book> booksOnRoute = new ArrayList<Book>();
 		PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(Queries.queryForUserNotifications);

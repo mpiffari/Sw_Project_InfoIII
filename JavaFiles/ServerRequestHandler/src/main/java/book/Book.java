@@ -26,10 +26,15 @@ import user.User;
  */
 /**
  * 
- * @author  Gruppo Paganessi - Piffari - Villa
+ * @author Paganessi Andrea - Piffari Michele - Villa Stefano
+ * @version 1.0
+ * @since 2018/2019
+ *
  * Book class: an instance of this class describes a book that is inserted in book crossing program
  *
  */
+
+
 public class Book {
 
 	private String title;
@@ -43,13 +48,13 @@ public class Book {
 	private boolean underReading;
 	private ArrayList<User> prenotanti = new ArrayList<User>();
 	private int idPrenotazione; 
-	
+
 	/**
 	 * 
 	 * @param msg - string with a specific format permits to construct a book
 	 */
 	public Book(String msg) {	
-		
+
 		final String lines[] = msg.split(";");
 		this.title = getTitleFromString(lines[0]);
 		this.author = getAuthorFromString(lines[1]);
@@ -68,7 +73,7 @@ public class Book {
 		else {
 			this.bcid = temp;
 		}      
-		
+
 	}
 
 	/**
@@ -79,7 +84,7 @@ public class Book {
 	 * @param editionNumber
 	 * @param type
 	 */
-	
+
 	public Book(String title, String author, int yearOfPubblication, int editionNumber, String type) {
 		this();
 		this.title = title;
@@ -99,7 +104,7 @@ public class Book {
 		this.bcid = bcid;
 		this.actualOwnerUsername = owner;
 	}
-	
+
 	public Book() {
 		do {
 			bcid = generateBCID();
@@ -166,12 +171,12 @@ public class Book {
 		return this.prenotanti;
 	}
 
-	
-	
+
+
 	public boolean setPrenotante(User user) {
 
 		PreparedStatement statement = DBConnector.getDBConnector().prepareStatement(Queries.insertNewReservationQuery);
-		        
+
 		int result = 0;
 		try {			
 			statement.setString(1, user.getUsername());
@@ -183,7 +188,7 @@ public class Book {
 			e.printStackTrace();
 		}
 		return result == 1 ? true : false;
-		
+
 	}
 
 	public String getActualOwnerUsername() {

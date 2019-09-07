@@ -12,8 +12,11 @@ import dataManager.Queries;
 
 /**
  * 
- * @author Gruppo Paganessi - Piffari - Villa
  * User class - an instance of this class describes an user of BookCrossing service
+ *
+ * @author Paganessi Andrea - Piffari Michele - Villa Stefano
+ * @version 1.0
+ * @since 2018/2019
  */
 
 public class User implements Comparable<User> {
@@ -24,10 +27,10 @@ public class User implements Comparable<User> {
 	private Date dateOfBirth;
 	private String password;
 	private UserLocalizationInfo localization = new UserLocalizationInfo();
-	
+
 	private ArrayList<Book> booksOwned = new ArrayList<Book>();
 
-	
+
 	/**
 	 * 
 	 * @param username
@@ -41,7 +44,7 @@ public class User implements Comparable<User> {
 	 */
 	public User(String username, String firstName, String lastName, Date dateOfBirth, String password, double latitude,
 			double longitude, double action) {
-		
+
 		this.username = username;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -51,39 +54,39 @@ public class User implements Comparable<User> {
 		this.localization.longit = longitude;
 		this.localization.radius = action;
 	}
-	
+
 	/**
 	 * 
 	 * @param username
 	 * @param password
 	 */
 	public User(String username, String password){
-        this.username = username;
-        this.password = password;
-    }
-	
+		this.username = username;
+		this.password = password;
+	}
+
 	/**
 	 * 
 	 * @param msg
 	 */
 	public User(String msg) {	
-    	String lines[] = msg.split(";");
-        this.username = getUserFromString(lines[0]);
-        this.password = getPasswordFromString(lines[1]);   
-    }
-	
+		String lines[] = msg.split(";");
+		this.username = getUserFromString(lines[0]);
+		this.password = getPasswordFromString(lines[1]);   
+	}
+
 	public User() {}
 
 	private String getUserFromString(String msg) {
 		String words[] = msg.split(":");
 		return words[1];
 	}
-	
+
 	private String getPasswordFromString(String msg) {
 		String words[] = msg.split(":");
 		return words[1];
 	}
-	
+
 	public String getUsername() {
 		return username.trim();
 	}
@@ -151,11 +154,11 @@ public class User implements Comparable<User> {
 	public void setActionArea(double action) {
 		this.localization.radius = action;
 	}
-	
+
 	public LoginStatus login() {
 		return UserData.getInstance().login(this);
 	}
-	
+
 	public void setChasingBook(Book book) {
 		this.booksOwned.add(book);
 	}
@@ -179,7 +182,7 @@ public class User implements Comparable<User> {
 		}
 		return this.booksOwned;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "USER: " + username + ";"
@@ -196,28 +199,28 @@ public class User implements Comparable<User> {
 		double long_this = this.localization.longit;
 		double lat_o = o.localization.lat;
 		double long_o = o.localization.longit;
-		
+
 		double distance = Math.sqrt(Math.pow((lat_this - lat_o), 2) + Math.pow((long_this - long_o),2));
 		return distance;
 	}
-	
+
 	/**
 	 * 
 	 * @param o other user
 	 * @return distance between users
 	 */
-	
+
 	public double computeDistance(UserLocalizationInfo o) {
 		double lat_this = this.localization.lat;
 		double long_this = this.localization.longit;
 		double lat_o = o.lat;
 		double long_o = o.longit;
-		
+
 		double distance = Math.sqrt(Math.pow((lat_this - lat_o), 2) + Math.pow((long_this - long_o),2));
 		return distance;
 	}
 
-	
+
 	public int compareTo(User o) {
 		if(this.username.compareTo(o.getUsername()) > 0) {
 			return 1;
