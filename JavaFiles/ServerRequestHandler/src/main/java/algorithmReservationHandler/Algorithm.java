@@ -99,6 +99,8 @@ public class Algorithm {
 				userPath.add(previousUser);
 				ArrayList<User> handToHandUsersCopy =(ArrayList<User>) handToHandUsers.clone();
 				ArrayList<User> overlappingUsers = new ArrayList<User>();
+				double max_radius = 0.0;
+				double min_distance = Double.POSITIVE_INFINITY;
 				
 				//= new ArrayList<User>(handToHandUsers.size());
 				//Collections.copy(handToHandUsersCopy, handToHandUsers);
@@ -120,12 +122,7 @@ public class Algorithm {
 						result.resultFlag = false;
 						break;
 					} else {
-						
-						nextUser = Algorithm.greedyParadigm(overlappingUsers);
-						
-						
-						
-						
+						nextUser = Algorithm.greedyParadigm(previousUser, overlappingUsers);
 						userPath.add(nextUser);
 						previousUser = nextUser;
 						handToHandUsersCopy.remove(nextUser);
