@@ -4,7 +4,7 @@ apply plugin: 'com.amazonaws.appsync'
 android {
     compileSdkVersion 29
     defaultConfig {
-        applicationId "com.bc.bookcrossing.src"
+        applicationId "com.bc.bookcrossing.bookcrossing"
         minSdkVersion 15
         targetSdkVersion 28
         multiDexEnabled true
@@ -67,4 +67,11 @@ dependencies {
     // This mostly affects encoding, but you should test if you plan to support these versions.
     // Older versions e.g. 2.2 may also work if you need support for older Android versions.
     implementation 'com.google.zxing:core:3.0.1'
+    androidTestImplementation 'com.android.support.test:rules:1.0.2'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:2.2.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-intents:2.2.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-intents:3.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-contrib:3.0.2'
 }

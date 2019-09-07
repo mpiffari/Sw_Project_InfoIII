@@ -202,7 +202,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 if(result){
                     Globals.isLoggedIn = true;
                     Globals.usernameLoggedIn = mUsernameView.getText().toString();
-                    Toast.makeText(LoginActivity.this,"Login completed successfully.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(LoginActivity.this, R.string.login_ok, Toast.LENGTH_LONG).show();
                     Intent MainIntent = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(MainIntent);
                 } else {

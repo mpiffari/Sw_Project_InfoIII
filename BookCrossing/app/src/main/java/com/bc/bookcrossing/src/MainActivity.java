@@ -78,9 +78,6 @@ public class MainActivity extends AppCompatActivity implements ScanResultReceive
                         case R.id.book_search:
                             selectedFragment = new SearchFragment();
                             break;
-                        case R.id.navigation_notifications:
-                            //selectedFragment = new SearchFragment();
-                            break;
                     }
 
                     if(Globals.isLoggedIn == true) {
