@@ -145,9 +145,32 @@ public class MainActivityTest {
         checkYear.check(matches(withText("")));
         checkEdition.check(matches(withText("")));
         checkType.check(matches(withSpinnerText("")));
-
     }
 
+    @Test
+    public void searchBookTest(){
+        Globals.isLoggedIn = true;
+        Globals.usernameLoggedIn = "A";
+        onView(withId(R.id.navigation)).check(matches(isDisplayed()));
+        onView(withId(R.id.book_search)).perform(click());
+        onView(withId(R.id.book_search)).check(matches(isDisplayed()));
+
+        ViewInteraction checkTitle = onView(withId(R.id.title_search));
+        ViewInteraction checkAuthor = onView(withId(R.id.author_search));
+        ViewInteraction checkBtnSearch = onView(withId(R.id.search_button));
+
+        checkTitle.check(matches(isDisplayed()));
+        checkAuthor.check(matches(isDisplayed()));
+        checkAuthor.check(matches(isDisplayed()));
+
+        checkTitle.perform(setTextInTextView(""));
+        checkAuthor.perform(setTextInTextView(""));
+
+        checkTitle.perform(setTextInTextView("questa storia"));
+        checkBtnSearch.perform(click());
+
+        onView(withId(R.id.books_found)).check(matches(isDisplayed()));
+    }
 
 
 }
