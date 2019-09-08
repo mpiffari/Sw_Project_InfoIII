@@ -31,6 +31,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.Matchers.anything;
 import static org.hamcrest.Matchers.not;
 import static org.hamcrest.core.AllOf.allOf;
 
@@ -148,7 +149,7 @@ public class MainActivityTest {
     }
 
     @Test
-    public void searchBookTest(){
+    public void searchBookTestOK(){
         Globals.isLoggedIn = true;
         Globals.usernameLoggedIn = "A";
         onView(withId(R.id.navigation)).check(matches(isDisplayed()));
@@ -170,6 +171,35 @@ public class MainActivityTest {
         checkBtnSearch.perform(click());
 
         onView(withId(R.id.books_found)).check(matches(isDisplayed()));
+        onData(anything()).inAdapterView(withId(R.id.books_found)).atPosition(0).perform(click());
+        onView(withText(containsString("BOOKABLE"))).inRoot(withDecorView(not(mainActivityActivityTestRule.getActivity().getWindow().getDecorView()))).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void searchBookTestNotPossible(){
+        Globals.isLoggedIn = true;
+        Globals.usernameLoggedIn = "A";
+        onView(withId(R.id.navigation)).check(matches(isDisplayed()));
+        onView(withId(R.id.book_search)).perform(click());
+        onView(withId(R.id.book_search)).check(matches(isDisplayed()));
+
+        ViewInteraction checkTitle = onView(withId(R.id.title_search));
+        ViewInteraction checkAuthor = onView(withId(R.id.author_search));
+        ViewInteraction checkBtnSearch = onView(withId(R.id.search_button));
+
+        checkTitle.check(matches(isDisplayed()));
+        checkAuthor.check(matches(isDisplayed()));
+        checkAuthor.check(matches(isDisplayed()));
+
+        checkTitle.perform(setTextInTextView(""));
+        checkAuthor.perform(setTextInTextView(""));
+
+        checkAuthor.perform(setTextInTextView("Test"));
+        checkBtnSearch.perform(click());
+
+        onView(withId(R.id.books_found)).check(matches(isDisplayed()));
+        onData(anything()).inAdapterView(withId(R.id.books_found)).atPosition(0).perform(click());
+        onView(withText(containsString("BOOKING NOT POSSIBLE!"))).inRoot(withDecorView(not(mainActivityActivityTestRule.getActivity().getWindow().getDecorView()))).check(matches(isDisplayed()));
     }
 
 
