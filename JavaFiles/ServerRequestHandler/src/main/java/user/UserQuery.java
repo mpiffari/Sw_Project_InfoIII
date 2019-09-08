@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 /**
  * 
- * @author Gruppo Paganessi - Piffari - Villa
  * this interface contains methods about queries on database for user informations
  *
  * @author Paganessi Andrea - Piffari Michele - Villa Stefano

@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 import algorithmReservationHandler.AlgorithmResult;
 /**
+ * Interfaccia che contiene i metodi per gestire lo scambio di libri
+ * nel sistema di book crossing.
  * 
- * inteface that contains methods for managing book in book crossing program
- *
- *@author Paganessi Andrea - Piffari Michele - Villa Stefano
+ * @author Paganessi Andrea - Piffari Michele - Villa Stefano
  * @version 1.0
  * @since 2018/2019
  */

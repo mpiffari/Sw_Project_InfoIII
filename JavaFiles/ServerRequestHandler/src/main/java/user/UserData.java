@@ -14,9 +14,9 @@ import dataManager.Queries;
  * 
  * 
  * @author Paganessi Andrea - Piffari Michele - Villa Stefano
-* @version 1.0
-* @since 2018/2019
-*/
+ * @version 1.0
+ * @since 2018/2019
+ */
 public final class UserData implements UserQuery {
 
 	

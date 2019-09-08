@@ -1,6 +1,5 @@
 package algorithmReservationHandler;
 
-import java.awt.List;
 import java.math.BigDecimal;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,19 +8,37 @@ import dataManager.DBConnector;
 import dataManager.Queries;
 import user.User;
 import user.UserLocalizationInfo;
-
 import java.util.*;
 import java.util.Map.Entry;
-
 import book.Book;
 
+
+/**
+ *
+ * Classe contenente metodi statici per poter andare a generare il percorso di utenti che il 
+ * libro prenotato dovrebbe seguire per poter raggiungere l'utente prenotante.
+ * 
+ * @author Paganessi Andrea - Piffari Michele - Villa Stefano
+ * @version 1.0
+ * @since 2018/2019
+ *
+ */
 public class Algorithm {
 	
-	// Unused
+	/**
+	 *  Unused method
+	 * @param L
+	 * @param book
+	 * @return
+	 */
 	public static ArrayList<User> step_0(User L, Book book) {
-		Book bookRequested = null;
+		
+		// Retrieve books owned by the user L: this query is necessary to obtain
+		// all informations of the book object of the reservation
+		// The result will store in the bookRequested object.
 		ArrayList<Book> books = L.getChasingBooks();
 		System.out.println("Books owned by " + L.toString() + " are: " + books.toString());
+		Book bookRequested = null;
 		for (Book b : books) {
 			if(b.getBCID().equals(book.getBCID())) {
 				bookRequested = b;
@@ -29,14 +46,19 @@ public class Algorithm {
 			}
 		}
 		
-		TreeMap<User, Double> distancePrenotantiFromReader = new TreeMap<User, Double>();
 		if(bookRequested == null) {
-			System.out.println("Book requested for reservation: NULL");
+			System.out.println("Book requested for reservation: not found");
 			return null;
 		} else {
 			System.out.println("Book requested for reservation: " + bookRequested.toString());
+			
+			// This TreeMap will store the distance of each user that have booked the specific book
+			// with the relative distance from the reader the is the actual owner of the book object of the reservation
+			TreeMap<User, Double> distancePrenotantiFromReader = new TreeMap<User, Double>();
 			ArrayList<User> prenotantiForSpecificBook = bookRequested.getPrenotanti();
 			for (User u : prenotantiForSpecificBook) {
+				// Compute the distance from each user that made a reservation for the book and the 
+				// reader the actually own the book
 				distancePrenotantiFromReader.put(u, u.computeDistance(L));
 			}
 			ArrayList<User> temp = new ArrayList<User>((distancePrenotantiFromReader).keySet());
@@ -44,85 +66,101 @@ public class Algorithm {
 		}
 	}
 	
-	public static AlgorithmResult step_1(User L, User me) {
-		// Raggi si sovrappongono --> scambio direttamente
+	/**
+	 *  This method, as specified in the documentation, returns the list of users
+	 *  involved in the reservation
+	 * @param actualBookOwner
+	 * @param me
+	 * @return List of users
+	 */
+	public static AlgorithmResult step_1(User actualBookOwner, User me) {
 		AlgorithmResult result = new AlgorithmResult();
-		boolean isOverlapping = VerificaPuntoIncontro(L, me);
+		
+		// Check if is possible for the users to meeting themself directly
+		boolean isOverlapping = checkOverlap(actualBookOwner, me);
 		ArrayList<User> userPath = new ArrayList<User>();
 		
 		if(isOverlapping) {
 			result.directMeetingIsPossible = true;
 			result.resultFlag = true;
 		} else {
-			// Cerco tutti gli utenti che si trovano tra lettore e prenotante
-			double radiusUserSearchArea = 0.5 * me.computeDistance(L);
-			
-			//Creo utente fittizio che rappresenta il punto medio tra utente L e utente "me"
-
-			UserLocalizationInfo center = centerOfInterestArea(L, me);
-			
-			System.out.println("User fittizio position --> lat: " + center.lat + " long: " + center.longit);
+			// Try to create a radius area in which choose the possible users that could be active in the reservation.
+			// This area is centered around this dummy user: we'll use it for a easier calculation of the user
+			// that live in the area around.
+			double radiusUserSearchArea = 0.5 * me.computeDistance(actualBookOwner);
 			System.out.println("radius search area: " + radiusUserSearchArea);
+			UserLocalizationInfo dummyUser = centerOfInterestArea(actualBookOwner, me);
+			System.out.println("User fittizio position --> lat: " + dummyUser.lat + " long: " + dummyUser.longit);
+			
+			// Search the possible users from all the users signed in to the community
 			ArrayList<User> allUsers = getAllUsers();
+			// ArrayList of the user that will be part of the reservation
 			ArrayList<User> handToHandUsers = new ArrayList<User>();
 			for (User u : allUsers) {
 				System.out.println("User u: " + u.getUsername() + " distance from center "
-				+ " " + u.computeDistance(center) + " and distance from me " + u.computeDistance(me));
-				if((u.computeDistance(center) <= radiusUserSearchArea)
-						&& !(u.getUsername().equals(L.getUsername()))) {
+				+ " " + u.computeDistance(dummyUser) + " and distance from me " + u.computeDistance(me));
+				// If the user is near the center, and is not the user that actually own the book, add it to the possible
+				// user chain.
+				if((u.computeDistance(dummyUser) <= radiusUserSearchArea)
+						&& !(u.getUsername().equals(actualBookOwner.getUsername()))) {
 					handToHandUsers.add(u);
 				}
 			}
 			
-			// Ordino hand to hand user per distanza dal reader (ovvero il Lettore L)
+			// Sort the users selected by the distance from the actual owner of the book (L).
 			TreeMap<User, Double> distanceUsersFromReader = new TreeMap<User, Double>();
 			for (User u : handToHandUsers) {
-				distanceUsersFromReader.put(u, u.computeDistance(L));
+				distanceUsersFromReader.put(u, u.computeDistance(actualBookOwner));
 			}			
 			SortedSet<Map.Entry<User,Double>> res = entriesSortedByValues(distanceUsersFromReader);
-			System.out.println("Res:  " + res.toString());	
+			System.out.println("User ordered by distance:  " + res.toString());	
+			
+			// Get only the User information, deleting the distance from actual owner,
+			// but keeping the order.
 			ArrayList<User> temp = new ArrayList<User>();
-		
 			Iterator<Entry<User,Double>> it = res.iterator();
 			while(it.hasNext()) {
 				 temp.add(it.next().getKey());
 			}
 			handToHandUsers.clear();
 			handToHandUsers = new ArrayList<User>(temp);
-			System.out.println("User between me and reader " + L.getUsername() + " ordered by distance: " + handToHandUsers.toString());
+			System.out.println("User between me and reader " + actualBookOwner.getUsername() + " ordered by distance: " + handToHandUsers.toString());
 			
-			// Creo il link tra gli utenti che hanno l'area di azione in comune
-			User previousUser = L;
+			// Create the user chain that could be part of the hand by hand book passage
+			User previousUser = actualBookOwner;
 			User nextUser = new User();
 			
-			if(VerificaPuntoIncontro(L, previousUser)) {
+			if(checkOverlap(actualBookOwner, previousUser)) {
 				userPath.add(previousUser);
 				ArrayList<User> handToHandUsersCopy =(ArrayList<User>) handToHandUsers.clone();
 				ArrayList<User> overlappingUsers = new ArrayList<User>();
 				double max_radius = 0.0;
 				double min_distance = Double.POSITIVE_INFINITY;
 				
-				//= new ArrayList<User>(handToHandUsers.size());
-				//Collections.copy(handToHandUsersCopy, handToHandUsers);
+				// Until the algorithm hasn't found out a solution
 				while(true) {
 					max_radius = 0.0;
 					min_distance = Double.POSITIVE_INFINITY;
 					overlappingUsers.clear();
 					
 					for(User uu: handToHandUsersCopy) {
-						if(VerificaPuntoIncontro(previousUser, uu)) {
+						if(checkOverlap(previousUser, uu)) {
 							overlappingUsers.add(uu);
 						}
 					}
 					System.out.println("Users that overlap for user " + previousUser.getUsername() + " : " + overlappingUsers.toString());
 					
 					if(overlappingUsers.isEmpty()) {
+						// The chain is interrupted
 						System.out.println("Not exists complete path from user " + previousUser.getUsername() + " to me");
 						result.directMeetingIsPossible = false;
 						result.resultFlag = false;
 						break;
 					} else {
+						
+						// Between all the nearest users, that overlap the actual one, choose the best one in an epsilon greedy way
 						nextUser = Algorithm.greedyParadigm(previousUser, overlappingUsers);
+						
 						userPath.add(nextUser);
 						previousUser = nextUser;
 						handToHandUsersCopy.remove(nextUser);
@@ -135,16 +173,28 @@ public class Algorithm {
 					}
 				}
 			} else {
-				System.out.println("Book request cannot automatically move away from user " + L.getUsername());
+				System.out.println("Book request cannot automatically move away from user " + actualBookOwner.getUsername());
 				userPath.clear();
 				result.directMeetingIsPossible = false;
 				result.resultFlag = false;
 			}
 		}
+		
+		// Also in case of missing complete path (for example for a missing user) update the path with 
+		// the one found.
 		result.userPath = userPath;
 		return result;
 	}
 	
+	
+	/**
+	 * Algorithm that choose the next user among all the overlapping users.
+	 * It use a randomly way to choose between the nearest one and the one that as big possibility
+	 * of moving (and so of reaching more users)
+	 * @param previousUser
+	 * @param users
+	 * @return User choosen
+	 */
 	private static User greedyParadigm(User previousUser, ArrayList<User> users) {
 		double epsilon = 0.1;
 		double max_radius = 0.0;
@@ -152,6 +202,7 @@ public class Algorithm {
 		User result = null;
 		
 		for(User overLapUser: users) {
+			// Epsilon greedy choice
 			if(Math.random() < epsilon) {
 				double dist = overLapUser.computeDistance(previousUser);
 				if(dist < min_distance) {
@@ -168,7 +219,7 @@ public class Algorithm {
 		}
 		
 		if(result == null) {
-			//Non ho trovato soluzioni --> l'utente è isolato
+			// No solutions found --> the user hasn't link with no one
 			return null; 
 		} else {
 			return result;
@@ -176,6 +227,12 @@ public class Algorithm {
 		
 	}
 	
+	/**
+	 * Funzione statica utilizzata per ordinare strutture <key,value> non in 
+	 * base alla chiave, ma bensi secondo il valore.
+	 * @param map
+	 * @return Sorted map
+	 */
 	private static <K,V extends Comparable<? super V>> SortedSet<Map.Entry<K,V>> entriesSortedByValues(Map<K,V> map) {
 	    SortedSet<Map.Entry<K,V>> sortedEntries = new TreeSet<Map.Entry<K,V>>(
 	        new Comparator<Map.Entry<K,V>>() {
@@ -189,6 +246,14 @@ public class Algorithm {
 	    return sortedEntries;
 	}
 	
+	/**
+	 * 
+	 * Calcola le coordinate del punto centrale tra i due utenti
+	 * 
+	 * @param L
+	 * @param me
+	 * @return Middle point
+	 */
 	private static UserLocalizationInfo centerOfInterestArea(User L, User me) {
 		double latCenter = (L.getLatitude() + me.getLatitude()) / 2;
 		double longitCenter = (L.getLongitude() + me.getLongitude()) / 2;
@@ -196,6 +261,72 @@ public class Algorithm {
 		return u;
 	}
 	
+	/**
+	 * 
+	 * Controlla se due generici utenti iscritti al programma hanno la possibilità di incontrarsi
+	 * direttamente, in base a quelle che sono le disponibilità a spostarsi di ognuno.
+	 * 
+	 * @param actualBookOwner
+	 * @param p
+	 * @return Boolean flag
+	 */
+	private static boolean checkOverlap(User actualBookOwner, User p) {
+		double r_L = actualBookOwner.getActionArea();
+		double r_p = p.getActionArea();
+		double distance = actualBookOwner.computeDistance(p) - r_L - r_p;
+		boolean isOverlapping = distance <= 0;
+		return isOverlapping;
+	}
+
+	/**
+	 * Salvataggio sul database del percorso calcolato per mezzo dell'algoritmo
+	 * @param users
+	 * @return Risultato della query di insert
+	 */
+	public static boolean savePath(ArrayList<User> users) {
+		PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(Queries.storePath);
+		
+		int result = 0;
+		String path = "";
+		for(User i : users) {
+			path += i.getUsername() + ";";
+		}
+		
+		try {
+			stmt.setString(1, path);
+			stmt.setBigDecimal(2, new BigDecimal(getLastId()));
+			result = stmt.executeUpdate();
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result == 1 ? true : false;
+	}
+	
+	/**
+	 * Query al database per ottenere l'id della prenotazione per mantenere consistenza nel
+	 * salvataggio dei dati all'interno della tabella "Passaggio"
+	 * @return id
+	 */
+	private static double getLastId() {
+		PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(Queries.getId);
+		double id = 0;
+		try {
+			ResultSet rs = stmt.executeQuery();
+			if(rs.next()) {
+				id = rs.getBigDecimal(1).doubleValue();
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return id;
+	}
+	
+	/**
+	 * 
+	 * Query al database per ottenere tutti gli utenti iscritti alla piattaforma.
+	 * @return
+	 */
 	private static ArrayList<User> getAllUsers() {
 		PreparedStatement stmtState = DBConnector.getDBConnector().prepareStatement(Queries.allUsersQuery);
 		try {
@@ -219,15 +350,13 @@ public class Algorithm {
 		}
 	}
 	
-	//TODO: rename this function
-	private static boolean VerificaPuntoIncontro(User L, User p) {
-		double r_L = L.getActionArea();
-		double r_p = p.getActionArea();
-		double distance = L.computeDistance(p) - r_L - r_p;
-		boolean isOverlapping = distance <= 0;
-		return isOverlapping;
-	}
-	
+	/**
+	 * 
+	 * Query al databse per ottenere le informazioni complete relativamente ad uno specifico username 
+	 * 
+	 * @param username
+	 * @return Complete user object
+	 */
 	public static User getUserFromUsername(String username) {
 		PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(Queries.getUserInformationsQuery);
 		User u = null;
@@ -248,39 +377,5 @@ public class Algorithm {
 			return null;
 		}
 		return u;
-	}
-	
-	public static boolean savePath(ArrayList<User> users) {
-		PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(Queries.storePath);
-		
-		int result = 0;
-		String path = "";
-		for(User i : users) {
-			path += i.getUsername() + ";";
-		}
-		
-		try {
-			stmt.setString(1, path);
-			stmt.setBigDecimal(2, new BigDecimal(getLastId()));
-			result = stmt.executeUpdate();
-		}catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return result == 1 ? true : false;
-	}
-	
-	private static double getLastId() {
-		PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(Queries.getId);
-		double id = 0;
-		try {
-			ResultSet rs = stmt.executeQuery();
-			if(rs.next()) {
-				id = rs.getBigDecimal(1).doubleValue();
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return id;
 	}
 }

@@ -16,13 +16,12 @@ import user.UserLocalizationInfo;
 
 /**
  * 
- * BookData class. Implementing as singleton object and implies method of BookQuery interface
- *
+ * BookData implementata come oggetto singleton, richiedendo l'interfaccia BookQuery
+ * 
  * @author Paganessi Andrea - Piffari Michele - Villa Stefano
  * @version 1.0
  * @since 2018/2019
  */
-
 public final class BookData implements BookQuery {
 
 	private static BookData instance = null;
@@ -32,7 +31,7 @@ public final class BookData implements BookQuery {
 
 	/**
 	 * 
-	 * @return BookData instance
+	 * @return BookData singleton instance
 	 */
 	public static BookData getInstance() {
 		if(instance == null)
@@ -41,8 +40,8 @@ public final class BookData implements BookQuery {
 	}
 
 	/**
-	 * @param book book that has to insert in book crossing
-	 * @return true if insert is done
+	 * @param book Libro che si desidera registrare su databse
+	 * @return true se la query di insert è andata a buon fine
 	 */
 	public boolean insertBook(Book book) {
 		PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(Queries.insertBookQuery);
@@ -65,8 +64,8 @@ public final class BookData implements BookQuery {
 
 	/**
 	 * 
-	 * @param bcid
-	 * @return true if generated bcid is available
+	 * @param bcid BookCrossing ID number
+	 * @return true se il codice BCID passato come stringa è disponibile, potendo quidni essere assegnato.
 	 */
 	public boolean isBCIDavailable(final String bcid) {
 		PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(Queries.bcidAvailableQuery);
@@ -83,6 +82,10 @@ public final class BookData implements BookQuery {
 		return false;
 	}
 
+	/**
+	 * @param book libro oggetto della prenotazione
+	 * @param userThatMadeReservation utente richiedente il libro
+	 */
 	public AlgorithmResult reserveBook(Book book, String userThatMadeReservation) {
 		AlgorithmResult result = new AlgorithmResult();
 		String readerUsername = "";
@@ -282,7 +285,6 @@ public final class BookData implements BookQuery {
 	 * @param user
 	 * @return list of books that user has reserved
 	 */
-
 	public ArrayList<Book> onRouteBooks(String user) {
 		ArrayList<Book> booksOnRoute = new ArrayList<Book>();
 		PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(Queries.queryForUserNotifications);
@@ -297,7 +299,6 @@ public final class BookData implements BookQuery {
 				}
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return booksOnRoute;

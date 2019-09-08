@@ -1,5 +1,13 @@
 package dataManager;
 
+/**
+ * 
+ * Repository statico di tutte le query utlizzate all'interno del codice.
+ * @author Paganessi Andrea - Piffari Michele - Villa Stefano
+ * @version 1.0
+ * @since 2018/2019
+ *
+ */
 public class Queries {
 	public static String readerBookQuery = "SELECT USERNAME FROM Possesso Where BCID = ?";
 	public static String readerLocationQuery = "SELECT RESIDENZALAT, RESIDENZALONG, RAGGIOAZIONE FROM Utente Where USERNAME = ?";

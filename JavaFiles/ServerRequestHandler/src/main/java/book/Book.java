@@ -13,28 +13,15 @@ import dataManager.DBConnector;
 import dataManager.Queries;
 import user.User;
 
+
 /**
  * 
- * 
- * String format received from client:
- * - TITLE:.....;
- * - AUTHOR:.....;
- * - YEAR:.....;
- * - EDITION:.....;
- * - TYPE:.....;
- *
- */
-/**
+ * Un'instanza di questa classe descrive un libro il quale è inserito all'interno del programma di book crossing
  * 
  * @author Paganessi Andrea - Piffari Michele - Villa Stefano
  * @version 1.0
  * @since 2018/2019
- *
- * Book class: an instance of this class describes a book that is inserted in book crossing program
- *
  */
-
-
 public class Book {
 
 	private String title;
@@ -51,8 +38,9 @@ public class Book {
 
 	/**
 	 * 
-	 * @param msg - string with a specific format permits to construct a book
+	 * @param msg - Stringa con una struttura ben precisa per permettere la costruzione di un libro
 	 */
+	//TODO: allineare book alla classe Book lato Android
 	public Book(String msg) {	
 
 		final String lines[] = msg.split(";");
@@ -96,6 +84,8 @@ public class Book {
 
 	/**
 	 * 
+	 * Init semplificato
+	 * 
 	 * @param bcid
 	 * @param owner
 	 */
@@ -105,6 +95,12 @@ public class Book {
 		this.actualOwnerUsername = owner;
 	}
 
+	
+	/**
+	 * Sorta di super init, il quale va a generare un BCID casualmente, 
+	 * controllando poi che questo BCID appena creato non esista già nel database: in questo
+	 * caso quindi, un altro BCID verrebbe ricreato immediatamente.
+	 */
 	public Book() {
 		do {
 			bcid = generateBCID();
@@ -114,7 +110,7 @@ public class Book {
 
 	/**
 	 * 
-	 * @return true if book is insert in db else false
+	 * @return true se il libro è stato inserito nel db, altrimenti false
 	 */
 	public boolean insert() {
 		return BookData.getInstance().insertBook(this);
@@ -123,7 +119,7 @@ public class Book {
 	/**
 	 * 
 	 * @param username
-	 * @return true if reservetion is done
+	 * @return true se la prenotazione è stata completata
 	 */
 	public boolean reserve(String username) {
 		User u = new User();
@@ -144,7 +140,7 @@ public class Book {
 
 	/**
 	 * 
-	 * @return list of bookers of book
+	 * @return ArrayList di user che hanno prenotato questo specifico libro
 	 */
 	public ArrayList<User> getPrenotanti() {
 		PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(Queries.getUserInfoByJoin);
@@ -172,7 +168,11 @@ public class Book {
 	}
 
 
-
+	/**
+	 * 
+	 * @param user Utente che richiede questo libro
+	 * @return
+	 */
 	public boolean setPrenotante(User user) {
 
 		PreparedStatement statement = DBConnector.getDBConnector().prepareStatement(Queries.insertNewReservationQuery);
@@ -336,6 +336,10 @@ public class Book {
 		return underReading;
 	}
 
+	/**
+	 * 
+	 * @return BCID univoco
+	 */
 	private String generateBCID() {
 
 		int leftLimit = 97; // letter 'a'

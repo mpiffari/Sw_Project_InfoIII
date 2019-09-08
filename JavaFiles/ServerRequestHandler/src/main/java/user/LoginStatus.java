@@ -1,7 +1,7 @@
 package user;
 /**
  * 
- * enum type for describing status of connection of user
+ * Enum per descrivere lo stato della connessione dell'utente.
  *
  * @author Paganessi Andrea - Piffari Michele - Villa Stefano
  * @version 1.0
