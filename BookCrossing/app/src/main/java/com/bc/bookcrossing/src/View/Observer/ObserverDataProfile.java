@@ -9,5 +9,5 @@ import com.bc.bookcrossing.src.ClientModels.UserInformations;
  */
 
 public interface ObserverDataProfile extends ObserverForUiInformation {
-    public void notifyProfile(UserInformations userInformations);
+    void notifyProfile(UserInformations userInformations);
 }

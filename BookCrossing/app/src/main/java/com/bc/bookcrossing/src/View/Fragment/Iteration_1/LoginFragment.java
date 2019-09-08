@@ -87,7 +87,7 @@ public class LoginFragment extends Fragment implements ObserverDataProfile, View
         View v = inflater.inflate(R.layout.fragment_login, container, false);
         DataDispatcherSingleton.getInstance().register(this);
 
-        leaveButton = (Button) v.findViewById(R.id.leaveButton);
+        leaveButton = v.findViewById(R.id.leaveButton);
         leaveButton.setOnClickListener(this);
         if(!Globals.notifications.equals("")){
             TextView notifications = v.findViewById(R.id.notifications);

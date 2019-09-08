@@ -73,7 +73,7 @@ public class DataDispatcherSingleton implements ReceiveData, DelegateSendData {
         }
         byte[] encodedPsw = digest.digest(password.getBytes(StandardCharsets.UTF_8));
 
-        User u = new  User(username, this.bytesToHex(encodedPsw));
+        User u = new  User(username, bytesToHex(encodedPsw));
         return p.generateRequestForDataLogin(u);
     }
 

@@ -54,7 +54,7 @@ public class ResultSearchFragment extends Fragment implements AdapterView.OnItem
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_result_search, container, false);
-        listView = (ListView) v.findViewById(R.id.books_found);
+        listView = v.findViewById(R.id.books_found);
         ArrayAdapter<Book> arrayAdapter = new ArrayAdapter<Book>(getActivity(), android.R.layout.simple_list_item_1, SearchFragment.getBooks());
         listView.setAdapter(arrayAdapter);
         listView.setOnItemClickListener(this);

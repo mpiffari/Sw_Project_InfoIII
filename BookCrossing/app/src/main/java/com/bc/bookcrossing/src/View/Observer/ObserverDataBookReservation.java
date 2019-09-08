@@ -7,5 +7,5 @@ package com.bc.bookcrossing.src.View.Observer;
  */
 
 public interface ObserverDataBookReservation extends ObserverForUiInformation {
-    public void notifyReservation(boolean result);
+    void notifyReservation(boolean result);
 }

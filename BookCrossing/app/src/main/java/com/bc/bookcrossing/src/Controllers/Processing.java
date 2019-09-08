@@ -147,13 +147,13 @@ public class Processing implements GenerateRequests, ReceiveAnswer {
                 int kk = data.indexOf(":", k+1);
                 int res = Integer.parseInt(data.substring(k+1,k+2));
                 String BCID = data.substring(kk+1);
-                DataDispatcherSingleton.getInstance().callbackRegistration(res == 1 ? true : false, BCID);
+                DataDispatcherSingleton.getInstance().callbackRegistration(res == 1, BCID);
                 break;
             case BOOK_RESERVATION:
                 k = data.indexOf(":", i+1);
                 kk = data.indexOf(":", k+1);
                 res = Integer.parseInt(data.substring(k+1,k+2));
-                DataDispatcherSingleton.getInstance().callbackReservation(res == 1 ? true : false);
+                DataDispatcherSingleton.getInstance().callbackReservation(res == 1);
                 break;
             case LOGIN:
                 int result = data.indexOf(":", i+1);
@@ -193,7 +193,7 @@ public class Processing implements GenerateRequests, ReceiveAnswer {
                 kk = data.indexOf(":", k+1);
                 res = Integer.parseInt(data.substring(k+1,k+2));
                 BCID = data.substring(kk+1);
-                DataDispatcherSingleton.getInstance().callbackRegistration(res == 1 ? true : false, BCID);
+                DataDispatcherSingleton.getInstance().callbackRegistration(res == 1, BCID);
                 break;
             case PROFILE_INFO:
                 break;
@@ -225,7 +225,7 @@ public class Processing implements GenerateRequests, ReceiveAnswer {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                DataDispatcherSingleton.getInstance().callbackBookSearch(res == 1 ? true : false, booksFound);
+                DataDispatcherSingleton.getInstance().callbackBookSearch(res == 1, booksFound);
                 break;
         }
     }

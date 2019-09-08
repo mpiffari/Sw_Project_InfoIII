@@ -11,5 +11,5 @@ import java.util.List;
  */
 
 public interface ObserverDataSignIn extends ObserverForUiInformation {
-    public void notifySignIn(List<SignInStatus> status);
+    void notifySignIn(List<SignInStatus> status);
 }

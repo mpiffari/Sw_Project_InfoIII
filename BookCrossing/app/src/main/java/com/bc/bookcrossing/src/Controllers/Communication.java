@@ -37,7 +37,7 @@ import io.netty.handler.ssl.util.InsecureTrustManagerFactory;
 class ClientHandler extends SimpleChannelInboundHandler<String> {
 
     @Override
-    protected void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
+    protected void channelRead0(ChannelHandlerContext ctx, String msg) {
         Processing.getInstance().processAnswer(msg);
         Communication.getInstance().group.shutdownGracefully();
     }

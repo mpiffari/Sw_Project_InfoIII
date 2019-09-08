@@ -2,6 +2,8 @@ package com.bc.bookcrossing.src.ClientModels;
 
 //import dataManager.UserData;
 
+import android.support.annotation.NonNull;
+
 /**
  *
  * Utente che può partecipare alla community di sharing del book crossing.
@@ -13,7 +15,7 @@ package com.bc.bookcrossing.src.ClientModels;
 
 public class User {
 
-    private String username;
+    private @NonNull String username;
     private String firstName;
     private String lastName;
     private String dateOfBirth;

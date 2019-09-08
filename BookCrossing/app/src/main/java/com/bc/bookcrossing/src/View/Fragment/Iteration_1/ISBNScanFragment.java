@@ -148,7 +148,7 @@ public class ISBNScanFragment extends Fragment implements ObserverDataBookRegist
             // Commit the transaction
             transaction.commit();
             BottomNavigationView bottomNavigationView;
-            bottomNavigationView = (BottomNavigationView) getActivity().findViewById(R.id.navigation);
+            bottomNavigationView = getActivity().findViewById(R.id.navigation);
             bottomNavigationView.setSelectedItemId(R.id.book_registration);
         } else {
             // send exception

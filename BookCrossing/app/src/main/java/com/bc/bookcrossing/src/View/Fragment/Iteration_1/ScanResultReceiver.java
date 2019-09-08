@@ -11,6 +11,6 @@ import com.bc.bookcrossing.src.ClientModels.NoScanResultException;
  * @since 2018/2019
  */
 public interface ScanResultReceiver {
-    public void scanResultData(String codeFormat, String codeContent);
-    public void scanResultData(NoScanResultException noScanData);
+    void scanResultData(String codeFormat, String codeContent);
+    void scanResultData(NoScanResultException noScanData);
 }

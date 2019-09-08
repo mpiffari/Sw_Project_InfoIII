@@ -109,7 +109,7 @@ public class BookRegistrationFragment extends Fragment implements ObserverDataBo
         }
 
         // Handle book type selected by spinner dropdown menu
-        Spinner spinner = (Spinner) myView.findViewById(R.id.BookTypeSpinner);
+        Spinner spinner = myView.findViewById(R.id.BookTypeSpinner);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, bookTypes);
         adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         spinner.setAdapter(adapter);
