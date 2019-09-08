@@ -2,6 +2,7 @@ package com.bc.bookcrossing.src.ClientModels;
 
 //import dataManager.UserData;
 
+import android.support.annotation.IntegerRes;
 import android.support.annotation.NonNull;
 
 /**
@@ -20,9 +21,9 @@ public class User {
     private String lastName;
     private String dateOfBirth;
     private String password;
-    private double latitude;
-    private double longitude;
-    private int action;
+    private Double latitude;
+    private Double longitude;
+    private Integer action;
 
     /**
      *
@@ -37,8 +38,8 @@ public class User {
      * @param longitude
      * @param action
      */
-    public User(String username, String firstName, String lastName, String dateOfBirth, String password, double latitude,
-                double longitude, int action) {
+    public User(String username, String firstName, String lastName, String dateOfBirth, String password, Double latitude,
+                Double longitude, Integer action) {
 
         this.username = username;
         this.firstName = firstName;
@@ -100,7 +101,7 @@ public class User {
         this.password = password;
     }
 
-    public double getLatitude() {
+    public Double getLatitude() {
         return latitude;
     }
 
@@ -108,7 +109,7 @@ public class User {
         this.latitude = latitude;
     }
 
-    public double getLongitude() {
+    public Double getLongitude() {
         return longitude;
     }
 
@@ -116,7 +117,7 @@ public class User {
         this.longitude = longitude;
     }
 
-    public int getAction() {
+    public Integer getAction() {
         return action;
     }
 
