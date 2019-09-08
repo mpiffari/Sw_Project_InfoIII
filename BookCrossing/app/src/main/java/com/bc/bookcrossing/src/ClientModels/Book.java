@@ -17,10 +17,10 @@ public class Book implements Serializable{
 	private String BCID = "";
 	private String title;
 	private String author;
-	private @Nullable int yearOfPubblication;
-	private @Nullable int editionNumber;
+	private @Nullable Integer yearOfPubblication;
+	private @Nullable Integer editionNumber;
 	private String type;
-	private String ISBN;
+	private @Nullable String ISBN;
 	private String user;
 	private boolean underReading;
 
@@ -84,15 +84,58 @@ public class Book implements Serializable{
      */
 	public Book(@NonNull String msg) {
 		String lines[] = msg.split(";");
-        String copyLines[] = new String[8];
+        String copyLines[] = new String[9];
 		int indexForCopy = 0;
 
         for(String line : lines) {
             copyLines[indexForCopy] = line;
             indexForCopy ++;
+
+            String words[] = line.split(":");
+            if(words.length > 0) {
+                switch (words[0].toUpperCase()) {
+                    case "TITLE": {
+                        this.title = getTitleFromString(line);
+                        break;
+                    }
+                    case "AUTHOR": {
+                        this.author = getAuthorFromString(line);
+                        break;
+                    }
+                    case "YEAR": {
+                        this.yearOfPubblication = getYearOfPubblicationFromString(line);
+                        break;
+                    }
+                    case "EDITION": {
+                        this.editionNumber = getEditionNumberFromString(line);
+                        break;
+                    }
+                    case "TYPE": {
+                        this.type = getBookTypeFromString(line);
+                        break;
+                    }
+                    case "USER": {
+                        this.user = getUserFromString(line);
+                        break;
+                    }
+                    case "ISBN": {
+                        this.ISBN = getISBNFromString(line);
+                        break;
+                    }
+                    case "STATE": {
+                        this.underReading = getStateFromString(line);
+                        break;
+                    }
+                    case "BCID": {
+                        this.BCID = getBCIDFromString(line);
+                        break;
+                    }
+
+                }
+            }
         }
 
-		this.title = getTitleFromString(copyLines[0]);
+		/*this.title = getTitleFromString(copyLines[0]);
 		this.author = getAuthorFromString(copyLines[1]);
 		this.yearOfPubblication = getYearOfPubblicationFromString(copyLines[2]);
 		this.editionNumber = getEditionNumberFromString(copyLines[3]);
@@ -100,7 +143,7 @@ public class Book implements Serializable{
         this.user = getUserFromString(copyLines[5]);
         this.ISBN = getISBNFromString(copyLines[6]);
         this.underReading = getStateFromString(copyLines[7]);
-        this.BCID = getBCIDFromString(copyLines[8]);
+        this.BCID = getBCIDFromString(copyLines[8]);*/
 	}
 
     /**
@@ -176,7 +219,7 @@ public class Book implements Serializable{
      *
      * @param yearOfPubblication
      */
-    public void setYearOfPubblication(int yearOfPubblication) {
+    public void setYearOfPubblication(Integer yearOfPubblication) {
         this.yearOfPubblication = yearOfPubblication;
     }
     /**
@@ -184,7 +227,7 @@ public class Book implements Serializable{
      *
      * @return YEAR
      */
-	public int getYearOfPubblication() {
+	public Integer getYearOfPubblication() {
 		return yearOfPubblication;
 	}
 
@@ -193,7 +236,7 @@ public class Book implements Serializable{
      *
      * @param editionNumber
      */
-    public void setEditionNumber(int editionNumber) {
+    public void setEditionNumber(Integer editionNumber) {
         this.editionNumber = editionNumber;
     }
     /**
@@ -201,7 +244,7 @@ public class Book implements Serializable{
      *
      * @return EDTION_NUMBER
      */
-	public int getEditionNumber() {
+	public Integer getEditionNumber() {
 		return editionNumber;
 	}
 
@@ -241,7 +284,7 @@ public class Book implements Serializable{
     private String getTitleFromString(String msg) {
         if(msg.length() != 0 && msg != null) {
             String words[] = msg.split(":");
-            if(words[0].toUpperCase() == "TITLE") {
+            if(words[0].toUpperCase().equals("TITLE") && words.length > 1) {
                 return words[1];
             } else {
                 return "";
@@ -254,7 +297,7 @@ public class Book implements Serializable{
 	private String getAuthorFromString(String msg) {
         if(msg.length() != 0 && msg != null) {
             String words[] = msg.split(":");
-            if(words[0].toUpperCase() == "AUTHOR") {
+            if(words[0].toUpperCase().equals("AUTHOR") && words.length > 1) {
                 return words[1];
             } else {
                 return "";
@@ -264,13 +307,18 @@ public class Book implements Serializable{
         }
 	}
 
-	private Integer getYearOfPubblicationFromString(String msg) {
+	@Nullable
+    private Integer getYearOfPubblicationFromString(String msg) {
         if(msg.length() != 0 && msg != null) {
             String words[] = msg.split(":");
             int year = 0;
             try {
-                if(words[0].toUpperCase() == "YEAR") {
-                    year = Integer.parseInt(words[1]);
+                if(words[0].toUpperCase().equals("YEAR") && words.length > 1) {
+                    try {
+                        year = Integer.parseInt(words[1]);
+                    } catch (NumberFormatException e) {
+                        return null;
+                    }
                 } else {
                     return null;
                 }
@@ -283,13 +331,18 @@ public class Book implements Serializable{
         }
 	}
 
-	private Integer getEditionNumberFromString(String msg) {
+	@Nullable
+    private Integer getEditionNumberFromString(String msg) {
         if(msg.length() != 0 && msg != null) {
             String words[] = msg.split(":");
             int edition = 0;
             try {
-                if(words[0].toUpperCase() == "EDITION") {
-                    edition = Integer.parseInt(words[1]);
+                if(words[0].toUpperCase().equals("EDITION") && words.length > 1) {
+                    try {
+                        edition = Integer.parseInt(words[1]);
+                    } catch (NumberFormatException e) {
+                        return null;
+                    }
                 } else {
                     return null;
                 }
@@ -306,7 +359,7 @@ public class Book implements Serializable{
 	private String getBookTypeFromString(String msg) {
         if(msg.length() != 0 && msg != null) {
             String words[] = msg.split(":");
-            if(words[0].toUpperCase() == "TYPE") {
+            if(words[0].toUpperCase().equals("TYPE") && words.length > 1) {
                 return words[1];
             } else {
                 return  "";
@@ -319,7 +372,7 @@ public class Book implements Serializable{
     private String getISBNFromString(String msg) {
         if(msg.length() != 0 && msg != null) {
             String words[] = msg.split(":");
-            if(words[0].toUpperCase() == "ISBN") {
+            if(words[0].toUpperCase().equals("ISBN") && words.length > 1) {
                 return words[1];
             } else {
                 return  "";
@@ -332,7 +385,7 @@ public class Book implements Serializable{
     private String getUserFromString(String msg) {
         if(msg.length() != 0 && msg != null) {
             String words[] = msg.split(":");
-            if(words[0].toUpperCase() == "USER") {
+            if(words[0].toUpperCase().equals("USER") && words.length > 1) {
                 return words[1];
             } else {
                 return  "";
@@ -345,7 +398,7 @@ public class Book implements Serializable{
 	private String getBCIDFromString(String msg) {
         if(msg.length() != 0 && msg != null) {
             String words[] = msg.split(":");
-            if(words[0].toUpperCase() == "BCID") {
+            if(words[0].toUpperCase().equals("BCID") && words.length > 1) {
                 return words[1];
             } else {
                 return  "";
@@ -358,7 +411,7 @@ public class Book implements Serializable{
     private boolean getStateFromString(String msg){
         if(msg.length() != 0 && msg != null) {
             String words[] = msg.split(":");
-            if(words[0].toUpperCase() == "STATE") {
+            if(words[0].toUpperCase().equals("STATE") && words.length > 1) {
                 return words[1].equals("1");
             } else {
                 return Boolean.parseBoolean(null);

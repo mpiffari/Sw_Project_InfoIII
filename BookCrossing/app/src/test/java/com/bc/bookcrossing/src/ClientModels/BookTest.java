@@ -5,7 +5,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- * Example local unit test, which will execute on the development machine (host).
+ * Test della classe Book.
  *
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
@@ -14,11 +14,7 @@ public class BookTest {
 
     @Test
     public void testBookCreationByMsgOnlyTitle() {
-        String msg = "";
-        msg = "TITLE:A;\\r\\nAUTHOR: ;\\r\\n" +
-                "YEAR: ;\\r\\nEDITION: ;\\r\\n" +
-                "TYPE: ;\\r\\nUSER: ;\\r\\n" +
-                "ISBN: ;\\r\\nSTATE: ;\\r\\nBCID: ;\\r\\n";
+        String msg = "TITLE:A;AUTHOR: ;YEAR: ;EDITION: ;TYPE: ;USER: ;ISBN: ;STATE: ;BCID: ;";
         Book b = new Book(msg);
 
         assertEquals(b.getTitle(),"A");
@@ -26,17 +22,39 @@ public class BookTest {
     }
 
     @Test
-    public void testBookCreationByNotCompleteMsg() {
+    public void testBookCreationByNotCompleteMsg1() {
         String msg = "";
-        msg = "TITLE:A;\\r\\nAUTHOR:;\\r\\n" +
-                "YEAR:;\\r\\nEDITION:;\\r\\n" +
-                "TYPE:;\\r\\nUSER:aa;\\r\\n" +
-                "STATE:\\r\\n;BCID:;\\r\\n";
+        // Missing ISBN field
+        msg = "TITLE:A;AUTHOR:;YEAR:;EDITION:;TYPE:;USER:aa;STATE:;BCID:;";
         Book b = new Book(msg);
 
-        assertEquals(b.getISBN(), "");
+        assertEquals(b.getISBN(), null);
         assertEquals(b.getTitle(),"A");
         assertEquals(b.getUser(),"aa");
+    }
+
+    @Test
+    public void testBookCreationByNotCompleteMsg2() {
+        String msg = "";
+        // Missing ISBN field
+        msg = "TITLE:A;AUTHOR:;YEAR:;USER:bb;STATE:;BCID:;";
+        Book b = new Book(msg);
+
+        assertEquals(b.getISBN(), null);
+        assertEquals(b.getEditionNumber(), null);
+        assertEquals(b.getType(), null);
+        assertEquals(b.getTitle(),"A");
+        assertEquals(b.getUser(),"bb");
+    }
+
+    @Test
+    public void testNullFields() {
+        Book b = new Book();
+        Integer edition = b.getEditionNumber();
+        Integer year = b.getYearOfPubblication();
+
+        assertEquals(edition,null);
+        assertEquals(year,null);
     }
 
     @Test
@@ -124,8 +142,8 @@ public class BookTest {
         Book b = new Book();
         b.setYearOfPubblication(1);
 
-        assertEquals(b.getYearOfPubblication(),1);
-        assertNotEquals(b.getYearOfPubblication(),2);
+        assertEquals(b.getYearOfPubblication().intValue(), 1);
+        assertNotEquals(b.getYearOfPubblication().intValue(),2);
     }
 
     @Test
@@ -133,8 +151,8 @@ public class BookTest {
         Book b = new Book();
         b.setYearOfPubblication(1);
 
-        assertEquals(b.getYearOfPubblication(),1);
-        assertNotEquals(b.getYearOfPubblication(),2);
+        assertEquals(b.getYearOfPubblication().intValue(),1);
+        assertNotEquals(b.getYearOfPubblication().intValue(),2);
     }
 
     @Test
@@ -142,8 +160,8 @@ public class BookTest {
         Book b = new Book();
         b.setEditionNumber(1);
 
-        assertEquals(b.getEditionNumber(),1);
-        assertNotEquals(b.getEditionNumber(),2);
+        assertEquals(b.getEditionNumber().intValue(),1);
+        assertNotEquals(b.getEditionNumber().intValue(),2);
     }
 
     @Test
@@ -151,8 +169,8 @@ public class BookTest {
         Book b = new Book();
         b.setEditionNumber(1);
 
-        assertEquals(b.getEditionNumber(),1);
-        assertNotEquals(b.getEditionNumber(),2);
+        assertEquals(b.getEditionNumber().intValue(),1);
+        assertNotEquals(b.getEditionNumber().intValue(),2);
     }
 
     @Test
@@ -178,7 +196,7 @@ public class BookTest {
         Book b = new Book();
         b.setTitle("A");
 
-        assertEquals(b.encode(),"TITLE:A;AUTHOR:null;YEAR:0;EDITION:0;TYPE:null;USER:null;ISBN:null;STATE:0;BCID:");
+        assertEquals(b.encode(),"TITLE:A;AUTHOR:null;YEAR:null;EDITION:null;TYPE:null;USER:null;ISBN:null;STATE:0;BCID:");
         assertNotEquals(b.encode(),"TITLE:A;AUTHOR:;YEAR:45;EDITION: ;TYPE:;USER:;ISBN:;STATE:;BCID:;");
     }
 }
