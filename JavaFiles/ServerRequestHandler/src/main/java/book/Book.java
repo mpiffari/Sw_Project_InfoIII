@@ -44,7 +44,67 @@ public class Book implements BookManager{
 	public Book(String msg) {	
 
 		final String lines[] = msg.split(";");
-		this.title = getTitleFromString(lines[0]);
+		
+		String lines[] = msg.split(";");
+        String copyLines[] = new String[9];
+		int indexForCopy = 0;
+
+        for(String line : lines) {
+            copyLines[indexForCopy] = line;
+            indexForCopy ++;
+
+            String words[] = line.split(":");
+            if(words.length > 0) {
+                switch (words[0].toUpperCase()) {
+                    case "TITLE": {
+                        this.title = getTitleFromString(line);
+                        break;
+                    }
+                    case "AUTHOR": {
+                        this.author = getAuthorFromString(line);
+                        break;
+                    }
+                    case "YEAR": {
+                        this.yearOfPubblication = getYearOfPubblicationFromString(line);
+                        break;
+                    }
+                    case "EDITION": {
+                        this.editionNumber = getEditionNumberFromString(line);
+                        break;
+                    }
+                    case "TYPE": {
+                        this.type = getBookTypeFromString(line);
+                        break;
+                    }
+                    case "USER": {
+                        this.actualOwnerUsername = getUserFromString(line);
+                        break;
+                    }
+                    case "ISBN": {
+                        this.isbn = getISBNFromString(line);
+                        break;
+                    }
+                    case "STATE": {
+                        this.underReading = getStateFromString(line);
+                        break;
+                    }
+                    case "BCID": {
+                		String temp = getBCIDFromString(lines[8]);
+                		if(temp.equals("")) {
+                			do {
+                				bcid = generateBCID();
+                			}while(!BookData.getInstance().isBCIDavailable(bcid));
+                		}
+                		else {
+                			this.bcid = temp;
+                		}      
+                    }
+
+                }
+            }
+        }
+		
+		/*this.title = getTitleFromString(lines[0]);
 		this.author = getAuthorFromString(lines[1]);
 		this.yearOfPubblication = getYearOfPubblicationFromString(lines[2]);
 		this.editionNumber = getEditionNumberFromString(lines[3]);
@@ -60,7 +120,7 @@ public class Book implements BookManager{
 		}
 		else {
 			this.bcid = temp;
-		}      
+		}*/      
 
 	}
 
