@@ -27,7 +27,7 @@ public interface DelegateSendData {
    boolean sendDataBookReservation(Book bookForReservation);
 
    boolean sendDataSignIn(String name, String lastName, String username, Date DOB, String[] contacts,
-                          String password, int actionArea); //TODO : LAT e LONG
+                          String password, int actionArea);
    boolean sendDataProfileInformations(String username, String password);
    boolean sendDataPickUp(String BCID);
    boolean sendDataTakenBooks();

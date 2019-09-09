@@ -54,13 +54,6 @@ public class TakenBooksFragment extends Fragment implements ObserverDataBookTake
         return inflater.inflate(R.layout.fragment_taken_books, container, false);
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
-
     @Override
     public void onDetach() {
         super.onDetach();

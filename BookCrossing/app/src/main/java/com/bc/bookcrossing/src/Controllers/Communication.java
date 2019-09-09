@@ -147,7 +147,6 @@ public class Communication implements SendRequests  {
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException e1) {
-                    // TODO Auto-generated catch block
                     e1.printStackTrace();
                     return false;
                 }
@@ -161,7 +160,6 @@ public class Communication implements SendRequests  {
                 try {
                     lastWriteFuture.sync();
                 } catch (InterruptedException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                     return false;
                 }

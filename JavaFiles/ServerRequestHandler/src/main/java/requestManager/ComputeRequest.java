@@ -42,7 +42,7 @@ public class ComputeRequest implements ProcessRequest{
 			return;
 		}
 		
-		// CHeck if an user exists in db, else send back a bad response
+		// Check if an user exists in db, else send back a bad response
 		if(UserData.getInstance().exist(username)) {
 			System.out.println("Message under processing: " + msg);
 			System.out.println(msg.substring(0, i));

@@ -160,12 +160,8 @@ public class Processing implements GenerateRequests, ReceiveAnswer {
                 int indexNotifications = data.indexOf(";", i + 1);
                 String msg = data.substring(result+1, indexNotifications);
 
-
                 String notifications = data.substring(indexNotifications + 1);
                 Globals.notifications = notifications;
-
-
-
                 Log.d("TAG", Globals.notifications);
 
                 boolean flag =false;
