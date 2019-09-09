@@ -19,7 +19,7 @@ import dataManager.Queries;
  * @since 2018/2019
  */
 
-public class User implements Comparable<User> {
+public class User implements Comparable<User>, UserManager{
 
 	private String username;
 	private String firstName;

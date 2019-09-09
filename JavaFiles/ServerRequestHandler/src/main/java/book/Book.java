@@ -22,7 +22,7 @@ import user.User;
  * @version 1.0
  * @since 2018/2019
  */
-public class Book {
+public class Book implements BookManager{
 
 	private String title;
 	private String author;
@@ -340,7 +340,8 @@ public class Book {
 	 * 
 	 * @return BCID univoco
 	 */
-	private String generateBCID() {
+	
+	public String generateBCID() {
 
 		int leftLimit = 97; // letter 'a'
 		int rightLimit = 122; // letter 'z'
