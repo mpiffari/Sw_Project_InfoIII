@@ -1,7 +1,9 @@
 package user;
 /**
  * 
- * class used as data structure for storing position informations of user
+ * Classe usata come struct per contenere i dati relativi alla posizione dell'utente,
+ * rispetto al quale si va a calcolare la possibilità di scambiare libri dell'utente stesso all'interno della rete 
+ * di sharing.
  *
  * @author Paganessi Andrea - Piffari Michele - Villa Stefano
  * @version 1.0

@@ -4,8 +4,9 @@ import java.util.ArrayList;
 
 /**
  * 
- * this interface contains methods about queries on database for user informations
- *
+ * Questa interfaccia contiene i metodi per gestire le queries verso 
+ * il db per ottenere le informazioni utente.
+ * 
  * @author Paganessi Andrea - Piffari Michele - Villa Stefano
  * @version 1.0
  * @since 2018/2019

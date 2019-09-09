@@ -12,7 +12,7 @@ import dataManager.Queries;
 
 /**
  * 
- * User class - an instance of this class describes an user of BookCrossing service
+ * User class - un istanza di questa classe descrive un utente della community di BookCrossing
  *
  * @author Paganessi Andrea - Piffari Michele - Villa Stefano
  * @version 1.0
@@ -162,9 +162,10 @@ public class User implements Comparable<User> {
 	public void setChasingBook(Book book) {
 		this.booksOwned.add(book);
 	}
+	
 	/**
 	 * 
-	 * @return ArrayList<Book> contains books which are handled by user
+	 * @return ArrayList<Book> contiene i libri posseduti dall'utente
 	 */
 	public ArrayList<Book> getChasingBooks() {
 		PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(Queries.getBooksOwnedBy);
@@ -191,8 +192,8 @@ public class User implements Comparable<User> {
 
 	/**
 	 * 
-	 * @param o other user
-	 * @return distance between users
+	 * @param o altro utente
+	 * @return distance tra questo utente e l'utente o
 	 */
 	public double computeDistance(User o) {
 		double lat_this = this.localization.lat;
@@ -204,12 +205,12 @@ public class User implements Comparable<User> {
 		return distance;
 	}
 
+	
 	/**
 	 * 
-	 * @param o other user
-	 * @return distance between users
+	 * @param o altro utente
+	 * @return distance tra questo utente e l'utente o
 	 */
-
 	public double computeDistance(UserLocalizationInfo o) {
 		double lat_this = this.localization.lat;
 		double long_this = this.localization.longit;
@@ -221,7 +222,9 @@ public class User implements Comparable<User> {
 	}
 
 
+	
 	public int compareTo(User o) {
+		// Ordinamento alfabetico in base all'username
 		if(this.username.compareTo(o.getUsername()) > 0) {
 			return 1;
 		} else if(this.username.compareTo(o.getUsername()) < 0) {

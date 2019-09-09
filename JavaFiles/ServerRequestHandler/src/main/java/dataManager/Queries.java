@@ -9,6 +9,7 @@ package dataManager;
  *
  */
 public class Queries {
+	
 	public static String readerBookQuery = "SELECT USERNAME FROM Possesso Where BCID = ?";
 	public static String readerLocationQuery = "SELECT RESIDENZALAT, RESIDENZALONG, RAGGIOAZIONE FROM Utente Where USERNAME = ?";
 	public static String allUsersQuery = "SELECT * FROM UTENTE";
@@ -18,6 +19,9 @@ public class Queries {
 	public static String searchByAuthorQuery = "SELECT L.bcid, L.titolo, L.autore, L.datapubblicazione, L.isbn, L.genere, P.username as actualOwner FROM Libro L LEFT JOIN Possesso P on l.bcid = p.bcid where l.Autore = ?";
 	public static String searchByTitleAndAuthorQuery = "SELECT L.bcid, L.titolo, L.autore, L.datapubblicazione, L.isbn, L.genere, P.username as actualOwner FROM Libro L LEFT JOIN Possesso P on l.bcid = p.bcid where l.Titolo = ? AND l.Autore = ?";
 	
+	public static String queryCheckUserAndPwd = "SELECT COUNT(USERNAME) AS RESULT FROM UTENTE WHERE USERNAME = ? AND PASSWORD = ?";
+	public static String queryCheckUsername = "SELECT COUNT(USERNAME) AS RESULT FROM UTENTE WHERE USERNAME = ?";
+	public static String checkUserExistance = "SELECT Count(Username) AS Result FROM Utente Where Username = ?";
 	public static String bcidAvailableQuery = "SELECT Count(BCID) AS Result FROM Libro Where BCID = ?";
 	public static String insertBookQuery = "INSERT INTO LIBRO (BCID, TITOLO, AUTORE, DATAPUBBLICAZIONE, ISBN, PROPRIETARIO, GENERE) VALUES (?,?,?,?,?,?,?)";
 	public static String getUserInformationsQuery = "SELECT * FROM Utente WHERE Username = ?";
