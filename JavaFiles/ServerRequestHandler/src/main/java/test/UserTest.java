@@ -52,7 +52,7 @@ public class UserTest {
 	@Test
 	public void getChasingBookTest() {
 		String username = "A";
-		String password = "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b";
+		String password = "";
 		String msg = "USER: " + username + ";" + "PASSWORD: " + password;
 		User u = new User(msg);
 		
