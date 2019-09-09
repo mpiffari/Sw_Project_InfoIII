@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.bc.bookcrossing.src.ClientModels.Book;
 import com.bc.bookcrossing.src.View.Delegate.DataDispatcherSingleton;
+import com.bc.bookcrossing.src.View.Fragment.Iteration_2.ISBNScanFragment;
 import com.bc.bookcrossing.src.View.Observer.ObserverDataBookRegistration;
 import com.bc.bookcrossing.src.Globals;
 import com.bc.bookcrossing.src.R;

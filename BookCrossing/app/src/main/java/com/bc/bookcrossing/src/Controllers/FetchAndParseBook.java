@@ -3,7 +3,7 @@ package com.bc.bookcrossing.src.Controllers;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.bc.bookcrossing.src.View.Fragment.Iteration_1.ISBNScanFragment;
+import com.bc.bookcrossing.src.View.Fragment.Iteration_2.ISBNScanFragment;
 import com.bc.bookcrossing.src.ClientModels.Book;
 
 import org.json.JSONArray;

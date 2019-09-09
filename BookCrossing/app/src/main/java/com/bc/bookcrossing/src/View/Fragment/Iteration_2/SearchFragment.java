@@ -1,6 +1,5 @@
-package com.bc.bookcrossing.src.View.Fragment.Iteration_1;
+package com.bc.bookcrossing.src.View.Fragment.Iteration_2;
 
-import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bc.bookcrossing.src.View.Delegate.DataDispatcherSingleton;
+import com.bc.bookcrossing.src.View.Fragment.Iteration_1.ResultSearchFragment;
 import com.bc.bookcrossing.src.View.Observer.ObserverDataBookResearch;
 import com.bc.bookcrossing.src.R;
 import com.bc.bookcrossing.src.ClientModels.Book;

@@ -11,11 +11,11 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.bc.bookcrossing.src.View.Fragment.Iteration_1.BookRegistrationFragment;
-import com.bc.bookcrossing.src.View.Fragment.Iteration_1.ISBNScanFragment;
-import com.bc.bookcrossing.src.View.Fragment.Iteration_1.LoginFragment;
+import com.bc.bookcrossing.src.View.Fragment.Iteration_2.ISBNScanFragment;
+import com.bc.bookcrossing.src.View.Fragment.Iteration_2.LoginFragment;
 import com.bc.bookcrossing.src.ClientModels.NoScanResultException;
-import com.bc.bookcrossing.src.View.Fragment.Iteration_1.ScanResultReceiver;
-import com.bc.bookcrossing.src.View.Fragment.Iteration_1.SearchFragment;
+import com.bc.bookcrossing.src.View.Fragment.Iteration_2.ScanResultReceiver;
+import com.bc.bookcrossing.src.View.Fragment.Iteration_2.SearchFragment;
 
 /**
  * <h1>The walking books</h1>

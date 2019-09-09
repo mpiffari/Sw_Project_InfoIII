@@ -1,4 +1,4 @@
-package com.bc.bookcrossing.src.View.Fragment.Iteration_1;
+package com.bc.bookcrossing.src.View.Fragment.Iteration_2;
 
 import com.bc.bookcrossing.src.ClientModels.NoScanResultException;
 
