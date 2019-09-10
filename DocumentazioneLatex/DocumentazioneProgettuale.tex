@@ -88,14 +88,8 @@
 
 \mainmatter
 
-%%%%%%%%%%%%%%%%
-% NEW PART! %
-%%%%%%%%%%%%%%%%
-\part{Iterazione 0}
 
-%%%%%%%%%%%%%%%%
-% NEW CHAPTER! %
-%%%%%%%%%%%%%%%%
+\part{Iterazione 0}
 \chapter{Requisiti e specifiche}
 \section{Requisiti utente}
 \input{Capitolo_Sezioni/RequisitiUtente}
@@ -108,20 +102,9 @@
 \section{Funzionalità richieste}
 \input{Capitolo_Sezioni/FunzionalitàRichieste}
 \section{Stati del libro}
-La starup si impone l'obbiettivo di andare a gestire lo scambio di libri all'interno della rete di book-crossing: come visto all'interno dei diversi use-cases, ogni libro, nel corso della propria vita all'interno della community, passa di mano in mano, attraversando diverse zone.
-A questo movimento fisico, corrisponde anche un continuo cambio di stato da parte del libro stesse: possiamo riassumere con una \textit{"Finite State Machine"} il percorso che un generico libro segue durante la sua vita.
-
-{\LARGE INSERIRE PICCOLO SCHEMA DEGLI STATI}
-
-Riassumendo gli stati di un libro, possono essere:
-\begin{itemize}
-	\item Out of the network
-	\item Available
-	\item Under reading
-	\item Released
-	\item Reserved
-	\item Traveling
-\end{itemize}
+\input{Capitolo_Sezioni/StateBook}
+\section{Tool chain}
+\input{Capitolo_Sezioni/ToolChain.tex}
 
 \chapter{Architettura}
 \section{Deployment diagram}
@@ -132,6 +115,11 @@ Riassumendo gli stati di un libro, possono essere:
 \end{figure}
 \section{Architecture Envisioning}
 \input{Capitolo_Sezioni/ArchitectureEnvisioning.tex}
+\section{Database architecture}
+\input{Capitolo_Sezioni/DatabaseArchitecture.tex}
+
+
+
 \part{Iterazione 1}
 \chapter{Architettura}
 \section{Architettura software}
@@ -139,12 +127,16 @@ Riassumendo gli stati di un libro, possono essere:
 \section{Logical view}
 \input{Capitolo_Sezioni/LogicalView}
 \newpage
-\section{Analisi dei componenti}
+\chapter{Analisi dei componenti}
 \input{Capitolo_Sezioni/AnalisiDeiComponenti}
-\section{Observer-delegate pattern: la nostra implementazione}
+\chapter{Observer-delegate pattern: la nostra implementazione}
 \input{Capitolo_Sezioni/ObserverDelegate}
 \newpage
-\section{Implementazione comunicazione server: il framework \textit{Netty}}
-\section{Parte algoritmica: \textit{reservation handler}}
+\chapter{Implementazione comunicazione server: il framework \textit{Netty}}
+\chapter{Parte algoritmica: \textit{reservation handler}}
 \input{Capitolo_Sezioni/Algoritmo}
+\part{Iterazione 2}
+\chapter{Analisi dei componenti}
+\input{Capitolo_Sezioni/AnalisiDeiComponenti_2}
+
 \end{document}

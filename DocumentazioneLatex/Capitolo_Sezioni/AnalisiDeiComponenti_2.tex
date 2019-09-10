@@ -1,0 +1,29 @@
+Le componenti che invece si è deciso di andare a sviluppare durante la seconda iterazione sono: 
+\begin{itemize}
+	\item \textbf{Componente \textit{Automatic Book registration:}} La componente \textit{Automatic Book registration} fa riferimento all’ UC10
+	%(~\ref{itemize:UC10})
+	(figlio del caso d'uso più generico UC5 
+	%(~\ref{itemize:UC5})
+	); questa funzionalità consente di ottenere, in maniera del tutto automatica, tutte le informazioni necessarie per registrare uno specifico libro all'interno della piattaforma di book crossing. La componente si presenta nel seguente modo:
+	\begin{itemize}
+		\item \textit{GUI:} Interfaccia grafica utilizzata per registrare un libro, in maniera automatica, nella rete di Book Crossing. Verranno quindi messe a disposizione una serie di interfaccie grafiche, le quali permetteranno di scansionare il codice ISBN del libro deisderato, unitamente ad una parte GUI utilizzata per mostrare le informazioni relative al libro che è appena stato scansionato.
+		\item \textit{Model:} Si fa carico di ricevere le informazioni relative al libro e, sfruttando la parte Data, restituisce alla parte GUI il BCID con il quale siglare il libro;
+		\item \textit{Data:} Le informazioni relative al libro che si vuole aggiungere sono memorizzate nel Database RDS, associandolo all'utente che attualmente lo possiede. 
+	\end{itemize}
+	\item \textbf{Componente \textit{Login:}}  La componente \textit{Login} fa riferimento all’ UC13 
+	%(~\ref{itemize:UC13})
+	, ovvero alla funzione che permette ad un utilizzatore dell'applicazione di loggarsi all'interno della piattaforma di Book Crossing, potendo così effettuare operazioni di suo interesse sui testi disponibili. La componente si presenta nel seguente modo:
+	\begin{itemize}
+		\item \textit{GUI:} Interfaccia grafica, composta da due caselle di testo, le quali devono essere riempite con username e password, unitamente ad un pulsante che permette di iniviare la richiesta/verifica di login corretto. Per chi non fosse già registrato, è fornita la possibilità di iscriversi alla piattaforma (questo però rappresenta un caso d'uso separato);
+		\item \textit{Model:} Si fa carico di verificare la coerenza dei dati inseriti tramite il componente grafico, restituendo l'esito a chi ha appena tentato di effettuare il login.
+		\item \textit{Data:} Le informazioni relative all'utente che sta tentando di loggarsi.
+	\end{itemize}
+	\item \textbf{Componente \textit{Ricerca:}}  La componente \textit{Ricerca} fa riferimento all’ UC6 
+	%(~\ref{itemize:UC6})
+	, ovvero alla funzione che permette di andare a ricercare un libro all'interno della piattaforma di Book crossing: questa ricerca può avvenire per titolo, per autore, oppure per entrambi. La componente si presenta nel seguente modo:
+	\begin{itemize}
+	\item \textit{GUI:} Interfaccia grafica composta da due text book in cui andare ad inserire titolo e/o autore. Essendo possibili tre tipologie di ricerca, come specificato in precedenza, non è necessario compilare entrambi i campi (lo è solamente nel caso in cui si è interessati a compiere una ricerca basandosi su entrambi i vincoli);
+	\item \textit{Model:} Gli compete la parte relativa allo smistamento delle richiesta, a seconda del fatto che si stia eseguendo una ricerca per titolo, autore o entrambi;
+	\item \textit{Data:} Fornisce, se presenti, le informazioni relative al libro oggetto della ricerca.
+	\end{itemize}
+\end{itemize}

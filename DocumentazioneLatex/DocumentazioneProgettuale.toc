@@ -7,14 +7,18 @@
 \contentsline {section}{\numberline {2.2}Use Case Diagram}{13}{section.2.2}
 \contentsline {section}{\numberline {2.3}Funzionalit\IeC {\`a} richieste}{14}{section.2.3}
 \contentsline {section}{\numberline {2.4}Stati del libro}{14}{section.2.4}
+\contentsline {section}{\numberline {2.5}Tool chain}{15}{section.2.5}
 \contentsline {chapter}{\numberline {3}Architettura}{17}{chapter.3}
 \contentsline {section}{\numberline {3.1}Deployment diagram}{17}{section.3.1}
 \contentsline {section}{\numberline {3.2}Architecture Envisioning}{17}{section.3.2}
+\contentsline {section}{\numberline {3.3}Database architecture}{18}{section.3.3}
 \contentsline {part}{II\hspace {1em}Iterazione 1}{19}{part.2}
 \contentsline {chapter}{\numberline {4}Architettura}{21}{chapter.4}
 \contentsline {section}{\numberline {4.1}Architettura software}{21}{section.4.1}
 \contentsline {section}{\numberline {4.2}Logical view}{22}{section.4.2}
-\contentsline {section}{\numberline {4.3}Analisi dei componenti}{25}{section.4.3}
-\contentsline {section}{\numberline {4.4}Observer-delegate pattern: la nostra implementazione}{25}{section.4.4}
-\contentsline {section}{\numberline {4.5}Implementazione comunicazione server: il framework \textit {Netty}}{28}{section.4.5}
-\contentsline {section}{\numberline {4.6}Parte algoritmica: \textit {reservation handler}}{28}{section.4.6}
+\contentsline {chapter}{\numberline {5}Analisi dei componenti}{25}{chapter.5}
+\contentsline {chapter}{\numberline {6}Observer-delegate pattern: la nostra implementazione}{27}{chapter.6}
+\contentsline {chapter}{\numberline {7}Implementazione comunicazione server: il framework \textit {Netty}}{35}{chapter.7}
+\contentsline {chapter}{\numberline {8}Parte algoritmica: \textit {reservation handler}}{37}{chapter.8}
+\contentsline {part}{III\hspace {1em}Iterazione 2}{41}{part.3}
+\contentsline {chapter}{\numberline {9}Analisi dei componenti}{43}{chapter.9}
