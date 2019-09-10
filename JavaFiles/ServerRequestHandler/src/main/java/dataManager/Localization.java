@@ -1,4 +1,4 @@
-package user;
+package dataManager;
 /**
  * 
  * Classe usata come struct per contenere i dati relativi alla posizione dell'utente,
@@ -9,14 +9,14 @@ package user;
  * @version 1.0
  * @since 2018/2019
  */
-public class UserLocalizationInfo {
+public class Localization {
 	public double radius;
 	public double lat;
 	public double longit;
 
-	public UserLocalizationInfo() {}
+	public Localization() {}
 
-	public UserLocalizationInfo(double lat, double longit) {
+	public Localization(double lat, double longit) {
 		this.lat = lat;
 		this.longit = longit;
 	}

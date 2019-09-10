@@ -13,6 +13,7 @@ import org.eclipse.jdt.annotation.Nullable;
 import algorithmReservationHandler.Algorithm;
 import algorithmReservationHandler.AlgorithmResult;
 import dataManager.DBConnector;
+import dataManager.Localization;
 import dataManager.Queries;
 import user.User;
 
@@ -38,6 +39,7 @@ public class Book implements BookManager{
 	private boolean underReading;
 	private ArrayList<User> prenotanti = new ArrayList<User>();
 	private int idPrenotazione; 
+	private Localization localization;
 
 	/**
 	 * 
@@ -321,6 +323,14 @@ public class Book implements BookManager{
 
 	public void setType(String type) {
 		this.type = type;
+	}
+	
+	public void setLocalization(Localization localization) {
+		this.localization = localization;
+	}
+	
+	public Localization getLocalization() {
+		return localization;
 	}
 
 	/**

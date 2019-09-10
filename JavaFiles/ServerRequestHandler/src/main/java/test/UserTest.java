@@ -8,8 +8,8 @@ import java.util.Date;
 import org.junit.Test;
 
 import book.Book;
+import dataManager.Localization;
 import user.User;
-import user.UserLocalizationInfo;
 
 public class UserTest {
 
@@ -20,7 +20,7 @@ public class UserTest {
 		String username = "S";
 		String password = "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b";
 		Date dateOfBirth = new Date();
-		UserLocalizationInfo localization = new UserLocalizationInfo();
+		Localization localization = new Localization();
 		localization.lat = 10;
 		localization.longit = 20;
 		localization.radius = 30;
@@ -99,8 +99,8 @@ public class UserTest {
 		User uB = new User(msg);
 		
 		
-		UserLocalizationInfo localizationInfoA = new UserLocalizationInfo(10, 10);
-		UserLocalizationInfo localizationInfoB = new UserLocalizationInfo(20, 20);
+		Localization localizationInfoA = new Localization(10, 10);
+		Localization localizationInfoB = new Localization(20, 20);
 		
 		uA.setLatitude(localizationInfoA.lat);
 		uA.setLongitude(localizationInfoA.longit);

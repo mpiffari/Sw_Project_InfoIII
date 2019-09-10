@@ -8,6 +8,7 @@ import java.util.Date;
 
 import book.Book;
 import dataManager.DBConnector;
+import dataManager.Localization;
 import dataManager.Queries;
 
 /**
@@ -26,7 +27,7 @@ public class User implements Comparable<User>, UserManager{
 	private String lastName;
 	private Date dateOfBirth;
 	private String password;
-	private UserLocalizationInfo localization = new UserLocalizationInfo();
+	private Localization localization = new Localization();
 
 	private ArrayList<Book> booksOwned = new ArrayList<Book>();
 
@@ -211,7 +212,7 @@ public class User implements Comparable<User>, UserManager{
 	 * @param o altro utente
 	 * @return distance tra questo utente e l'utente o
 	 */
-	public double computeDistance(UserLocalizationInfo o) {
+	public double computeDistance(Localization o) {
 		double lat_this = this.localization.lat;
 		double long_this = this.localization.longit;
 		double lat_o = o.lat;

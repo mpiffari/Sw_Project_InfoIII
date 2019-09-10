@@ -10,9 +10,9 @@ import java.util.ArrayList;
 import algorithmReservationHandler.Algorithm;
 import algorithmReservationHandler.AlgorithmResult;
 import dataManager.DBConnector;
+import dataManager.Localization;
 import dataManager.Queries;
 import user.User;
-import user.UserLocalizationInfo;
 
 /**
  * 
@@ -119,8 +119,8 @@ public final class BookData implements BookQuery {
 			return result;
 		}
 
-		UserLocalizationInfo readerPos = new UserLocalizationInfo(l.getLatitude(), l.getLongitude());
-		UserLocalizationInfo userPos = new UserLocalizationInfo(me.getLatitude(), me.getLongitude());
+		Localization readerPos = new Localization(l.getLatitude(), l.getLongitude());
+		Localization userPos = new Localization(me.getLatitude(), me.getLongitude());
 
 		System.out.println("Position of reader (L): " + readerPos.toString());
 		System.out.println("Position of me: " + userPos.toString());

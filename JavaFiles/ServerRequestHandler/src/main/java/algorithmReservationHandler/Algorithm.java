@@ -5,9 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import dataManager.DBConnector;
+import dataManager.Localization;
 import dataManager.Queries;
 import user.User;
-import user.UserLocalizationInfo;
+
 import java.util.*;
 import java.util.Map.Entry;
 import book.Book;
@@ -89,7 +90,7 @@ public class Algorithm {
 			// that live in the area around.
 			double radiusUserSearchArea = 0.5 * me.computeDistance(actualBookOwner);
 			System.out.println("radius search area: " + radiusUserSearchArea);
-			UserLocalizationInfo dummyUser = centerOfInterestArea(actualBookOwner, me);
+			Localization dummyUser = centerOfInterestArea(actualBookOwner, me);
 			System.out.println("User fittizio position --> lat: " + dummyUser.lat + " long: " + dummyUser.longit);
 			
 			// Search the possible users from all the users signed in to the community
@@ -254,10 +255,10 @@ public class Algorithm {
 	 * @param me
 	 * @return Middle point
 	 */
-	private static UserLocalizationInfo centerOfInterestArea(User L, User me) {
+	private static Localization centerOfInterestArea(User L, User me) {
 		double latCenter = (L.getLatitude() + me.getLatitude()) / 2;
 		double longitCenter = (L.getLongitude() + me.getLongitude()) / 2;
-		UserLocalizationInfo u = new UserLocalizationInfo(latCenter, longitCenter);
+		Localization u = new Localization(latCenter, longitCenter);
 		return u;
 	}
 	
