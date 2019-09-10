@@ -19,7 +19,7 @@ import user.User;
 
 /**
  * 
- * Un'instanza di questa classe descrive un libro il quale è inserito all'interno del programma di book crossing
+ * Un'instanza di questa classe descrive un libro il quale ï¿½ inserito all'interno del programma di book crossing
  * 
  * @author Paganessi Andrea - Piffari Michele - Villa Stefano
  * @version 1.0
@@ -125,6 +125,7 @@ public class Book implements BookManager{
 		else {
 			this.bcid = temp;
 		}*/      
+
 	}
 
 	/**
@@ -161,7 +162,7 @@ public class Book implements BookManager{
 
 	/**
 	 * Sorta di super init, il quale va a generare un BCID casualmente, 
-	 * controllando poi che questo BCID appena creato non esista già nel database: in questo
+	 * controllando poi che questo BCID appena creato non esista giï¿½ nel database: in questo
 	 * caso quindi, un altro BCID verrebbe ricreato immediatamente.
 	 */
 	public Book() {
@@ -173,7 +174,7 @@ public class Book implements BookManager{
 
 	/**
 	 * 
-	 * @return true se il libro è stato inserito nel db, altrimenti false
+	 * @return true se il libro ï¿½ stato inserito nel db, altrimenti false
 	 */
 	public boolean insert() {
 		return BookData.getInstance().insertBook(this);
@@ -182,7 +183,7 @@ public class Book implements BookManager{
 	/**
 	 * 
 	 * @param username
-	 * @return true se la prenotazione è stata completata
+	 * @return true se la prenotazione ï¿½ stata completata
 	 */
 	public boolean reserve(String username) {
 		User u = new User();
