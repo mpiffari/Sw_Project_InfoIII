@@ -23,7 +23,8 @@ public class Book implements Serializable{
 	private @Nullable String ISBN;
 	private String user;
 	private boolean underReading;
-
+    private Double latitude;
+    private Double longitude;
     /**
      * Empty Book init
      */
@@ -145,6 +146,38 @@ public class Book implements Serializable{
         this.underReading = getStateFromString(copyLines[7]);
         this.BCID = getBCIDFromString(copyLines[8]);*/
 	}
+
+    /**
+     *
+     * @param latitude
+     */
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
+    }
+
+    /**
+     *
+     * @param longitude
+     */
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
+    }
+
+    /**
+     *
+     * @return posizione/latitudine di questo libro
+     */
+    public Double getLatitude() {
+        return latitude;
+    }
+
+    /**
+     *
+     * @return la posizione/latitudine di questo libro
+     */
+    public Double getLongitude() {
+        return longitude;
+    }
 
     /**
      * Imposta l'ISBN per questo libro
