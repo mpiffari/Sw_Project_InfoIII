@@ -12,13 +12,13 @@
 \contentsline {section}{\numberline {3.1}Deployment diagram}{17}{section.3.1}
 \contentsline {section}{\numberline {3.2}Architecture Envisioning}{17}{section.3.2}
 \contentsline {section}{\numberline {3.3}Database architecture}{18}{section.3.3}
-\contentsline {part}{II\hspace {1em}Iterazione 1}{19}{part.2}
-\contentsline {chapter}{\numberline {4}Architettura}{21}{chapter.4}
-\contentsline {section}{\numberline {4.1}Architettura software}{21}{section.4.1}
-\contentsline {section}{\numberline {4.2}Logical view}{22}{section.4.2}
-\contentsline {chapter}{\numberline {5}Analisi dei componenti}{25}{chapter.5}
-\contentsline {chapter}{\numberline {6}Observer-delegate pattern: la nostra implementazione}{27}{chapter.6}
-\contentsline {chapter}{\numberline {7}Implementazione comunicazione server: il framework \textit {Netty}}{35}{chapter.7}
-\contentsline {chapter}{\numberline {8}Parte algoritmica: \textit {reservation handler}}{37}{chapter.8}
-\contentsline {part}{III\hspace {1em}Iterazione 2}{41}{part.3}
-\contentsline {chapter}{\numberline {9}Analisi dei componenti}{43}{chapter.9}
+\contentsline {part}{II\hspace {1em}Iterazione 1}{21}{part.2}
+\contentsline {chapter}{\numberline {4}Architettura}{23}{chapter.4}
+\contentsline {section}{\numberline {4.1}Architettura software}{23}{section.4.1}
+\contentsline {section}{\numberline {4.2}Logical view}{24}{section.4.2}
+\contentsline {chapter}{\numberline {5}Analisi dei componenti}{27}{chapter.5}
+\contentsline {chapter}{\numberline {6}Observer-delegate pattern: la nostra implementazione}{29}{chapter.6}
+\contentsline {chapter}{\numberline {7}Implementazione comunicazione server: il framework \textit {Netty}}{37}{chapter.7}
+\contentsline {chapter}{\numberline {8}Parte algoritmica: \textit {reservation handler}}{39}{chapter.8}
+\contentsline {part}{III\hspace {1em}Iterazione 2}{43}{part.3}
+\contentsline {chapter}{\numberline {9}Analisi dei componenti}{45}{chapter.9}
