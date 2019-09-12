@@ -125,7 +125,7 @@ public final class Communication implements SendAnswer {
 				}
 
 				future.addListener(ChannelFutureListener.CLOSE);
-				// rimuvo il ChannelHandlerContext
+				// rimuovo il ChannelHandlerContext
 				chcMap.remove(username);
 			}
 		});

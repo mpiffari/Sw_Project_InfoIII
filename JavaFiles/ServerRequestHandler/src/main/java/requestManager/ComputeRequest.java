@@ -184,7 +184,7 @@ public class ComputeRequest implements ProcessRequest{
 
 	/**
 	 * Metodo per andare a creare la "chain" di utenti per la gestione delle prenotazioni
-	 * in cui l'utente username � coinvolto
+	 * in cui l'utente username è coinvolto
 	 * @param username
 	 * @return
 	 */
