@@ -1,4 +1,4 @@
-package requestManager;
+package requestManager.communication;
 
 public interface SendAnswer {
 

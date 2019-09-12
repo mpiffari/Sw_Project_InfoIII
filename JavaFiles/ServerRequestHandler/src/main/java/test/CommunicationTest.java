@@ -5,9 +5,9 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import book.Book;
-import requestManager.Communication;
 import requestManager.ComputeRequest;
 import requestManager.RequestType;
+import requestManager.communication.Communication;
 import user.User;
 
 public class CommunicationTest {

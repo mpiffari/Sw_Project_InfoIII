@@ -8,6 +8,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import book.Book;
 import book.BookData;
+import requestManager.communication.Communication;
 import user.LoginStatus;
 import user.UserData;
 import user.User;
@@ -183,7 +184,7 @@ public class ComputeRequest implements ProcessRequest{
 
 	/**
 	 * Metodo per andare a creare la "chain" di utenti per la gestione delle prenotazioni
-	 * in cui l'utente username è coinvolto
+	 * in cui l'utente username ï¿½ coinvolto
 	 * @param username
 	 * @return
 	 */

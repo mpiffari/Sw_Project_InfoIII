@@ -1,27 +1,17 @@
-package requestManager;
+package requestManager.communication;
 
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.SimpleChannelInboundHandler;
-import io.netty.channel.ChannelHandler.Sharable;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
-import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
 import io.netty.handler.ssl.SslContext;
 import io.netty.handler.ssl.SslContextBuilder;
 import io.netty.handler.ssl.util.SelfSignedCertificate;
-import io.netty.channel.ChannelInitializer;
-import io.netty.channel.ChannelPipeline;
-import io.netty.channel.socket.SocketChannel;
-import io.netty.handler.codec.DelimiterBasedFrameDecoder;
-import io.netty.handler.codec.Delimiters;
-import io.netty.handler.codec.string.StringEncoder;
-
 import java.security.cert.CertificateException;
 import java.util.HashMap;
 
@@ -30,7 +20,7 @@ import javax.net.ssl.SSLException;
 
 /**
  * 
- * Classe contenente i metodi necessari per gestire la comunicazione verso server
+ * Classe contenente i metodi necessari per gestire la comunicazione lato server
  * basandosi sul framework Netty
  * 
  * @author Paganessi Andrea - Piffari Michele - Villa Stefano
@@ -38,69 +28,7 @@ import javax.net.ssl.SSLException;
  * @since 2018/2019
  *
  */
-class ServerInitializer extends ChannelInitializer<SocketChannel> {
 
-	private static final StringDecoder DECODER = new StringDecoder();
-	private static final StringEncoder ENCODER = new StringEncoder();
-
-	private static final ServerHandler SERVER_HANDLER = new ServerHandler();
-
-	private final SslContext sslCtx;
-
-	public ServerInitializer(SslContext sslCtx) {
-		this.sslCtx = sslCtx;
-	}
-
-	@Override
-	public void initChannel(SocketChannel ch) throws Exception {
-		ChannelPipeline pipeline = ch.pipeline();
-
-		if (sslCtx != null) {
-			pipeline.addLast(sslCtx.newHandler(ch.alloc()));
-		}
-
-		// Add the text line codec combination first,
-		pipeline.addLast(new DelimiterBasedFrameDecoder(8192, Delimiters.lineDelimiter()));
-		// The encoder and decoder are static as these are sharable
-		pipeline.addLast(DECODER);
-		pipeline.addLast(ENCODER);
-		// and then business logic.
-		pipeline.addLast(SERVER_HANDLER);
-	}
-}
-
-@Sharable
-class ServerHandler extends SimpleChannelInboundHandler<String> {
-
-	ComputeRequest computeRequest;
-	@Override
-	public void channelActive(ChannelHandlerContext ctx) throws Exception {
-		// Send greeting for a new connection.
-		computeRequest = ComputeRequest.computeRequestSingleton;
-		System.out.println("WELCOME TO A NEW CONNECTION");
-	}
-
-	@Override
-	public void channelRead0(ChannelHandlerContext ctx, String request) throws Exception {
-		int j = request.indexOf(";");
-		String username = request.substring(0, j);
-		Communication.chcMap.put(username, ctx);
-
-		System.out.println("Process request: " + request);
-		computeRequest.process(request.substring(j + 1), username);
-	}
-
-	@Override
-	public void channelReadComplete(ChannelHandlerContext ctx) {
-		ctx.flush();
-	}
-
-	@Override
-	public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
-		cause.printStackTrace();
-		ctx.close();
-	}
-}
 
 public final class Communication implements SendAnswer {
 
@@ -166,11 +94,7 @@ public final class Communication implements SendAnswer {
 		t.start();
 	}
 
-	public static void main(String[] args) throws Exception {
-		@SuppressWarnings("unused")
-		Communication c = new Communication();
-	}
-
+	
 	public void send(final String username, final String msg) {
 		System.out.println("Risposta da server verso client:\r\n" + msg);
 
@@ -205,5 +129,13 @@ public final class Communication implements SendAnswer {
 				chcMap.remove(username);
 			}
 		});
+	}
+	
+	
+	
+	
+	public static void main(String[] args) throws Exception {
+		@SuppressWarnings("unused")
+		Communication c = new Communication();
 	}
 }
