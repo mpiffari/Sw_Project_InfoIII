@@ -1,0 +1,49 @@
+I messaggi inviati dai client sono stringhe che possono essere identificate dalla seguente \textit{RegEx} (\textit{Regular Expression}): 
+\begin{center}
+	\begin{lstlisting}
+	^[a-zA-Z0-9]+;[a-zA-Z0-9]+:[0-9]+;([a-zA-Z0-9]+:[a-zA-Z0-9]+;)+$
+	\end{lstlisting}
+\end{center}
+la cui semantica può essere così rappresentata:
+\begin{center}
+"<username>;requestType:<tipo>;<richiesta>"
+\end{center}
+i valori assunti da <tipo> sono i seguenti:
+\begin{itemize}
+	\item 0 -> Registrazione manuale del libro
+	\item 1 -> Prenotazione di un libro	
+	\item 2 -> Login
+	\item 3 -> Registrazione nuovo utente
+	\item 4 -> Registrazione automatica del libro
+	\item 5 -> Informazioni del profilo
+	\item 6 -> Libri presi ???????????????????????????
+	\item 7 -> Libri Raccolti ????????????????????????
+	\item 8 -> Ricerca del libro
+\end{itemize}
+tale enumerazione è implementata da \textit{RequestType}.
+TODO: inserire esempio di una stringa realemente generata da android.
+
+
+Analogamente possiamo identificare i messaggi inviati dal server come:
+\begin{center}
+	\begin{lstlisting}
+	^[a-zA-Z0-9]+:[0-9]+;([a-zA-Z0-9]+:[a-zA-Z0-9]+;)+$
+	\end{lstlisting}
+\end{center}
+la cui semantica può essere così rappresentata:
+\begin{center}
+	"requestType:<tipo>;<risultato>"
+\end{center}
+TODO: inserire esempio di una stringa realemente generata dal server.
+
+
+Qual'ora il server riceva una richiesta con un tipo errato la risposta del server è la seguente:
+\begin{center}
+	\begin{lstlisting}
+	"requestType:10000;result:KO_RequestType"
+	\end{lstlisting}
+\end{center}
+
+
+
+
