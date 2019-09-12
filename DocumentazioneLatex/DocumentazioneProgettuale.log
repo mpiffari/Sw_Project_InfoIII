@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.9.11)  11 SEP 2019 17:51
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.9.11)  12 SEP 2019 15:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -523,6 +523,179 @@ File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 \Gin@req@height=\dimen107
 \Gin@req@width=\dimen108
 )
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty
+Package: textcomp 2017/04/05 v2.0i Standard LaTeX package
+Package textcomp Info: Sub-encoding information:
+(textcomp)               5 = only ISO-Adobe without \textcurrency
+(textcomp)               4 = 5 + \texteuro
+(textcomp)               3 = 4 + \textohm
+(textcomp)               2 = 3 + \textestimated + \textcurrency
+(textcomp)               1 = TS1 - \textcircled - \t
+(textcomp)               0 = TS1 (full)
+(textcomp)             Font families with sub-encoding setting implement
+(textcomp)             only a restricted character set as indicated.
+(textcomp)             Family '?' is the default used for unknown fonts.
+(textcomp)             See the documentation for details.
+Package textcomp Info: Setting ? sub-encoding to TS1/1 on input line 79.
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/ts1enc.def
+File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
+Now handling font encoding TS1 ...
+... processing UTF-8 mapping file for font encoding TS1
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/ts1enc.dfu
+File: ts1enc.dfu 2017/01/28 v1.1t UTF-8 support for inputenc
+   defining Unicode char U+00A2 (decimal 162)
+   defining Unicode char U+00A3 (decimal 163)
+   defining Unicode char U+00A4 (decimal 164)
+   defining Unicode char U+00A5 (decimal 165)
+   defining Unicode char U+00A6 (decimal 166)
+   defining Unicode char U+00A7 (decimal 167)
+   defining Unicode char U+00A8 (decimal 168)
+   defining Unicode char U+00A9 (decimal 169)
+   defining Unicode char U+00AA (decimal 170)
+   defining Unicode char U+00AC (decimal 172)
+   defining Unicode char U+00AE (decimal 174)
+   defining Unicode char U+00AF (decimal 175)
+   defining Unicode char U+00B0 (decimal 176)
+   defining Unicode char U+00B1 (decimal 177)
+   defining Unicode char U+00B2 (decimal 178)
+   defining Unicode char U+00B3 (decimal 179)
+   defining Unicode char U+00B4 (decimal 180)
+   defining Unicode char U+00B5 (decimal 181)
+   defining Unicode char U+00B6 (decimal 182)
+   defining Unicode char U+00B7 (decimal 183)
+   defining Unicode char U+00B9 (decimal 185)
+   defining Unicode char U+00BA (decimal 186)
+   defining Unicode char U+00BC (decimal 188)
+   defining Unicode char U+00BD (decimal 189)
+   defining Unicode char U+00BE (decimal 190)
+   defining Unicode char U+00D7 (decimal 215)
+   defining Unicode char U+00F7 (decimal 247)
+   defining Unicode char U+0192 (decimal 402)
+   defining Unicode char U+02C7 (decimal 711)
+   defining Unicode char U+02D8 (decimal 728)
+   defining Unicode char U+02DD (decimal 733)
+   defining Unicode char U+0E3F (decimal 3647)
+   defining Unicode char U+2016 (decimal 8214)
+   defining Unicode char U+2020 (decimal 8224)
+   defining Unicode char U+2021 (decimal 8225)
+   defining Unicode char U+2022 (decimal 8226)
+   defining Unicode char U+2030 (decimal 8240)
+   defining Unicode char U+2031 (decimal 8241)
+   defining Unicode char U+203B (decimal 8251)
+   defining Unicode char U+203D (decimal 8253)
+   defining Unicode char U+2044 (decimal 8260)
+   defining Unicode char U+204E (decimal 8270)
+   defining Unicode char U+2052 (decimal 8274)
+   defining Unicode char U+20A1 (decimal 8353)
+   defining Unicode char U+20A4 (decimal 8356)
+   defining Unicode char U+20A6 (decimal 8358)
+   defining Unicode char U+20A9 (decimal 8361)
+   defining Unicode char U+20AB (decimal 8363)
+   defining Unicode char U+20AC (decimal 8364)
+   defining Unicode char U+20B1 (decimal 8369)
+   defining Unicode char U+2103 (decimal 8451)
+   defining Unicode char U+2116 (decimal 8470)
+   defining Unicode char U+2117 (decimal 8471)
+   defining Unicode char U+211E (decimal 8478)
+   defining Unicode char U+2120 (decimal 8480)
+   defining Unicode char U+2122 (decimal 8482)
+   defining Unicode char U+2126 (decimal 8486)
+   defining Unicode char U+2127 (decimal 8487)
+   defining Unicode char U+212E (decimal 8494)
+   defining Unicode char U+2190 (decimal 8592)
+   defining Unicode char U+2191 (decimal 8593)
+   defining Unicode char U+2192 (decimal 8594)
+   defining Unicode char U+2193 (decimal 8595)
+   defining Unicode char U+2329 (decimal 9001)
+   defining Unicode char U+232A (decimal 9002)
+   defining Unicode char U+2422 (decimal 9250)
+   defining Unicode char U+25E6 (decimal 9702)
+   defining Unicode char U+25EF (decimal 9711)
+   defining Unicode char U+266A (decimal 9834)
+))
+LaTeX Info: Redefining \oldstylenums on input line 334.
+Package textcomp Info: Setting cmr sub-encoding to TS1/0 on input line 349.
+Package textcomp Info: Setting cmss sub-encoding to TS1/0 on input line 350.
+Package textcomp Info: Setting cmtt sub-encoding to TS1/0 on input line 351.
+Package textcomp Info: Setting cmvtt sub-encoding to TS1/0 on input line 352.
+Package textcomp Info: Setting cmbr sub-encoding to TS1/0 on input line 353.
+Package textcomp Info: Setting cmtl sub-encoding to TS1/0 on input line 354.
+Package textcomp Info: Setting ccr sub-encoding to TS1/0 on input line 355.
+Package textcomp Info: Setting ptm sub-encoding to TS1/4 on input line 356.
+Package textcomp Info: Setting pcr sub-encoding to TS1/4 on input line 357.
+Package textcomp Info: Setting phv sub-encoding to TS1/4 on input line 358.
+Package textcomp Info: Setting ppl sub-encoding to TS1/3 on input line 359.
+Package textcomp Info: Setting pag sub-encoding to TS1/4 on input line 360.
+Package textcomp Info: Setting pbk sub-encoding to TS1/4 on input line 361.
+Package textcomp Info: Setting pnc sub-encoding to TS1/4 on input line 362.
+Package textcomp Info: Setting pzc sub-encoding to TS1/4 on input line 363.
+Package textcomp Info: Setting bch sub-encoding to TS1/4 on input line 364.
+Package textcomp Info: Setting put sub-encoding to TS1/5 on input line 365.
+Package textcomp Info: Setting uag sub-encoding to TS1/5 on input line 366.
+Package textcomp Info: Setting ugq sub-encoding to TS1/5 on input line 367.
+Package textcomp Info: Setting ul8 sub-encoding to TS1/4 on input line 368.
+Package textcomp Info: Setting ul9 sub-encoding to TS1/4 on input line 369.
+Package textcomp Info: Setting augie sub-encoding to TS1/5 on input line 370.
+Package textcomp Info: Setting dayrom sub-encoding to TS1/3 on input line 371.
+Package textcomp Info: Setting dayroms sub-encoding to TS1/3 on input line 372.
+
+Package textcomp Info: Setting pxr sub-encoding to TS1/0 on input line 373.
+Package textcomp Info: Setting pxss sub-encoding to TS1/0 on input line 374.
+Package textcomp Info: Setting pxtt sub-encoding to TS1/0 on input line 375.
+Package textcomp Info: Setting txr sub-encoding to TS1/0 on input line 376.
+Package textcomp Info: Setting txss sub-encoding to TS1/0 on input line 377.
+Package textcomp Info: Setting txtt sub-encoding to TS1/0 on input line 378.
+Package textcomp Info: Setting lmr sub-encoding to TS1/0 on input line 379.
+Package textcomp Info: Setting lmdh sub-encoding to TS1/0 on input line 380.
+Package textcomp Info: Setting lmss sub-encoding to TS1/0 on input line 381.
+Package textcomp Info: Setting lmssq sub-encoding to TS1/0 on input line 382.
+Package textcomp Info: Setting lmvtt sub-encoding to TS1/0 on input line 383.
+Package textcomp Info: Setting lmtt sub-encoding to TS1/0 on input line 384.
+Package textcomp Info: Setting qhv sub-encoding to TS1/0 on input line 385.
+Package textcomp Info: Setting qag sub-encoding to TS1/0 on input line 386.
+Package textcomp Info: Setting qbk sub-encoding to TS1/0 on input line 387.
+Package textcomp Info: Setting qcr sub-encoding to TS1/0 on input line 388.
+Package textcomp Info: Setting qcs sub-encoding to TS1/0 on input line 389.
+Package textcomp Info: Setting qpl sub-encoding to TS1/0 on input line 390.
+Package textcomp Info: Setting qtm sub-encoding to TS1/0 on input line 391.
+Package textcomp Info: Setting qzc sub-encoding to TS1/0 on input line 392.
+Package textcomp Info: Setting qhvc sub-encoding to TS1/0 on input line 393.
+Package textcomp Info: Setting futs sub-encoding to TS1/4 on input line 394.
+Package textcomp Info: Setting futx sub-encoding to TS1/4 on input line 395.
+Package textcomp Info: Setting futj sub-encoding to TS1/4 on input line 396.
+Package textcomp Info: Setting hlh sub-encoding to TS1/3 on input line 397.
+Package textcomp Info: Setting hls sub-encoding to TS1/3 on input line 398.
+Package textcomp Info: Setting hlst sub-encoding to TS1/3 on input line 399.
+Package textcomp Info: Setting hlct sub-encoding to TS1/5 on input line 400.
+Package textcomp Info: Setting hlx sub-encoding to TS1/5 on input line 401.
+Package textcomp Info: Setting hlce sub-encoding to TS1/5 on input line 402.
+Package textcomp Info: Setting hlcn sub-encoding to TS1/5 on input line 403.
+Package textcomp Info: Setting hlcw sub-encoding to TS1/5 on input line 404.
+Package textcomp Info: Setting hlcf sub-encoding to TS1/5 on input line 405.
+Package textcomp Info: Setting pplx sub-encoding to TS1/3 on input line 406.
+Package textcomp Info: Setting pplj sub-encoding to TS1/3 on input line 407.
+Package textcomp Info: Setting ptmx sub-encoding to TS1/4 on input line 408.
+Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 409.
+)
 (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
 Package: babel 2018/02/14 3.18 The Babel package
 
@@ -768,26 +941,34 @@ File: lstlang1.sty 2015/06/04 1.6 listings language file
 (./DocumentazioneProgettuale.aux)
 \openout1 = `DocumentazioneProgettuale.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 82.
-LaTeX Font Info:    ... okay on input line 82.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 82.
-LaTeX Font Info:    ... okay on input line 82.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 82.
-LaTeX Font Info:    ... okay on input line 82.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 82.
-LaTeX Font Info:    ... okay on input line 82.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 82.
-LaTeX Font Info:    ... okay on input line 82.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 82.
-LaTeX Font Info:    ... okay on input line 82.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 82.
-LaTeX Font Info:    ... okay on input line 82.
-LaTeX Font Info:    Try loading font information for T1+lmr on input line 82.
- (/usr/share/texmf/tex/latex/lm/t1lmr.fd
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 84.
+LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 84.
+LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 84.
+LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 84.
+LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 84.
+LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 84.
+LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 84.
+LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 84.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 84.
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
+File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Try loading font information for T1+lmr on input line 84.
+
+(/usr/share/texmf/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 \AtBeginShipoutBox=\box40
-Package hyperref Info: Link coloring OFF on input line 82.
+Package hyperref Info: Link coloring OFF on input line 84.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -797,9 +978,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count131
 )
-LaTeX Info: Redefining \ref on input line 82.
-LaTeX Info: Redefining \pageref on input line 82.
-LaTeX Info: Redefining \nameref on input line 82.
+LaTeX Info: Redefining \ref on input line 84.
+LaTeX Info: Redefining \pageref on input line 84.
+LaTeX Info: Redefining \nameref on input line 84.
 
 (./DocumentazioneProgettuale.out) (./DocumentazioneProgettuale.out)
 \@outlinefile=\write3
@@ -860,33 +1041,33 @@ Package caption Info: rotating package is loaded.
 Package caption Info: wrapfig package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \c@lstlisting=\count138
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 86.
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 88.
 (/usr/share/texmf/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 86.
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 88.
 
 (/usr/share/texmf/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 86.
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 88.
 
 
 (/usr/share/texmf/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMX+lmex on input line 86.
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 88.
 
 
 (/usr/share/texmf/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 86.
+(Font)              <12> on input line 88.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 86.
+(Font)              <8> on input line 88.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 86.
+(Font)              <6> on input line 88.
  [1
 
 
@@ -926,13 +1107,10 @@ Overfull \hbox (32.35057pt too wide) in paragraph at lines 1--3
 e a dis-po-sizione dei pro-pri utenti un'applicazione
  []
 
-LaTeX Font Info:    Try loading font information for OMS+lmr on input line 6.
-(/usr/share/texmf/tex/latex/lm/omslmr.fd
-File: omslmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
-LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 6.
- [3
+LaTeX Font Info:    Try loading font information for TS1+lmr on input line 6.
+(/usr/share/texmf/tex/latex/lm/ts1lmr.fd
+File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+) [3
 
 ]) [4]
  2.
@@ -950,7 +1128,7 @@ sul li-bro, seguendo le istruzioni mostrate dall'applicazione.
  []
 
 [10] [11] [12]) (./Capitolo_Sezioni/UseCases.tex
-<Immagini/UseCase_BookCrossing.png, id=357, 840.741pt x 709.4505pt>
+<Immagini/UseCase_BookCrossing.png, id=372, 840.741pt x 709.4505pt>
 File: Immagini/UseCase_BookCrossing.png Graphic file (type png)
 <use Immagini/UseCase_BookCrossing.png>
 Package pdftex.def Info: Immagini/UseCase_BookCrossing.png  used on input line 
@@ -993,7 +1171,7 @@ Overfull \hbox (5.60779pt too wide) in paragraph at lines 4--33
  []
 
 ) (./Capitolo_Sezioni/StateBook.tex [14]
-<Immagini/BookState.jpg, id=371, 1074.0125pt x 1003.75pt>
+<Immagini/BookState.jpg, id=386, 1074.0125pt x 1003.75pt>
 File: Immagini/BookState.jpg Graphic file (type jpg)
 <use Immagini/BookState.jpg>
 Package pdftex.def Info: Immagini/BookState.jpg  used on input line 16.
@@ -1003,14 +1181,14 @@ Package pdftex.def Info: Immagini/BookState.jpg  used on input line 16.
 
 ]
  3.
-<Immagini/Deployment_Diagram.jpg, id=380, 1706.375pt x 546.04pt>
+<Immagini/Deployment_Diagram.jpg, id=395, 1706.375pt x 546.04pt>
 File: Immagini/Deployment_Diagram.jpg Graphic file (type jpg)
 <use Immagini/Deployment_Diagram.jpg>
 Package pdftex.def Info: Immagini/Deployment_Diagram.jpg  used on input line 11
-7.
+9.
 (pdftex.def)             Requested size: 483.69687pt x 154.7815pt.
 (./Capitolo_Sezioni/ArchitectureEnvisioning.tex
-<Immagini/Architecture_Envisoring.jpg, id=381, 610.4406pt x 65.5248pt>
+<Immagini/Architecture_Envisoring.jpg, id=396, 610.4406pt x 65.5248pt>
 File: Immagini/Architecture_Envisoring.jpg Graphic file (type jpg)
 <use Immagini/Architecture_Envisoring.jpg>
 Package pdftex.def Info: Immagini/Architecture_Envisoring.jpg  used on input li
@@ -1018,7 +1196,7 @@ ne 3.
 (pdftex.def)             Requested size: 483.69687pt x 51.91998pt.
 )
 (./Capitolo_Sezioni/DatabaseArchitecture.tex
-<Immagini/db_schema.jpg, id=384, 1212.53pt x 578.16pt>
+<Immagini/db_schema.jpg, id=399, 1212.53pt x 578.16pt>
 File: Immagini/db_schema.jpg Graphic file (type jpg)
 <use Immagini/db_schema.jpg>
 Package pdftex.def Info: Immagini/db_schema.jpg  used on input line 4.
@@ -1035,7 +1213,7 @@ See the caption package documentation for explanation.
 ] [21] [22]
  4.
 (./Capitolo_Sezioni/ArchiettuturaSoftware.tex
-<Immagini/Architettura_Software.jpg, id=413, 771.63281pt x 735.49782pt>
+<Immagini/Architettura_Software.jpg, id=428, 771.63281pt x 735.49782pt>
 File: Immagini/Architettura_Software.jpg Graphic file (type jpg)
 <use Immagini/Architettura_Software.jpg>
 Package pdftex.def Info: Immagini/Architettura_Software.jpg  used on input line
@@ -1044,12 +1222,12 @@ Package pdftex.def Info: Immagini/Architettura_Software.jpg  used on input line
  [23
 
  <./Immagini/Architettura_Software.jpg>]) (./Capitolo_Sezioni/LogicalView.tex
-<Immagini/GUI_subsys.JPG, id=420, 299.61937pt x 313.9228pt>
+<Immagini/GUI_subsys.JPG, id=435, 299.61937pt x 313.9228pt>
 File: Immagini/GUI_subsys.JPG Graphic file (type jpg)
 <use Immagini/GUI_subsys.JPG>
 Package pdftex.def Info: Immagini/GUI_subsys.JPG  used on input line 3.
 (pdftex.def)             Requested size: 386.95897pt x 405.46504pt.
-<Immagini/RequestManager_subsys.JPG, id=421, 454.69875pt x 293.59688pt>
+<Immagini/RequestManager_subsys.JPG, id=436, 454.69875pt x 293.59688pt>
 File: Immagini/RequestManager_subsys.JPG Graphic file (type jpg)
 <use Immagini/RequestManager_subsys.JPG>
 Package pdftex.def Info: Immagini/RequestManager_subsys.JPG  used on input line
@@ -1059,7 +1237,7 @@ Package pdftex.def Info: Immagini/RequestManager_subsys.JPG  used on input line
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Immagini/RequestManagerSrv_subsys.JPG, id=422, 538.26094pt x 304.88907pt>
+<Immagini/RequestManagerSrv_subsys.JPG, id=437, 538.26094pt x 304.88907pt>
 File: Immagini/RequestManagerSrv_subsys.JPG Graphic file (type jpg)
 <use Immagini/RequestManagerSrv_subsys.JPG>
 Package pdftex.def Info: Immagini/RequestManagerSrv_subsys.JPG  used on input l
@@ -1068,7 +1246,7 @@ ine 15.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Immagini/Server_subsys.jpg, id=423, 557.83406pt x 320.69812pt>
+<Immagini/Server_subsys.jpg, id=438, 557.83406pt x 320.69812pt>
 File: Immagini/Server_subsys.jpg Graphic file (type jpg)
 <use Immagini/Server_subsys.jpg>
 Package pdftex.def Info: Immagini/Server_subsys.jpg  used on input line 21.
@@ -1086,7 +1264,7 @@ Immagini/RequestManagerSrv_subsys.JPG>]) [26 <./Immagini/Server_subsys.jpg>]
 ]
  6.
 (./Capitolo_Sezioni/ObserverDelegate.tex
-<Immagini/Observer/ObserverTheory.jpg, id=452, 563.10374pt x 429.605pt>
+<Immagini/Observer/ObserverTheory.jpg, id=467, 563.10374pt x 429.605pt>
 File: Immagini/Observer/ObserverTheory.jpg Graphic file (type jpg)
 <use Immagini/Observer/ObserverTheory.jpg>
 Package pdftex.def Info: Immagini/Observer/ObserverTheory.jpg  used on input li
@@ -1096,7 +1274,7 @@ ne 6.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<Immagini/Observer/RegisterToDispatcherData.JPG, id=455, 805.50937pt x 261.2259
+<Immagini/Observer/RegisterToDispatcherData.JPG, id=470, 805.50937pt x 261.2259
 4pt>
 File: Immagini/Observer/RegisterToDispatcherData.JPG Graphic file (type jpg)
 <use Immagini/Observer/RegisterToDispatcherData.JPG>
@@ -1106,7 +1284,7 @@ n input line 14.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<Immagini/Observer/UnregisterFromDispatcherData.JPG, id=456, 432.86719pt x 271.
+<Immagini/Observer/UnregisterFromDispatcherData.JPG, id=471, 432.86719pt x 271.
 76532pt>
 File: Immagini/Observer/UnregisterFromDispatcherData.JPG Graphic file (type jpg
 )
@@ -1117,7 +1295,7 @@ ed on input line 20.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<Immagini/ObserverForUIInformation.jpg, id=458, 1435.61343pt x 314.67563pt>
+<Immagini/ObserverForUIInformation.jpg, id=473, 1435.61343pt x 314.67563pt>
 File: Immagini/ObserverForUIInformation.jpg Graphic file (type jpg)
 <use Immagini/ObserverForUIInformation.jpg>
 Package pdftex.def Info: Immagini/ObserverForUIInformation.jpg  used on input l
@@ -1126,7 +1304,7 @@ ine 27.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<Immagini/ClassDiagramDispatcherDelegate.jpg, id=460, 890.32625pt x 493.845pt>
+<Immagini/ClassDiagramDispatcherDelegate.jpg, id=475, 890.32625pt x 493.845pt>
 File: Immagini/ClassDiagramDispatcherDelegate.jpg Graphic file (type jpg)
 <use Immagini/ClassDiagramDispatcherDelegate.jpg>
 Package pdftex.def Info: Immagini/ClassDiagramDispatcherDelegate.jpg  used on i
@@ -1135,7 +1313,7 @@ nput line 35.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<Immagini/LoginFragment.jpg, id=468, 229.60782pt x 314.67563pt>
+<Immagini/LoginFragment.jpg, id=483, 229.60782pt x 314.67563pt>
 File: Immagini/LoginFragment.jpg Graphic file (type jpg)
 <use Immagini/LoginFragment.jpg>
 Package pdftex.def Info: Immagini/LoginFragment.jpg  used on input line 45.
@@ -1143,7 +1321,7 @@ Package pdftex.def Info: Immagini/LoginFragment.jpg  used on input line 45.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Immagini/PickUpFragment.jpg, id=469, 246.9225pt x 314.67563pt>
+<Immagini/PickUpFragment.jpg, id=484, 246.9225pt x 314.67563pt>
 File: Immagini/PickUpFragment.jpg Graphic file (type jpg)
 <use Immagini/PickUpFragment.jpg>
 Package pdftex.def Info: Immagini/PickUpFragment.jpg  used on input line 51.
@@ -1151,7 +1329,7 @@ Package pdftex.def Info: Immagini/PickUpFragment.jpg  used on input line 51.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Immagini/ProfileFragment.jpg, id=470, 229.60782pt x 320.69812pt>
+<Immagini/ProfileFragment.jpg, id=485, 229.60782pt x 320.69812pt>
 File: Immagini/ProfileFragment.jpg Graphic file (type jpg)
 <use Immagini/ProfileFragment.jpg>
 Package pdftex.def Info: Immagini/ProfileFragment.jpg  used on input line 57.
@@ -1159,7 +1337,7 @@ Package pdftex.def Info: Immagini/ProfileFragment.jpg  used on input line 57.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Immagini/SignInFragment.jpg, id=471, 229.60782pt x 319.1925pt>
+<Immagini/SignInFragment.jpg, id=486, 229.60782pt x 319.1925pt>
 File: Immagini/SignInFragment.jpg Graphic file (type jpg)
 <use Immagini/SignInFragment.jpg>
 Package pdftex.def Info: Immagini/SignInFragment.jpg  used on input line 63.
@@ -1167,7 +1345,7 @@ Package pdftex.def Info: Immagini/SignInFragment.jpg  used on input line 63.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Immagini/TakenBooksFragment.jpg, id=472, 251.43938pt x 318.43968pt>
+<Immagini/TakenBooksFragment.jpg, id=487, 251.43938pt x 318.43968pt>
 File: Immagini/TakenBooksFragment.jpg Graphic file (type jpg)
 <use Immagini/TakenBooksFragment.jpg>
 Package pdftex.def Info: Immagini/TakenBooksFragment.jpg  used on input line 69
@@ -1176,7 +1354,7 @@ Package pdftex.def Info: Immagini/TakenBooksFragment.jpg  used on input line 69
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Immagini/BookRegistrationFragment.jpg, id=473, 229.60782pt x 314.67563pt>
+<Immagini/BookRegistrationFragment.jpg, id=488, 229.60782pt x 314.67563pt>
 File: Immagini/BookRegistrationFragment.jpg Graphic file (type jpg)
 <use Immagini/BookRegistrationFragment.jpg>
 Package pdftex.def Info: Immagini/BookRegistrationFragment.jpg  used on input l
@@ -1195,16 +1373,55 @@ jpg>] [36
 
 ]
  7.
-[37] [38
+(./Capitolo_Sezioni/FrameworkNetty.tex [37]
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 45.
+
+(/usr/share/texmf/tex/latex/lm/t1lmtt.fd
+File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+Overfull \hbox (20.30826pt too wide) in paragraph at lines 64--66
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (50.30856pt too wide) in paragraph at lines 74--75
+[][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (14.3082pt too wide) in paragraph at lines 75--76
+[][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[38])
+ 8.
+(./Capitolo_Sezioni/FrameworkNetty.tex [39
 
 ]
- 8.
+Overfull \hbox (20.30826pt too wide) in paragraph at lines 64--66
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (50.30856pt too wide) in paragraph at lines 74--75
+[][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (14.3082pt too wide) in paragraph at lines 75--76
+[][][][][][][][][][][][][][][][][][][][] 
+ []
+
+[40]) [41] [42
+
+]
+ 9.
 (./Capitolo_Sezioni/Algoritmo.tex
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <17.28> on input line 8.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <10> on input line 8.
-<Immagini/Algoritmo_Explanation.jpeg, id=517, 478.78876pt x 180.675pt>
+<Immagini/Algoritmo_Explanation.jpeg, id=706, 478.78876pt x 180.675pt>
 File: Immagini/Algoritmo_Explanation.jpeg Graphic file (type jpg)
 <use Immagini/Algoritmo_Explanation.jpeg>
 Package pdftex.def Info: Immagini/Algoritmo_Explanation.jpeg  used on input lin
@@ -1214,8 +1431,8 @@ e 29.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[39]
-<Immagini/Algorithm_PuntoIncontro.jpg, id=529, 448.67625pt x 216.81pt>
+[43]
+<Immagini/Algorithm_PuntoIncontro.jpg, id=719, 448.67625pt x 216.81pt>
 File: Immagini/Algorithm_PuntoIncontro.jpg Graphic file (type jpg)
 <use Immagini/Algorithm_PuntoIncontro.jpg>
 Package pdftex.def Info: Immagini/Algorithm_PuntoIncontro.jpg  used on input li
@@ -1229,13 +1446,13 @@ $[]$
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [40 <./Immagini/Algoritmo_Explanation.jpeg> <./Immagini/Algorithm_PuntoIncontr
+ [44 <./Immagini/Algoritmo_Explanation.jpeg> <./Immagini/Algorithm_PuntoIncontr
 o.jpg>]
 Overfull \hbox (51.46509pt too wide) in paragraph at lines 81--97
 $[]$ 
  []
 
-<Immagini/Algorithm_UsersNet.jpg, id=538, 572.1375pt x 498.36188pt>
+<Immagini/Algorithm_UsersNet.jpg, id=727, 572.1375pt x 498.36188pt>
 File: Immagini/Algorithm_UsersNet.jpg Graphic file (type jpg)
 <use Immagini/Algorithm_UsersNet.jpg>
 Package pdftex.def Info: Immagini/Algorithm_UsersNet.jpg  used on input line 10
@@ -1244,51 +1461,52 @@ Package pdftex.def Info: Immagini/Algorithm_UsersNet.jpg  used on input line 10
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-) [41] [42 <./Immagini/Algorithm_UsersNet.jpg>] [43
+) [45] [46 <./Immagini/Algorithm_UsersNet.jpg>] [47
 
-] [44]
- 9.
+] [48]
+ 10.
 (./Capitolo_Sezioni/AnalisiDeiComponenti_2.tex)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 147.
- [45
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 156.
+ [49
 
-] [46]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 147.
+] [50]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 156.
 
 (./DocumentazioneProgettuale.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 147.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 147.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 156.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 156.
 Package rerunfilecheck Info: File `DocumentazioneProgettuale.out' has not chang
 ed.
-(rerunfilecheck)             Checksum: 2123A38B3DFC982A8CA84D5819A1999A;1487.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 147.
+(rerunfilecheck)             Checksum: 33F41AC027495DCA3850434E0B095F9B;1700.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 156.
  ) 
 Here is how much of TeX's memory you used:
- 11329 strings out of 494847
- 169281 string characters out of 6179080
- 296803 words of memory out of 5000000
- 14200 multiletter control sequences out of 15000+600000
- 117424 words of font info for 66 fonts, out of 8000000 for 9000
+ 12866 strings out of 494847
+ 188627 string characters out of 6179080
+ 328596 words of memory out of 5000000
+ 15549 multiletter control sequences out of 15000+600000
+ 125374 words of font info for 70 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
- 36i,16n,40p,870b,586s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 36i,16n,40p,870b,1315s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dv
-ips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share
-/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}</usr/share/texmf/fonts/type1/public/lm
-/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texm
-f/fonts/type1/public/lm/lmbxi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmc
-sc10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/f
-onts/type1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.p
-fb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/ty
-pe1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr17.pfb></usr
-/share/texmf/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/type1/publi
-c/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr9.pfb></usr/share/texm
-f/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmri
-9.pfb></usr/share/texmf/fonts/type1/public/lm/lmro10.pfb></usr/share/texmf/font
-s/type1/public/lm/lmsy10.pfb>
-Output written on DocumentazioneProgettuale.pdf (54 pages, 3092114 bytes).
+ips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/s
+hare/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm
+-ts1.enc}</usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/f
+onts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmbxi10
+.pfb></usr/share/texmf/fonts/type1/public/lm/lmcsc10.pfb></usr/share/texmf/font
+s/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi12.pfb
+></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type
+1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/s
+hare/texmf/fonts/type1/public/lm/lmr17.pfb></usr/share/texmf/fonts/type1/public
+/lm/lmr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf
+/fonts/type1/public/lm/lmr9.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.
+pfb></usr/share/texmf/fonts/type1/public/lm/lmri9.pfb></usr/share/texmf/fonts/t
+ype1/public/lm/lmro10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></
+usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb>
+Output written on DocumentazioneProgettuale.pdf (58 pages, 3135001 bytes).
 PDF statistics:
- 677 PDF objects out of 1000 (max. 8388607)
- 573 compressed objects within 6 object streams
- 199 named destinations out of 1000 (max. 500000)
- 305 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 904 PDF objects out of 1000 (max. 8388607)
+ 793 compressed objects within 8 object streams
+ 360 named destinations out of 1000 (max. 500000)
+ 329 words of extra memory for PDF output out of 10000 (max. 10000000)
 

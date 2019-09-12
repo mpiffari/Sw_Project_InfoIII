@@ -13,13 +13,15 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{hyperref}
 \usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{textcomp}
 \usepackage[english]{babel}
 \usepackage[a4paper,top=2cm,bottom=2cm,left=2cm,right=2cm]{geometry}
 \usepackage{lscape}
 \usepackage{caption}
 \usepackage{amsmath}
 \usepackage{listingsutf8}
-
+\usepackage{listings}
 \usepackage{wrapfig}
 \usepackage{rotating}
 \usepackage{epstopdf}
@@ -138,6 +140,13 @@
 \input{Capitolo_Sezioni/ObserverDelegate}
 \newpage
 \chapter{Implementazione comunicazione server: il framework \textit{Netty}}
+\input{Capitolo_Sezioni/FrameworkNetty}
+\newpage
+\chapter{Implementazione comunicazione server}
+\section{il framework \textit{Netty}}
+\input{Capitolo_Sezioni/FrameworkNetty}
+\section{semantica dei messaggi}
+\newpage
 \chapter{Parte algoritmica: \textit{reservation handler}}
 \input{Capitolo_Sezioni/Algoritmo}
 \part{Iterazione 2}
