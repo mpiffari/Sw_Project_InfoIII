@@ -1,4 +1,4 @@
-package com.bc.bookcrossing.src.Controllers;
+package com.bc.bookcrossing.src.requestManager;
 
 import android.support.annotation.Nullable;
 

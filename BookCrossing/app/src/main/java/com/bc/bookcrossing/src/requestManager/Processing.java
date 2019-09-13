@@ -1,4 +1,4 @@
-package com.bc.bookcrossing.src.Controllers;
+package com.bc.bookcrossing.src.requestManager;
 
 import android.util.Log;
 
@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import static com.bc.bookcrossing.src.Controllers.Communication.singletonCommunication;
+import static com.bc.bookcrossing.src.requestManager.communication.Communication.singletonCommunication;
 
 /**
  *

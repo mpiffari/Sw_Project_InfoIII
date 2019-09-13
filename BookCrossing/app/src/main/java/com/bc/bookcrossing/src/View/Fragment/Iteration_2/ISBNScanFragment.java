@@ -21,7 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bc.bookcrossing.src.ClientModels.NoScanResultException;
-import com.bc.bookcrossing.src.Controllers.FetchAndParseBook;
+import com.bc.bookcrossing.src.requestManager.FetchAndParseBook;
 import com.bc.bookcrossing.src.View.Delegate.DataDispatcherSingleton;
 import com.bc.bookcrossing.src.View.Fragment.Iteration_1.BookRegistrationFragment;
 import com.bc.bookcrossing.src.View.Observer.ObserverDataBookRegistration;

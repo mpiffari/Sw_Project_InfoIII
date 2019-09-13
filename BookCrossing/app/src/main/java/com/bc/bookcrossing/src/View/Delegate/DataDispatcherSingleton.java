@@ -6,7 +6,7 @@ import android.support.annotation.RequiresApi;
 import com.bc.bookcrossing.src.View.Observer.ObserverDataBookReservation;
 import com.bc.bookcrossing.src.View.Observer.ObserverDataBookResearch;
 import com.bc.bookcrossing.src.ClientModels.BookInfo;
-import com.bc.bookcrossing.src.Controllers.ReceiveData;
+import com.bc.bookcrossing.src.requestManager.ReceiveData;
 import com.bc.bookcrossing.src.View.Observer.ObserverDataBookRegistration;
 import com.bc.bookcrossing.src.View.Observer.ObserverDataBookPickUp;
 import com.bc.bookcrossing.src.View.Observer.ObserverDataBookTaken;
@@ -18,7 +18,7 @@ import com.bc.bookcrossing.src.ClientModels.Enums.LoginStatus;
 import com.bc.bookcrossing.src.ClientModels.Enums.SignInStatus;
 import com.bc.bookcrossing.src.ClientModels.User;
 import com.bc.bookcrossing.src.ClientModels.UserInformations;
-import com.bc.bookcrossing.src.Controllers.Processing;
+import com.bc.bookcrossing.src.requestManager.Processing;
 import com.bc.bookcrossing.src.ClientModels.Book;
 
 import java.nio.charset.StandardCharsets;

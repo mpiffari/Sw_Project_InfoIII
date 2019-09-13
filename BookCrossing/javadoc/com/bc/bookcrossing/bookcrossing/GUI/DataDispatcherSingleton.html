@@ -109,13 +109,13 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <dl>
 <dt>All Implemented Interfaces:</dt>
-<dd><a href="../../../../../com/bc/bookcrossing/bookcrossing/GUI/DelegateSendData.html" title="interface in com.bc.bookcrossing.src.View">DelegateSendData</a>, <a href="../../../../../com/bc/bookcrossing/bookcrossing/RequestManager/ReceiveData.html" title="interface in com.bc.bookcrossing.src.Controllers">ReceiveData</a></dd>
+<dd><a href="../../../../../com/bc/bookcrossing/bookcrossing/GUI/DelegateSendData.html" title="interface in com.bc.bookcrossing.src.View">DelegateSendData</a>, <a href="../../../../../com/bc/bookcrossing/bookcrossing/RequestManager/ReceiveData.html" title="interface in com.bc.bookcrossing.src.requestManager">ReceiveData</a></dd>
 </dl>
 <hr>
 <br>
 <pre>public class <span class="typeNameLabel">DataDispatcherSingleton</span>
 extends java.lang.Object
-implements <a href="../../../../../com/bc/bookcrossing/bookcrossing/RequestManager/ReceiveData.html" title="interface in com.bc.bookcrossing.src.Controllers">ReceiveData</a>, <a href="../../../../../com/bc/bookcrossing/bookcrossing/GUI/DelegateSendData.html" title="interface in com.bc.bookcrossing.src.View">DelegateSendData</a></pre>
+implements <a href="../../../../../com/bc/bookcrossing/bookcrossing/RequestManager/ReceiveData.html" title="interface in com.bc.bookcrossing.src.requestManager">ReceiveData</a>, <a href="../../../../../com/bc/bookcrossing/bookcrossing/GUI/DelegateSendData.html" title="interface in com.bc.bookcrossing.src.View">DelegateSendData</a></pre>
 <dl>
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>2018/2019</dd>
@@ -455,7 +455,7 @@ implements <a href="../../../../../com/bc/bookcrossing/bookcrossing/RequestManag
                                  java.lang.String&nbsp;bookCodeID)</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../../../com/bc/bookcrossing/bookcrossing/RequestManager/ReceiveData.html#callbackRegistration-boolean-java.lang.String-">callbackRegistration</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../com/bc/bookcrossing/bookcrossing/RequestManager/ReceiveData.html" title="interface in com.bc.bookcrossing.src.Controllers">ReceiveData</a></code></dd>
+<dd><code><a href="../../../../../com/bc/bookcrossing/bookcrossing/RequestManager/ReceiveData.html#callbackRegistration-boolean-java.lang.String-">callbackRegistration</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../com/bc/bookcrossing/bookcrossing/RequestManager/ReceiveData.html" title="interface in com.bc.bookcrossing.src.requestManager">ReceiveData</a></code></dd>
 </dl>
 </li>
 </ul>
@@ -468,7 +468,7 @@ implements <a href="../../../../../com/bc/bookcrossing/bookcrossing/RequestManag
 <pre>public&nbsp;void&nbsp;callbackPickUp(short&nbsp;bookStatus)</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../../../com/bc/bookcrossing/bookcrossing/RequestManager/ReceiveData.html#callbackPickUp-short-">callbackPickUp</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../com/bc/bookcrossing/bookcrossing/RequestManager/ReceiveData.html" title="interface in com.bc.bookcrossing.src.Controllers">ReceiveData</a></code></dd>
+<dd><code><a href="../../../../../com/bc/bookcrossing/bookcrossing/RequestManager/ReceiveData.html#callbackPickUp-short-">callbackPickUp</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../com/bc/bookcrossing/bookcrossing/RequestManager/ReceiveData.html" title="interface in com.bc.bookcrossing.src.requestManager">ReceiveData</a></code></dd>
 </dl>
 </li>
 </ul>
@@ -481,7 +481,7 @@ implements <a href="../../../../../com/bc/bookcrossing/bookcrossing/RequestManag
 <pre>public&nbsp;void&nbsp;callbackBookTaken(java.util.ArrayList&lt;<a href="../../../../../com/bc/bookcrossing/bookcrossing/Structures/BookInfo.html" title="class in com.bc.bookcrossing.src.ClientModels">BookInfo</a>&gt;&nbsp;bookInformations)</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../../../com/bc/bookcrossing/bookcrossing/RequestManager/ReceiveData.html#callbackBookTaken-java.util.ArrayList-">callbackBookTaken</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../com/bc/bookcrossing/bookcrossing/RequestManager/ReceiveData.html" title="interface in com.bc.bookcrossing.src.Controllers">ReceiveData</a></code></dd>
+<dd><code><a href="../../../../../com/bc/bookcrossing/bookcrossing/RequestManager/ReceiveData.html#callbackBookTaken-java.util.ArrayList-">callbackBookTaken</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../com/bc/bookcrossing/bookcrossing/RequestManager/ReceiveData.html" title="interface in com.bc.bookcrossing.src.requestManager">ReceiveData</a></code></dd>
 </dl>
 </li>
 </ul>
@@ -495,7 +495,7 @@ implements <a href="../../../../../com/bc/bookcrossing/bookcrossing/RequestManag
                           <a href="../../../../../com/bc/bookcrossing/bookcrossing/Structures/LoginStatus.html" title="enum in com.bc.bookcrossing.src.ClientModels">LoginStatus</a>&nbsp;s)</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../../../com/bc/bookcrossing/bookcrossing/RequestManager/ReceiveData.html#callbackLogin-boolean-com.bc.bookcrossing.bookcrossing.Structures.LoginStatus-">callbackLogin</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../com/bc/bookcrossing/bookcrossing/RequestManager/ReceiveData.html" title="interface in com.bc.bookcrossing.src.Controllers">ReceiveData</a></code></dd>
+<dd><code><a href="../../../../../com/bc/bookcrossing/bookcrossing/RequestManager/ReceiveData.html#callbackLogin-boolean-com.bc.bookcrossing.bookcrossing.Structures.LoginStatus-">callbackLogin</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../com/bc/bookcrossing/bookcrossing/RequestManager/ReceiveData.html" title="interface in com.bc.bookcrossing.src.requestManager">ReceiveData</a></code></dd>
 </dl>
 </li>
 </ul>
@@ -508,7 +508,7 @@ implements <a href="../../../../../com/bc/bookcrossing/bookcrossing/RequestManag
 <pre>public&nbsp;void&nbsp;callbackProfile(<a href="../../../../../com/bc/bookcrossing/bookcrossing/Structures/UserInformations.html" title="class in com.bc.bookcrossing.src.ClientModels">UserInformations</a>&nbsp;userInformations)</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../../../com/bc/bookcrossing/bookcrossing/RequestManager/ReceiveData.html#callbackProfile-com.bc.bookcrossing.bookcrossing.Structures.UserInformations-">callbackProfile</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../com/bc/bookcrossing/bookcrossing/RequestManager/ReceiveData.html" title="interface in com.bc.bookcrossing.src.Controllers">ReceiveData</a></code></dd>
+<dd><code><a href="../../../../../com/bc/bookcrossing/bookcrossing/RequestManager/ReceiveData.html#callbackProfile-com.bc.bookcrossing.bookcrossing.Structures.UserInformations-">callbackProfile</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../com/bc/bookcrossing/bookcrossing/RequestManager/ReceiveData.html" title="interface in com.bc.bookcrossing.src.requestManager">ReceiveData</a></code></dd>
 </dl>
 </li>
 </ul>
@@ -521,7 +521,7 @@ implements <a href="../../../../../com/bc/bookcrossing/bookcrossing/RequestManag
 <pre>public&nbsp;void&nbsp;callbackSignIn(java.util.List&lt;<a href="../../../../../com/bc/bookcrossing/bookcrossing/Structures/SignInStatus.html" title="enum in com.bc.bookcrossing.src.ClientModels">SignInStatus</a>&gt;&nbsp;status)</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../../../com/bc/bookcrossing/bookcrossing/RequestManager/ReceiveData.html#callbackSignIn-java.util.List-">callbackSignIn</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../com/bc/bookcrossing/bookcrossing/RequestManager/ReceiveData.html" title="interface in com.bc.bookcrossing.src.Controllers">ReceiveData</a></code></dd>
+<dd><code><a href="../../../../../com/bc/bookcrossing/bookcrossing/RequestManager/ReceiveData.html#callbackSignIn-java.util.List-">callbackSignIn</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../com/bc/bookcrossing/bookcrossing/RequestManager/ReceiveData.html" title="interface in com.bc.bookcrossing.src.requestManager">ReceiveData</a></code></dd>
 </dl>
 </li>
 </ul>
@@ -535,7 +535,7 @@ implements <a href="../../../../../com/bc/bookcrossing/bookcrossing/RequestManag
                                java.util.List&lt;<a href="../../../../../com/bc/bookcrossing/bookcrossing/Structures/Book.html" title="class in com.bc.bookcrossing.src.ClientModels">Book</a>&gt;&nbsp;booksFound)</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../../../com/bc/bookcrossing/bookcrossing/RequestManager/ReceiveData.html#callbackBookSearch-boolean-java.util.List-">callbackBookSearch</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../com/bc/bookcrossing/bookcrossing/RequestManager/ReceiveData.html" title="interface in com.bc.bookcrossing.src.Controllers">ReceiveData</a></code></dd>
+<dd><code><a href="../../../../../com/bc/bookcrossing/bookcrossing/RequestManager/ReceiveData.html#callbackBookSearch-boolean-java.util.List-">callbackBookSearch</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../com/bc/bookcrossing/bookcrossing/RequestManager/ReceiveData.html" title="interface in com.bc.bookcrossing.src.requestManager">ReceiveData</a></code></dd>
 </dl>
 </li>
 </ul>
@@ -548,7 +548,7 @@ implements <a href="../../../../../com/bc/bookcrossing/bookcrossing/RequestManag
 <pre>public&nbsp;void&nbsp;callbackReservetion(boolean&nbsp;result)</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../../../com/bc/bookcrossing/bookcrossing/RequestManager/ReceiveData.html#callbackReservetion-boolean-">callbackReservetion</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../com/bc/bookcrossing/bookcrossing/RequestManager/ReceiveData.html" title="interface in com.bc.bookcrossing.src.Controllers">ReceiveData</a></code></dd>
+<dd><code><a href="../../../../../com/bc/bookcrossing/bookcrossing/RequestManager/ReceiveData.html#callbackReservetion-boolean-">callbackReservetion</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../com/bc/bookcrossing/bookcrossing/RequestManager/ReceiveData.html" title="interface in com.bc.bookcrossing.src.requestManager">ReceiveData</a></code></dd>
 </dl>
 </li>
 </ul>

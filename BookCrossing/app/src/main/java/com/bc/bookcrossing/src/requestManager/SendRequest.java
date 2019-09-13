@@ -1,4 +1,4 @@
-package com.bc.bookcrossing.src.Controllers;
+package com.bc.bookcrossing.src.requestManager;
 
 /**
  *
@@ -9,6 +9,6 @@ package com.bc.bookcrossing.src.Controllers;
  * @since 2018/2019
  */
 
-public interface SendRequests {
+public interface SendRequest {
     boolean send(String data);
 }
