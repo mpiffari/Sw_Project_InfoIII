@@ -1,7 +1,19 @@
 
 Netty è un NIO (Non-blocking Input Output) client server framework (i.e. permette una comunicazione asincrona tra client e server di tipo event-driven) che facilita lo sviluppo di applicazioni di rete che utilizzano socket TCP e UDP.
 
-Lato Server creiamo un oggetto singleton \textit{Communication} che inizializza un oggetto di tipo \textit{ServerBootstrap} (io.netty.bootstrap.ServerBootstrap) il quale effettua il bootstrap del \textit{ServerChannel} ovvero del link "primario" (sulla porta 5000) che accetta ogni connessione di un client e crea un canale "figlo" sul quale avverà la comunicazione:
+Il framework è disponibile sul Maven Central Repository e può essere scaricato includendo la seguente dependency nel pom.xml del progetto:
+\begin{lstlisting}
+<dependencies>
+	<dependency>
+		<groupId>io.netty</groupId>
+		<artifactId>netty-all</artifactId>
+		<version>4.1.32.Final</version>
+	</dependency>
+</dependencies>
+\end{lstlisting}
+
+
+Lato Server creiamo un oggetto singleton \textit{Communication} che inizializza un oggetto di tipo \textit{ServerBootstrap} (io.netty.bootstrap.ServerBootstrap) il quale effettua il bootstrap del \textit{ServerChannel} ovvero del link "primario" (sulla porta 5000) che accetta ogni connessione di un client e crea un canale "figlio" sul quale avverà la comunicazione:
 \begin{lstlisting}
 private Communication() throws Exception {
 	~
@@ -35,10 +47,9 @@ class ServerInitializer extends ChannelInitializer<SocketChannel> {
 }
 \end{lstlisting}
 la classe \textit{ServerHandler} è un sottotipo di \textit{SimpleChannelInboundHandler} \\(io.netty.channel.SimpleChannelInboundHandler) il quale fornisce la stringa inviata dal client tramite il metodo:
-\newpage
 \begin{lstlisting}
 class ServerHandler extends SimpleChannelInboundHandler<String> {
-~
+	~
 	@Override
 	public void channelRead0(ChannelHandlerContext ctx, String request)
 				throws Exception {
@@ -49,7 +60,7 @@ class ServerHandler extends SimpleChannelInboundHandler<String> {
 		System.out.println("Process request: " + request);
 		computeRequest.process(request.substring(j + 1), username);
 	}
-~
+	~
 }
 \end{lstlisting}
 l'attento lettore avrà notato che il metodo precedente memorizza la coppia (username, channelHandlerContext) all'interno dell'oggetto chcMap di \textit{Communication}, il quale è di tipo HashMap<String, ChannelHandlerContext>, tale informazione è fondamentale al fine di rispondere al clinet tramite canale "figlio" ad esso dedicato e chiuderlo al termine della comunicazione; il metodo invoca l'elaborazione del messaggio ricevuto tramite l'interfaccia \textit{ProcessRequest} (la semantica della stringa request verrà discussa nel paragrafo successivo).
@@ -96,6 +107,53 @@ il metodo send si occupa di inviare la risposta relativa alla richiesta ricevuta
 	\caption{Struttura del package \textit{requestManager.Communication}}
 	\label{fig:xx}
 \end{figure}
+\newpage
+Lato Client creiamo un singleton \textit{Communication} che implementa il seguente metodo dell'interfaccia \textit{SendRequest} aprendo la connessione con il Server sulla socket (35.180.103.132,5000) e inviando il messaggio al server:
+\begin{lstlisting}
+public class Communication implements SendRequest {
+	private static final String IP = "35.180.103.132";
+	public static final String HOST = System.getProperty("host", IP);
+	public static final int PORT = 5000;
+	~
+	@Override
+	public boolean send(String data) {
+		~
+		Bootstrap b = new Bootstrap();
+		b.group(group).channel(NioSocketChannel.class).handler(new
+					 ClientInitializer(sslCtx));
+		ChannelFuture ch = null;
+		~
+		ch = b.connect(HOST, PORT);
+		~
+		ChannelFuture lastWriteFuture = null;
+		lastWriteFuture = ch.channel().writeAndFlush(data + "\r\n");
+		
+		//Wait until all messages are flushed before closing the channel
+		if (lastWriteFuture != null) {
+			~
+			lastWriteFuture.sync();
+			~
+		}		
+	}
+	~
+}
+\end{lstlisting}
+Tralasciamo la discussione dell'implementazione della classe \textit{ClientInitializer} in quanto simile a quella della classe duale; invece approfondamo l'implementazione di \textit{ClientHandler}: 
+\begin{lstlisting}
+class ClientHandler extends SimpleChannelInboundHandler<String> {
+	@Override
+	protected void channelRead0(ChannelHandlerContext ctx, String msg) {
+		Processing.getInstance().processAnswer(msg);
+		Communication.getInstance().group.shutdownGracefully();
+	}
+	~
+}
+\end{lstlisting}
+di particolare interesse è il metodo channelRead0 ereditato da \textit{SimpleChannelInboundHandler}, tale metodo viene invocato dal framework ogni qual volta il client riceve un messaggio, quest'ultimo viene elaborato dal singleton \textit{Processing} e il canale di comunicazione viene chiuso.
+
+
+
+
 
 
 

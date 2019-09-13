@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.9.11)  12 SEP 2019 17:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.9.11)  13 SEP 2019 15:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1376,44 +1376,53 @@ jpg>] [36
 
 ]
  7.
-(./Capitolo_Sezioni/FrameworkNetty.tex [37]
-LaTeX Font Info:    Try loading font information for T1+lmtt on input line 45.
+(./Capitolo_Sezioni/FrameworkNetty.tex
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 9.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 9.
+ [37]
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 56.
 
 (/usr/share/texmf/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-Overfull \hbox (20.30826pt too wide) in paragraph at lines 64--66
+Overfull \hbox (20.30826pt too wide) in paragraph at lines 75--77
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (50.30856pt too wide) in paragraph at lines 74--75
+Overfull \hbox (50.30856pt too wide) in paragraph at lines 85--86
 [][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (14.3082pt too wide) in paragraph at lines 75--76
+Overfull \hbox (14.3082pt too wide) in paragraph at lines 86--87
 [][][][][][][][][][][][][][][][][][][][] 
  []
 
-<Immagini/CommunicationPackage.jpg, id=554, 714.67pt x 710.655pt>
+[38]
+<Immagini/CommunicationPackage.jpg, id=611, 714.67pt x 710.655pt>
 File: Immagini/CommunicationPackage.jpg Graphic file (type jpg)
 <use Immagini/CommunicationPackage.jpg>
 Package pdftex.def Info: Immagini/CommunicationPackage.jpg  used on input line 
-95.
+106.
 (pdftex.def)             Requested size: 483.69687pt x 480.9835pt.
-) [38] [39 <./Immagini/CommunicationPackage.jpg>]
-(./Capitolo_Sezioni/SemanticaMessaggi.tex
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 4.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 4.
-) [40]
+ [39 <./Immagini/CommunicationPackage.jpg>]
+Overfull \hbox (1.82901pt too wide) in paragraph at lines 111--112
+[]\T1/lmr/m/n/10.95 Lato Client creiamo un sin-gle-ton \T1/lmr/m/it/10.95 Com-m
+u-ni-ca-tion \T1/lmr/m/n/10.95 che im-ple-menta il seguente metodo dell'interfa
+ccia
+ []
+
+) [40] (./Capitolo_Sezioni/SemanticaMessaggi.tex) [41] [42
+
+]
  8.
 (./Capitolo_Sezioni/Algoritmo.tex
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <17.28> on input line 8.
-<Immagini/Algoritmo_Explanation.jpeg, id=624, 478.78876pt x 180.675pt>
+<Immagini/Algoritmo_Explanation.jpeg, id=679, 478.78876pt x 180.675pt>
 File: Immagini/Algoritmo_Explanation.jpeg Graphic file (type jpg)
 <use Immagini/Algoritmo_Explanation.jpeg>
 Package pdftex.def Info: Immagini/Algoritmo_Explanation.jpeg  used on input lin
@@ -1423,10 +1432,8 @@ e 29.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[41
-
-]
-<Immagini/Algorithm_PuntoIncontro.jpg, id=637, 448.67625pt x 216.81pt>
+[43]
+<Immagini/Algorithm_PuntoIncontro.jpg, id=691, 448.67625pt x 216.81pt>
 File: Immagini/Algorithm_PuntoIncontro.jpg Graphic file (type jpg)
 <use Immagini/Algorithm_PuntoIncontro.jpg>
 Package pdftex.def Info: Immagini/Algorithm_PuntoIncontro.jpg  used on input li
@@ -1440,13 +1447,13 @@ $[]$
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [42 <./Immagini/Algoritmo_Explanation.jpeg> <./Immagini/Algorithm_PuntoIncontr
+ [44 <./Immagini/Algoritmo_Explanation.jpeg> <./Immagini/Algorithm_PuntoIncontr
 o.jpg>]
 Overfull \hbox (51.46509pt too wide) in paragraph at lines 81--97
 $[]$ 
  []
 
-<Immagini/Algorithm_UsersNet.jpg, id=646, 572.1375pt x 498.36188pt>
+<Immagini/Algorithm_UsersNet.jpg, id=699, 572.1375pt x 498.36188pt>
 File: Immagini/Algorithm_UsersNet.jpg Graphic file (type jpg)
 <use Immagini/Algorithm_UsersNet.jpg>
 Package pdftex.def Info: Immagini/Algorithm_UsersNet.jpg  used on input line 10
@@ -1455,15 +1462,15 @@ Package pdftex.def Info: Immagini/Algorithm_UsersNet.jpg  used on input line 10
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-) [43] [44 <./Immagini/Algorithm_UsersNet.jpg>] [45
+) [45] [46 <./Immagini/Algorithm_UsersNet.jpg>] [47
 
-] [46]
+] [48]
  9.
 (./Capitolo_Sezioni/AnalisiDeiComponenti_2.tex)
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 155.
- [47
+ [49
 
-] [48]
+] [50]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 155.
 
 (./DocumentazioneProgettuale.aux)
@@ -1479,16 +1486,16 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 155.
  ) 
 Here is how much of TeX's memory you used:
- 12809 strings out of 494847
- 187872 string characters out of 6179080
- 328596 words of memory out of 5000000
- 15560 multiletter control sequences out of 15000+600000
+ 12880 strings out of 494847
+ 188881 string characters out of 6179080
+ 330596 words of memory out of 5000000
+ 15584 multiletter control sequences out of 15000+600000
  128974 words of font info for 73 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
- 36i,16n,40p,870b,1315s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 36i,16n,40p,870b,1825s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dv
-ips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/s
-hare/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm
+ips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share
+/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm
 -ts1.enc}</usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/f
 onts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmbxi10
 .pfb></usr/share/texmf/fonts/type1/public/lm/lmcsc10.pfb></usr/share/texmf/font
@@ -1501,10 +1508,10 @@ hare/texmf/fonts/type1/public/lm/lmr17.pfb></usr/share/texmf/fonts/type1/public
 pfb></usr/share/texmf/fonts/type1/public/lm/lmri9.pfb></usr/share/texmf/fonts/t
 ype1/public/lm/lmro10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></
 usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb>
-Output written on DocumentazioneProgettuale.pdf (56 pages, 3269765 bytes).
+Output written on DocumentazioneProgettuale.pdf (58 pages, 3276429 bytes).
 PDF statistics:
- 808 PDF objects out of 1000 (max. 8388607)
- 699 compressed objects within 7 object streams
- 287 named destinations out of 1000 (max. 500000)
+ 872 PDF objects out of 1000 (max. 8388607)
+ 760 compressed objects within 8 object streams
+ 334 named destinations out of 1000 (max. 500000)
  326 words of extra memory for PDF output out of 10000 (max. 10000000)
 
