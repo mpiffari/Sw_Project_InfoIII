@@ -102,8 +102,8 @@ public final class Communication implements SendAnswer{
 }
 \end{lstlisting}
 il metodo send si occupa di inviare la risposta relativa alla richiesta ricevuta e nel caso di fallimento ripeterà l'invio fino a un limite di 3 tentativi.
-\begin{figure}
-	\includegraphics[width=\textwidth]{Immagini/CommunicationPackage}
+\begin{figure}[h]
+	\includegraphics[width=\textwidth]{Immagini/CommunicationPackageServer}
 	\caption{Struttura del package \textit{requestManager.Communication}}
 	\label{fig:xx}
 \end{figure}
@@ -150,6 +150,11 @@ class ClientHandler extends SimpleChannelInboundHandler<String> {
 }
 \end{lstlisting}
 di particolare interesse è il metodo channelRead0 ereditato da \textit{SimpleChannelInboundHandler}, tale metodo viene invocato dal framework ogni qual volta il client riceve un messaggio, quest'ultimo viene elaborato dal singleton \textit{Processing} e il canale di comunicazione viene chiuso.
+\begin{figure}[h]
+	\includegraphics[width=\textwidth]{Immagini/CommunicationPackageClient}
+	\caption{Struttura del package \textit{requestManager.Communication}}
+	\label{fig:xx}
+\end{figure}
 
 
 
