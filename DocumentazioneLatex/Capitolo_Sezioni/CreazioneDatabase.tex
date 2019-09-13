@@ -1,0 +1,71 @@
+Le seguenti sono le query ddl per la creazione del database che abbiamo utilizzato:
+\begin{lstlisting}
+-- tables
+-- Table: Libro
+CREATE TABLE Libro (
+BCID varchar2(15)  NOT NULL,
+Titolo varchar2(256)  NOT NULL,
+Autore varchar2(256)  NOT NULL,
+DataPubblicazione date  NULL,
+ISBN varchar2(13)  NOT NULL,
+Propietario varchar2(20)  NOT NULL,
+CONSTRAINT Libro_pk PRIMARY KEY (BCID)
+) ;
+
+-- Table: Possesso
+CREATE TABLE Possesso (
+Utente varchar2(20)  NOT NULL,
+Libro varchar2(15)  NOT NULL,
+DataInizio date  NOT NULL,
+DataFine date  NOT NULL,
+LuogoRilascio varchar2(512)  NOT NULL,
+CONSTRAINT Possesso_pk PRIMARY KEY (Utente,Libro,DataInizio)
+) ;
+
+-- Table: Prenotazione
+CREATE TABLE Prenotazione (
+Utente varchar2(20)  NOT NULL,
+Libro varchar2(15)  NOT NULL,
+CONSTRAINT Prenotazione_pk PRIMARY KEY (Utente,Libro)
+) ;
+
+-- Table: Utente
+CREATE TABLE Utente (
+Username varchar2(20)  NOT NULL,
+Nome varchar2(50)  NOT NULL,
+Cognome varchar2(50)  NOT NULL,
+DataNas date  NOT NULL,
+Contatto varchar2(256)  NULL,
+Password char(256)  NOT NULL,
+ResidenzaLat integer  NOT NULL,
+ResidenzaLong integer  NOT NULL,
+RaggioAzione integer  NOT NULL,
+CONSTRAINT Utente_pk PRIMARY KEY (Username)
+) ;
+
+-- foreign keys
+-- Reference: Libro_Utente (table: Libro)
+ALTER TABLE Libro ADD CONSTRAINT Libro_Utente
+FOREIGN KEY (Propietario)
+REFERENCES Utente (Username);
+
+-- Reference: Possiede_Libro (table: Possesso)
+ALTER TABLE Possesso ADD CONSTRAINT Possiede_Libro
+FOREIGN KEY (Libro)
+REFERENCES Libro (BCID);
+
+-- Reference: Possiede_Profilo (table: Possesso)
+ALTER TABLE Possesso ADD CONSTRAINT Possiede_Profilo
+FOREIGN KEY (Utente)
+REFERENCES Utente (Username);
+
+-- Reference: Prenotazione_Libro (table: Prenotazione)
+ALTER TABLE Prenotazione ADD CONSTRAINT Prenotazione_Libro
+FOREIGN KEY (Libro)
+REFERENCES Libro (BCID);
+
+-- Reference: Prenotazione_Utente (table: Prenotazione)
+ALTER TABLE Prenotazione ADD CONSTRAINT Prenotazione_Utente
+FOREIGN KEY (Utente)
+REFERENCES Utente (Username);
+\end{lstlisting}
