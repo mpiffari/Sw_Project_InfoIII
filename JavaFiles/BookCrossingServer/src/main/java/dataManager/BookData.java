@@ -1,4 +1,4 @@
-package book;
+package dataManager;
 
 
 import java.sql.PreparedStatement;
@@ -9,10 +9,8 @@ import java.util.ArrayList;
 
 import algorithmReservationHandler.Algorithm;
 import algorithmReservationHandler.AlgorithmResult;
-import dataManager.DBConnector;
-import dataManager.Localization;
-import dataManager.Queries;
-import user.User;
+import book.Book;
+import profile.Profile;
 
 /**
  * 
@@ -89,11 +87,11 @@ public final class BookData implements BookQuery {
 	public AlgorithmResult reserveBook(Book book, String userThatMadeReservation) {
 		AlgorithmResult result = new AlgorithmResult();
 		String readerUsername = "";
-		ArrayList<User> booker = book.getPrenotanti();
+		ArrayList<Profile> booker = book.getPrenotanti();
 		if(booker.isEmpty()) {
 			readerUsername = book.getActualOwnerUsername();
 		} else {
-			User lastBookerBeforeMe = booker.get(booker.size()-1);
+			Profile lastBookerBeforeMe = booker.get(booker.size()-1);
 			readerUsername = lastBookerBeforeMe.getUsername();
 			if(readerUsername.equals(userThatMadeReservation)) {
 				System.out.println("You are the last user that made reservation for this book!!!");
@@ -110,8 +108,8 @@ public final class BookData implements BookQuery {
 		}
 		System.out.println("User that own the book request is " + readerUsername);
 
-		User l = Algorithm.getUserFromUsername(readerUsername);
-		User me = Algorithm.getUserFromUsername(userThatMadeReservation);
+		Profile l = Algorithm.getUserFromUsername(readerUsername);
+		Profile me = Algorithm.getUserFromUsername(userThatMadeReservation);
 
 		if(booker.contains(me)) {
 			System.out.println("You've already done the reservation!!!");
@@ -128,7 +126,7 @@ public final class BookData implements BookQuery {
 
 		result = Algorithm.step_1(l, me);
 
-		for(User u: result.userPath) {
+		for(Profile u: result.userPath) {
 			System.out.println("Name: " + u.getFirstName() + " Surname: " 
 					+ u.getLastName() + " Latitudine: " + u.getLatitude() + " Longit: " + u.getLongitude());
 		}

@@ -9,7 +9,7 @@ import org.junit.Test;
 
 import book.Book;
 import dataManager.Localization;
-import user.User;
+import profile.Profile;
 
 public class UserTest {
 
@@ -26,7 +26,7 @@ public class UserTest {
 		localization.radius = 30;
 		
 		
-		User u = new User(username, firstName, lastName, dateOfBirth, password, localization.lat, localization.longit, localization.radius);
+		Profile u = new Profile(username, firstName, lastName, dateOfBirth, password, localization.lat, localization.longit, localization.radius);
 		
 		assertTrue(u.toString().equals("USER: " + username + ";"
 				+ "PASSWORD: " + password + "\r\n"));
@@ -37,8 +37,8 @@ public class UserTest {
 		String user_A = "A";
 		String user_B = "B";
 		
-		User A = new User();
-		User B = new User();
+		Profile A = new Profile();
+		Profile B = new Profile();
 		
 		A.setUsername(user_A);
 		B.setUsername(user_B);
@@ -54,7 +54,7 @@ public class UserTest {
 		String username = "A";
 		String password = "";
 		String msg = "USER: " + username + ";" + "PASSWORD: " + password;
-		User u = new User(msg);
+		Profile u = new Profile(msg);
 		
 		ArrayList<Book> chasingBooks = u.getChasingBooks();
 		
@@ -71,13 +71,13 @@ public class UserTest {
 		String usernameA = "A";
 		String password = "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b";
 		String msg = "USER: " + usernameA + ";" + "PASSWORD: " + password;
-		User uA = new User(usernameA, password);
+		Profile uA = new Profile(usernameA, password);
 		uA.setLongitude(10);
 		uA.setLatitude(10);
 		
 		String usernameB = "B";
 		msg = "USER: " + usernameB + ";" + "PASSWORD: " + password;
-		User uB = new User(msg);
+		Profile uB = new Profile(msg);
 		uB.setLatitude(20);
 		uB.setLongitude(20);
 		
@@ -91,12 +91,12 @@ public class UserTest {
 		String usernameA = "A";
 		String password = "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b";
 		String msg = "USER: " + usernameA + ";" + "PASSWORD: " + password;
-		User uA = new User(msg);
+		Profile uA = new Profile(msg);
 		
 		
 		String usernameB = "B";
 		msg = "USER: " + usernameB + ";" + "PASSWORD: " + password;
-		User uB = new User(msg);
+		Profile uB = new Profile(msg);
 		
 		
 		Localization localizationInfoA = new Localization(10, 10);

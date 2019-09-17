@@ -17,10 +17,12 @@
 \contentsline {section}{\numberline {4.1}Architettura software}{23}{section.4.1}
 \contentsline {section}{\numberline {4.2}Logical view}{24}{section.4.2}
 \contentsline {chapter}{\numberline {5}Analisi dei componenti}{27}{chapter.5}
+\contentsline {section}{\numberline {5.1}Scelta delle funzionalit\IeC {\`a} da implementare}{27}{section.5.1}
+\contentsline {section}{\numberline {5.2}Aderenza UML a Logical View}{27}{section.5.2}
 \contentsline {chapter}{\numberline {6}Observer-delegate pattern: la nostra implementazione}{29}{chapter.6}
 \contentsline {chapter}{\numberline {7}Implementazione comunicazione server}{37}{chapter.7}
 \contentsline {section}{\numberline {7.1}il framework \textit {Netty}}{37}{section.7.1}
-\contentsline {section}{\numberline {7.2}semantica dei messaggi}{41}{section.7.2}
+\contentsline {section}{\numberline {7.2}Semantica dei messaggi}{41}{section.7.2}
 \contentsline {chapter}{\numberline {8}Creazione della base di dati}{43}{chapter.8}
 \contentsline {chapter}{\numberline {9}Parte algoritmica: \textit {reservation handler}}{45}{chapter.9}
 \contentsline {part}{III\hspace {1em}Iterazione 2}{49}{part.3}

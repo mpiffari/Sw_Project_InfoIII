@@ -1,12 +1,12 @@
-package user;
+package dataManager;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import dataManager.DBConnector;
-import dataManager.Queries;
+import profile.LoginStatus;
+import profile.Profile;
 /**
  * 
  * La classe UserData implementa l'interfaccia UserQuery per riuscire ad ottenere lo stato
@@ -18,17 +18,17 @@ import dataManager.Queries;
  * @version 1.0
  * @since 2018/2019
  */
-public final class UserData implements UserQuery {
+public final class ProfileData implements ProfileQuery {
 
 	
-	private static UserData instance;
+	private static ProfileData instance;
 
-	private UserData() {
+	private ProfileData() {
 	}
 
-	public static UserData getInstance() {
+	public static ProfileData getInstance() {
 		if (instance == null) {
-			instance = new UserData();
+			instance = new ProfileData();
 		}
 		return instance;
 	}
@@ -39,7 +39,7 @@ public final class UserData implements UserQuery {
 	 * @return LoginStatus-WRONG_PWD se la password è sbagliata
 	 * @return LoginStatus-WRONG_USERNAME se il nome utente è sbagliato
 	 */
-	public LoginStatus login(User user) {
+	public LoginStatus login(Profile user) {
 		try {
 			PreparedStatement stmt;
 			// Check username in database

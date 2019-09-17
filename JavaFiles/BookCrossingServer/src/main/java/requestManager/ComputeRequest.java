@@ -7,11 +7,11 @@ import javax.annotation.Nullable;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import book.Book;
-import book.BookData;
+import dataManager.BookData;
+import dataManager.ProfileData;
+import profile.LoginStatus;
+import profile.Profile;
 import requestManager.communication.Communication;
-import user.LoginStatus;
-import user.UserData;
-import user.User;
 
 
 /**
@@ -44,7 +44,7 @@ public class ComputeRequest implements ProcessRequest{
 		}
 		
 		// Check if an user exists in db, else send back a bad response
-		if(UserData.getInstance().exist(username)) {
+		if(ProfileData.getInstance().exist(username)) {
 			System.out.println("Message under processing: " + msg);
 			System.out.println(msg.substring(0, i));
 			System.out.println(msg.substring(0, i).substring(j+1));
@@ -66,7 +66,7 @@ public class ComputeRequest implements ProcessRequest{
 				break;
 			case LOGIN:
 				// i is the index of the first semi colon: now we want to consider all the request, after the request type field
-				User user = new User(msg.substring(i + 1));
+				Profile user = new Profile(msg.substring(i + 1));
 				
 				LoginStatus res = user.login();
 				String r = "";
@@ -193,8 +193,8 @@ public class ComputeRequest implements ProcessRequest{
 		String previous = "";
 		String next = "";
 		
-		for(String s : UserData.getInstance().pathOfUsers(username)) {
-			int pos = UserData.getInstance().pathOfUsers(username).indexOf(s);
+		for(String s : ProfileData.getInstance().pathOfUsers(username)) {
+			int pos = ProfileData.getInstance().pathOfUsers(username).indexOf(s);
 			if(s.indexOf(username) - 2 > 0 && s.indexOf(username) + 2 < s.length()) {
 				previous = "" + s.charAt(s.indexOf(username) - 2);
 				next = "" + s.charAt(s.indexOf(username) + 2);

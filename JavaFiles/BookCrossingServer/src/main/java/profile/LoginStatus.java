@@ -1,4 +1,4 @@
-package user;
+package profile;
 /**
  * 
  * Enum per descrivere lo stato della connessione dell'utente.

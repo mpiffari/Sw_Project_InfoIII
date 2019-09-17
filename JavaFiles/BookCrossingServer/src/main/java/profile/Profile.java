@@ -1,4 +1,4 @@
-package user;
+package profile;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,6 +10,7 @@ import book.Book;
 import dataManager.DBConnector;
 import dataManager.Localization;
 import dataManager.Queries;
+import dataManager.ProfileData;
 
 /**
  * 
@@ -20,7 +21,7 @@ import dataManager.Queries;
  * @since 2018/2019
  */
 
-public class User implements Comparable<User>, UserManager{
+public class Profile implements Comparable<Profile>, ProfileManager {
 
 	private String username;
 	private String firstName;
@@ -43,7 +44,7 @@ public class User implements Comparable<User>, UserManager{
 	 * @param longitude
 	 * @param action
 	 */
-	public User(String username, String firstName, String lastName, Date dateOfBirth, String password, double latitude,
+	public Profile(String username, String firstName, String lastName, Date dateOfBirth, String password, double latitude,
 			double longitude, double action) {
 
 		this.username = username;
@@ -61,7 +62,7 @@ public class User implements Comparable<User>, UserManager{
 	 * @param username
 	 * @param password
 	 */
-	public User(String username, String password){
+	public Profile(String username, String password){
 		this.username = username;
 		this.password = password;
 	}
@@ -70,13 +71,13 @@ public class User implements Comparable<User>, UserManager{
 	 * 
 	 * @param msg
 	 */
-	public User(String msg) {	
+	public Profile(String msg) {	
 		String lines[] = msg.split(";");
 		this.username = getUserFromString(lines[0]);
 		this.password = getPasswordFromString(lines[1]);   
 	}
 
-	public User() {}
+	public Profile() {}
 
 	private String getUserFromString(String msg) {
 		String words[] = msg.split(":");
@@ -157,7 +158,7 @@ public class User implements Comparable<User>, UserManager{
 	}
 
 	public LoginStatus login() {
-		return UserData.getInstance().login(this);
+		return ProfileData.getInstance().login(this);
 	}
 
 	public void setChasingBook(Book book) {
@@ -196,7 +197,7 @@ public class User implements Comparable<User>, UserManager{
 	 * @param o altro utente
 	 * @return distance tra questo utente e l'utente o
 	 */
-	public double computeDistance(User o) {
+	public double computeDistance(Profile o) {
 		double lat_this = this.localization.lat;
 		double long_this = this.localization.longit;
 		double lat_o = o.localization.lat;
@@ -224,7 +225,7 @@ public class User implements Comparable<User>, UserManager{
 
 
 	
-	public int compareTo(User o) {
+	public int compareTo(Profile o) {
 		// Ordinamento alfabetico in base all'username
 		if(this.username.compareTo(o.getUsername()) > 0) {
 			return 1;

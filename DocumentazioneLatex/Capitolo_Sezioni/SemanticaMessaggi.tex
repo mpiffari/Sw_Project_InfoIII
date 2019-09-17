@@ -8,19 +8,27 @@ la cui semantica può essere così rappresentata:
 \begin{center}
 "<username>;requestType:<tipo>;<richiesta>"
 \end{center}
-i valori assunti da <tipo> sono i seguenti:
+I valori assunti da <tipo> sono i seguenti e corrispondo ai campi definiti all'interno dell'enumerativo \textit{RequestType}.
+Durante l'attuale iterazione siamo andati a gestire le richieste relative alle sole due seguenti tipologie di richieste:
 \begin{itemize}
-	\item 0 -> Registrazione manuale del libro
-	\item 1 -> Prenotazione di un libro	
-	\item 2 -> Login
-	\item 3 -> Registrazione nuovo utente
-	\item 4 -> Registrazione automatica del libro
-	\item 5 -> Informazioni del profilo
-	\item 6 -> Libri presi ???????????????????????????
-	\item 7 -> Libri Raccolti ????????????????????????
-	\item 8 -> Ricerca del libro
+	\item 0 -> BOOK\_REGISTRATION\_MANUAL
+	\item 8 -> BOOK\_SEARCH
 \end{itemize}
-tale enumerazione è implementata da \textit{RequestType}.
+
+Nella seconda iterazione, e nelle successive, è stata pianificata l'implementazione della parte di gestione delle restanti richieste:
+
+\begin{itemize}
+	\item 1 -> BOOK\_RESERVATION	
+	\item 2 -> LOGIN
+	\item 3 -> SIGN\_IN
+	\item 4 -> BOOK\_REGISTRATION\_AUTOMATIC
+	\item 5 -> PROFILE\_INFO
+	\item 6 -> TAKEN\_BOOKS
+	\item 7 -> PICK\_UP	
+\end{itemize}
+
+
+
 TODO: inserire esempio di una stringa realemente generata da android.
 
 
@@ -34,6 +42,7 @@ la cui semantica può essere così rappresentata:
 \begin{center}
 	"requestType:<tipo>;<risultato>"
 \end{center}
+
 TODO: inserire esempio di una stringa realemente generata dal server.
 
 

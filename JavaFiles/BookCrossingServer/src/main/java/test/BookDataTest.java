@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import book.Book;
-import book.BookData;
+import dataManager.BookData;
 
 public class BookDataTest {
 

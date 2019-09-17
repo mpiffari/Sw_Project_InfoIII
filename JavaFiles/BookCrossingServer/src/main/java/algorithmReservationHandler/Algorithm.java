@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import dataManager.DBConnector;
 import dataManager.Localization;
 import dataManager.Queries;
-import user.User;
+import profile.Profile;
 
 import java.util.*;
 import java.util.Map.Entry;
@@ -32,7 +32,7 @@ public class Algorithm {
 	 * @param book
 	 * @return
 	 */
-	public static ArrayList<User> step_0(User L, Book book) {
+	public static ArrayList<Profile> step_0(Profile L, Book book) {
 		
 		// Retrieve books owned by the user L: this query is necessary to obtain
 		// all informations of the book object of the reservation
@@ -55,14 +55,14 @@ public class Algorithm {
 			
 			// This TreeMap will store the distance of each user that have booked the specific book
 			// with the relative distance from the reader the is the actual owner of the book object of the reservation
-			TreeMap<User, Double> distancePrenotantiFromReader = new TreeMap<User, Double>();
-			ArrayList<User> prenotantiForSpecificBook = bookRequested.getPrenotanti();
-			for (User u : prenotantiForSpecificBook) {
+			TreeMap<Profile, Double> distancePrenotantiFromReader = new TreeMap<Profile, Double>();
+			ArrayList<Profile> prenotantiForSpecificBook = bookRequested.getPrenotanti();
+			for (Profile u : prenotantiForSpecificBook) {
 				// Compute the distance from each user that made a reservation for the book and the 
 				// reader the actually own the book
 				distancePrenotantiFromReader.put(u, u.computeDistance(L));
 			}
-			ArrayList<User> temp = new ArrayList<User>((distancePrenotantiFromReader).keySet());
+			ArrayList<Profile> temp = new ArrayList<Profile>((distancePrenotantiFromReader).keySet());
 			return temp;
 		}
 	}
@@ -74,12 +74,12 @@ public class Algorithm {
 	 * @param me
 	 * @return List of users
 	 */
-	public static AlgorithmResult step_1(User actualBookOwner, User me) {
+	public static AlgorithmResult step_1(Profile actualBookOwner, Profile me) {
 		AlgorithmResult result = new AlgorithmResult();
 		
 		// Check if is possible for the users to meeting themself directly
 		boolean isOverlapping = checkOverlap(actualBookOwner, me);
-		ArrayList<User> userPath = new ArrayList<User>();
+		ArrayList<Profile> userPath = new ArrayList<Profile>();
 		
 		if(isOverlapping) {
 			result.directMeetingIsPossible = true;
@@ -94,10 +94,10 @@ public class Algorithm {
 			System.out.println("User fittizio position --> lat: " + dummyUser.lat + " long: " + dummyUser.longit);
 			
 			// Search the possible users from all the users signed in to the community
-			ArrayList<User> allUsers = getAllUsers();
+			ArrayList<Profile> allUsers = getAllUsers();
 			// ArrayList of the user that will be part of the reservation
-			ArrayList<User> handToHandUsers = new ArrayList<User>();
-			for (User u : allUsers) {
+			ArrayList<Profile> handToHandUsers = new ArrayList<Profile>();
+			for (Profile u : allUsers) {
 				System.out.println("User u: " + u.getUsername() + " distance from center "
 				+ " " + u.computeDistance(dummyUser) + " and distance from me " + u.computeDistance(me));
 				// If the user is near the center, and is not the user that actually own the book, add it to the possible
@@ -109,32 +109,32 @@ public class Algorithm {
 			}
 			
 			// Sort the users selected by the distance from the actual owner of the book (L).
-			TreeMap<User, Double> distanceUsersFromReader = new TreeMap<User, Double>();
-			for (User u : handToHandUsers) {
+			TreeMap<Profile, Double> distanceUsersFromReader = new TreeMap<Profile, Double>();
+			for (Profile u : handToHandUsers) {
 				distanceUsersFromReader.put(u, u.computeDistance(actualBookOwner));
 			}			
-			SortedSet<Map.Entry<User,Double>> res = entriesSortedByValues(distanceUsersFromReader);
+			SortedSet<Map.Entry<Profile,Double>> res = entriesSortedByValues(distanceUsersFromReader);
 			System.out.println("User ordered by distance:  " + res.toString());	
 			
 			// Get only the User information, deleting the distance from actual owner,
 			// but keeping the order.
-			ArrayList<User> temp = new ArrayList<User>();
-			Iterator<Entry<User,Double>> it = res.iterator();
+			ArrayList<Profile> temp = new ArrayList<Profile>();
+			Iterator<Entry<Profile,Double>> it = res.iterator();
 			while(it.hasNext()) {
 				 temp.add(it.next().getKey());
 			}
 			handToHandUsers.clear();
-			handToHandUsers = new ArrayList<User>(temp);
+			handToHandUsers = new ArrayList<Profile>(temp);
 			System.out.println("User between me and reader " + actualBookOwner.getUsername() + " ordered by distance: " + handToHandUsers.toString());
 			
 			// Create the user chain that could be part of the hand by hand book passage
-			User previousUser = actualBookOwner;
-			User nextUser = new User();
+			Profile previousUser = actualBookOwner;
+			Profile nextUser = new Profile();
 			
 			if(checkOverlap(actualBookOwner, previousUser)) {
 				userPath.add(previousUser);
-				ArrayList<User> handToHandUsersCopy =(ArrayList<User>) handToHandUsers.clone();
-				ArrayList<User> overlappingUsers = new ArrayList<User>();
+				ArrayList<Profile> handToHandUsersCopy =(ArrayList<Profile>) handToHandUsers.clone();
+				ArrayList<Profile> overlappingUsers = new ArrayList<Profile>();
 				double max_radius = 0.0;
 				double min_distance = Double.POSITIVE_INFINITY;
 				
@@ -144,7 +144,7 @@ public class Algorithm {
 					min_distance = Double.POSITIVE_INFINITY;
 					overlappingUsers.clear();
 					
-					for(User uu: handToHandUsersCopy) {
+					for(Profile uu: handToHandUsersCopy) {
 						if(checkOverlap(previousUser, uu)) {
 							overlappingUsers.add(uu);
 						}
@@ -196,13 +196,13 @@ public class Algorithm {
 	 * @param users
 	 * @return User choosen
 	 */
-	private static User greedyParadigm(User previousUser, ArrayList<User> users) {
+	private static Profile greedyParadigm(Profile previousUser, ArrayList<Profile> users) {
 		double epsilon = 0.1;
 		double max_radius = 0.0;
 		double min_distance = Double.POSITIVE_INFINITY;
-		User result = null;
+		Profile result = null;
 		
-		for(User overLapUser: users) {
+		for(Profile overLapUser: users) {
 			// Epsilon greedy choice
 			if(Math.random() < epsilon) {
 				double dist = overLapUser.computeDistance(previousUser);
@@ -255,7 +255,7 @@ public class Algorithm {
 	 * @param me
 	 * @return Middle point
 	 */
-	private static Localization centerOfInterestArea(User L, User me) {
+	private static Localization centerOfInterestArea(Profile L, Profile me) {
 		double latCenter = (L.getLatitude() + me.getLatitude()) / 2;
 		double longitCenter = (L.getLongitude() + me.getLongitude()) / 2;
 		Localization u = new Localization(latCenter, longitCenter);
@@ -271,7 +271,7 @@ public class Algorithm {
 	 * @param p
 	 * @return Boolean flag
 	 */
-	private static boolean checkOverlap(User actualBookOwner, User p) {
+	private static boolean checkOverlap(Profile actualBookOwner, Profile p) {
 		double r_L = actualBookOwner.getActionArea();
 		double r_p = p.getActionArea();
 		double distance = actualBookOwner.computeDistance(p) - r_L - r_p;
@@ -284,12 +284,12 @@ public class Algorithm {
 	 * @param users
 	 * @return Risultato della query di insert
 	 */
-	public static boolean savePath(ArrayList<User> users) {
+	public static boolean savePath(ArrayList<Profile> users) {
 		PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(Queries.storePath);
 		
 		int result = 0;
 		String path = "";
-		for(User i : users) {
+		for(Profile i : users) {
 			path += i.getUsername() + ";";
 		}
 		
@@ -328,14 +328,14 @@ public class Algorithm {
 	 * Query al database per ottenere tutti gli utenti iscritti alla piattaforma.
 	 * @return
 	 */
-	private static ArrayList<User> getAllUsers() {
+	private static ArrayList<Profile> getAllUsers() {
 		PreparedStatement stmtState = DBConnector.getDBConnector().prepareStatement(Queries.allUsersQuery);
 		try {
 			ResultSet rs = stmtState.executeQuery();
-			ArrayList<User> users = new ArrayList<User>();
-			User u;
+			ArrayList<Profile> users = new ArrayList<Profile>();
+			Profile u;
 			while(rs.next()) {
-				u = new User();
+				u = new Profile();
 				u.setUsername(rs.getString(1));
 				u.setFirstName(rs.getString(2));
 				u.setLastName(rs.getString(3));
@@ -347,7 +347,7 @@ public class Algorithm {
 			return users;	
 		} catch (SQLException e) {
 			e.printStackTrace();
-			return new ArrayList<User>();
+			return new ArrayList<Profile>();
 		}
 	}
 	
@@ -358,14 +358,14 @@ public class Algorithm {
 	 * @param username
 	 * @return Complete user object
 	 */
-	public static User getUserFromUsername(String username) {
+	public static Profile getUserFromUsername(String username) {
 		PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(Queries.getUserInformationsQuery);
-		User u = null;
+		Profile u = null;
 		try {
 			stmt.setString(1, username);
 			ResultSet rs = stmt.executeQuery();
 			if(rs.next()) {
-				u = new User();
+				u = new Profile();
 				u.setUsername(rs.getString(1));
 				u.setFirstName(rs.getString(2));
 				u.setLastName(rs.getString(3));

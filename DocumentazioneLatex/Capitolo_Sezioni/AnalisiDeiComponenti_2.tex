@@ -18,12 +18,10 @@ Le componenti che invece si è deciso di andare a sviluppare durante la seconda 
 		\item \textit{Model:} Si fa carico di verificare la coerenza dei dati inseriti tramite il componente grafico, restituendo l'esito a chi ha appena tentato di effettuare il login.
 		\item \textit{Data:} Le informazioni relative all'utente che sta tentando di loggarsi.
 	\end{itemize}
-	\item \textbf{Componente \textit{Ricerca:}}  La componente \textit{Ricerca} fa riferimento all’ UC6 
-	%(~\ref{itemize:UC6})
-	, ovvero alla funzione che permette di andare a ricercare un libro all'interno della piattaforma di Book crossing: questa ricerca può avvenire per titolo, per autore, oppure per entrambi. La componente si presenta nel seguente modo:
+	\item \textbf{Componente \textit{Book reservation:}}  La componente \textit{Book reservation} fa riferimento all’ U13 (~\ref{itemize:UC13} ), ovvero alla funzione di prenotazione di un libro, la quale richiede prima un'operazione di ricerca dello stesso all'interno della community, e poi, se possibile, permette di effettuare la prenotazione  effettiva. La componente si presenta nel seguente modo:
 	\begin{itemize}
-	\item \textit{GUI:} Interfaccia grafica composta da due text book in cui andare ad inserire titolo e/o autore. Essendo possibili tre tipologie di ricerca, come specificato in precedenza, non è necessario compilare entrambi i campi (lo è solamente nel caso in cui si è interessati a compiere una ricerca basandosi su entrambi i vincoli);
-	\item \textit{Model:} Gli compete la parte relativa allo smistamento delle richiesta, a seconda del fatto che si stia eseguendo una ricerca per titolo, autore o entrambi;
-	\item \textit{Data:} Fornisce, se presenti, le informazioni relative al libro oggetto della ricerca.
+		\item \textit{GUI:} Interfaccia grafica utilizzata per poter procedere con la prenotazione di un libro della rete di Book Crossing. In questo caso sarà possibile compiere tale azione attraverso una procedura di ricerca del libro, oppure navigando nella propria sezione personale del profilo;
+		\item \textit{Model:} Si fa carico di gestire la coda relativa alla prenotazione di un determinato libro, in modo da poterle soddisfare. La gestione e la computazione della prenotazione è affidata ad un algoritmo il quale va ad appoggiarsi alla parte Data per poter risalire ai dati dei richiedenti;
+		\item \textit{Data:} Le informazioni relative al libro che si vuole prenotare e agli utenti richiedenti le quali sono memorizzate nel Database.
 	\end{itemize}
 \end{itemize}

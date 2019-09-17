@@ -4,6 +4,8 @@ package dataManager;
  * Classe usata come struct per contenere i dati relativi alla posizione dell'utente,
  * rispetto al quale si va a calcolare la possibilità di scambiare libri dell'utente stesso all'interno della rete 
  * di sharing.
+ * Questa classe è utilizata anche per gestire il tracciamento della posizione relativa ad un libro inserito
+ * nella rete del book crossing.
  *
  * @author Paganessi Andrea - Piffari Michele - Villa Stefano
  * @version 1.0

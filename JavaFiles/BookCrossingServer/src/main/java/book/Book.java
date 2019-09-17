@@ -12,10 +12,11 @@ import org.eclipse.jdt.annotation.Nullable;
 
 import algorithmReservationHandler.Algorithm;
 import algorithmReservationHandler.AlgorithmResult;
+import dataManager.BookData;
 import dataManager.DBConnector;
 import dataManager.Localization;
 import dataManager.Queries;
-import user.User;
+import profile.Profile;
 
 
 /**
@@ -37,7 +38,7 @@ public class Book implements BookManager{
 	private String isbn;
 	private String actualOwnerUsername;
 	private boolean underReading;
-	private ArrayList<User> prenotanti = new ArrayList<User>();
+	private ArrayList<Profile> prenotanti = new ArrayList<Profile>();
 	private int idPrenotazione; 
 	private Localization localization;
 
@@ -188,7 +189,7 @@ public class Book implements BookManager{
 	 * @return true se la prenotazione � stata completata
 	 */
 	public boolean reserve(String username) {
-		User u = new User();
+		Profile u = new Profile();
 		u.setUsername(username);
 		AlgorithmResult res = BookData.getInstance().reserveBook(this, username);
 		if(!(res.userPath.isEmpty()) && res.resultFlag == true){
@@ -208,15 +209,15 @@ public class Book implements BookManager{
 	 * 
 	 * @return ArrayList di user che hanno prenotato questo specifico libro
 	 */
-	public ArrayList<User> getPrenotanti() {
+	public ArrayList<Profile> getPrenotanti() {
 		PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(Queries.getUserInfoByJoin);
 		try {
 			stmt.setString(1, this.bcid);
 			ResultSet rs = stmt.executeQuery();
 			prenotanti.clear();
-			User u;
+			Profile u;
 			while(rs.next()) {
-				u = new User();
+				u = new Profile();
 				u.setUsername(rs.getString(1));
 				u.setFirstName(rs.getString(5));
 				u.setLastName(rs.getString(6));
@@ -239,7 +240,7 @@ public class Book implements BookManager{
 	 * @param user Utente che richiede questo libro
 	 * @return
 	 */
-	public boolean setPrenotante(User user) {
+	public boolean setPrenotante(Profile user) {
 
 		PreparedStatement statement = DBConnector.getDBConnector().prepareStatement(Queries.insertNewReservationQuery);
 

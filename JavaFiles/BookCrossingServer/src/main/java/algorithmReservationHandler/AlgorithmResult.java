@@ -2,7 +2,7 @@ package algorithmReservationHandler;
 
 import java.util.ArrayList;
 
-import user.User;
+import profile.Profile;
 
 /**
  * Struttura per contenere i risultati dell'esecuzione dell'algoritmo
@@ -15,7 +15,7 @@ import user.User;
 public class AlgorithmResult {
 	public boolean resultFlag = false; // No path found
 	public boolean directMeetingIsPossible = false;
-	public ArrayList<User> userPath = new ArrayList<User>();
+	public ArrayList<Profile> userPath = new ArrayList<Profile>();
 
 	public AlgorithmResult() {}
 }

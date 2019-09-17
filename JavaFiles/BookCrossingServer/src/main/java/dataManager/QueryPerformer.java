@@ -1,5 +1,6 @@
 package dataManager;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
@@ -12,5 +13,5 @@ import java.sql.Statement;
  * @since 2018/2019
  */
 public interface QueryPerformer {
-	public abstract ResultSet executeStatement(Statement stmt);
+	public PreparedStatement prepareStatement(final String sql);
 }

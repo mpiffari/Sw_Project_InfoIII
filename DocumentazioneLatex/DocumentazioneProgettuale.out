@@ -16,11 +16,13 @@
 \BOOKMARK [1][-]{section.4.1}{Architettura software}{chapter.4}% 16
 \BOOKMARK [1][-]{section.4.2}{Logical view}{chapter.4}% 17
 \BOOKMARK [0][-]{chapter.5}{Analisi dei componenti}{part.2}% 18
-\BOOKMARK [0][-]{chapter.6}{Observer-delegate pattern: la nostra implementazione}{part.2}% 19
-\BOOKMARK [0][-]{chapter.7}{Implementazione comunicazione server}{part.2}% 20
-\BOOKMARK [1][-]{section.7.1}{il framework Netty}{chapter.7}% 21
-\BOOKMARK [1][-]{section.7.2}{semantica dei messaggi}{chapter.7}% 22
-\BOOKMARK [0][-]{chapter.8}{Creazione della base di dati}{part.2}% 23
-\BOOKMARK [0][-]{chapter.9}{Parte algoritmica: reservation handler}{part.2}% 24
-\BOOKMARK [-1][-]{part.3}{III Iterazione 2}{}% 25
-\BOOKMARK [0][-]{chapter.10}{Analisi dei componenti}{part.3}% 26
+\BOOKMARK [1][-]{section.5.1}{Scelta delle funzionalit\340 da implementare}{chapter.5}% 19
+\BOOKMARK [1][-]{section.5.2}{Aderenza UML a Logical View}{chapter.5}% 20
+\BOOKMARK [0][-]{chapter.6}{Observer-delegate pattern: la nostra implementazione}{part.2}% 21
+\BOOKMARK [0][-]{chapter.7}{Implementazione comunicazione server}{part.2}% 22
+\BOOKMARK [1][-]{section.7.1}{il framework Netty}{chapter.7}% 23
+\BOOKMARK [1][-]{section.7.2}{Semantica dei messaggi}{chapter.7}% 24
+\BOOKMARK [0][-]{chapter.8}{Creazione della base di dati}{part.2}% 25
+\BOOKMARK [0][-]{chapter.9}{Parte algoritmica: reservation handler}{part.2}% 26
+\BOOKMARK [-1][-]{part.3}{III Iterazione 2}{}% 27
+\BOOKMARK [0][-]{chapter.10}{Analisi dei componenti}{part.3}% 28

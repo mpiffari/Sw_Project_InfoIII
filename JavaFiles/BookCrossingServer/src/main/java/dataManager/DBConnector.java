@@ -54,25 +54,7 @@ public final class DBConnector implements QueryPerformer{
 			instance = new DBConnector();
 		return instance;
 	}
-
-	@SuppressWarnings("unused")
-	private void close() {
-		// Close the connection
-		try {
-			stmt.close();
-			conn.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			instance = null;
-		}
-	}
-
-	public ResultSet executeStatement(Statement stmt) {
-		return null;
-	}
-
-
+	
 	/**
 	 * 
 	 * @param sql Query che vogliamo eseguire
@@ -84,6 +66,23 @@ public final class DBConnector implements QueryPerformer{
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;
+		}
+	}
+	
+	
+	
+	
+
+	@SuppressWarnings("unused")
+	private void close() {
+		// Close the connection
+		try {
+			stmt.close();
+			conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			instance = null;
 		}
 	}
 

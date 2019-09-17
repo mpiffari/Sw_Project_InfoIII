@@ -1,7 +1,0 @@
-requestManager\ComputeRequest$1.class
-dataManager\Queries.class
-dataManager\QueryPerformer.class
-user\LoginStatus.class
-requestManager\SendAnswer.class
-user\UserLocalizationInfo.class
-book\BookType.class

@@ -1,6 +1,9 @@
-package user;
+package dataManager;
 
 import java.util.ArrayList;
+
+import profile.LoginStatus;
+import profile.Profile;
 
 /**
  * 
@@ -11,8 +14,8 @@ import java.util.ArrayList;
  * @version 1.0
  * @since 2018/2019
  */
-public interface UserQuery {
-	public LoginStatus login(User user);
+public interface ProfileQuery {
+	public LoginStatus login(Profile user);
 	public boolean exist(String username);
 	public ArrayList<String> pathOfUsers(String user);
 }

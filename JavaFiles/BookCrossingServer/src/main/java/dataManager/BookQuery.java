@@ -1,8 +1,9 @@
-package book;
+package dataManager;
 
 import java.util.ArrayList;
 
 import algorithmReservationHandler.AlgorithmResult;
+import book.Book;
 /**
  * Interfaccia che contiene i metodi per gestire lo scambio di libri
  * nel sistema di book crossing.

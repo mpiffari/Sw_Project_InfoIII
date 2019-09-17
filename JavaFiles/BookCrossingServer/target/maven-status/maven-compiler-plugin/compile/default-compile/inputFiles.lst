@@ -1,19 +1,27 @@
-C:\Users\Stefano Villa\Desktop\Sw_Project_InfoIII\JavaFiles\ServerRequestHandler\src\main\java\book\BookData.java
-C:\Users\Stefano Villa\Desktop\Sw_Project_InfoIII\JavaFiles\ServerRequestHandler\src\main\java\requestManager\ProcessRequest.java
-C:\Users\Stefano Villa\Desktop\Sw_Project_InfoIII\JavaFiles\ServerRequestHandler\src\main\java\user\UserData.java
-C:\Users\Stefano Villa\Desktop\Sw_Project_InfoIII\JavaFiles\ServerRequestHandler\src\main\java\user\LoginStatus.java
-C:\Users\Stefano Villa\Desktop\Sw_Project_InfoIII\JavaFiles\ServerRequestHandler\src\main\java\requestManager\Communication.java
-C:\Users\Stefano Villa\Desktop\Sw_Project_InfoIII\JavaFiles\ServerRequestHandler\src\main\java\requestManager\SendAnswer.java
-C:\Users\Stefano Villa\Desktop\Sw_Project_InfoIII\JavaFiles\ServerRequestHandler\src\main\java\book\BookType.java
-C:\Users\Stefano Villa\Desktop\Sw_Project_InfoIII\JavaFiles\ServerRequestHandler\src\main\java\user\UserQuery.java
-C:\Users\Stefano Villa\Desktop\Sw_Project_InfoIII\JavaFiles\ServerRequestHandler\src\main\java\algorithmReservationHandler\AlgorithmResult.java
-C:\Users\Stefano Villa\Desktop\Sw_Project_InfoIII\JavaFiles\ServerRequestHandler\src\main\java\book\BookQuery.java
-C:\Users\Stefano Villa\Desktop\Sw_Project_InfoIII\JavaFiles\ServerRequestHandler\src\main\java\dataManager\Queries.java
-C:\Users\Stefano Villa\Desktop\Sw_Project_InfoIII\JavaFiles\ServerRequestHandler\src\main\java\algorithmReservationHandler\Algorithm.java
-C:\Users\Stefano Villa\Desktop\Sw_Project_InfoIII\JavaFiles\ServerRequestHandler\src\main\java\requestManager\RequestType.java
-C:\Users\Stefano Villa\Desktop\Sw_Project_InfoIII\JavaFiles\ServerRequestHandler\src\main\java\requestManager\ComputeRequest.java
-C:\Users\Stefano Villa\Desktop\Sw_Project_InfoIII\JavaFiles\ServerRequestHandler\src\main\java\user\UserLocalizationInfo.java
-C:\Users\Stefano Villa\Desktop\Sw_Project_InfoIII\JavaFiles\ServerRequestHandler\src\main\java\dataManager\DBConnector.java
-C:\Users\Stefano Villa\Desktop\Sw_Project_InfoIII\JavaFiles\ServerRequestHandler\src\main\java\dataManager\QueryPerformer.java
-C:\Users\Stefano Villa\Desktop\Sw_Project_InfoIII\JavaFiles\ServerRequestHandler\src\main\java\user\User.java
-C:\Users\Stefano Villa\Desktop\Sw_Project_InfoIII\JavaFiles\ServerRequestHandler\src\main\java\book\Book.java
+C:\Users\miche\OneDrive\Desktop\I anno Magistrale\Informatica III - Modulo di progettazione ed algoritmi\WalkingBooks_ProgettoInfoIIIB\JavaFiles\BookCrossingServer\src\main\java\dataManager\ProfileData.java
+C:\Users\miche\OneDrive\Desktop\I anno Magistrale\Informatica III - Modulo di progettazione ed algoritmi\WalkingBooks_ProgettoInfoIIIB\JavaFiles\BookCrossingServer\src\main\java\algorithmReservationHandler\AlgorithmResult.java
+C:\Users\miche\OneDrive\Desktop\I anno Magistrale\Informatica III - Modulo di progettazione ed algoritmi\WalkingBooks_ProgettoInfoIIIB\JavaFiles\BookCrossingServer\src\main\java\test\BookDataTest.java
+C:\Users\miche\OneDrive\Desktop\I anno Magistrale\Informatica III - Modulo di progettazione ed algoritmi\WalkingBooks_ProgettoInfoIIIB\JavaFiles\BookCrossingServer\src\main\java\profile\ProfileManager.java
+C:\Users\miche\OneDrive\Desktop\I anno Magistrale\Informatica III - Modulo di progettazione ed algoritmi\WalkingBooks_ProgettoInfoIIIB\JavaFiles\BookCrossingServer\src\main\java\requestManager\communication\ServerHandler.java
+C:\Users\miche\OneDrive\Desktop\I anno Magistrale\Informatica III - Modulo di progettazione ed algoritmi\WalkingBooks_ProgettoInfoIIIB\JavaFiles\BookCrossingServer\src\main\java\algorithmReservationHandler\Algorithm.java
+C:\Users\miche\OneDrive\Desktop\I anno Magistrale\Informatica III - Modulo di progettazione ed algoritmi\WalkingBooks_ProgettoInfoIIIB\JavaFiles\BookCrossingServer\src\main\java\dataManager\ProfileQuery.java
+C:\Users\miche\OneDrive\Desktop\I anno Magistrale\Informatica III - Modulo di progettazione ed algoritmi\WalkingBooks_ProgettoInfoIIIB\JavaFiles\BookCrossingServer\src\main\java\test\UserDataTest.java
+C:\Users\miche\OneDrive\Desktop\I anno Magistrale\Informatica III - Modulo di progettazione ed algoritmi\WalkingBooks_ProgettoInfoIIIB\JavaFiles\BookCrossingServer\src\main\java\dataManager\Localization.java
+C:\Users\miche\OneDrive\Desktop\I anno Magistrale\Informatica III - Modulo di progettazione ed algoritmi\WalkingBooks_ProgettoInfoIIIB\JavaFiles\BookCrossingServer\src\main\java\dataManager\QueryPerformer.java
+C:\Users\miche\OneDrive\Desktop\I anno Magistrale\Informatica III - Modulo di progettazione ed algoritmi\WalkingBooks_ProgettoInfoIIIB\JavaFiles\BookCrossingServer\src\main\java\dataManager\BookQuery.java
+C:\Users\miche\OneDrive\Desktop\I anno Magistrale\Informatica III - Modulo di progettazione ed algoritmi\WalkingBooks_ProgettoInfoIIIB\JavaFiles\BookCrossingServer\src\main\java\book\Book.java
+C:\Users\miche\OneDrive\Desktop\I anno Magistrale\Informatica III - Modulo di progettazione ed algoritmi\WalkingBooks_ProgettoInfoIIIB\JavaFiles\BookCrossingServer\src\main\java\book\BookManager.java
+C:\Users\miche\OneDrive\Desktop\I anno Magistrale\Informatica III - Modulo di progettazione ed algoritmi\WalkingBooks_ProgettoInfoIIIB\JavaFiles\BookCrossingServer\src\main\java\dataManager\BookData.java
+C:\Users\miche\OneDrive\Desktop\I anno Magistrale\Informatica III - Modulo di progettazione ed algoritmi\WalkingBooks_ProgettoInfoIIIB\JavaFiles\BookCrossingServer\src\main\java\requestManager\ComputeRequest.java
+C:\Users\miche\OneDrive\Desktop\I anno Magistrale\Informatica III - Modulo di progettazione ed algoritmi\WalkingBooks_ProgettoInfoIIIB\JavaFiles\BookCrossingServer\src\main\java\requestManager\communication\ServerInitializer.java
+C:\Users\miche\OneDrive\Desktop\I anno Magistrale\Informatica III - Modulo di progettazione ed algoritmi\WalkingBooks_ProgettoInfoIIIB\JavaFiles\BookCrossingServer\src\main\java\test\CommunicationTest.java
+C:\Users\miche\OneDrive\Desktop\I anno Magistrale\Informatica III - Modulo di progettazione ed algoritmi\WalkingBooks_ProgettoInfoIIIB\JavaFiles\BookCrossingServer\src\main\java\profile\Profile.java
+C:\Users\miche\OneDrive\Desktop\I anno Magistrale\Informatica III - Modulo di progettazione ed algoritmi\WalkingBooks_ProgettoInfoIIIB\JavaFiles\BookCrossingServer\src\main\java\profile\LoginStatus.java
+C:\Users\miche\OneDrive\Desktop\I anno Magistrale\Informatica III - Modulo di progettazione ed algoritmi\WalkingBooks_ProgettoInfoIIIB\JavaFiles\BookCrossingServer\src\main\java\requestManager\communication\SendAnswer.java
+C:\Users\miche\OneDrive\Desktop\I anno Magistrale\Informatica III - Modulo di progettazione ed algoritmi\WalkingBooks_ProgettoInfoIIIB\JavaFiles\BookCrossingServer\src\main\java\test\UserTest.java
+C:\Users\miche\OneDrive\Desktop\I anno Magistrale\Informatica III - Modulo di progettazione ed algoritmi\WalkingBooks_ProgettoInfoIIIB\JavaFiles\BookCrossingServer\src\main\java\dataManager\DBConnector.java
+C:\Users\miche\OneDrive\Desktop\I anno Magistrale\Informatica III - Modulo di progettazione ed algoritmi\WalkingBooks_ProgettoInfoIIIB\JavaFiles\BookCrossingServer\src\main\java\requestManager\ProcessRequest.java
+C:\Users\miche\OneDrive\Desktop\I anno Magistrale\Informatica III - Modulo di progettazione ed algoritmi\WalkingBooks_ProgettoInfoIIIB\JavaFiles\BookCrossingServer\src\main\java\book\BookType.java
+C:\Users\miche\OneDrive\Desktop\I anno Magistrale\Informatica III - Modulo di progettazione ed algoritmi\WalkingBooks_ProgettoInfoIIIB\JavaFiles\BookCrossingServer\src\main\java\requestManager\RequestType.java
+C:\Users\miche\OneDrive\Desktop\I anno Magistrale\Informatica III - Modulo di progettazione ed algoritmi\WalkingBooks_ProgettoInfoIIIB\JavaFiles\BookCrossingServer\src\main\java\requestManager\communication\Communication.java
+C:\Users\miche\OneDrive\Desktop\I anno Magistrale\Informatica III - Modulo di progettazione ed algoritmi\WalkingBooks_ProgettoInfoIIIB\JavaFiles\BookCrossingServer\src\main\java\dataManager\Queries.java

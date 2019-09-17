@@ -2,13 +2,13 @@ package book;
 
 import java.util.ArrayList;
 
-import user.User;
+import profile.Profile;
 
 public interface BookManager {
 
-	public ArrayList<User> getPrenotanti();
+	public ArrayList<Profile> getPrenotanti();
 	public boolean reserve(String username);
 	public boolean insert();
 	public String generateBCID();
-	public boolean setPrenotante(User user);
+	public boolean setPrenotante(Profile user);
 }
