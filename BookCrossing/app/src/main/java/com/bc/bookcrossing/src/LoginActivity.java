@@ -31,8 +31,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bc.bookcrossing.src.View.Delegate.DataDispatcherSingleton;
-import com.bc.bookcrossing.src.View.Observer.ObserverDataLogin;
+import com.bc.bookcrossing.src.GUI.DataDispatcher.DataDispatcherSingleton;
+import com.bc.bookcrossing.src.GUI.Observer.ObserverDataLogin;
 import com.bc.bookcrossing.src.ClientModels.Enums.LoginStatus;
 
 import java.util.ArrayList;

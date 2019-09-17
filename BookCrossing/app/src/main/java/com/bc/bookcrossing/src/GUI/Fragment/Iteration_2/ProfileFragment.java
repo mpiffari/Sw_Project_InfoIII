@@ -1,4 +1,4 @@
-package com.bc.bookcrossing.src.View.Fragment.Iteration_2;
+package com.bc.bookcrossing.src.GUI.Fragment.Iteration_2;
 
 import android.net.Uri;
 import android.os.Build;
@@ -12,8 +12,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.bc.bookcrossing.src.View.Delegate.DataDispatcherSingleton;
-import com.bc.bookcrossing.src.View.Observer.ObserverDataProfile;
+import com.bc.bookcrossing.src.GUI.DataDispatcher.DataDispatcherSingleton;
+import com.bc.bookcrossing.src.GUI.Observer.ObserverDataProfile;
 import com.bc.bookcrossing.src.Globals;
 import com.bc.bookcrossing.src.R;
 import com.bc.bookcrossing.src.ClientModels.UserInformations;
@@ -28,7 +28,7 @@ import com.bc.bookcrossing.src.ClientModels.UserInformations;
  * @version 1.0
  * @since 2018/2019
  */
-public class LoginFragment extends Fragment implements ObserverDataProfile, View.OnClickListener {
+public class ProfileFragment extends Fragment implements ObserverDataProfile, View.OnClickListener {
     /**
      * Delegato a ricevere la domanda e a mandare indietro la risposta, a tutti gli observers
      * che risultano essere registrati per una certa tipologia di informazioni.
@@ -39,12 +39,12 @@ public class LoginFragment extends Fragment implements ObserverDataProfile, View
     private Button leaveButton;
 
 
-    public LoginFragment() {
+    public ProfileFragment() {
         // Required empty public constructor
     }
 
-    public static LoginFragment newInstance(String param1, String param2) {
-        LoginFragment fragment = new LoginFragment();
+    public static ProfileFragment newInstance(String param1, String param2) {
+        ProfileFragment fragment = new ProfileFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;

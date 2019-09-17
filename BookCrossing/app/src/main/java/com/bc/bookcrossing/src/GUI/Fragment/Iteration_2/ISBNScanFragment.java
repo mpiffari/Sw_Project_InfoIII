@@ -1,4 +1,4 @@
-package com.bc.bookcrossing.src.View.Fragment.Iteration_2;
+package com.bc.bookcrossing.src.GUI.Fragment.Iteration_2;
 
 import android.Manifest;
 import android.content.Context;
@@ -22,9 +22,9 @@ import android.widget.Toast;
 
 import com.bc.bookcrossing.src.ClientModels.NoScanResultException;
 import com.bc.bookcrossing.src.requestManager.FetchAndParseBook;
-import com.bc.bookcrossing.src.View.Delegate.DataDispatcherSingleton;
-import com.bc.bookcrossing.src.View.Fragment.Iteration_1.BookRegistrationFragment;
-import com.bc.bookcrossing.src.View.Observer.ObserverDataBookRegistration;
+import com.bc.bookcrossing.src.GUI.DataDispatcher.DataDispatcherSingleton;
+import com.bc.bookcrossing.src.GUI.Fragment.Iteration_1.BookRegistrationFragment;
+import com.bc.bookcrossing.src.GUI.Observer.ObserverDataBookRegistration;
 import com.bc.bookcrossing.src.R;
 import com.bc.bookcrossing.src.ClientModels.Book;
 import com.google.zxing.integration.android.IntentIntegrator;

@@ -1,6 +1,6 @@
-package com.bc.bookcrossing.src.View.Delegate;
+package com.bc.bookcrossing.src.GUI.DataDispatcher;
 
-import com.bc.bookcrossing.src.View.Observer.ObserverForUiInformation;
+import com.bc.bookcrossing.src.GUI.Observer.ObserverForUiInformation;
 import com.bc.bookcrossing.src.ClientModels.Book;
 
 import java.util.Date;

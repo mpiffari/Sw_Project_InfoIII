@@ -1,4 +1,4 @@
-package com.bc.bookcrossing.src.View.Observer;
+package com.bc.bookcrossing.src.GUI.Observer;
 
 /**
  * @author Paganessi Andrea - Piffari Michele - Villa Stefano

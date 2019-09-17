@@ -1,4 +1,4 @@
-package com.bc.bookcrossing.src.View.Observer;
+package com.bc.bookcrossing.src.GUI.Observer;
 
 import com.bc.bookcrossing.src.ClientModels.Enums.SignInStatus;
 

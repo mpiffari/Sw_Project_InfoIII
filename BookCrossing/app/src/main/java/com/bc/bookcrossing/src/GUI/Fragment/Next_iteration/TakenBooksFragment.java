@@ -1,4 +1,4 @@
-package com.bc.bookcrossing.src.View.Fragment.Next_iteration;
+package com.bc.bookcrossing.src.GUI.Fragment.Next_iteration;
 
 import android.net.Uri;
 import android.os.Bundle;
@@ -7,23 +7,23 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.bc.bookcrossing.src.View.Delegate.DataDispatcherSingleton;
-import com.bc.bookcrossing.src.View.Observer.ObserverDataSignIn;
+import com.bc.bookcrossing.src.ClientModels.BookInfo;
+import com.bc.bookcrossing.src.GUI.DataDispatcher.DataDispatcherSingleton;
+import com.bc.bookcrossing.src.GUI.Observer.ObserverDataBookTaken;
 import com.bc.bookcrossing.src.R;
-import com.bc.bookcrossing.src.ClientModels.Enums.SignInStatus;
 
-import java.util.List;
-
+import java.util.ArrayList;
 
 /**
  *
- * Next iteration.
+ * Next iteration
  *
  * @author Paganessi Andrea - Piffari Michele - Villa Stefano
  * @version 1.0
  * @since 2018/2019
  */
-public class SignInFragment extends Fragment implements ObserverDataSignIn {
+public class TakenBooksFragment extends Fragment implements ObserverDataBookTaken {
+
     /**
      * Delegato a ricevere la domanda e a mandare indietro la risposta, a tutti gli observers
      * che risultano essere registrati per una certa tipologia di informazioni.
@@ -31,12 +31,10 @@ public class SignInFragment extends Fragment implements ObserverDataSignIn {
     private DataDispatcherSingleton dispatcher;
     private OnFragmentInteractionListener mListener;
 
-    public SignInFragment() {
-        // Required empty public constructor
-    }
+    public TakenBooksFragment() {}
 
-    public static SignInFragment newInstance(String param1, String param2) {
-        SignInFragment fragment = new SignInFragment();
+    public static TakenBooksFragment newInstance(String param1, String param2) {
+        TakenBooksFragment fragment = new TakenBooksFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -53,7 +51,7 @@ public class SignInFragment extends Fragment implements ObserverDataSignIn {
         dispatcher = DataDispatcherSingleton.getInstance();
         dispatcher.register(this);
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_sign_in, container, false);
+        return inflater.inflate(R.layout.fragment_taken_books, container, false);
     }
 
     @Override
@@ -64,8 +62,7 @@ public class SignInFragment extends Fragment implements ObserverDataSignIn {
     }
 
     @Override
-    public void notifySignIn(List<SignInStatus> status) {}
-
+    public void notifyBookTaken(ArrayList<BookInfo> bookInformations) {}
 
     /**
      * This interface must be implemented by activities that contain this

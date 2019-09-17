@@ -1,19 +1,19 @@
-package com.bc.bookcrossing.src.View.Delegate;
+package com.bc.bookcrossing.src.GUI.DataDispatcher;
 
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 
-import com.bc.bookcrossing.src.View.Observer.ObserverDataBookReservation;
-import com.bc.bookcrossing.src.View.Observer.ObserverDataBookResearch;
+import com.bc.bookcrossing.src.GUI.Observer.ObserverDataBookReservation;
+import com.bc.bookcrossing.src.GUI.Observer.ObserverDataBookResearch;
 import com.bc.bookcrossing.src.ClientModels.BookInfo;
 import com.bc.bookcrossing.src.requestManager.ReceiveData;
-import com.bc.bookcrossing.src.View.Observer.ObserverDataBookRegistration;
-import com.bc.bookcrossing.src.View.Observer.ObserverDataBookPickUp;
-import com.bc.bookcrossing.src.View.Observer.ObserverDataBookTaken;
-import com.bc.bookcrossing.src.View.Observer.ObserverDataLogin;
-import com.bc.bookcrossing.src.View.Observer.ObserverDataProfile;
-import com.bc.bookcrossing.src.View.Observer.ObserverDataSignIn;
-import com.bc.bookcrossing.src.View.Observer.ObserverForUiInformation;
+import com.bc.bookcrossing.src.GUI.Observer.ObserverDataBookRegistration;
+import com.bc.bookcrossing.src.GUI.Observer.ObserverDataBookPickUp;
+import com.bc.bookcrossing.src.GUI.Observer.ObserverDataBookTaken;
+import com.bc.bookcrossing.src.GUI.Observer.ObserverDataLogin;
+import com.bc.bookcrossing.src.GUI.Observer.ObserverDataProfile;
+import com.bc.bookcrossing.src.GUI.Observer.ObserverDataSignIn;
+import com.bc.bookcrossing.src.GUI.Observer.ObserverForUiInformation;
 import com.bc.bookcrossing.src.ClientModels.Enums.LoginStatus;
 import com.bc.bookcrossing.src.ClientModels.Enums.SignInStatus;
 import com.bc.bookcrossing.src.ClientModels.User;

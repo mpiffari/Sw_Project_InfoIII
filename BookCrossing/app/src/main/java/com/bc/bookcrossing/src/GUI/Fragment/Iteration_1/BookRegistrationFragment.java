@@ -1,4 +1,4 @@
-package com.bc.bookcrossing.src.View.Fragment.Iteration_1;
+package com.bc.bookcrossing.src.GUI.Fragment.Iteration_1;
 
 import android.net.Uri;
 import android.os.Bundle;
@@ -15,9 +15,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bc.bookcrossing.src.ClientModels.Book;
-import com.bc.bookcrossing.src.View.Delegate.DataDispatcherSingleton;
-import com.bc.bookcrossing.src.View.Fragment.Iteration_2.ISBNScanFragment;
-import com.bc.bookcrossing.src.View.Observer.ObserverDataBookRegistration;
+import com.bc.bookcrossing.src.GUI.DataDispatcher.DataDispatcherSingleton;
+import com.bc.bookcrossing.src.GUI.Fragment.Iteration_2.ISBNScanFragment;
+import com.bc.bookcrossing.src.GUI.Observer.ObserverDataBookRegistration;
 import com.bc.bookcrossing.src.Globals;
 import com.bc.bookcrossing.src.R;
 

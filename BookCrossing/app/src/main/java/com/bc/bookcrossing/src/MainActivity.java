@@ -10,12 +10,12 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.bc.bookcrossing.src.View.Fragment.Iteration_1.BookRegistrationFragment;
-import com.bc.bookcrossing.src.View.Fragment.Iteration_2.ISBNScanFragment;
-import com.bc.bookcrossing.src.View.Fragment.Iteration_2.LoginFragment;
+import com.bc.bookcrossing.src.GUI.Fragment.Iteration_1.BookRegistrationFragment;
+import com.bc.bookcrossing.src.GUI.Fragment.Iteration_2.ISBNScanFragment;
+import com.bc.bookcrossing.src.GUI.Fragment.Iteration_2.ProfileFragment;
 import com.bc.bookcrossing.src.ClientModels.NoScanResultException;
-import com.bc.bookcrossing.src.View.Fragment.Iteration_2.ScanResultReceiver;
-import com.bc.bookcrossing.src.View.Fragment.Iteration_2.SearchFragment;
+import com.bc.bookcrossing.src.GUI.Fragment.Iteration_2.ScanResultReceiver;
+import com.bc.bookcrossing.src.GUI.Fragment.Iteration_2.SearchFragment;
 
 /**
  * <h1>The walking books</h1>
@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements ScanResultReceive
         //I added this if statement to keep the selected fragment when rotating the device
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                    new LoginFragment()).commit();
+                    new ProfileFragment()).commit();
         }
 
     }
@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements ScanResultReceive
 
                     switch (item.getItemId()) {
                         case R.id.profile:
-                            selectedFragment = new LoginFragment();
+                            selectedFragment = new ProfileFragment();
                             break;
                         case R.id.book_registration:
                             selectedFragment = new BookRegistrationFragment();

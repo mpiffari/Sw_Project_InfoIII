@@ -1,4 +1,4 @@
-package com.bc.bookcrossing.src.View.Fragment.Iteration_1;
+package com.bc.bookcrossing.src.GUI.Fragment.Iteration_1;
 
 import android.net.Uri;
 import android.os.Bundle;
@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 import com.bc.bookcrossing.src.R;
 import com.bc.bookcrossing.src.ClientModels.Book;
-import com.bc.bookcrossing.src.View.Fragment.Iteration_2.SearchFragment;
+import com.bc.bookcrossing.src.GUI.Fragment.Iteration_2.SearchFragment;
 
 /**
  *

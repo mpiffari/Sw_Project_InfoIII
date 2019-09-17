@@ -1,4 +1,4 @@
-package com.bc.bookcrossing.src.View.Fragment.Next_iteration;
+package com.bc.bookcrossing.src.GUI.Fragment.Next_iteration;
 
 import android.net.Uri;
 import android.os.Bundle;
@@ -7,10 +7,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.bc.bookcrossing.src.View.Delegate.DataDispatcherSingleton;
-import com.bc.bookcrossing.src.View.Observer.ObserverDataProfile;
+import com.bc.bookcrossing.src.GUI.DataDispatcher.DataDispatcherSingleton;
+import com.bc.bookcrossing.src.GUI.Observer.ObserverDataSignIn;
 import com.bc.bookcrossing.src.R;
-import com.bc.bookcrossing.src.ClientModels.UserInformations;
+import com.bc.bookcrossing.src.ClientModels.Enums.SignInStatus;
+
+import java.util.List;
+
 
 /**
  *
@@ -20,8 +23,7 @@ import com.bc.bookcrossing.src.ClientModels.UserInformations;
  * @version 1.0
  * @since 2018/2019
  */
-public class ProfileFragment extends Fragment implements ObserverDataProfile {
-
+public class SignInFragment extends Fragment implements ObserverDataSignIn {
     /**
      * Delegato a ricevere la domanda e a mandare indietro la risposta, a tutti gli observers
      * che risultano essere registrati per una certa tipologia di informazioni.
@@ -29,12 +31,12 @@ public class ProfileFragment extends Fragment implements ObserverDataProfile {
     private DataDispatcherSingleton dispatcher;
     private OnFragmentInteractionListener mListener;
 
-    public ProfileFragment() {
+    public SignInFragment() {
         // Required empty public constructor
     }
 
-    public static ProfileFragment newInstance(String param1, String param2) {
-        ProfileFragment fragment = new ProfileFragment();
+    public static SignInFragment newInstance(String param1, String param2) {
+        SignInFragment fragment = new SignInFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -51,7 +53,7 @@ public class ProfileFragment extends Fragment implements ObserverDataProfile {
         dispatcher = DataDispatcherSingleton.getInstance();
         dispatcher.register(this);
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false);
+        return inflater.inflate(R.layout.fragment_sign_in, container, false);
     }
 
     @Override
@@ -62,7 +64,8 @@ public class ProfileFragment extends Fragment implements ObserverDataProfile {
     }
 
     @Override
-    public void notifyProfile(UserInformations userInformations) {}
+    public void notifySignIn(List<SignInStatus> status) {}
+
 
     /**
      * This interface must be implemented by activities that contain this

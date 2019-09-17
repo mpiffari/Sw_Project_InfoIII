@@ -2,7 +2,7 @@ package com.bc.bookcrossing.src.requestManager;
 
 import android.util.Log;
 
-import com.bc.bookcrossing.src.View.Delegate.DataDispatcherSingleton;
+import com.bc.bookcrossing.src.GUI.DataDispatcher.DataDispatcherSingleton;
 import com.bc.bookcrossing.src.Globals;
 import com.bc.bookcrossing.src.ClientModels.Book;
 import com.bc.bookcrossing.src.ClientModels.Enums.LoginStatus;

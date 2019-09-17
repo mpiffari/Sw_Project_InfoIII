@@ -1,4 +1,4 @@
-package com.bc.bookcrossing.src.View.Fragment.Next_iteration;
+package com.bc.bookcrossing.src.GUI.Fragment.Next_iteration;
 
 import android.net.Uri;
 import android.os.Bundle;
@@ -7,22 +7,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.bc.bookcrossing.src.ClientModels.BookInfo;
-import com.bc.bookcrossing.src.View.Delegate.DataDispatcherSingleton;
-import com.bc.bookcrossing.src.View.Observer.ObserverDataBookTaken;
+import com.bc.bookcrossing.src.GUI.DataDispatcher.DataDispatcherSingleton;
+import com.bc.bookcrossing.src.GUI.Observer.ObserverDataBookPickUp;
 import com.bc.bookcrossing.src.R;
 
-import java.util.ArrayList;
 
 /**
  *
- * Next iteration
+ * Next iteration.
  *
  * @author Paganessi Andrea - Piffari Michele - Villa Stefano
  * @version 1.0
  * @since 2018/2019
  */
-public class TakenBooksFragment extends Fragment implements ObserverDataBookTaken {
+public class PickUpFragment extends Fragment implements ObserverDataBookPickUp {
 
     /**
      * Delegato a ricevere la domanda e a mandare indietro la risposta, a tutti gli observers
@@ -31,10 +29,10 @@ public class TakenBooksFragment extends Fragment implements ObserverDataBookTake
     private DataDispatcherSingleton dispatcher;
     private OnFragmentInteractionListener mListener;
 
-    public TakenBooksFragment() {}
+    public PickUpFragment() {}
 
-    public static TakenBooksFragment newInstance(String param1, String param2) {
-        TakenBooksFragment fragment = new TakenBooksFragment();
+    public static PickUpFragment newInstance(String param1, String param2) {
+        PickUpFragment fragment = new PickUpFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -51,7 +49,14 @@ public class TakenBooksFragment extends Fragment implements ObserverDataBookTake
         dispatcher = DataDispatcherSingleton.getInstance();
         dispatcher.register(this);
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_taken_books, container, false);
+        return inflater.inflate(R.layout.fragment_pick_up, container, false);
+
+    }
+
+    public void onButtonPressed(Uri uri) {
+        if (mListener != null) {
+            mListener.onFragmentInteraction(uri);
+        }
     }
 
     @Override
@@ -62,7 +67,7 @@ public class TakenBooksFragment extends Fragment implements ObserverDataBookTake
     }
 
     @Override
-    public void notifyBookTaken(ArrayList<BookInfo> bookInformations) {}
+    public void notifyPickUp(short bookStatus) {}
 
     /**
      * This interface must be implemented by activities that contain this
