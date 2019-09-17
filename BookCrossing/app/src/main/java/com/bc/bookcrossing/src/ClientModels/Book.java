@@ -25,6 +25,7 @@ public class Book implements Serializable{
 	private boolean underReading;
     private Double latitude;
     private Double longitude;
+
     /**
      * Empty Book init
      */
@@ -135,16 +136,6 @@ public class Book implements Serializable{
                 }
             }
         }
-
-		/*this.title = getTitleFromString(copyLines[0]);
-		this.author = getAuthorFromString(copyLines[1]);
-		this.yearOfPubblication = getYearOfPubblicationFromString(copyLines[2]);
-		this.editionNumber = getEditionNumberFromString(copyLines[3]);
-		this.type = getBookTypeFromString(copyLines[4]);
-        this.user = getUserFromString(copyLines[5]);
-        this.ISBN = getISBNFromString(copyLines[6]);
-        this.underReading = getStateFromString(copyLines[7]);
-        this.BCID = getBCIDFromString(copyLines[8]);*/
 	}
 
     /**

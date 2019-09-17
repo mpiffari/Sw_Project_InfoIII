@@ -21,11 +21,15 @@ import java.util.List;
  */
 
 public interface ReceiveData {
-    void callbackRegistration(boolean result, String bookCodeID);
-    void callbackLogin(final boolean result,@Nullable LoginStatus s);
+    // ===================== ITERAZIONE 1 ===================================
+    void callbackRegistration(boolean result, String bookCodeID); // callback used for manual and automatic registration
     void callbackBookSearch(boolean result, List<Book> booksFound);
+
+    // ===================== ITERAZIONE 2 ===================================
+    void callbackLogin(final boolean result,@Nullable LoginStatus s);
     void callbackReservation(boolean result);
 
+    // ===================== PROSSIMA ITERAZIONE ===================================
     void callbackPickUp(short bookStatus);
     void callbackBookTaken(ArrayList<BookInfo> bookInformations);
     void callbackProfile(UserInformations userInformations);

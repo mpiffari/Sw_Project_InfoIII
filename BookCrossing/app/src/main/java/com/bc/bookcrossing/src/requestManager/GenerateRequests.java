@@ -14,13 +14,19 @@ import java.util.Date;
  */
 
 public interface GenerateRequests {
+
+   // ===================== ITERAZIONE 1 ===================================
+   boolean generateRequestForDataBookSearch(String title, String author);
+   boolean generateRequestForDataBookRegistrationManual(Book book);
+
+   // ===================== ITERAZIONE 2 ===================================
+   boolean generateRequestForDataBookRegistrationAuto(Book book);
+   boolean generateRequestForDataBookReservation(Book bookForReservation);
+   boolean generateRequestForDataLogin(User user);
+
+   // ===================== PROSSIMA ITERAZIONE ===================================
    boolean generateRequestForDataSignIn(String name, String lastName, String username, Date DOB, String[] contacts, String password, int actionArea);
    boolean generateRequestForDataPickUp(String BCID);
    boolean generateRequestForDataTakenBooks();
-   boolean generateRequestForDataBookRegistrationAuto(Book book);
-   boolean generateRequestForDataBookRegistrationManual(Book book);
-   boolean generateRequestForDataLogin(User user);
    boolean generateRequestForDataProfileInformations(String username, String password);
-   boolean generateRequestForDataBookSearch(String title, String author);
-   boolean generateRequestForDataBookReservation(Book bookForReservation);
 }

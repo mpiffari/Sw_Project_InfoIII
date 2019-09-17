@@ -50,17 +50,39 @@ public class DataDispatcherSingleton implements ReceiveData, DelegateSendData {
     private Processing p = Processing.getInstance();
 
     //region Declaration of vector of observers
-    private List<ObserverDataBookRegistration> observersDataBookRegistration = new ArrayList<>();
+    // ===================== ITERAZIONE 1 ===================================
+    private List<ObserverDataBookRegistration> observersDataBookRegistration = new ArrayList<>(); // Used also for automatic and manual registration
+    private List<ObserverDataBookResearch> observarDataBookResearch = new ArrayList<>();
+
+    // ===================== ITERAZIONE 2 ===================================
+    private List<ObserverDataLogin> observersDataLogin = new ArrayList<>();
+    private List<ObserverDataBookReservation> observarDataBookReservation = new ArrayList<>();
+
+    // ===================== PROSSIMA ITERAZIONE ===================================
     private List<ObserverDataBookPickUp> observersDataBookPickUp = new ArrayList<>();
     private List<ObserverDataBookTaken> observersDataBookTaken = new ArrayList<>();
-    private List<ObserverDataLogin> observersDataLogin = new ArrayList<>();
     private List<ObserverDataSignIn> observersDataSignIn = new ArrayList<>();
     private List<ObserverDataProfile> observersDataProfile = new ArrayList<>();
-    private List<ObserverDataBookResearch> observarDataBookResearch = new ArrayList<>();
-    private List<ObserverDataBookReservation> observarDataBookReservation = new ArrayList<>();
     //endregion
 
     //region Delegate SendData functions
+    // ===================== ITERAZIONE 1 ===================================
+    @Override
+    public boolean sendDataBookRegistrationManual(String title, String author, String yearOfPubb, String edition, String bookTypeDesc) {
+        // BookType bookType = BookType.fromString(bookTypeDesc);
+        Book newBook = new Book(title, author, Integer.parseInt(yearOfPubb), Integer.parseInt(edition), bookTypeDesc);
+        newBook.setBCID("");
+
+        return p.generateRequestForDataBookRegistrationManual(newBook);
+    }
+
+    @Override
+    public boolean sendDataBookSearch(String title, String author) {
+        return p.generateRequestForDataBookSearch(title, author);
+    }
+
+
+    // ===================== ITERAZIONE 2 ===================================
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public boolean sendDataLogin(String username, String password) {
@@ -85,26 +107,12 @@ public class DataDispatcherSingleton implements ReceiveData, DelegateSendData {
     }
 
     @Override
-    public boolean sendDataBookRegistrationManual(String title, String author, String yearOfPubb, String edition, String bookTypeDesc) {
-       // BookType bookType = BookType.fromString(bookTypeDesc);
-        Book newBook = new Book(title, author, Integer.parseInt(yearOfPubb), Integer.parseInt(edition), bookTypeDesc);
-        newBook.setBCID("");
-
-        return p.generateRequestForDataBookRegistrationManual(newBook);
-    }
-
-    @Override
-    public boolean sendDataBookSearch(String title, String author) {
-        return p.generateRequestForDataBookSearch(title, author);
-    }
-
-    @Override
     public boolean sendDataBookReservation(Book bookForReservation) {
         return p.generateRequestForDataBookReservation(bookForReservation);
     }
 
 
-
+    // ===================== PROSSIMA ITERAZIONE ===================================
     @Override
     public boolean sendDataSignIn(String name, String lastName, String username, Date DOB, String[] contacts, String password, int actionArea) {
         return p.generateRequestForDataSignIn(name, lastName, username, DOB, contacts, password, actionArea);
@@ -127,13 +135,38 @@ public class DataDispatcherSingleton implements ReceiveData, DelegateSendData {
     //endregion
 
     //region callback ReceiveData functions
+    // ===================== ITERAZIONE 1 ===================================
     @Override
-    public void callbackRegistration(boolean result, String bookCodeID) {
+    public void callbackRegistration(boolean result, String bookCodeID) { // Manual and automatic registration
         for (ObserverDataBookRegistration obs : observersDataBookRegistration) {
             obs.notifyRegistration(result, bookCodeID);
         }
     }
 
+    @Override
+    public void callbackBookSearch(boolean b, List<Book> booksFound) {
+        for (ObserverDataBookResearch obs : observarDataBookResearch) {
+            obs.notifyBookSearch(b, booksFound);
+        }
+    }
+
+    // ===================== ITERAZIONE 2 ===================================
+    @Override
+    public void callbackLogin(final boolean result, LoginStatus s) {
+        for (ObserverDataLogin obs : observersDataLogin) {
+            obs.notifyLogin(result,s);
+        }
+    }
+
+    @Override
+    public void callbackReservation(boolean result) {
+        for (ObserverDataBookReservation obs : observarDataBookReservation) {
+            obs.notifyReservation(result);
+        }
+    }
+
+
+    // ===================== PROSSIMA ITERAZIONE ===================================
     @Override
     public void callbackPickUp(short bookStatus) {
         for (ObserverDataBookPickUp obs : observersDataBookPickUp) {
@@ -145,13 +178,6 @@ public class DataDispatcherSingleton implements ReceiveData, DelegateSendData {
     public void callbackBookTaken(ArrayList<BookInfo> bookInformations) {
         for (ObserverDataBookTaken obs : observersDataBookTaken) {
             obs.notifyBookTaken(bookInformations);
-        }
-    }
-
-    @Override
-    public void callbackLogin(final boolean result, LoginStatus s) {
-        for (ObserverDataLogin obs : observersDataLogin) {
-            obs.notifyLogin(result,s);
         }
     }
 
@@ -168,22 +194,6 @@ public class DataDispatcherSingleton implements ReceiveData, DelegateSendData {
             obs.notifySignIn(status);
         }
     }
-
-    @Override
-    public void callbackBookSearch(boolean b, List<Book> booksFound) {
-        for (ObserverDataBookResearch obs : observarDataBookResearch) {
-            obs.notifyBookSearch(b, booksFound);
-        }
-    }
-
-    @Override
-    public void callbackReservation(boolean result) {
-        for (ObserverDataBookReservation obs : observarDataBookReservation) {
-            obs.notifyReservation(result);
-        }
-    }
-
-
     //endregion
 
     //Function related to SHA-256 encoding: encode password
@@ -203,22 +213,29 @@ public class DataDispatcherSingleton implements ReceiveData, DelegateSendData {
      */
     @Override
     public void register(ObserverForUiInformation observerForUiInformation) {
+        // ===================== ITERAZIONE 1 ===================================
         if ((observerForUiInformation instanceof ObserverDataBookRegistration) && (!observersDataBookRegistration.contains(observerForUiInformation))) {
             observersDataBookRegistration.add((ObserverDataBookRegistration) observerForUiInformation);
-        } else if ((observerForUiInformation instanceof ObserverDataBookPickUp) && (!observersDataBookPickUp.contains(observerForUiInformation))) {
+        } else if ((observerForUiInformation instanceof ObserverDataBookResearch) && (!observarDataBookResearch.contains(observerForUiInformation))) {
+            observarDataBookResearch.add((ObserverDataBookResearch) observerForUiInformation);
+        }
+
+        // ===================== ITERAZIONE 2 ===================================
+        else if ((observerForUiInformation instanceof ObserverDataBookReservation) && (!observarDataBookReservation.contains(observerForUiInformation))) {
+            observarDataBookReservation.add((ObserverDataBookReservation) observerForUiInformation);
+        } else if ((observerForUiInformation instanceof ObserverDataLogin) && (!observersDataLogin.contains(observerForUiInformation))) {
+            observersDataLogin.add((ObserverDataLogin) observerForUiInformation);
+        }
+
+        // ===================== PROSSIMA ITERAZIONE ===================================
+        else if ((observerForUiInformation instanceof ObserverDataBookPickUp) && (!observersDataBookPickUp.contains(observerForUiInformation))) {
             observersDataBookPickUp.add((ObserverDataBookPickUp) observerForUiInformation);
         } else if ((observerForUiInformation instanceof ObserverDataBookTaken) && (!observersDataBookTaken.contains(observerForUiInformation))) {
             observersDataBookTaken.add((ObserverDataBookTaken) observerForUiInformation);
-        } else if ((observerForUiInformation instanceof ObserverDataLogin) && (!observersDataLogin.contains(observerForUiInformation))) {
-            observersDataLogin.add((ObserverDataLogin) observerForUiInformation);
-        } else if ((observerForUiInformation instanceof ObserverDataSignIn) && (!observersDataSignIn.contains(observerForUiInformation))) {
+        }  else if ((observerForUiInformation instanceof ObserverDataSignIn) && (!observersDataSignIn.contains(observerForUiInformation))) {
             observersDataSignIn.add((ObserverDataSignIn) observerForUiInformation);
         } else if ((observerForUiInformation instanceof ObserverDataProfile) && (!observersDataProfile.contains(observerForUiInformation))) {
             observersDataProfile.add((ObserverDataProfile) observerForUiInformation);
-        } else if ((observerForUiInformation instanceof ObserverDataBookResearch) && (!observarDataBookResearch.contains(observerForUiInformation))) {
-            observarDataBookResearch.add((ObserverDataBookResearch) observerForUiInformation);
-        } else if ((observerForUiInformation instanceof ObserverDataBookReservation) && (!observarDataBookReservation.contains(observerForUiInformation))) {
-            observarDataBookReservation.add((ObserverDataBookReservation) observerForUiInformation);
         }
     }
 
@@ -229,22 +246,29 @@ public class DataDispatcherSingleton implements ReceiveData, DelegateSendData {
      */
     @Override
     public boolean unRegister(ObserverForUiInformation observerForUiInformation) {
+        // ===================== ITERAZIONE 1 ===================================
         if (observerForUiInformation instanceof ObserverDataBookRegistration) {
             return observersDataBookRegistration.remove(observerForUiInformation);
-        } else if (observerForUiInformation instanceof ObserverDataBookPickUp) {
+        } else if (observerForUiInformation instanceof ObserverDataBookResearch) {
+            return observarDataBookResearch.remove(observerForUiInformation);
+        }
+
+        // ===================== ITERAZIONE 2 ===================================
+        else if (observerForUiInformation instanceof ObserverDataBookReservation) {
+            return observarDataBookReservation.remove(observerForUiInformation);
+        } else if (observerForUiInformation instanceof ObserverDataLogin) {
+            return observersDataLogin.remove(observerForUiInformation);
+        }
+
+        // ===================== PROSSIMA ITERAZIONE ===================================
+        else if (observerForUiInformation instanceof ObserverDataBookPickUp) {
             return observersDataBookPickUp.remove(observerForUiInformation);
         } else if (observerForUiInformation instanceof ObserverDataBookTaken) {
             return observersDataBookTaken.remove(observerForUiInformation);
-        } else if (observerForUiInformation instanceof ObserverDataLogin) {
-            return observersDataLogin.remove(observerForUiInformation);
-        } else if (observerForUiInformation instanceof ObserverDataProfile) {
+        }  else if (observerForUiInformation instanceof ObserverDataProfile) {
             return observersDataProfile.remove(observerForUiInformation);
         } else if (observerForUiInformation instanceof ObserverDataSignIn) {
-                return observersDataSignIn.remove(observerForUiInformation);
-        } else if (observerForUiInformation instanceof ObserverDataBookResearch) {
-                return observarDataBookResearch.remove(observerForUiInformation);
-        } else if (observerForUiInformation instanceof ObserverDataBookReservation) {
-            return observarDataBookReservation.remove(observerForUiInformation);
+            return observersDataSignIn.remove(observerForUiInformation);
         }
         return false;
     }

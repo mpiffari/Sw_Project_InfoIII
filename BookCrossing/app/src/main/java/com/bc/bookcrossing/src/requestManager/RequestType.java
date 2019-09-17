@@ -10,15 +10,21 @@ package com.bc.bookcrossing.src.requestManager;
  */
 
 public enum RequestType {
+    // ===================== ITERAZIONE 1 ===================================
     BOOK_REGISTRATION_MANUAL("0"),
+    BOOK_SEARCH("8"),
+
+    // ===================== ITERAZIONE 2 ===================================
     BOOK_RESERVATION("1"),
     LOGIN("2"),
-    SIGN_IN("3"),
     BOOK_REGISTRATION_AUTOMATIC("4"),
+
+    // ===================== PROSSIMA ITERAZIONE ===================================
+    SIGN_IN("3"),
     PROFILE_INFO("5"),
     TAKEN_BOOKS("6"),
-    PICK_UP("7"),
-    BOOK_SEARCH("8");
+    PICK_UP("7");
+
 
     public String description;
 
