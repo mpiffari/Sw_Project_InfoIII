@@ -26,7 +26,6 @@ import com.bc.bookcrossing.src.GUI.Fragment.Iteration_2.SearchFragment;
 public class ResultSearchFragment extends Fragment implements AdapterView.OnItemClickListener {
     private ListView listView;
     private static Book selectedBook;
-    private OnFragmentInteractionListener mListener;
 
     public ResultSearchFragment() {
         // Required empty public constructor
@@ -47,7 +46,6 @@ public class ResultSearchFragment extends Fragment implements AdapterView.OnItem
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
     }
 
     @Override
@@ -72,20 +70,6 @@ public class ResultSearchFragment extends Fragment implements AdapterView.OnItem
         else {
             Toast.makeText(getActivity(), "BOOKING NOT POSSIBLE!", Toast.LENGTH_SHORT).show();
         }
-    }
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        void onFragmentInteraction(Uri uri);
     }
 
     public static Book getSelectedBook() {

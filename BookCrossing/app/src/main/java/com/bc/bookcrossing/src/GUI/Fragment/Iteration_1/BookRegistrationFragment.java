@@ -42,8 +42,6 @@ public class BookRegistrationFragment extends Fragment implements ObserverDataBo
      * che risultano essere registrati per una certa tipologia di informazioni.
      */
     private DataDispatcherSingleton dispatcher;
-    private OnFragmentInteractionListener mListener;
-
     public BookRegistrationFragment() {}
 
     /**
@@ -76,7 +74,6 @@ public class BookRegistrationFragment extends Fragment implements ObserverDataBo
     public void onDetach() {
         super.onDetach();
         Log.d("BookRegistration:", "OnDetach");
-        mListener = null;
         dispatcher.unRegister(this);
     }
 
@@ -178,7 +175,7 @@ public class BookRegistrationFragment extends Fragment implements ObserverDataBo
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                if(result){
+                if (result) {
                     Toast.makeText(getActivity(), "Book registration completed with BCID:" + bookCodeID, Toast.LENGTH_SHORT).show();
                     // Clear all text fields
                     ((TextView) getActivity().findViewById(R.id.titleBook)).setText("");
@@ -192,19 +189,5 @@ public class BookRegistrationFragment extends Fragment implements ObserverDataBo
                 }
             }
         });
-    }
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        void onFragmentInteraction(Uri uri);
     }
 }
