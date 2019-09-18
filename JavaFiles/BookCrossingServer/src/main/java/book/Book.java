@@ -51,66 +51,66 @@ public class Book implements BookManager{
 	public Book(String msg) {	
 
 		final String lines[] = msg.split(";");
-		
+
 		//String lines[] = msg.split(";");
-        String copyLines[] = new String[9];
+		String copyLines[] = new String[9];
 		int indexForCopy = 0;
 
-        for(String line : lines) {
-            copyLines[indexForCopy] = line;
-            indexForCopy ++;
+		for(String line : lines) {
+			copyLines[indexForCopy] = line;
+			indexForCopy ++;
 
-            String words[] = line.split(":");
-            if(words.length > 0) {
-                switch (words[0].toUpperCase()) {
-                    case "TITLE": {
-                        this.title = getTitleFromString(line);
-                        break;
-                    }
-                    case "AUTHOR": {
-                        this.author = getAuthorFromString(line);
-                        break;
-                    }
-                    case "YEAR": {
-                        this.yearOfPubblication = getYearOfPubblicationFromString(line);
-                        break;
-                    }
-                    case "EDITION": {
-                        this.editionNumber = getEditionNumberFromString(line);
-                        break;
-                    }
-                    case "TYPE": {
-                        this.type = getBookTypeFromString(line);
-                        break;
-                    }
-                    case "USER": {
-                        this.actualOwnerUsername = getUserFromString(line);
-                        break;
-                    }
-                    case "ISBN": {
-                        this.isbn = getISBNFromString(line);
-                        break;
-                    }
-                    case "STATE": {
-                        this.underReading = getStateFromString(line);
-                        break;
-                    }
-                    case "BCID": {
-                		String temp = getBCIDFromString(lines[8]);
-                		if(temp.equals("")) {
-                			do {
-                				bcid = generateBCID();
-                			}while(!BookData.getInstance().isBCIDavailable(bcid));
-                		}
-                		else {
-                			this.bcid = temp;
-                		}      
-                    }
+			String words[] = line.split(":");
+			if(words.length > 0) {
+				switch (words[0].toUpperCase()) {
+				case "TITLE": {
+					this.title = getTitleFromString(line);
+					break;
+				}
+				case "AUTHOR": {
+					this.author = getAuthorFromString(line);
+					break;
+				}
+				case "YEAR": {
+					this.yearOfPubblication = getYearOfPubblicationFromString(line);
+					break;
+				}
+				case "EDITION": {
+					this.editionNumber = getEditionNumberFromString(line);
+					break;
+				}
+				case "TYPE": {
+					this.type = getBookTypeFromString(line);
+					break;
+				}
+				case "USER": {
+					this.actualOwnerUsername = getUserFromString(line);
+					break;
+				}
+				case "ISBN": {
+					this.isbn = getISBNFromString(line);
+					break;
+				}
+				case "STATE": {
+					this.underReading = getStateFromString(line);
+					break;
+				}
+				case "BCID": {
+					String temp = getBCIDFromString(lines[8]);
+					if(temp.equals("")) {
+						do {
+							bcid = generateBCID();
+						}while(!BookData.getInstance().isBCIDavailable(bcid));
+					}
+					else {
+						this.bcid = temp;
+					}      
+				}
 
-                }
-            }
-        }
-		
+				}
+			}
+		}
+
 		/*this.title = getTitleFromString(lines[0]);
 		this.author = getAuthorFromString(lines[1]);
 		this.yearOfPubblication = getYearOfPubblicationFromString(lines[2]);
@@ -258,6 +258,120 @@ public class Book implements BookManager{
 
 	}
 
+
+	/**
+	 * 
+	 * @param title
+	 * @return list of books that has title passed as parameter
+	 */
+	public static ArrayList<Book> searchBookByTitle(String title) {
+		ArrayList<Book> result = new ArrayList<Book>();
+		ResultSet rs = BookData.getBookByTitle(title);
+
+		try {
+			while(rs.next()) {
+				//System.out.println("#_ " + rs.getString(1) +"  " +rs.getString(2));
+				String bcid = rs.getString(1);
+				String t = rs.getString(2);
+				String a = rs.getString(3);
+				int pubbDate = Integer.parseInt(rs.getString(4) == null ? "0" : rs.getString(4));
+				int editionNumber = 0; //TODO
+				String isbn = rs.getString(5);
+				String bookType = rs.getString(6);
+				String actualOwner = rs.getString(7);
+
+				//TODO: gestire Type e Edition number
+				Book b = new Book(t,a, pubbDate, editionNumber, bookType);
+				b.setActualOwnerUsername(actualOwner);
+				b.setBCID(bcid);
+				b.setISBN(isbn);
+				b.setUnderReading(BookData.isUnderReading(bcid));
+				result.add(b);
+			}
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	/**
+	 * 
+	 * @param author
+	 * @return list of books that have author passed as parameter
+	 */
+	public static ArrayList<Book> searchBookByAuthor(String author) {
+		ArrayList<Book> result = new ArrayList<Book>();
+		ResultSet rs = BookData.getBookByAuthor(author);
+
+
+		try {
+			while(rs.next()) {
+				//System.out.println("#_ " + rs.getString(1) +"  " +rs.getString(2));
+				String bcid = rs.getString(1);
+				String t = rs.getString(2);
+				String a = rs.getString(3);
+				int pubbDate = Integer.parseInt(rs.getString(4) == null ? "0" : rs.getString(4));
+				int editionNumber = 0; //TODO
+				String isbn = rs.getString(5);
+				String bookType = rs.getString(6);
+				String actualOwner = rs.getString(7);
+
+				//TODO: gestire Type e Edition number
+				Book b = new Book(t,a, pubbDate, editionNumber, bookType);
+				b.setActualOwnerUsername(actualOwner);
+				b.setBCID(bcid);
+				b.setISBN(isbn);
+				b.setUnderReading(BookData.isUnderReading(bcid));
+				result.add(b);
+			}
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return result;
+	}
+
+	public static ArrayList<Book> searchBook(String title, String author) {
+		ArrayList<Book> result = new ArrayList<Book>();
+
+		try {
+
+			ResultSet rs = BookData.getBooks(title, author);
+
+			while(rs.next()) {
+				//System.out.println("#_ " + rs.getString(1) +"  " +rs.getString(2));
+				String bcid = rs.getString(1);
+				String t = rs.getString(2);
+				String a = rs.getString(3);
+				int pubbDate = Integer.parseInt(rs.getString(4).equals("null") ? "0" : rs.getString(4));
+				int editionNumber = 0; //TODO
+				String isbn = rs.getString(5);
+				String bookType = rs.getString(6);
+				String actualOwner = rs.getString(7);
+
+				//TODO: gestire Type e Edition number
+				Book b = new Book(t,a, pubbDate, editionNumber, bookType);
+				b.setActualOwnerUsername(actualOwner);
+				b.setBCID(bcid);
+				b.setISBN(isbn);
+				b.setUnderReading(actualOwner.equals("null")? false : true);
+				result.add(b);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
 	public String getActualOwnerUsername() {
 		return actualOwnerUsername;
 	}
@@ -325,164 +439,164 @@ public class Book implements BookManager{
 	public void setType(String type) {
 		this.type = type;
 	}
-	
+
 	public void setLocalization(Localization localization) {
 		this.localization = localization;
 	}
-	
+
 	public Localization getLocalization() {
 		return localization;
 	}
 
 	/**
-     * L'insieme di questo metodo get, unitamente agli altri, ha il compito di estrarre, dall'oggetto Book
-     * sottoposto ad un corretto encoding, tutti i campi necessari.
-     *
-     * @param msg
-     * @return  Titolo estratto da msg con specifica struttura
-     */
-    private String getTitleFromString(String msg) {
-        if(msg.length() != 0 && msg != null) {
-            String words[] = msg.split(":");
-            if(words[0].toUpperCase().equals("TITLE") && words.length > 1) {
-                return words[1];
-            } else {
-                return "";
-            }
-        } else {
-            return  "";
-        }
+	 * L'insieme di questo metodo get, unitamente agli altri, ha il compito di estrarre, dall'oggetto Book
+	 * sottoposto ad un corretto encoding, tutti i campi necessari.
+	 *
+	 * @param msg
+	 * @return  Titolo estratto da msg con specifica struttura
+	 */
+	private String getTitleFromString(String msg) {
+		if(msg.length() != 0 && msg != null) {
+			String words[] = msg.split(":");
+			if(words[0].toUpperCase().equals("TITLE") && words.length > 1) {
+				return words[1];
+			} else {
+				return "";
+			}
+		} else {
+			return  "";
+		}
 	}
 
 	private String getAuthorFromString(String msg) {
-        if(msg.length() != 0 && msg != null) {
-            String words[] = msg.split(":");
-            if(words[0].toUpperCase().equals("AUTHOR") && words.length > 1) {
-                return words[1];
-            } else {
-                return "";
-            }
-        } else {
-            return  "";
-        }
+		if(msg.length() != 0 && msg != null) {
+			String words[] = msg.split(":");
+			if(words[0].toUpperCase().equals("AUTHOR") && words.length > 1) {
+				return words[1];
+			} else {
+				return "";
+			}
+		} else {
+			return  "";
+		}
 	}
 
 	@Nullable
-    private Integer getYearOfPubblicationFromString(String msg) {
-        if(msg.length() != 0 && msg != null) {
-            String words[] = msg.split(":");
-            int year = 0;
-            try {
-                if(words[0].toUpperCase().equals("YEAR") && words.length > 1) {
-                    try {
-                        year = Integer.parseInt(words[1]);
-                    } catch (NumberFormatException e) {
-                        return null;
-                    }
-                } else {
-                    return null;
-                }
-            }catch (NumberFormatException e) {
-                return null;
-            }
-            return year;
-        } else {
-            return null;
-        }
+	private Integer getYearOfPubblicationFromString(String msg) {
+		if(msg.length() != 0 && msg != null) {
+			String words[] = msg.split(":");
+			int year = 0;
+			try {
+				if(words[0].toUpperCase().equals("YEAR") && words.length > 1) {
+					try {
+						year = Integer.parseInt(words[1]);
+					} catch (NumberFormatException e) {
+						return null;
+					}
+				} else {
+					return null;
+				}
+			}catch (NumberFormatException e) {
+				return null;
+			}
+			return year;
+		} else {
+			return null;
+		}
 	}
 
 	@Nullable
-    private Integer getEditionNumberFromString(String msg) {
-        if(msg.length() != 0 && msg != null) {
-            String words[] = msg.split(":");
-            int edition = 0;
-            try {
-                if(words[0].toUpperCase().equals("EDITION") && words.length > 1) {
-                    try {
-                        edition = Integer.parseInt(words[1]);
-                    } catch (NumberFormatException e) {
-                        return null;
-                    }
-                } else {
-                    return null;
-                }
-                edition = Integer.parseInt(words[1]);
-            }catch (NumberFormatException e) {
-                return null;
-            }
-            return edition;
-        } else {
-            return null;
-        }
+	private Integer getEditionNumberFromString(String msg) {
+		if(msg.length() != 0 && msg != null) {
+			String words[] = msg.split(":");
+			int edition = 0;
+			try {
+				if(words[0].toUpperCase().equals("EDITION") && words.length > 1) {
+					try {
+						edition = Integer.parseInt(words[1]);
+					} catch (NumberFormatException e) {
+						return null;
+					}
+				} else {
+					return null;
+				}
+				edition = Integer.parseInt(words[1]);
+			}catch (NumberFormatException e) {
+				return null;
+			}
+			return edition;
+		} else {
+			return null;
+		}
 	}
 
 	private String getBookTypeFromString(String msg) {
-        if(msg.length() != 0 && msg != null) {
-            String words[] = msg.split(":");
-            if(words[0].toUpperCase().equals("TYPE") && words.length > 1) {
-                return words[1];
-            } else {
-                return  "";
-            }
-        } else {
-            return  "";
-        }
+		if(msg.length() != 0 && msg != null) {
+			String words[] = msg.split(":");
+			if(words[0].toUpperCase().equals("TYPE") && words.length > 1) {
+				return words[1];
+			} else {
+				return  "";
+			}
+		} else {
+			return  "";
+		}
 	}
 
-    private String getISBNFromString(String msg) {
-        if(msg.length() != 0 && msg != null) {
-            String words[] = msg.split(":");
-            if(words[0].toUpperCase().equals("ISBN") && words.length > 1) {
-                return words[1];
-            } else {
-                return  "";
-            }
-        } else {
-            return  "";
-        }
-    }
+	private String getISBNFromString(String msg) {
+		if(msg.length() != 0 && msg != null) {
+			String words[] = msg.split(":");
+			if(words[0].toUpperCase().equals("ISBN") && words.length > 1) {
+				return words[1];
+			} else {
+				return  "";
+			}
+		} else {
+			return  "";
+		}
+	}
 
-    private String getUserFromString(String msg) {
-        if(msg.length() != 0 && msg != null) {
-            String words[] = msg.split(":");
-            if(words[0].toUpperCase().equals("USER") && words.length > 1) {
-                return words[1];
-            } else {
-                return  "";
-            }
-        } else {
-            return  "";
-        }
-    }
+	private String getUserFromString(String msg) {
+		if(msg.length() != 0 && msg != null) {
+			String words[] = msg.split(":");
+			if(words[0].toUpperCase().equals("USER") && words.length > 1) {
+				return words[1];
+			} else {
+				return  "";
+			}
+		} else {
+			return  "";
+		}
+	}
 
 	private String getBCIDFromString(String msg) {
-        if(msg.length() != 0 && msg != null) {
-            String words[] = msg.split(":");
-            if(words[0].toUpperCase().equals("BCID") && words.length > 1) {
-                return words[1];
-            } else {
-                return  "";
-            }
-        } else {
-            return  "";
-        }
+		if(msg.length() != 0 && msg != null) {
+			String words[] = msg.split(":");
+			if(words[0].toUpperCase().equals("BCID") && words.length > 1) {
+				return words[1];
+			} else {
+				return  "";
+			}
+		} else {
+			return  "";
+		}
 	}
 
-    private boolean getStateFromString(String msg){
-        if(msg.length() != 0 && msg != null) {
-            String words[] = msg.split(":");
-            if(words[0].toUpperCase().equals("STATE") && words.length > 1) {
-                return words[1].equals("1");
-            } else {
-                return Boolean.parseBoolean(null);
-            }
-        } else {
-            return Boolean.parseBoolean(null);
-        }
+	private boolean getStateFromString(String msg){
+		if(msg.length() != 0 && msg != null) {
+			String words[] = msg.split(":");
+			if(words[0].toUpperCase().equals("STATE") && words.length > 1) {
+				return words[1].equals("1");
+			} else {
+				return Boolean.parseBoolean(null);
+			}
+		} else {
+			return Boolean.parseBoolean(null);
+		}
 	}
 
-	
-	
+
+
 	public void setUnderReading(boolean underReading) {
 		this.underReading = underReading;
 	}
@@ -490,12 +604,32 @@ public class Book implements BookManager{
 	public boolean isUnderReading() {
 		return underReading;
 	}
+	
+	public static ArrayList<Book> onRouteBooks(String user) {
+		ArrayList<Book> booksOnRoute = new ArrayList<Book>();
+		
+		try {
+			ResultSet rs = BookData.onRouteBooks(user);
+			while(rs.next()) {
+				if(rs.getString(3).contains(user)){
+					Book b = new Book();
+					b.setTitle(rs.getString(1));
+					b.setAuthor(rs.getString(2));
+					booksOnRoute.add(b);
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return booksOnRoute;
+	}
 
 	/**
 	 * 
 	 * @return BCID univoco
 	 */
 
+	
 	public String generateBCID() {
 
 		int leftLimit = 97; // letter 'a'

@@ -31,23 +31,23 @@ public class BookDataTest {
 	@Test
 	public void searchByTitleTest() {
 		String title = "CasoDiTest";
-		assertTrue(!BookData.searchBookByTitle(title).isEmpty());
-		assertTrue(BookData.searchBookByTitle(title).size() > 0);
+		assertTrue(!Book.searchBookByTitle(title).isEmpty());
+		assertTrue(Book.searchBookByTitle(title).size() > 0);
 	}
 	
 	@Test
 	public void searchByAuthorTest() {
 		String author = "JUNIT";
-		assertTrue(!BookData.searchBookByAuthor(author).isEmpty());
-		assertTrue(BookData.searchBookByAuthor(author).size() > 0);
+		assertTrue(!Book.searchBookByAuthor(author).isEmpty());
+		assertTrue(Book.searchBookByAuthor(author).size() > 0);
 	}
 	
 	@Test
 	public void searchBookTest() {
 		String title = "CasoDiTest";
 		String author = "JUNIT";
-		assertTrue(!BookData.searchBook(title, author).isEmpty());
-		assertTrue(BookData.searchBook(title, author).size() > 0);
+		assertTrue(!Book.searchBook(title, author).isEmpty());
+		assertTrue(Book.searchBook(title, author).size() > 0);
 	}
 
 }

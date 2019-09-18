@@ -16,6 +16,5 @@ import profile.Profile;
  */
 public interface ProfileQuery {
 	public LoginStatus login(Profile user);
-	public boolean exist(String username);
-	public ArrayList<String> pathOfUsers(String user);
+
 }

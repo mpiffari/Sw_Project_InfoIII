@@ -79,39 +79,36 @@ public final class ProfileData implements ProfileQuery {
 	 * @param username Stringa la quale descrive l'username (ID) dell'utente connesso
 	 * @return true se l'utente esiste, falso se non esiste
 	 */
-	public boolean exist(String username) {
+	public static ResultSet exist(String username) {
 		PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(Queries.checkUserExistance);
-
+		ResultSet rs = null;
 		try {
 			stmt.setString(1, username);
-			ResultSet rs = stmt.executeQuery();
+			rs = stmt.executeQuery();
 			if (rs.next() && rs.getInt(1) == 1) {
-				return true;
+				return rs;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
-		return false;
+		return rs;
 	}
 	/**
 	 * @param user Stringa la quale descrive l'username (ID) dell'utente connesso
 	 * @return ArrayList<String> il quale contiene il percorso dove l'utente si trova
 	 */
-	public ArrayList<String> pathOfUsers(String user) {
-		ArrayList<String> usersForNotifications = new ArrayList<String>();
+	public static ResultSet pathOfUsers(String user) {
+		
 		PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(Queries.queryForUserNotifications);
+		ResultSet rs = null;
 		try {
-			ResultSet rs = stmt.executeQuery();
-			while (rs.next()) {
-				if(rs.getString(3).contains(user)){
-					usersForNotifications.add(rs.getString(3));
-				}
-			}
+			rs = stmt.executeQuery();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return usersForNotifications;
+		return rs;
 	}
 
 }

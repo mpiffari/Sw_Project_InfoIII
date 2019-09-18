@@ -235,4 +235,38 @@ public class Profile implements Comparable<Profile>, ProfileManager {
 			return 0;
 		}
 	}
+	
+	/**
+	 * @param username Stringa la quale descrive l'username (ID) dell'utente connesso
+	 * @return true se l'utente esiste, falso se non esiste
+	 */
+	public static boolean existUser(String username) {
+		ResultSet rs = ProfileData.exist(username);
+		
+		try {
+			if (rs.next() && rs.getInt(1) == 1) {
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return false;
+	}
+	
+	public static ArrayList<String> pathOfUsers(String user) {
+		ArrayList<String> usersForNotifications = new ArrayList<String>();
+		
+		try {
+			ResultSet rs = ProfileData.pathOfUsers(user);
+			while (rs.next()) {
+				if(rs.getString(3).contains(user)){
+					usersForNotifications.add(rs.getString(3));
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return usersForNotifications;
+	}
 }
