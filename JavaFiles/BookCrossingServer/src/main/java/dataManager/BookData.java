@@ -39,7 +39,7 @@ public final class BookData implements BookQuery {
 
 	/**
 	 * @param book Libro che si desidera registrare su databse
-	 * @return true se la query di insert è andata a buon fine
+	 * @return true se la query di insert ï¿½ andata a buon fine
 	 */
 	public boolean insertBook(Book book) {
 		PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(Queries.insertBookQuery);
@@ -63,7 +63,7 @@ public final class BookData implements BookQuery {
 	/**
 	 * 
 	 * @param bcid BookCrossing ID number
-	 * @return true se il codice BCID passato come stringa è disponibile, potendo quidni essere assegnato.
+	 * @return true se il codice BCID passato come stringa ï¿½ disponibile, potendo quidni essere assegnato.
 	 */
 	public boolean isBCIDavailable(final String bcid) {
 		PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(Queries.bcidAvailableQuery);
@@ -228,5 +228,43 @@ public final class BookData implements BookQuery {
 		}
 		
 		return rs;
+	}
+	
+	/**
+	 * 
+	 * @return ArrayList di user che hanno prenotato questo specifico libro
+	 */
+	public static ResultSet getPrenotanti(String bcid) {
+		PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(Queries.getUserInfoByJoin);
+		ResultSet rs = null;
+		try {
+			stmt.setString(1, bcid);
+			rs = stmt.executeQuery();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return rs;
+	}
+	
+	/**
+	 * 
+	 * @param user Utente che richiede questo libro
+	 * @return
+	 */
+	public static boolean setPrenotante(String username, String bcid) {
+		PreparedStatement statement = DBConnector.getDBConnector().prepareStatement(Queries.insertNewReservationQuery);
+
+		int result = 0;
+		try {			
+			statement.setString(1, username);
+			statement.setString(2, bcid);
+			System.out.println(bcid + ",nbvjv");
+			result = statement.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result == 1 ? true : false;
+
 	}
 }

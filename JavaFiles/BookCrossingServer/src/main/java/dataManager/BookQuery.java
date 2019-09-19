@@ -1,8 +1,5 @@
 package dataManager;
 
-import java.sql.ResultSet;
-import java.util.ArrayList;
-
 import algorithmReservationHandler.AlgorithmResult;
 import book.Book;
 /**

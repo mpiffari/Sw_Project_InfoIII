@@ -1,7 +1,5 @@
 package dataManager;
 
-import java.util.ArrayList;
-
 import profile.LoginStatus;
 import profile.Profile;
 

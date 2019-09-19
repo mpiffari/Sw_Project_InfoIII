@@ -128,7 +128,7 @@ public class ComputeRequest implements ProcessRequest{
 				Profile user = new Profile(msg.substring(i + 1));
 
 				LoginStatus res = user.login();
-				String r = "";
+				//String r = "";
 				switch (res) {
 				case SUCCESS:
 					System.out.println("Login ok for user "+ user.getUsername() + " with pwd " + user.getPassword());

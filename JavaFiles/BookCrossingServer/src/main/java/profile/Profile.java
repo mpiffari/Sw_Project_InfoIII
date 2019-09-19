@@ -1,15 +1,12 @@
 package profile;
 
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 
 import book.Book;
-import dataManager.DBConnector;
 import dataManager.Localization;
-import dataManager.Queries;
 import dataManager.ProfileData;
 
 /**
@@ -170,10 +167,8 @@ public class Profile implements Comparable<Profile>, ProfileManager {
 	 * @return ArrayList<Book> contiene i libri posseduti dall'utente
 	 */
 	public ArrayList<Book> getChasingBooks() {
-		PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(Queries.getBooksOwnedBy);
+		ResultSet rs = ProfileData.getChasingBooks(this.username);
 		try {
-			stmt.setString(1, this.username);
-			ResultSet rs = stmt.executeQuery();
 			booksOwned.clear();
 			Book b;
 			while(rs.next()) {

@@ -1,21 +1,17 @@
 package book;
 
 
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Random;
 
-import org.eclipse.jdt.annotation.NonNull;
 import org.eclipse.jdt.annotation.Nullable;
 
 import algorithmReservationHandler.Algorithm;
 import algorithmReservationHandler.AlgorithmResult;
 import dataManager.BookData;
-import dataManager.DBConnector;
 import dataManager.Localization;
-import dataManager.Queries;
 import profile.Profile;
 
 
@@ -39,7 +35,7 @@ public class Book implements BookManager{
 	private String actualOwnerUsername;
 	private boolean underReading;
 	private ArrayList<Profile> prenotanti = new ArrayList<Profile>();
-	private int idPrenotazione; 
+	//private int idPrenotazione; 
 	private Localization localization;
 
 	/**
@@ -210,10 +206,8 @@ public class Book implements BookManager{
 	 * @return ArrayList di user che hanno prenotato questo specifico libro
 	 */
 	public ArrayList<Profile> getPrenotanti() {
-		PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(Queries.getUserInfoByJoin);
+		ResultSet rs = BookData.getPrenotanti(this.bcid);
 		try {
-			stmt.setString(1, this.bcid);
-			ResultSet rs = stmt.executeQuery();
 			prenotanti.clear();
 			Profile u;
 			while(rs.next()) {
@@ -241,21 +235,7 @@ public class Book implements BookManager{
 	 * @return
 	 */
 	public boolean setPrenotante(Profile user) {
-
-		PreparedStatement statement = DBConnector.getDBConnector().prepareStatement(Queries.insertNewReservationQuery);
-
-		int result = 0;
-		try {			
-			statement.setString(1, user.getUsername());
-			statement.setString(2, this.bcid);
-			System.out.println(this.bcid + ",nbvjv");
-			result = statement.executeUpdate();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return result == 1 ? true : false;
-
+		return BookData.setPrenotante(user.getUsername(), this.bcid);
 	}
 
 

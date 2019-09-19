@@ -3,7 +3,6 @@ package dataManager;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
@@ -101,7 +100,7 @@ public final class DBConnector implements QueryPerformer{
 
 
 	/**
-	 * Questo metodo setta le proprietà di mysql connection le quali includono IAM Database Authentication token
+	 * Questo metodo setta le proprietï¿½ di mysql connection le quali includono IAM Database Authentication token
 	 * come password
 	 * @return
 	 */

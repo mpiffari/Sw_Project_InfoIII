@@ -32,10 +32,10 @@ public class UserDataTest {
 	public void existLogin() {
 		Profile u = new Profile();
 		u.setUsername("A");
-		
-		assertTrue(ProfileData.getInstance().exist(u.getUsername()));
+
+		assertTrue(Profile.existUser(u.getUsername()));
 		
 		u.setUsername("ZX");
-		assertFalse(ProfileData.getInstance().exist(u.getUsername()));
+		assertFalse(Profile.existUser(u.getUsername()));
 	}
 }

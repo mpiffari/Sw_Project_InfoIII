@@ -3,15 +3,13 @@ package dataManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-
 import profile.LoginStatus;
 import profile.Profile;
 /**
  * 
  * La classe UserData implementa l'interfaccia UserQuery per riuscire ad ottenere lo stato
  * dell'utente che risulta essere connesso al server.
- * Questa classe è implementata come un oggetto Singleton
+ * Questa classe ï¿½ implementata come un oggetto Singleton
  * 
  * 
  * @author Paganessi Andrea - Piffari Michele - Villa Stefano
@@ -34,10 +32,10 @@ public final class ProfileData implements ProfileQuery {
 	}
 
 	/**
-	 * @param user: utente il quale è attualmente connesso al server e utilizza le api del server stesso
-	 * @return LoginStatus-Success se la connessione è andata a buon fine (user e password sono corretti)
-	 * @return LoginStatus-WRONG_PWD se la password è sbagliata
-	 * @return LoginStatus-WRONG_USERNAME se il nome utente è sbagliato
+	 * @param user: utente il quale ï¿½ attualmente connesso al server e utilizza le api del server stesso
+	 * @return LoginStatus-Success se la connessione ï¿½ andata a buon fine (user e password sono corretti)
+	 * @return LoginStatus-WRONG_PWD se la password ï¿½ sbagliata
+	 * @return LoginStatus-WRONG_USERNAME se il nome utente ï¿½ sbagliato
 	 */
 	public LoginStatus login(Profile user) {
 		try {
@@ -110,5 +108,23 @@ public final class ProfileData implements ProfileQuery {
 		}
 		return rs;
 	}
+	
+	/**
+	 * 
+	 * @return ArrayList<Book> contiene i libri posseduti dall'utente
+	 */
+	public static ResultSet getChasingBooks(String username) {
+		PreparedStatement stmt = DBConnector.getDBConnector().prepareStatement(Queries.getBooksOwnedBy);
+		ResultSet rs = null;
+		try {
+			stmt.setString(1, username);
+			rs = stmt.executeQuery();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return rs;
+	}
+	
+	
 
 }
