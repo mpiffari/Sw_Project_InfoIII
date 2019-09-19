@@ -25,3 +25,32 @@ Le componenti che invece si è deciso di andare a sviluppare durante la seconda 
 		\item \textit{Data:} Le informazioni relative al libro che si vuole prenotare e agli utenti richiedenti le quali sono memorizzate nel Database.
 	\end{itemize}
 \end{itemize}
+Partendo dalla figura \ref{fig:Diagramma della class ComputeRequest} relativa a quanto sviluppato nella precedente iterazione possiamo ora osservare che nella successiva il medesimo diagramma delle classi si completa nel seguente modo:
+\begin{figure}[h]
+	\includegraphics[width=\textwidth]{Immagini/UML_ComputeRequestServer2}
+	\caption{Diagramma della classe ComputeRequest}
+	\label{fig:Diagramma della class ComputeRequest2}
+\end{figure}
+\\ \noindent
+Si può notare come alla \textbf{\textit{RequestType}} si aggiungono 3 casi in più, relativi proprio ai nuovi componenti sviluppati in questa seconda iterazione. Allo stesso modo anche il codice //TODO:reference to code si completa così
+\begin{lstlisting}
+case BOOK_RESERVATION:
+	~
+	boolean rs = book.reserve(username);
+	Communication.getInstance().send(username, "requestType:1;result:" + 
+	(rs?1:0));
+	break;
+case LOGIN:
+	~
+	Communication.getInstance().send(username, "requestType:2;result:" + 
+	"Success" + ";" + buildStringForUser(username));
+	~
+	break;
+case BOOK_REGISTRATION_AUTOMATIC:
+	~
+	result = b.insert();
+	Communication.getInstance().send(username, "requestType:4;result:" + 
+	(result?1:0) + ";BCID:" + b.getBCID());
+	break;
+\end{lstlisting}
+Questo si va ad aggiungere a quanto sviluppato nella prima iterazione; a questo punto possiamo quindi gestire le richieste del client compilate nel formato descritto relative ai componenti disponibili nella prima e seconda iterazione.
