@@ -26,12 +26,14 @@ Nella seconda iterazione, e nelle successive, è stata pianificata l'implementaz
 	\item 6 -> TAKEN\_BOOKS
 	\item 7 -> PICK\_UP	
 \end{itemize}
-
-
-
-TODO: inserire esempio di una stringa realemente generata da android.
-
-
+La richiesta inviata dal client Android verso il server, ad esempio, per la ricerca di un libro assume la seguente forma:
+\begin{center}
+	\begin{lstlisting}
+	username + ";" + "requestType:" + 0 + ";" + book.encode();
+	\end{lstlisting}
+\end{center}
+\noindent Lato Android, la richiesta vera e propria è preceduta dall'username dell'utente collegato in modo che lato server, qualora, per diversi motivi, l'username fosse invalido, la richiesta venga ignorata a priori.
+\\ \noindent
 Analogamente possiamo identificare i messaggi inviati dal server come:
 \begin{center}
 	\begin{lstlisting}
@@ -43,10 +45,14 @@ la cui semantica può essere così rappresentata:
 	"requestType:<tipo>;<risultato>"
 \end{center}
 
-TODO: inserire esempio di una stringa realemente generata dal server.
-
-
-Qual'ora il server riceva una richiesta con un tipo errato la risposta del server è la seguente:
+\noindent Ad esempio, nel caso di invio di una richiesta da parte del server verso lato Android in merito alla registrazione manuale di un libro andata a buon fine, la stringa assume il seguente formato:
+\begin{center}
+	\begin{lstlisting}
+		"requestType:0;result:" + 1 + ";BCID:" + bcid
+	\end{lstlisting}
+\end{center}
+dove \textit{bcid} è il codice alfanumerico generato casualmente dal server per identificare il libro all'interno della rete di Book Crossing.
+Qual'ora, invece, il server riceva una richiesta con un tipo errato la risposta del server è la seguente:
 \begin{center}
 	\begin{lstlisting}
 	"requestType:10000;result:KO_RequestType"
