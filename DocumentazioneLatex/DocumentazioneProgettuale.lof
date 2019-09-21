@@ -23,17 +23,17 @@
 \contentsline {figure}{\numberline {6.4}{\ignorespaces Interfaccie per la ricezione degli eventi\relax }}{33}{figure.caption.20}
 \contentsline {figure}{\numberline {6.5}{\ignorespaces Struttura del componente \textit {DataDispatcher}\relax }}{34}{figure.caption.21}
 \contentsline {figure}{\numberline {6.6}{\ignorespaces Struttura del componente \textit {LoginFragment}\relax }}{34}{figure.caption.22}
-\contentsline {figure}{\numberline {6.7}{\ignorespaces Struttura del componente \textit {PickUpFragment}\relax }}{35}{figure.caption.23}
-\contentsline {figure}{\numberline {6.8}{\ignorespaces Struttura del componente \textit {ProfileFragment}\relax }}{35}{figure.caption.24}
-\contentsline {figure}{\numberline {6.9}{\ignorespaces Struttura del componente \textit {SignInFragment}\relax }}{36}{figure.caption.25}
-\contentsline {figure}{\numberline {6.10}{\ignorespaces Struttura del componente \textit {TakenBooksFragment}\relax }}{36}{figure.caption.26}
-\contentsline {figure}{\numberline {6.11}{\ignorespaces Struttura del componente \textit {BookRegistrationFragment}\relax }}{37}{figure.caption.27}
+\contentsline {figure}{\numberline {6.7}{\ignorespaces Struttura del componente \textit {BookRegistrationFragment}\relax }}{34}{figure.caption.23}
+\contentsline {figure}{\numberline {6.8}{\ignorespaces Struttura del componente \textit {ResearchFragment}\relax }}{35}{figure.caption.24}
+\contentsline {figure}{\numberline {6.9}{\ignorespaces Struttura del componente \textit {ReservationFragment}\relax }}{35}{figure.caption.25}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {7.1}{\ignorespaces Struttura del package \textit {requestManager.Communication}\relax }}{41}{figure.caption.28}
-\contentsline {figure}{\numberline {7.2}{\ignorespaces Struttura del package \textit {requestManager.Communication}\relax }}{43}{figure.caption.29}
+\contentsline {figure}{\numberline {7.1}{\ignorespaces Struttura del package \textit {requestManager.Communication}\relax }}{39}{figure.caption.26}
+\contentsline {figure}{\numberline {7.2}{\ignorespaces Struttura del package \textit {requestManager.Communication}\relax }}{41}{figure.caption.27}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {9.1}{\ignorespaces Distanza tra lettore e prenotante i-esimo\relax }}{48}{figure.caption.30}
-\contentsline {figure}{\numberline {9.2}{\ignorespaces Zona d'incontro tra lettore e prenotante\relax }}{48}{figure.caption.31}
-\contentsline {figure}{\numberline {9.3}{\ignorespaces Rete di utenti che potrebbero essere attivi nel prestito\relax }}{50}{figure.caption.32}
+\contentsline {figure}{\numberline {9.1}{\ignorespaces Diagramma della classe ComputeRequest\relax }}{48}{figure.caption.28}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {10.1}{\ignorespaces Distanza tra lettore e prenotante i-esimo\relax }}{50}{figure.caption.29}
+\contentsline {figure}{\numberline {10.2}{\ignorespaces Zona d'incontro tra lettore e prenotante\relax }}{50}{figure.caption.30}
+\contentsline {figure}{\numberline {10.3}{\ignorespaces Rete di utenti che potrebbero essere attivi nel prestito\relax }}{52}{figure.caption.31}
 \addvspace {10\p@ }

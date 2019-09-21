@@ -20,10 +20,13 @@
 \contentsline {section}{\numberline {5.1}Scelta delle funzionalit\IeC {\`a} da implementare}{27}{section.5.1}
 \contentsline {section}{\numberline {5.2}Aderenza UML a Logical View}{28}{section.5.2}
 \contentsline {chapter}{\numberline {6}Observer-delegate pattern: la nostra implementazione}{31}{chapter.6}
-\contentsline {chapter}{\numberline {7}Implementazione comunicazione server}{39}{chapter.7}
-\contentsline {section}{\numberline {7.1}il framework \textit {Netty}}{39}{section.7.1}
-\contentsline {section}{\numberline {7.2}Semantica dei messaggi}{43}{section.7.2}
-\contentsline {chapter}{\numberline {8}Creazione della base di dati}{45}{chapter.8}
-\contentsline {chapter}{\numberline {9}Parte algoritmica: \textit {reservation handler}}{47}{chapter.9}
-\contentsline {part}{III\hspace {1em}Iterazione 2}{51}{part.3}
-\contentsline {chapter}{\numberline {10}Analisi dei componenti}{53}{chapter.10}
+\contentsline {chapter}{\numberline {7}Implementazione comunicazione server}{37}{chapter.7}
+\contentsline {section}{\numberline {7.1}il framework \textit {Netty}}{37}{section.7.1}
+\contentsline {section}{\numberline {7.2}Semantica dei messaggi}{41}{section.7.2}
+\contentsline {chapter}{\numberline {8}Creazione della base di dati}{43}{chapter.8}
+\contentsline {part}{III\hspace {1em}Iterazione 2}{45}{part.3}
+\contentsline {chapter}{\numberline {9}Analisi dei componenti}{47}{chapter.9}
+\contentsline {chapter}{\numberline {10}Parte algoritmica: \textit {reservation handler}}{49}{chapter.10}
+\contentsline {chapter}{\numberline {11}Test ed analisi dei componenti implementati}{53}{chapter.11}
+\contentsline {section}{\numberline {11.1}Lato Android}{53}{section.11.1}
+\contentsline {subsection}{\numberline {11.1.1}Espresso Junit}{53}{subsection.11.1.1}

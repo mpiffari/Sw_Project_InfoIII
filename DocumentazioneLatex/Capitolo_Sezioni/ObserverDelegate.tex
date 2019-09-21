@@ -31,7 +31,7 @@ Per quanto riguarda invece la parte di \textit{notifica}, abbiamo introdotto un 
 
 Ogni singola interfaccia implementa un'interfaccia comune: questa scelta è stata adotta per rendere del tutto generico il tipo di observer che va a registrarsi per gli eventi forniti dal delegate: infatti, come si può vedere nell'interfaccia \textit{DelegateSendData} (figura ~\ref{fig:DataDispatcher}), chi è interessato ad ottenere informazioni specifiche, si registra come un oggeto di tipo \textit{ObserverForUiInformation}; sarà poi compito del delegate fornire le corrette informazioni, richiamando le corrette funzioni di notifica, le quali sono direttamente implementata all'interno di ogni singola interfaccia concreta.
 
-\begin{figure}[h]
+\begin{figure}[h!]
 	\includegraphics[width=\textwidth]{Immagini/ClassDiagramDispatcherDelegate}
 	\caption{Struttura del componente \textit{DataDispatcher}}
 	\label{fig:DataDispatcher}
@@ -48,32 +48,21 @@ Questi elementi, allo stadio implementativo attuale, sono rappresentati da tutti
 	\label{fig:LoginFragment}
 \end{figure}
 
-\begin{figure}[h!]
-	\includegraphics[width=0.5\textwidth]{Immagini/PickUpFragment}
-	\caption{Struttura del componente \textit{PickUpFragment}}
-	\label{fig:PickUpFragment}
-\end{figure}
-
-\begin{figure}[h!]
-	\includegraphics[width=0.5\textwidth]{Immagini/ProfileFragment}
-	\caption{Struttura del componente \textit{ProfileFragment}}
-	\label{fig:ProfileFragment}
-\end{figure}
-
-\begin{figure}[h!]
-	\includegraphics[width=0.5\textwidth]{Immagini/SignInFragment}
-	\caption{Struttura del componente \textit{SignInFragment}}
-	\label{fig:SignInFragment}
-\end{figure}
-
-\begin{figure}[h!]
-	\includegraphics[width=0.5\textwidth]{Immagini/TakenBooksFragment}
-	\caption{Struttura del componente \textit{TakenBooksFragment}}
-	\label{fig:TakenBooksFragment}
-\end{figure}
 
 \begin{figure}[h!]
 	\includegraphics[width=0.5\textwidth]{Immagini/BookRegistrationFragment}
 	\caption{Struttura del componente \textit{BookRegistrationFragment}}
 	\label{fig:BookRegistrationFragment}
+\end{figure}
+
+\begin{figure} [h!]
+	\includegraphics[width=0.5\textwidth]{Immagini/ResearchFragment.jpg}
+	\caption{Struttura del componente \textit{ResearchFragment}}
+	\label{fig:ResearchFragment}
+\end{figure}
+
+\begin{figure} [h!]
+	\includegraphics[width=0.5\textwidth]{Immagini/ReservationFragment.jpg}
+	\caption{Struttura del componente \textit{ReservationFragment}}
+	\label{fig:ReservationFragment}
 \end{figure}
