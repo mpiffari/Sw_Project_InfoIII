@@ -64,7 +64,7 @@
 							<addClasspath>true</addClasspath>
 							<classpathPrefix>libs/</classpathPrefix>
 							<mainClass>
-								requestManager.Communication
+								main.Main
 							</mainClass>
 						</manifest>
 					</archive>

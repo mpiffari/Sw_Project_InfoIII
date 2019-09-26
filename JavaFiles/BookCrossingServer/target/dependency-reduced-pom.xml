@@ -25,7 +25,7 @@
             <manifest>
               <addClasspath>true</addClasspath>
               <classpathPrefix>libs/</classpathPrefix>
-              <mainClass>requestManager.Communication</mainClass>
+              <mainClass>main.Main</mainClass>
             </manifest>
           </archive>
         </configuration>

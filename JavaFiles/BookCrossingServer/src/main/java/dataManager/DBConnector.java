@@ -18,16 +18,14 @@ import java.util.Properties;
 public final class DBConnector implements QueryPerformer{
 
 	//Configuration parameters for the generation of the IAM Database Authentication token
-	private static final String RDS_INSTANCE_HOSTNAME = "dbinfo3.ckadinof62hi.eu-west-3.rds.amazonaws.com";
+	private static final String RDS_INSTANCE_HOSTNAME = "db3.co7xbajucw51.us-east-2.rds.amazonaws.com";
 	private static final int RDS_INSTANCE_PORT = 1521;
-	//private static final String REGION_NAME = "ue-west-3";
 	private static final String DB_USER = "gNOkUhDOCM";
 	private static final String DB_PASSWORD = "A?T>Q_oBA=K]->gv+sTTZg?VJZkaF";
 	@SuppressWarnings("unused")
 	private static final String JDBC_URL = "jdbc:oracle://" + RDS_INSTANCE_HOSTNAME + ":" + RDS_INSTANCE_PORT;
-	//jdbc:oracle:thin:@dbinfo3.ckadinof62hi.eu-west-3.rds.amazonaws.com:1521:dbinfo3", "gNOkUhDOCM", "A?T>Q_oBA=K]->gv+sTTZg?VJZkaF"
 
-	//SID Service Identifier : dbinfo3 
+ 
 
 	private static DBConnector instance = null;
 	private Connection conn;

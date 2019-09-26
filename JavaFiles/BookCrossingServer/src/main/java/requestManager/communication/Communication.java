@@ -54,7 +54,7 @@ public final class Communication implements SendAnswer {
 
 	}
 
-	private Communication() throws Exception {
+	public Communication() throws Exception {
 
 		Thread t = new Thread(new Runnable() {
 
@@ -133,9 +133,5 @@ public final class Communication implements SendAnswer {
 	
 	
 	
-	
-	public static void main(String[] args) throws Exception {
-		@SuppressWarnings("unused")
-		Communication c = new Communication();
-	}
+
 }

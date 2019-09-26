@@ -264,8 +264,8 @@ public class Algorithm {
 	
 	/**
 	 * 
-	 * Controlla se due generici utenti iscritti al programma hanno la possibilit‡ di incontrarsi
-	 * direttamente, in base a quelle che sono le disponibilit‡ a spostarsi di ognuno.
+	 * Controlla se due generici utenti iscritti al programma hanno la possibilit√† di incontrarsi
+	 * direttamente, in base a quelle che sono le disponibilit√† a spostarsi di ognuno.
 	 * 
 	 * @param actualBookOwner
 	 * @param p
