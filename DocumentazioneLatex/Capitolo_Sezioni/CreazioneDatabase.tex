@@ -6,27 +6,31 @@ CREATE TABLE Libro (
 BCID varchar2(15)  NOT NULL,
 Titolo varchar2(256)  NOT NULL,
 Autore varchar2(256)  NOT NULL,
-DataPubblicazione date  NULL,
-ISBN varchar2(13)  NOT NULL,
+DataPubblicazione VARCHAR2(20 BYTE)  NULL,
+ISBN varchar2(13),
 Propietario varchar2(20)  NOT NULL,
+Genere varchar2(256),
+Longitudine number(38,0),
+Latitudine number(38,0),
 CONSTRAINT Libro_pk PRIMARY KEY (BCID)
 ) ;
 
 -- Table: Possesso
 CREATE TABLE Possesso (
-Utente varchar2(20)  NOT NULL,
-Libro varchar2(15)  NOT NULL,
+Username varchar2(20)  NOT NULL,
+bcid varchar2(15)  NOT NULL,
 DataInizio date  NOT NULL,
-DataFine date  NOT NULL,
-LuogoRilascio varchar2(512)  NOT NULL,
-CONSTRAINT Possesso_pk PRIMARY KEY (Utente,Libro,DataInizio)
+DataFine date,
+LuogoRilascio varchar2(512),
+CONSTRAINT Possesso_pk PRIMARY KEY (Username,bcid)
 ) ;
 
 -- Table: Prenotazione
 CREATE TABLE Prenotazione (
-Utente varchar2(20)  NOT NULL,
-Libro varchar2(15)  NOT NULL,
-CONSTRAINT Prenotazione_pk PRIMARY KEY (Utente,Libro)
+Username varchar2(20)  NOT NULL,
+bcid varchar2(15)  NOT NULL,
+ID number(38, 0) NOT NULL,
+CONSTRAINT Prenotazione_pk PRIMARY KEY (ID)
 ) ;
 
 -- Table: Utente
@@ -43,6 +47,13 @@ RaggioAzione integer  NOT NULL,
 CONSTRAINT Utente_pk PRIMARY KEY (Username)
 ) ;
 
+-- Table: Passaggio
+CREATE TABLE Passaggio (
+Utenti varchar2(100) NOT NULL,
+ID number(38, 0) NOT NULL,
+CONSTRAINT Passaggio_pk PRIMARY KEY (ID)
+);
+
 -- foreign keys
 -- Reference: Libro_Utente (table: Libro)
 ALTER TABLE Libro ADD CONSTRAINT Libro_Utente
@@ -51,25 +62,29 @@ REFERENCES Utente (Username);
 
 -- Reference: Possiede_Libro (table: Possesso)
 ALTER TABLE Possesso ADD CONSTRAINT Possiede_Libro
-FOREIGN KEY (Libro)
+FOREIGN KEY (bcid)
 REFERENCES Libro (BCID);
 
 -- Reference: Possiede_Profilo (table: Possesso)
 ALTER TABLE Possesso ADD CONSTRAINT Possiede_Profilo
-FOREIGN KEY (Utente)
+FOREIGN KEY (username)
 REFERENCES Utente (Username);
 
 -- Reference: Prenotazione_Libro (table: Prenotazione)
 ALTER TABLE Prenotazione ADD CONSTRAINT Prenotazione_Libro
-FOREIGN KEY (Libro)
+FOREIGN KEY (bcid)
 REFERENCES Libro (BCID);
 
 -- Reference: Prenotazione_Utente (table: Prenotazione)
 ALTER TABLE Prenotazione ADD CONSTRAINT Prenotazione_Utente
-FOREIGN KEY (Utente)
+FOREIGN KEY (username)
 REFERENCES Utente (Username);
+
+ALTER TABLE Passaggio ADD CONSTRAINT Passaggio_Prenotazione 
+FOREIGN KEY (ID)
+REFERENCES Prenotazione (ID);
+
+-- End of file.
 
 
 \end{lstlisting}
-
-TODO: aggiungere creazione tabella PASSAGGIO
