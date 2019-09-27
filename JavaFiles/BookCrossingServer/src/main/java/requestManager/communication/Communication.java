@@ -32,9 +32,9 @@ import javax.net.ssl.SSLException;
 
 public final class Communication implements SendAnswer {
 
-	static final String portValue = "5000";
+	static final String PORTVALUE = "5000";
 	static final boolean SSL = System.getProperty("ssl") != null;
-	static final int PORT = Integer.parseInt(System.getProperty("port", portValue));
+	static final int PORT = Integer.parseInt(System.getProperty("port", PORTVALUE));
 	// HashMap of Users and the associated channel
 	static HashMap<String, ChannelHandlerContext> chcMap = new HashMap<String, ChannelHandlerContext>();
 

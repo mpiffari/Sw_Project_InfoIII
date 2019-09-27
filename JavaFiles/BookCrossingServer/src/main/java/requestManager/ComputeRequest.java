@@ -25,7 +25,7 @@ import requestManager.communication.Communication;
  */
 public class ComputeRequest implements ProcessRequest{
 
-	public final static ComputeRequest computeRequestSingleton = new ComputeRequest();
+	public final static ComputeRequest COMPUTE_REQUEST_SINGLETON = new ComputeRequest();
 
 	public final void process(String msg, String username) {
 

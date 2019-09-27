@@ -119,11 +119,9 @@ public class Profile implements Comparable<Profile>, ProfileManager {
 	}
 
 	public String getPassword() {
-		if(password == null) {
+		if(password == null) 
 			return "null";
-		} else {
-			return password.trim();	
-		}
+		return password.trim();	
 	}
 
 	public void setPassword(String password) {

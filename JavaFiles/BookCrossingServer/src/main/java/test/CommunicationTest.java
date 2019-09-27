@@ -38,7 +38,7 @@ public class CommunicationTest {
 		String username = request.substring(0, j);
 		System.err.println(request.substring(j + 1));
 		
-		ComputeRequest.computeRequestSingleton.process(request.substring(j + 1), usernameA);
+		ComputeRequest.COMPUTE_REQUEST_SINGLETON.process(request.substring(j + 1), usernameA);
 		//assertTrue(ComputeRequest.result);
 	}
 

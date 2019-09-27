@@ -11,7 +11,7 @@ class ServerHandler extends SimpleChannelInboundHandler<String> {
 	@Override
 	public void channelActive(ChannelHandlerContext ctx) throws Exception {
 		// Send greeting for a new connection.
-		computeRequest = ComputeRequest.computeRequestSingleton;
+		computeRequest = ComputeRequest.COMPUTE_REQUEST_SINGLETON;
 		System.out.println("WELCOME TO A NEW CONNECTION");
 	}
 
