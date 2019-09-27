@@ -41,20 +41,13 @@ public final class Communication implements SendAnswer {
 	private static Communication instance;
 
 	public static Communication getInstance() {
-		if (instance == null) {
-			try {
-				instance = new Communication();
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			return instance;
-		}
+		if (instance == null)
+			instance = new Communication();
+		
 		return instance;
-
 	}
 
-	public Communication() throws Exception {
+	private Communication() {
 
 		Thread t = new Thread(new Runnable() {
 
@@ -98,13 +91,16 @@ public final class Communication implements SendAnswer {
 	public void send(final String username, final String msg) {
 		System.out.println("Risposta da server verso client:\r\n" + msg);
 
+		//sending the message to the correct ChannelHandlerContext
 		ChannelFuture oo = chcMap.get(username).writeAndFlush(msg + "\r\n");
+		//adding a listener to check if the message is sent correctly
 		oo.addListener(new ChannelFutureListener() {
 
 			public void operationComplete(ChannelFuture future) throws Exception {
 				int count = 0;
 				boolean isError = false;
-
+				
+				//if there was an error, retry sending the message up to 3 times
 				while(!future.isSuccess()) {
 					chcMap.get(username).writeAndFlush(msg + "\r\n");
 					System.out.println("Retry send response!");

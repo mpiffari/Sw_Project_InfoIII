@@ -106,8 +106,7 @@ public class ComputeRequest implements ProcessRequest{
 					//Write response as JSON
 					JSONObject jsonResponse = new JSONObject();
 					JSONArray booksInMsg = new JSONArray();
-					for (Book bb : books) 
-					{ 
+					for (Book bb : books) { 
 						booksInMsg.put(bb.toString());
 						count++;
 					}	
