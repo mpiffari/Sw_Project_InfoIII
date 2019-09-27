@@ -2,9 +2,10 @@ package requestManager.communication;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
+import io.netty.channel.ChannelHandler.Sharable;
 import requestManager.ComputeRequest;
 
-
+@Sharable
 class ServerHandler extends SimpleChannelInboundHandler<String> {
 
 	ComputeRequest computeRequest;

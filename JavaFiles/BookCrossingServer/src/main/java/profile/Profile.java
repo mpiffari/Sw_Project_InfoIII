@@ -237,7 +237,7 @@ public class Profile implements Comparable<Profile>, ProfileManager {
 		ResultSet rs = ProfileData.exist(username);
 		
 		try {
-			if (rs.next() && rs.getInt(1) == 1) {
+			if (rs.getInt(1) == 1) {	
 				return true;
 			}
 		} catch (SQLException e) {
