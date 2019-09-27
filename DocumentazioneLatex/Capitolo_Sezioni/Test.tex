@@ -47,3 +47,35 @@ public void searchBookTestOK(){
 \end{lstlisting}
 \noindent Questo caso di test verifica che la ricerca di un libro svolta in maniera corretta garantisce la visualizzazione dei corretti \textit{fragment} e dei \textit{Toast} formattati in maniera corretta.
 La medesima procedura è stata implementata per le altre componenti descritte precedentemente; il fatto di utilizzare questo tool consente di svolgere anche un'analisi dinamica del codice, dal momento che se ci fosse un errore, la successione grafica subirebbe un crash o mostrerebbe qualcosa di sbagliato facendo fallire il caso di test previsto.
+
+\section{Lato Server}
+	\subsection{Analisi Statica}
+		\begin{figure}[h!]
+			\centering
+			\includegraphics[width=0.3\textwidth]{Immagini/analisi_statica_package.jpg}
+			\caption{Analisi statica del codice}
+			\label{fig:analisiStatica}
+		\end{figure}
+		TODO:commentare immagine e controllare che corrisponda a quanto pianificato precedentemente
+		
+		
+		Nel seguente piano sono rappresentate le metriche di:
+		\begin{itemize}
+			\item Abstractness: misura quanto facilmente il sistema può essere espanso;
+			\item Instability: tentativo di misurare la facilità di cambiamento. 
+		\end{itemize}
+\newpage
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=0.3\textwidth]{Immagini/analisi_statica_grafico1.jpg}
+		\caption{analisi statica grafico}
+		\label{fig:analisiStaticaGrafico}
+	\end{figure}		
+	i packages vicino al punto (0,0) sono rigidi mentre i packages vicino a (1,1) sono totalmente astratti e quindi inutili, idealmente vorremmo trovarci sulla linea rappresentata.
+	
+	
+	
+	
+	
+	
+	

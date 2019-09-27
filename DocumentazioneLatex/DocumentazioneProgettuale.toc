@@ -30,3 +30,5 @@
 \contentsline {chapter}{\numberline {11}Test ed analisi dei componenti implementati}{53}{chapter.11}
 \contentsline {section}{\numberline {11.1}Lato Android}{53}{section.11.1}
 \contentsline {subsection}{\numberline {11.1.1}Espresso Junit}{53}{subsection.11.1.1}
+\contentsline {section}{\numberline {11.2}Lato Server}{54}{section.11.2}
+\contentsline {subsection}{\numberline {11.2.1}Analisi Statica}{54}{subsection.11.2.1}
