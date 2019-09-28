@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.9.11)  28 SEP 2019 16:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.9.11)  28 SEP 2019 16:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1557,10 +1557,10 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 159.
  ) 
 Here is how much of TeX's memory you used:
- 13276 strings out of 494847
- 195536 string characters out of 6179080
+ 13275 strings out of 494847
+ 195519 string characters out of 6179080
  331596 words of memory out of 5000000
- 15757 multiletter control sequences out of 15000+600000
+ 15756 multiletter control sequences out of 15000+600000
  128974 words of font info for 73 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
  36i,16n,40p,870b,1879s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1579,7 +1579,7 @@ hare/texmf/fonts/type1/public/lm/lmr17.pfb></usr/share/texmf/fonts/type1/public
 pfb></usr/share/texmf/fonts/type1/public/lm/lmri9.pfb></usr/share/texmf/fonts/t
 ype1/public/lm/lmro10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></
 usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb>
-Output written on DocumentazioneProgettuale.pdf (63 pages, 8116746 bytes).
+Output written on DocumentazioneProgettuale.pdf (63 pages, 8116738 bytes).
 PDF statistics:
  1180 PDF objects out of 1200 (max. 8388607)
  1056 compressed objects within 11 object streams
