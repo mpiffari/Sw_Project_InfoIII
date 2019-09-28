@@ -93,7 +93,7 @@ public final class DBConnector implements QueryPerformer{
 		// setSslProperties();
 		//return DriverManager.getConnection(JDBC_URL, setMySqlConnectionProperties());
 		//jdbc:oracle:thin:@dbinfo3.ckadinof62hi.eu-west-3.rds.amazonaws.com:1521:dbinfo3", "gNOkUhDOCM", "A?T>Q_oBA=K]->gv+sTTZg?VJZkaF"
-		return DriverManager.getConnection("jdbc:oracle:thin:@dbinfo3.ckadinof62hi.eu-west-3.rds.amazonaws.com:1521:dbinfo3", "gNOkUhDOCM", "A?T>Q_oBA=K]->gv+sTTZg?VJZkaF");
+		return DriverManager.getConnection("jdbc:oracle:thin:@db3.co7xbajucw51.us-east-2.rds.amazonaws.com:1521:db3", "gNOkUhDOCM", "A?T>Q_oBA=K]->gv+sTTZg?VJZkaF");
 	}
 
 

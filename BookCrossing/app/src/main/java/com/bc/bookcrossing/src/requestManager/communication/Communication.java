@@ -28,7 +28,7 @@ import io.netty.handler.ssl.util.InsecureTrustManagerFactory;
 public class Communication implements SendRequest {
     public static final Communication singletonCommunication = new Communication();
     //private static final String port = "5000";
-    private static final String IP = "35.180.103.132";
+    private static final String IP = "13.59.242.64";
     private static boolean sendResult = true;
 
     private static final boolean SSL = System.getProperty("ssl") != null;

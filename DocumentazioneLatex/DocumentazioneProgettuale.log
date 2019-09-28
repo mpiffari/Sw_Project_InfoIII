@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.9.11)  28 SEP 2019 16:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.9.11)  28 SEP 2019 17:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1330,21 +1330,22 @@ ed on input line 20.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<Immagini/ObserverForUIInformation.jpg, id=582, 1868.9825pt x 1396.21625pt>
+<Immagini/ObserverForUIInformation.jpg, id=582, 566.115pt x 420.06938pt>
 File: Immagini/ObserverForUIInformation.jpg Graphic file (type jpg)
 <use Immagini/ObserverForUIInformation.jpg>
 Package pdftex.def Info: Immagini/ObserverForUIInformation.jpg  used on input l
 ine 27.
-(pdftex.def)             Requested size: 483.69687pt x 361.32462pt.
+(pdftex.def)             Requested size: 483.69687pt x 358.92589pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<Immagini/ClassDiagramDispatcherDelegate.jpg, id=584, 1581.91pt x 836.12375pt>
+<Immagini/ClassDiagramDispatcherDelegate.jpg, id=584, 786.68906pt x 387.69844pt
+>
 File: Immagini/ClassDiagramDispatcherDelegate.jpg Graphic file (type jpg)
 <use Immagini/ClassDiagramDispatcherDelegate.jpg>
 Package pdftex.def Info: Immagini/ClassDiagramDispatcherDelegate.jpg  used on i
 nput line 35.
-(pdftex.def)             Requested size: 483.69687pt x 255.66165pt.
+(pdftex.def)             Requested size: 483.69687pt x 238.38283pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
@@ -1364,37 +1365,37 @@ e 42.
 LaTeX Warning: Reference `fig:TakenBooksFragment' on page 31 undefined on input
  line 42.
 
-<Immagini/LoginFragment.jpg, id=588, 1754.555pt x 755.82375pt>
+<Immagini/LoginFragment.jpg, id=588, 551.05875pt x 234.1247pt>
 File: Immagini/LoginFragment.jpg Graphic file (type jpg)
 <use Immagini/LoginFragment.jpg>
 Package pdftex.def Info: Immagini/LoginFragment.jpg  used on input line 46.
-(pdftex.def)             Requested size: 241.84843pt x 104.17693pt.
+(pdftex.def)             Requested size: 241.84843pt x 102.75438pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Immagini/BookRegistrationFragment.jpg, id=589, 909.3975pt x 960.58875pt>
+<Immagini/BookRegistrationFragment.jpg, id=589, 490.08093pt x 260.47313pt>
 File: Immagini/BookRegistrationFragment.jpg Graphic file (type jpg)
 <use Immagini/BookRegistrationFragment.jpg>
 Package pdftex.def Info: Immagini/BookRegistrationFragment.jpg  used on input l
 ine 53.
-(pdftex.def)             Requested size: 241.84843pt x 255.46356pt.
+(pdftex.def)             Requested size: 241.84843pt x 128.53912pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Immagini/ResearchFragment.jpg, id=590, 1498.59875pt x 709.65125pt>
+<Immagini/ResearchFragment.jpg, id=590, 514.92375pt x 372.64218pt>
 File: Immagini/ResearchFragment.jpg Graphic file (type jpg)
 <use Immagini/ResearchFragment.jpg>
 Package pdftex.def Info: Immagini/ResearchFragment.jpg  used on input line 59.
-(pdftex.def)             Requested size: 241.84843pt x 114.52107pt.
+(pdftex.def)             Requested size: 241.84843pt x 175.01675pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Immagini/ReservationFragment.jpg, id=591, 1332.98pt x 327.2225pt>
+<Immagini/ReservationFragment.jpg, id=591, 639.89063pt x 197.98969pt>
 File: Immagini/ReservationFragment.jpg Graphic file (type jpg)
 <use Immagini/ReservationFragment.jpg>
 Package pdftex.def Info: Immagini/ReservationFragment.jpg  used on input line 6
 5.
-(pdftex.def)             Requested size: 241.84843pt x 59.36684pt.
+(pdftex.def)             Requested size: 241.84843pt x 74.83203pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
@@ -1557,10 +1558,10 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 159.
  ) 
 Here is how much of TeX's memory you used:
- 13275 strings out of 494847
- 195519 string characters out of 6179080
+ 13276 strings out of 494847
+ 195536 string characters out of 6179080
  331596 words of memory out of 5000000
- 15756 multiletter control sequences out of 15000+600000
+ 15757 multiletter control sequences out of 15000+600000
  128974 words of font info for 73 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
  36i,16n,40p,870b,1879s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1579,7 +1580,7 @@ hare/texmf/fonts/type1/public/lm/lmr17.pfb></usr/share/texmf/fonts/type1/public
 pfb></usr/share/texmf/fonts/type1/public/lm/lmri9.pfb></usr/share/texmf/fonts/t
 ype1/public/lm/lmro10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></
 usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb>
-Output written on DocumentazioneProgettuale.pdf (63 pages, 8116738 bytes).
+Output written on DocumentazioneProgettuale.pdf (63 pages, 3808357 bytes).
 PDF statistics:
  1180 PDF objects out of 1200 (max. 8388607)
  1056 compressed objects within 11 object streams
