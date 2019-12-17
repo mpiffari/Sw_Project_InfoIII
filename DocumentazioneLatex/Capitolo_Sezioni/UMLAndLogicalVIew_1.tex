@@ -1,6 +1,6 @@
 \begin{figure}[h]
 	\includegraphics[width=\textwidth]{Immagini/iterazione_1_uml}
-	\caption{class diagram}
+	\caption{Class diagram}
 	\label{fig:xx}
 \end{figure}
 
@@ -10,28 +10,28 @@
 	\label{fig:Diagramma della class ComputeRequest}
 \end{figure}
 
-\begin{lstlisting}
-public class ComputeRequest implements ProcessRequest{ 
-	~
-	public final void process(String msg, String username) {
-	// First information is the request type, that 
-		is encoded in this way: REQUESTTYPE:...;
+\begin{lstlisting}[language = Java , frame = trBL , firstnumber = last , escapeinside={(*@}{@*)}]
+public class ComputeRequest implements ProcessRequest
+{ 
+	public final void process(String msg, String username) 
+	{
+	// First information is the request type, that  is encoded in this way: // REQUESTTYPE:...;
 		int i = msg.indexOf(";", 0);
 		int j = msg.indexOf(":", 0);
-		// Convert the String information of the 
-		// request type to an enum
+		// Convert the String information of the request type to an enum
 		@Nullable RequestType requestType = RequestType.
 		getEnumReqType(msg.substring(0, i).substring(j+1));
 
-		if(requestType == null) {
-		// In this case, in the request, ther's 
-		// a wrong encoded request type
-		Communication.getInstance().send(username,
-		"requestType:" + 10000 + ";result:KO_RequestType");
-		return;
+		if(requestType == null)
+		{
+			// In this case, in the request, there's a wrong encoded request type
+			Communication.getInstance().send(username,
+			"requestType:" + 10000 + ";result:KO_RequestType");
+			return;
 		}
 
-		switch(requestType) {
+		switch(requestType) 
+		{
 			case BOOK_REGISTRATION_MANUAL:
 				Book b = new Book(msg.substring(i + 1));
 				b.setActualOwnerUsername(username);
@@ -44,23 +44,20 @@ public class ComputeRequest implements ProcessRequest{
 				break;
 				
 			case BOOK_SEARCH:
-				~
-				if(type.equals("TITLE")) {
+				if(type.equals("TITLE")) 
+				{
 					books = BookData.searchBookByTitle(title);
 				} else if (type.equals("AUTHOR")) {
-				books = BookData.searchBookByAuthor(author);
+					books = BookData.searchBookByAuthor(author);
 				} else {
-				books = BookData.searchBook(title, author);
+					books = BookData.searchBook(title, author);
 				}
-				~
 				Communication.getInstance().send(username, 
 				"requestType:8;result:" 
 				+ 1 + ";Books:" + jsonResponse);
 				break;
-				
-				~
 		}
 	}
 }
 \end{lstlisting}
-\noindent Così possiamo osservare che la classe ComputeRequest si preoccupa di gestire le richieste previste dalla prima iterazione provenienti dal client nel formato descritto.
+\noindent Da questo codice possiamo osservare che la classe ComputeRequest si preoccupa di gestire le richieste previste dalla prima iterazione provenienti dal client nel formato descritto.

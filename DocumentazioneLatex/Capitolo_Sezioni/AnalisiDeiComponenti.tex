@@ -1,18 +1,20 @@
 Come già presentato in precedenza, per la definizione dei componenti si è deciso di seguire il pattern architetturale MVC. 
 Le componenti che si è deciso di sviluppare durante la prima iterazione sono: 
 \begin{itemize}
-	\item \textbf{Componente \textit{Manual Book registration:}} La componente \textit{Manual Book registration} fa riferimento all’ UC9 (~\ref{itemize:UC9} ) (figlio del caso d'uso più generico UC5 (~\ref{itemize:UC5} ), ovvero alla funzione di aggiunta di un libro alla rete di Book Crossing per via manuale. La componente si presenta nel seguente modo:
+	\item \textbf{Componente \textit{Manual Book registration:}} la componente \textit{Manual Book registration} fa riferimento all’ UC9 (~\ref{itemize:UC9} ), figlio del caso d'uso più generico UC5 (~\ref{itemize:UC5} ), ovvero alla funzione di aggiunta di un libro alla rete di Book Crossing per via manuale. 
+	
+	La componente si presenta nel seguente modo:
 	\begin{itemize}
-		\item \textit{GUI:} Interfaccia grafica utilizzata per registrare un libro alla rete di Book Crossing. Verranno quindi messe a disposizione una serie di interfaccie grafiche, composte sostanzialmente da campi da compilare, per aggiungere le informazioni relative al proprio libro, ottenendo poi, successivamente alla registrazione, il relativo BCID;
-		\item \textit{Model:} Si fa carico di ricevere le informazioni relative al libro e, sfruttando la parte Data, restituisce alla parte GUI il BCID con il quale siglare il libro;
-		\item \textit{Data:} Le informazioni relative al libro che si vuole aggiungere sono memorizzate nel Database RDS, associandolo all'utente che attualmente lo possiede. 
+		\item \textit{GUI:} interfaccia grafica utilizzata per registrare un libro alla rete di Book Crossing. Verranno quindi messe a disposizione una serie di interfaccie grafiche, composte sostanzialmente da campi da compilare, per aggiungere le informazioni relative al proprio libro, ottenendo poi, successivamente alla registrazione, il relativo BCID;
+		\item \textit{Model:} si fa carico di ricevere le informazioni relative al libro e, sfruttando la parte \textit{Data}, restituisce alla parte \textit{GUI} il BCID con il quale siglare il libro;
+		\item \textit{Data:} le informazioni relative al libro che si vuole aggiungere sono memorizzate nel Database RDS, associandolo all'utente che attualmente lo possiede. 
 	\end{itemize}
-	\item \textbf{Componente \textit{Ricerca:}}  La componente \textit{Ricerca} fa riferimento all’ UC6 
-	%(~\ref{itemize:UC6})
-	, ovvero alla funzione che permette di andare a ricercare un libro all'interno della piattaforma di Book crossing: questa ricerca può avvenire per titolo, per autore, oppure per entrambi. La componente si presenta nel seguente modo:
+	\item \textbf{Componente \textit{Ricerca:}}  la componente di \textit{Ricerca} fa riferimento all’ UC6,
+	ovvero alla funzione che permette di andare a ricercare un libro all'interno della piattaforma di Book crossing.
+	Questa ricerca può avvenire per titolo, per autore oppure sia per autore che per titolo. Il componente si presenta nel seguente modo:
 	\begin{itemize}
-		\item \textit{GUI:} Interfaccia grafica composta da due text book in cui andare ad inserire titolo e/o autore. Essendo possibili tre tipologie di ricerca, come specificato in precedenza, non è necessario compilare entrambi i campi (lo è solamente nel caso in cui si è interessati a compiere una ricerca basandosi su entrambi i vincoli);
-		\item \textit{Model:} Gli compete la parte relativa allo smistamento delle richiesta, a seconda del fatto che si stia eseguendo una ricerca per titolo, autore o entrambi;
-		\item \textit{Data:} Fornisce, se presenti, le informazioni relative al libro oggetto della ricerca.
+		\item \textit{GUI:} interfaccia grafica composta da due textbox in cui andare ad inserire titolo e/o autore. Essendo possibili tre tipologie di ricerca, come specificato in precedenza, non è necessario compilare entrambi i campi (lo è solamente nel caso in cui si è interessati a compiere una ricerca basandosi su entrambi i vincoli);
+		\item \textit{Model:} ad esso compete la parte relativa allo smistamento delle richieste, a seconda del fatto che si stia eseguendo una ricerca per titolo, autore o per entrambi;
+		\item \textit{Data:} fornisce, se presenti, le informazioni relative al libro oggetto della ricerca.
 	\end{itemize}
 \end{itemize}

@@ -6,7 +6,7 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Deployment Diagram\relax }}{17}{figure.caption.8}
 \contentsline {figure}{\numberline {3.2}{\ignorespaces Architecture Envisioning\relax }}{17}{figure.caption.9}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Modello del databse\relax }}{18}{figure.3.3}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Modello del database\relax }}{18}{figure.3.3}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {4.1}{\ignorespaces Architettura Software\relax }}{23}{figure.caption.10}
 \contentsline {figure}{\numberline {4.2}{\ignorespaces Logical view - GUI subsystem\relax }}{24}{figure.caption.11}
@@ -14,7 +14,7 @@
 \contentsline {figure}{\numberline {4.4}{\ignorespaces Logical view - Request Manager subsystem server side\relax }}{25}{figure.caption.13}
 \contentsline {figure}{\numberline {4.5}{\ignorespaces Logical view - Server functionality\relax }}{26}{figure.caption.14}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces class diagram\relax }}{28}{figure.caption.15}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Class diagram\relax }}{28}{figure.caption.15}
 \contentsline {figure}{\numberline {5.2}{\ignorespaces Diagramma della classe ComputeRequest\relax }}{29}{figure.caption.16}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {6.1}{\ignorespaces Struttura generica pattern observer\relax }}{32}{figure.caption.17}
