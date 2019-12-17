@@ -3,13 +3,13 @@ utenti un'applicazione Android per poter gestire la libera condivisione di libri
 
 I libri della rete di BookCrossing che l'azienda punta a gestire si possono trovare
 \begin{itemize}
-	\item Casualmente (in stazione, su una panchina, in un locale o in un qualsiasi altro luogo): funzionalità \textit{"on the go"}
+	\item In un qualsiasi luogo (in stazione, su una panchina, in un locale...): funzionalità \textit{"On The Go"}
 	\item Nella zona di scambio ufficiale (\textit{"OCZ UniBg"}: Official Crossing Zone UniBg)
 \end{itemize}
 
 Per il momento, l'unica OCZ gestita direttamente dalla startUp si trova all'interno dell'aula studio del campus di Ingegneria di Dalmine, la quale coincide anche con la sistemazione del server centrale che andrà a gestire i vari interscambi tra gli users.
 
-La startUp richiede che, per usufruire dell'applicativo mobile, i clienti debbano registrarsi fornendo i propri dati quali
+La startUp richiede che, per usufruire dell'applicativo mobile, i clienti debbano registrarsi fornendo i propri dati quali:
 \begin{itemize}
 	\item Nome
 	\item Cognome
@@ -22,24 +22,26 @@ La startUp richiede che, per usufruire dell'applicativo mobile, i clienti debban
 	\end{itemize}
 	\item Categorie di libri preferite
 	\item Zona di residenza
-	\item Raggio d'azione (inteso come l'area, in km, entro cui l'utente è disposto a spostarsi per incontrare altri utenti con cui scambiarsi libri)
+	\item Raggio d'azione (inteso come il raggio, in km, entro cui l'utente è disposto a spostarsi per incontrare altri utenti con cui effettuare uno scambio di libri)
 \end{itemize}
 
-Una volta registratosi, l'utente può partecipare al programma di Book Crossing.
+Una volta terminata la registrazione, l'utente può partecipare al programma di Book Crossing.
 
 Secondo la politica del book sharing, per rendere disponibile alla comunità 
 uno o più libri che non sono ancora presenti nel network stesso, 
 serve
-identificarli univocamente, per poterne così tracciare la storia, ovvero ciò 
+identificarli univocamente potendone così tracciare la storia, ovvero ciò 
 che concerne il percorso seguito dal libro, le recensioni lasciate dagli utenti etc.
 
 Prima di procedere con l'identificazione univoca del libro, l'utilizzatore deve inserire i dati 
-del testo (o dei testi) che intende condividere con il resto della community: questo inserimento può avvenire
+del testo (o dei testi) che intende condividere con il resto della community.
+
+Questo inserimento può avvenire
 \begin{itemize}
 	\item In maniera "automatica" tramite scansione del codice ISBN
 	\item In modalità "manuale", nel caso in cui, per esempio, non sia presente il barcode
 \end{itemize}
-fornendo i seguenti dati:
+andando a fornire i seguenti dati:
 \begin{itemize}
 	\item Titolo
 	\item Autore
@@ -51,8 +53,8 @@ A questo punto il sistema genererà un BCID di 10 caratteri, ovvero un \textit{B
 quale dovrà essere riportato sul testo dall'utente.
 
 
-La vera e propria condivisione avviene nel momento in cui il volume/i viene rilasciato (azione che può avvenire in un secondo momento
-rispetto alla fase di identificazione), il sistema dovrà acquisire i seguenti dati:
+La vera e propria condivisione avviene nel momento in cui il volume viene rilasciato (azione che può avvenire in un secondo momento
+rispetto alla fase di identificazione), quando il sistema dovrà acquisire i seguenti dati:
 \begin{itemize}
 	\item Luogo di rilascio (con estensione future per un'acquisizione automatica della posizione tramite GPS)
 	\item Ora e data di rilascio 
@@ -60,11 +62,11 @@ rispetto alla fase di identificazione), il sistema dovrà acquisire i seguenti d
 
 L'app inoltre consiglierà all'utente un luogo di rilascio in cui sia già presente almeno un libro, 
 facilitando così la creazione di cassette virtuali, ovvero di luoghi in cui sono presenti più libri: 
-l'idea è quella quindi di permettere al sistema di creare, in maniera autonoma, dei punti "fissi" di 
+l'idea è quella quindi di permettere al sistema di condivisione di creare, in maniera autonoma, dei punti "fissi" di 
 consegna senza dover applicare interventi a livello infrastrutturale.
 
 Successivamente il sistema dovrà notificare gli utenti, interessati al genere del 
-libro rilasciato, della presenza di un nuovo testo, appena rilasciato, che potrebbe interessargli.
+libro rilasciato, della presenza di un nuovo testo appena rilasciato che potrebbe interessargli.
 
 In qualsiasi momento è possibile effettuare le seguenti operezioni su ogni libro personalmente 
 condiviso con la rete di sharing:
@@ -75,7 +77,7 @@ condiviso con la rete di sharing:
 
 Quando viene trovato un libro (nel gergo definito come \textit{"journal entry"}), il cliente che vuole prelevarlo, dopo
 aver effettuato il login nell'applicazione, deve inserire nell'apposito menù il BCID del libro che intende acquisire.
-Il sistema si occuperà poi di informare la community aggiornando lo status del libro raccolto, che diventerà "underReading".
+Il sistema si occuperà poi di informare la community aggiornando lo status del libro raccolto, che diventerà \textit{"underReading"}.
 
 Per quanto concerne invece l'area riservata, ogni utente ha la possibilità di 
 visualizzare informazioni in merito ai libri che: 
@@ -85,12 +87,13 @@ visualizzare informazioni in merito ai libri che:
 	\item attualmente possiede
 \end{itemize}
 
-L'utente può effettuare la prenotazione di libri già inseriti nella liste "chased" e "relased" del proprio profilo.
+L'utente può effettuare la prenotazione di libri già inseriti nella liste \textit{"chased"} e \textit{"relased"} del proprio profilo.
 
 
 Il sistema deve prevedere anche la possibilità di ricercare un specifico testo e visualizzare i contatti dei
 lettori del libro al fine di potersi scambiare opinioni e/o pareri in merito al libro stesso.
+
 Tale funzionalità di ricerca permette anche la prenotazione del testo ricercato purché lo stesso sia nello
-stato "under reading".
+stato \textit{"under reading"}.
 Per soddisfare questa richiesta il sistema provvederà a consigliare, al lettore corrente 
 del libro prenotato, zone di rilascio specifiche al fine di avvicinare tale libro al richiedente, tenendo presente anche la necessità di creare cassette virtuali (come specificato in precedenza).
