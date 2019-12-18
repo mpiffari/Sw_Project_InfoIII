@@ -1,8 +1,7 @@
-
-Netty è un NIO (Non-blocking Input Output) client server framework (i.e. permette una comunicazione asincrona tra client e server di tipo event-driven) che facilita lo sviluppo di applicazioni di rete che utilizzano socket TCP e UDP.
+Netty è un framework NIO (Non-blocking Input Output) di tipo client-server (i.e. permette una comunicazione asincrona tra client e server di tipo event-driven) che facilita lo sviluppo di applicazioni di rete che utilizzano socket TCP e UDP.
 
 Il framework è disponibile sul Maven Central Repository e può essere scaricato includendo la seguente dependency nel pom.xml del progetto:
-\begin{lstlisting}
+\begin{lstlisting} [caption={My Caption},captionpos=b]
 <dependencies>
 	<dependency>
 		<groupId>io.netty</groupId>
@@ -12,33 +11,32 @@ Il framework è disponibile sul Maven Central Repository e può essere scaricato
 </dependencies>
 \end{lstlisting}
 
+Lato Server creiamo un oggetto singleton di tipo \textit{Communication} il quale inizializza a sua volte un oggetto di tipo \textit{ServerBootstrap} (io.netty.bootstrap.ServerBootstrap).
 
-Lato Server creiamo un oggetto singleton \textit{Communication} che inizializza un oggetto di tipo \textit{ServerBootstrap} (io.netty.bootstrap.ServerBootstrap) il quale effettua il bootstrap del \textit{ServerChannel} ovvero del link "primario" (sulla porta 5000) che accetta ogni connessione di un client e crea un canale "figlio" sul quale avverà la comunicazione:
-\begin{lstlisting}
+Quest'ultimo effettua il bootstrap del \textit{ServerChannel}, dove il \textit{ServerChannel} rappresenta il link "primario" (sul port 5000) che accetta ogni connessione di un client e crea un canale "figlio" sul quale avverà tale comunicazione.
+
+\begin{lstlisting} [caption={My Caption},captionpos=b]
 private Communication() throws Exception {
-	~
 	ServerBootstrap b = new ServerBootstrap();
 
-	b.group(bossGroup, workerGroup).channel(NioServerSocketChannel.class)
-	.handler(new LoggingHandler(LogLevel.INFO)).childHandler(
-		 new ServerInitializer(sslCtx));
+	b.group(bossGroup, workerGroup).channel(NioServerSocketChannel.class).handler(new LoggingHandler(LogLevel.INFO)).childHandler(new ServerInitializer(sslCtx));
 
 	b.bind(PORT).sync().channel().closeFuture().sync();
-	~
 }
 \end{lstlisting}
-al server aggiungiamo un handler \textit{ServerInitializer} che aggiunge alla pipeline, oltre agli encoder e decoder di default, il \textit{ServerHandler}
-\begin{lstlisting}
+
+Al server andiamo ad aggiungere un handler \textit{ServerInitializer} che aggiunge alla pipeline, oltre agli encoder e decoder di default, il \textit{ServerHandler}.
+
+\begin{lstlisting} [caption={My Caption},captionpos=b]
 class ServerInitializer extends ChannelInitializer<SocketChannel> {
 
 	private static final StringDecoder DECODER = new StringDecoder();
 	private static final StringEncoder ENCODER = new StringEncoder();
 	private static final ServerHandler SERVER_HANDLER = new ServerHandler();
-	~
+	
 	@Override
 	public void initChannel(SocketChannel ch) throws Exception {
 		ChannelPipeline pipeline = ch.pipeline();
-		~
 		pipeline.addLast(DECODER);
 		pipeline.addLast(ENCODER);
 		// and then business logic.
@@ -46,10 +44,12 @@ class ServerInitializer extends ChannelInitializer<SocketChannel> {
 	}
 }
 \end{lstlisting}
-la classe \textit{ServerHandler} è un sottotipo di \textit{SimpleChannelInboundHandler} \\(io.netty.channel.SimpleChannelInboundHandler) il quale fornisce la stringa inviata dal client tramite il metodo:
-\begin{lstlisting}
+
+La classe \textit{ServerHandler} è un sottotipo di \textit{SimpleChannelInboundHandler} \\(io.netty.channel.SimpleChannelInboundHandler) il quale fornisce la stringa inviata dal client tramite il metodo seguente.
+
+\begin{lstlisting} [caption={My Caption},captionpos=b]
 class ServerHandler extends SimpleChannelInboundHandler<String> {
-	~
+	
 	@Override
 	public void channelRead0(ChannelHandlerContext ctx, String request)
 				throws Exception {
@@ -60,9 +60,9 @@ class ServerHandler extends SimpleChannelInboundHandler<String> {
 		System.out.println("Process request: " + request);
 		computeRequest.process(request.substring(j + 1), username);
 	}
-	~
 }
 \end{lstlisting}
+
 l'attento lettore avrà notato che il metodo precedente memorizza la coppia (username, channelHandlerContext) all'interno dell'oggetto chcMap di \textit{Communication}, il quale è di tipo HashMap<String, ChannelHandlerContext>, tale informazione è fondamentale al fine di rispondere al clinet tramite canale "figlio" ad esso dedicato e chiuderlo al termine della comunicazione; il metodo invoca l'elaborazione del messaggio ricevuto tramite l'interfaccia \textit{ProcessRequest} (la semantica della stringa request verrà discussa nel paragrafo successivo).
 
 

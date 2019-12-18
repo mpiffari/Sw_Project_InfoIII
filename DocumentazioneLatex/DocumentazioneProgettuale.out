@@ -20,7 +20,7 @@
 \BOOKMARK [1][-]{section.5.2}{Aderenza UML a Logical View}{chapter.5}% 20
 \BOOKMARK [0][-]{chapter.6}{Observer-delegate pattern: la nostra implementazione}{part.2}% 21
 \BOOKMARK [0][-]{chapter.7}{Implementazione comunicazione server}{part.2}% 22
-\BOOKMARK [1][-]{section.7.1}{il framework Netty}{chapter.7}% 23
+\BOOKMARK [1][-]{section.7.1}{Il framework Netty}{chapter.7}% 23
 \BOOKMARK [1][-]{section.7.2}{Semantica dei messaggi}{chapter.7}% 24
 \BOOKMARK [0][-]{chapter.8}{Creazione della base di dati}{part.2}% 25
 \BOOKMARK [-1][-]{part.3}{III Iterazione 2}{}% 26
