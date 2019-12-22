@@ -24,7 +24,7 @@ private Communication() throws Exception {
 	b.bind(PORT).sync().channel().closeFuture().sync();
 }
 \end{lstlisting}
-
+\newpage
 Al server andiamo ad aggiungere un handler \textit{ServerInitializer} che aggiunge alla pipeline, oltre agli encoder e decoder di default, il \textit{ServerHandler}.
 
 \begin{lstlisting} [caption={My Caption},captionpos=b]
@@ -51,8 +51,7 @@ La classe \textit{ServerHandler} è un sottotipo di \textit{SimpleChannelInbound
 class ServerHandler extends SimpleChannelInboundHandler<String> {
 	
 	@Override
-	public void channelRead0(ChannelHandlerContext ctx, String request)
-				throws Exception {
+	public void channelRead0(ChannelHandlerContext ctx, String request) throws Exception {
 		int j = request.indexOf(";");
 		String username = request.substring(0, j);
 		Communication.chcMap.put(username, ctx);
@@ -63,21 +62,19 @@ class ServerHandler extends SimpleChannelInboundHandler<String> {
 }
 \end{lstlisting}
 
-l'attento lettore avrà notato che il metodo precedente memorizza la coppia (username, channelHandlerContext) all'interno dell'oggetto chcMap di \textit{Communication}, il quale è di tipo HashMap<String, ChannelHandlerContext>, tale informazione è fondamentale al fine di rispondere al clinet tramite canale "figlio" ad esso dedicato e chiuderlo al termine della comunicazione; il metodo invoca l'elaborazione del messaggio ricevuto tramite l'interfaccia \textit{ProcessRequest} (la semantica della stringa request verrà discussa nel paragrafo successivo).
+Si può notare che il metodo precedente memorizza la coppia (username, \textit{channelHandlerContext}) all'interno dell'oggetto chcMap di \textit{Communication}, il quale è di tipo HashMap<String, ChannelHandlerContext>.
+Tale informazione è fondamentale al fine di rispondere al client tramite canale "figlio" ad esso dedicato e chiuderlo al termine della comunicazione: il metodo invoca poi l'elaborazione del messaggio ricevuto tramite l'interfaccia \textit{ProcessRequest} (la semantica della stringa request verrà discussa nel paragrafo successivo).
 
-
+\newpage
 Infine, ma non per importanza, discutiamo l'implementazione dell'interfaccia \textit{SendAnswer} da parte della classe \textit{Communication}:
-\begin{lstlisting}
+\begin{lstlisting}[caption={My Caption},captionpos=b]
 public final class Communication implements SendAnswer{
-	~
-	public void send(final String username, final String msg) {
-		~
+
+	public void send(final String username, final String msg) {	
 		ChannelFuture oo = chcMap.get(username).writeAndFlush(msg + "\r\n");
-		
 		oo.addListener(new ChannelFutureListener() {
 		
-			public void operationComplete(ChannelFuture future)	
-							throws Exception {
+			public void operationComplete(ChannelFuture future)	throws Exception {
 				int count = 0;
 				boolean isError = false;
 				
@@ -87,73 +84,74 @@ public final class Communication implements SendAnswer{
 					if(count == 3) {
 						isError = true;
 						break;
-					} else 
+					} else {
 						count ++;
+					}
 				}
-				
-				~
 				
 				future.addListener(ChannelFutureListener.CLOSE);
 				chcMap.remove(username);
 			}
 		});
 	}
-	~
 }
 \end{lstlisting}
-il metodo send si occupa di inviare la risposta relativa alla richiesta ricevuta e nel caso di fallimento ripeterà l'invio fino a un limite di 3 tentativi.
+
+Il metodo Send, definito all'interno della classe \textit{Communication}, si occupa di inviare la risposta relativa alla richiesta ricevuta e, nel caso di fallimento, ripeterà l'invio fino a un limite di 3 tentativi.
 \begin{figure}[h]
 	\includegraphics[width=\textwidth]{Immagini/CommunicationPackageServer}
 	\caption{Struttura del package \textit{requestManager.Communication}}
-	\label{fig:xx}
+	\label{fig:requestManager}
 \end{figure}
 \newpage
-Lato Client creiamo un singleton \textit{Communication} che implementa il seguente metodo dell'interfaccia \textit{SendRequest} aprendo la connessione con il Server sulla socket (35.180.103.132,5000) e inviando il messaggio al server:
-\begin{lstlisting}
+Lato Client creiamo un oggetto singleton \textit{Communication} che implementa il seguente metodo dell'interfaccia \textit{SendRequest}, aprendo la connessione con il Server sulla socket (35.180.103.132,5000) e inviando il messaggio al server.
+
+\begin{lstlisting}[caption={My Caption},captionpos=b]
 public class Communication implements SendRequest {
 	private static final String IP = "35.180.103.132";
 	public static final String HOST = System.getProperty("host", IP);
 	public static final int PORT = 5000;
-	~
 	@Override
 	public boolean send(String data) {
-		~
 		Bootstrap b = new Bootstrap();
-		b.group(group).channel(NioSocketChannel.class).handler(new
-					 ClientInitializer(sslCtx));
+		b.group(group).channel(NioSocketChannel.class).handler(new ClientInitializer(sslCtx));
 		ChannelFuture ch = null;
-		~
+		
 		ch = b.connect(HOST, PORT);
-		~
+		
 		ChannelFuture lastWriteFuture = null;
 		lastWriteFuture = ch.channel().writeAndFlush(data + "\r\n");
 		
 		//Wait until all messages are flushed before closing the channel
 		if (lastWriteFuture != null) {
-			~
 			lastWriteFuture.sync();
-			~
 		}		
 	}
-	~
 }
 \end{lstlisting}
-Tralasciamo la discussione dell'implementazione della classe \textit{ClientInitializer} in quanto simile a quella della classe duale; invece approfondamo l'implementazione di \textit{ClientHandler}: 
-\begin{lstlisting}
+
+Tralasciando la discussione dell'implementazione della classe \textit{ClientInitializer} in quanto simile a quella della classe duale lato server.
+
+Andiamo invece ad approfondire l'implementazione della classe \textit{ClientHandler}:.
+
+\begin{lstlisting}[caption={My Caption},captionpos=b]
 class ClientHandler extends SimpleChannelInboundHandler<String> {
 	@Override
 	protected void channelRead0(ChannelHandlerContext ctx, String msg) {
 		Processing.getInstance().processAnswer(msg);
 		Communication.getInstance().group.shutdownGracefully();
 	}
-	~
 }
 \end{lstlisting}
-di particolare interesse è il metodo channelRead0 ereditato da \textit{SimpleChannelInboundHandler}, tale metodo viene invocato dal framework ogni qual volta il client riceve un messaggio, quest'ultimo viene elaborato dal singleton \textit{Processing} e il canale di comunicazione viene chiuso.
+
+Di particolare interesse è il metodo \textit{channelRead0} ereditato da \textit{SimpleChannelInboundHandler}, il quale viene invocato dal framework ogni qual volta il client riceve un messaggio.
+
+Il messaggio viene poi elaborato dal oggetto singleton \textit{Processing} e il canale di comunicazione viene chiuso.
+
 \begin{figure}[h]
 	\includegraphics[width=\textwidth]{Immagini/CommunicationPackageClient}
 	\caption{Struttura del package \textit{requestManager.Communication}}
-	\label{fig:xx}
+	\label{fig:requestManagerCommunication}
 \end{figure}
 
 

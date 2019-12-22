@@ -27,15 +27,15 @@
 \contentsline {figure}{\numberline {6.8}{\ignorespaces Struttura del componente \textit {ResearchFragment}\relax }}{34}{figure.caption.24}
 \contentsline {figure}{\numberline {6.9}{\ignorespaces Struttura del componente \textit {ReservationFragment}\relax }}{34}{figure.caption.25}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {7.1}{\ignorespaces Struttura del package \textit {requestManager.Communication}\relax }}{37}{figure.caption.26}
+\contentsline {figure}{\numberline {7.1}{\ignorespaces Struttura del package \textit {requestManager.Communication}\relax }}{38}{figure.caption.26}
 \contentsline {figure}{\numberline {7.2}{\ignorespaces Struttura del package \textit {requestManager.Communication}\relax }}{39}{figure.caption.27}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {9.1}{\ignorespaces Diagramma della classe ComputeRequest\relax }}{46}{figure.caption.28}
+\contentsline {figure}{\numberline {9.1}{\ignorespaces Diagramma della classe ComputeRequest\relax }}{48}{figure.caption.28}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {10.1}{\ignorespaces Distanza tra lettore e prenotante i-esimo\relax }}{48}{figure.caption.29}
-\contentsline {figure}{\numberline {10.2}{\ignorespaces Zona d'incontro tra lettore e prenotante\relax }}{48}{figure.caption.30}
-\contentsline {figure}{\numberline {10.3}{\ignorespaces Rete di utenti che potrebbero essere attivi nel prestito\relax }}{50}{figure.caption.31}
+\contentsline {figure}{\numberline {10.1}{\ignorespaces Distanza tra lettore e prenotante i-esimo\relax }}{50}{figure.caption.29}
+\contentsline {figure}{\numberline {10.2}{\ignorespaces Zona d'incontro tra lettore e prenotante\relax }}{50}{figure.caption.30}
+\contentsline {figure}{\numberline {10.3}{\ignorespaces Rete di utenti che potrebbero essere attivi nel prestito\relax }}{52}{figure.caption.31}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {11.1}{\ignorespaces Analisi statica del codice\relax }}{52}{figure.caption.32}
-\contentsline {figure}{\numberline {11.2}{\ignorespaces analisi statica grafico\relax }}{53}{figure.caption.33}
+\contentsline {figure}{\numberline {11.1}{\ignorespaces Analisi statica del codice\relax }}{54}{figure.caption.32}
+\contentsline {figure}{\numberline {11.2}{\ignorespaces analisi statica grafico\relax }}{55}{figure.caption.33}

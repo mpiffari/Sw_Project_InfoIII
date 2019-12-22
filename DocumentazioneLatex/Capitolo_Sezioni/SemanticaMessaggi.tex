@@ -1,15 +1,18 @@
-I messaggi inviati dai client sono stringhe che possono essere identificate dalla seguente \textit{RegEx} (\textit{Regular Expression}): 
-\begin{center}
-	\begin{lstlisting}
+I messaggi inviati dai client, ovvero direttamente dagli users, non sono altro che stringhe le quali possono essere identificate dalla seguente \textit{RegEx} (\textit{Regular Expression}): 
+
+\begin{lstlisting}[caption={\textit{RegEx} utilizzata},captionpos=b]
 	^[a-zA-Z0-9]+;[a-zA-Z0-9]+:[0-9]+;([a-zA-Z0-9]+:[a-zA-Z0-9]+;)+$
-	\end{lstlisting}
-\end{center}
+\end{lstlisting}
+
 la cui semantica può essere così rappresentata:
+
 \begin{center}
 "<username>;requestType:<tipo>;<richiesta>"
 \end{center}
+
 I valori assunti da <tipo> sono i seguenti e corrispondo ai campi definiti all'interno dell'enumerativo \textit{RequestType}.
-Durante l'attuale iterazione siamo andati a gestire le richieste relative alle sole due seguenti tipologie di richieste:
+
+Durante la prima iterazione siamo andati a gestire le richieste relative alle sole due seguenti tipologie di richieste:
 \begin{itemize}
 	\item 0 -> BOOK\_REGISTRATION\_MANUAL
 	\item 8 -> BOOK\_SEARCH
@@ -27,37 +30,34 @@ Nella seconda iterazione, e nelle successive, è stata pianificata l'implementaz
 	\item 7 -> PICK\_UP	
 \end{itemize}
 La richiesta inviata dal client Android verso il server, ad esempio, per la ricerca di un libro assume la seguente forma:
-\begin{center}
-	\begin{lstlisting}
+
+\begin{lstlisting}[caption={Semantica della richiesta per ricerca},captionpos=b]
 	username + ";" + "requestType:" + 0 + ";" + book.encode();
-	\end{lstlisting}
-\end{center}
-\noindent Lato Android, la richiesta vera e propria è preceduta dall'username dell'utente collegato in modo che lato server, qualora, per diversi motivi, l'username fosse invalido, la richiesta venga ignorata a priori.
+\end{lstlisting}
+
+\noindent Lato Android la richiesta vera e propria è preceduta dall'username dell'utente collegato in modo che, lato server, qualora per diversi motivi l'username fosse invalido, la richiesta venga ignorata a priori.
 \\ \noindent
 Analogamente possiamo identificare i messaggi inviati dal server come:
-\begin{center}
-	\begin{lstlisting}
+\begin{lstlisting}[caption={\textit{RegEx} utilizzata lato server per l'interpretazione delle richieste},captionpos=b]
 	^[a-zA-Z0-9]+:[0-9]+;([a-zA-Z0-9]+:[a-zA-Z0-9]+;)+$
-	\end{lstlisting}
-\end{center}
-la cui semantica può essere così rappresentata:
+\end{lstlisting}
+la cui semantica può a sua volta essere così rappresentata:
 \begin{center}
 	"requestType:<tipo>;<risultato>"
 \end{center}
 
-\noindent Ad esempio, nel caso di invio di una richiesta da parte del server verso lato Android in merito alla registrazione manuale di un libro andata a buon fine, la stringa assume il seguente formato:
-\begin{center}
-	\begin{lstlisting}
-		"requestType:0;result:" + 1 + ";BCID:" + bcid
-	\end{lstlisting}
-\end{center}
+\noindent Ad esempio, nel caso di invio di una risposta da parte del server verso il client Android, in merito alla registrazione manuale di un libro andata a buon fine, la stringa va ad assumere il seguente formato:
+\begin{lstlisting}[caption={Risposta OK},captionpos=b]
+	"requestType:0;result:" + 1 + ";BCID:" + bcid
+\end{lstlisting}
+
 dove \textit{bcid} è il codice alfanumerico generato casualmente dal server per identificare il libro all'interno della rete di Book Crossing.
-Qual'ora, invece, il server riceva una richiesta con un tipo errato la risposta del server è la seguente:
-\begin{center}
-	\begin{lstlisting}
+
+Qual'ora invece il server riceva una richiesta con un tipo errato, la risposta che andrebbe ad inoltrare sarebbe la seguente:
+\begin{lstlisting}[caption={Risposta KO},captionpos=b]
 	"requestType:10000;result:KO_RequestType"
-	\end{lstlisting}
-\end{center}
+\end{lstlisting}
+
 
 
 

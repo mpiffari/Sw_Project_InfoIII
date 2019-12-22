@@ -1,19 +1,19 @@
 \section{Lato Android}
 Per quanto rigurda la fase di testing di quanto implementato per il client Android sono stati sfruttati principalmente due tool:
 \begin{itemize}
-	\item \textbf{Junit} per l'analisi dinamica del codice, con lo scopo, quindi di verificare che il codice scritto funzioni in maniera coerente a quanto richiiesto e che vengano seguiti le richieste descritte nei casi d'uso.
+	\item \textbf{Junit} per l'analisi dinamica del codice, con lo scopo quindi di verificare che il codice scritto funzioni in maniera coerente a quanto richiiesto e che vengano seguite le richieste descritte nei casi d'uso.
 	\item \textbf{Espresso Junit} per l'analisi dell'interfaccia grafica costruita per la gestione delle varie richieste. Anche in questo caso si è fatto riferimento a quanto descritto dai casi d'uso riguardo alle view e al loro formato per osservare la correttezza di quanto implementato. 
 \end{itemize}
 \subsection{Espresso Junit}
-Come detto, \textbf{Espresso Junit} è un tool attraverso il quale è possibile verificare le interazioni di un applicativo Android con l'utente. In questo caso, quindi, gli \textit{assert} verificano, ad esempio, che il fragment aperto sia quello corretto e che i campi dei vari componenti inseriti abbiano il valore desiderato.
-\\ \noindent
-Nell'ambito di questa iterazione, le componenti che sono state testate con questo applicativo sono:
+Come detto, \textbf{Espresso Junit} è un tool attraverso il quale è possibile verificare le interazioni di un applicativo Android con l'utente. In questo caso quindi gli \textit{assert} verificano, ad esempio, che il fragment aperto sia quello corretto e che i campi dei vari componenti inseriti abbiano il valore desiderato.
+
+Nell'ambito di questa iterazione, le componenti che sono state testate con questo applicativo sono quelle di:
 \begin{enumerate}
-	\item Login;
-	\item Registrazione manuale di un libro;
-	\item Ricerca di un libro.
+	\item Login
+	\item Registrazione manuale di un libro
+	\item Ricerca di un libro
 \end{enumerate}
-\noindent 
+
 Consideriamo, come esempio per la descrizione, il test relativo alla ricerca di un libro all'interno della rete di Book Crossing. Il test si compone nel seguente modo:
 \begin{lstlisting}
 @Test
@@ -45,8 +45,10 @@ public void searchBookTestOK(){
 	inRoot(withDecorView(not(mainActivityActivityTestRule.getActivity().getWindow().
 	getDecorView()))).check(matches(isDisplayed()));
 \end{lstlisting}
-\noindent Questo caso di test verifica che la ricerca di un libro svolta in maniera corretta garantisce la visualizzazione dei corretti \textit{fragment} e dei \textit{Toast} formattati in maniera corretta.
-La medesima procedura è stata implementata per le altre componenti descritte precedentemente; il fatto di utilizzare questo tool consente di svolgere anche un'analisi dinamica del codice, dal momento che se ci fosse un errore, la successione grafica subirebbe un crash o mostrerebbe qualcosa di sbagliato facendo fallire il caso di test previsto.
+
+Questo caso di test verifica che la ricerca di un libro venga svolta in maniera corretta, garantendo la visualizzazione dei corretti \textit{fragment} e dei \textit{Toast} formattati in maniera corretta.
+
+La medesima procedura è stata implementata per le altre componenti descritte precedentemente; il fatto di utilizzare questo tool consente di svolgere anche un'analisi dinamica del codice, dal momento che se ci fosse un errore, la successione grafica subirebbe un crash, mostrando un segnale di errore e facendo fallire il caso di test previsto.
 
 \section{Lato Server}
 	\subsection{Analisi Statica}
@@ -71,7 +73,7 @@ La medesima procedura è stata implementata per le altre componenti descritte pr
 		\caption{analisi statica grafico}
 		\label{fig:analisiStaticaGrafico}
 	\end{figure}		
-	i packages vicino al punto (0,0) sono rigidi mentre i packages vicino a (1,1) sono totalmente astratti e quindi inutili, idealmente vorremmo trovarci sulla linea rappresentata.
+I packages vicino al punto (0,0) sono rigidi mentre i packages vicino a (1,1) sono totalmente astratti e quindi inutili, idealmente vorremmo trovarci sulla linea rappresentata.
 	
 	
 	

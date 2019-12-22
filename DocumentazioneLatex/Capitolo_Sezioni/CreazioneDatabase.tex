@@ -1,57 +1,59 @@
-Le seguenti sono le query ddl per la creazione del database che abbiamo utilizzato:
-\begin{lstlisting}
+Per il funzionamento del software è necessario avere su di un Database Server, in questo caso RDS, il database contenente le tabelle per la memorizzazione delle informazioni.
+
+Le query utilizzate per la generazione del database sono le seguenti:
+\begin{lstlisting}[language=SQL]
 -- tables
 -- Table: Libro
 CREATE TABLE Libro (
-BCID varchar2(15)  NOT NULL,
-Titolo varchar2(256)  NOT NULL,
-Autore varchar2(256)  NOT NULL,
-DataPubblicazione VARCHAR2(20 BYTE)  NULL,
-ISBN varchar2(13),
-Proprietario varchar2(20)  NOT NULL,
-Genere varchar2(256),
-Longitudine number(38,0),
-Latitudine number(38,0),
-CONSTRAINT Libro_pk PRIMARY KEY (BCID)
+	BCID varchar2(15)  NOT NULL,
+	Titolo varchar2(256)  NOT NULL,
+	Autore varchar2(256)  NOT NULL,
+	DataPubblicazione VARCHAR2(20 BYTE)  NULL,
+	ISBN varchar2(13),
+	Proprietario varchar2(20)  NOT NULL,
+	Genere varchar2(256),
+	Longitudine number(38,0),
+	Latitudine number(38,0),
+	CONSTRAINT Libro_pk PRIMARY KEY (BCID)
 ) ;
 
 -- Table: Possesso
 CREATE TABLE Possesso (
-Username varchar2(20)  NOT NULL,
-bcid varchar2(15)  NOT NULL,
-DataInizio date  NOT NULL,
-DataFine date,
-LuogoRilascio varchar2(512),
-CONSTRAINT Possesso_pk PRIMARY KEY (Username,bcid)
+	Username varchar2(20)  NOT NULL,
+	bcid varchar2(15)  NOT NULL,
+	DataInizio date  NOT NULL,
+	DataFine date,
+	LuogoRilascio varchar2(512),
+	CONSTRAINT Possesso_pk PRIMARY KEY (Username,bcid)
 ) ;
 
 -- Table: Prenotazione
 CREATE TABLE Prenotazione (
-Username varchar2(20)  NOT NULL,
-bcid varchar2(15)  NOT NULL,
-ID number(38, 0) NOT NULL,
-CONSTRAINT Prenotazione_pk PRIMARY KEY (ID)
+	Username varchar2(20)  NOT NULL,
+	bcid varchar2(15)  NOT NULL,
+	ID number(38, 0) NOT NULL,
+	CONSTRAINT Prenotazione_pk PRIMARY KEY (ID)
 ) ;
 
 -- Table: Utente
 CREATE TABLE Utente (
-Username varchar2(20)  NOT NULL,
-Nome varchar2(50)  NOT NULL,
-Cognome varchar2(50)  NOT NULL,
-DataNas date  NOT NULL,
-Contatto varchar2(256)  NULL,
-Password char(64)  NOT NULL,
-ResidenzaLat integer  NOT NULL,
-ResidenzaLong integer  NOT NULL,
-RaggioAzione integer  NOT NULL,
-CONSTRAINT Utente_pk PRIMARY KEY (Username)
+	Username varchar2(20)  NOT NULL,
+	Nome varchar2(50)  NOT NULL,
+	Cognome varchar2(50)  NOT NULL,
+	DataNas date  NOT NULL,
+	Contatto varchar2(256)  NULL,
+	Password char(64)  NOT NULL,
+	ResidenzaLat integer  NOT NULL,
+	ResidenzaLong integer  NOT NULL,
+	RaggioAzione integer  NOT NULL,
+	CONSTRAINT Utente_pk PRIMARY KEY (Username)
 ) ;
 
 -- Table: Passaggio
 CREATE TABLE Passaggio (
-Utenti varchar2(100) NOT NULL,
-ID number(38, 0) NOT NULL,
-CONSTRAINT Passaggio_pk PRIMARY KEY (ID)
+	Utenti varchar2(100) NOT NULL,
+	ID number(38, 0) NOT NULL,
+	CONSTRAINT Passaggio_pk PRIMARY KEY (ID)
 );
 
 -- foreign keys
