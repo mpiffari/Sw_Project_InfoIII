@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.10.29)  22 DEC 2019 16:12
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.10.29)  26 DEC 2019 15:21
 entering extended mode
 **./DocumentazioneProgettuale.tex
 (DocumentazioneProgettuale.tex
@@ -1199,39 +1199,38 @@ e 30.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[49
-
-]
-<Immagini/Algorithm_PuntoIncontro.jpg, id=887, 448.67625pt x 216.81pt>
+<Immagini/Algorithm_PuntoIncontro.jpg, id=876, 448.67625pt x 216.81pt>
 File: Immagini/Algorithm_PuntoIncontro.jpg Graphic file (type jpg)
 <use Immagini/Algorithm_PuntoIncontro.jpg>
 Package pdftex.def Info: Immagini/Algorithm_PuntoIncontro.jpg  used on input li
 ne 44.
 (pdftex.def)             Requested size: 290.22107pt x 140.24663pt.
+[49
 
-Overfull \hbox (51.46509pt too wide) in paragraph at lines 52--67
+]
+Overfull \hbox (51.46509pt too wide) in paragraph at lines 53--68
 $[]$ 
  []
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [50 <./Immagini/Algoritmo_Explanation.jpeg> <./Immagini/Algorithm_PuntoIncontr
-o.jpg>]
-Overfull \hbox (51.46509pt too wide) in paragraph at lines 82--98
+[50 <./Immagini/Algoritmo_Explanation.jpeg> <./Immagini/Algorithm_PuntoIncontro
+.jpg>]
+Overfull \hbox (51.46509pt too wide) in paragraph at lines 84--100
 $[]$ 
  []
 
-<Immagini/Algorithm_UsersNet.jpg, id=895, 572.1375pt x 498.36188pt>
+<Immagini/Algorithm_UsersNet.jpg, id=898, 572.1375pt x 498.36188pt>
 File: Immagini/Algorithm_UsersNet.jpg Graphic file (type jpg)
 <use Immagini/Algorithm_UsersNet.jpg>
 Package pdftex.def Info: Immagini/Algorithm_UsersNet.jpg  used on input line 10
-4.
+6.
 (pdftex.def)             Requested size: 386.95897pt x 337.06415pt.
+[51 <./Immagini/Algorithm_UsersNet.jpg>]
+Overfull \hbox (20.42789pt too wide) in paragraph at lines 120--121
+\T1/lmr/m/n/10.95 sente di au-mentare l'ottimalità dell'algoritmo stesso: nello
+ speci-fico il con-cetto se-guito nell'implementazione
+ []
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-) [51] [52 <./Immagini/Algorithm_UsersNet.jpg>]
+) [52]
  11.
 (Capitolo_Sezioni/Test.tex [53
 
@@ -1296,7 +1295,7 @@ pfb><C:/Users/miche/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmr
 o10.pfb><C:/Users/miche/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm
 /lmsy10.pfb><C:/Users/miche/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/publi
 c/lm/lmtt9.pfb>
-Output written on DocumentazioneProgettuale.pdf (63 pages, 4039009 bytes).
+Output written on DocumentazioneProgettuale.pdf (63 pages, 4042702 bytes).
 PDF statistics:
  1131 PDF objects out of 1200 (max. 8388607)
  504 named destinations out of 1000 (max. 500000)

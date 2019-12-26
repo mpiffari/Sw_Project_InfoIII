@@ -1,30 +1,30 @@
-La gestione delle prenotazioni dei libri è una delle parte innovative introdotte dalla start up: questo servizio mira a sfruttare la flessibilità della community di sharing, basata sull'ideale di open-source, per comunque offrire un seervizio mirato ed attento alle necessità del lettore.
+La gestione delle prenotazioni dei libri è una delle parti innovative introdotte dalla start up: questo servizio mira a sfruttare la flessibilità della community di sharing, basata sull'idea dell'open-source, cercando comunque di offrire un servizio mirato ed attento alle necessità del lettore.
 
-Ogni utente, purchè sia registrato all'interno del servizio di Book-sharing, può prenotare un determinato libro che si trova nello stato "Under reading".
+Ogni utente, purchè sia registrato all'interno del servizio di Book-sharing, può prenotare un determinato libro che si trova nello stato "Under reading", ovvero si trova in mano ad un altro utente, il quale lo sta leggendo.
 
-Andiamo ad evidenziare gli attori coinvolti in questa operazione:
+Andiamo ad evidenziare gli attori coinvolti in questa operazione di prenotazione:
 \begin{itemize}
 	\item \textbf{\underline{Lettore} [L]:} esso rappresenta l'utente, registrato nella community, che possiede il libro oggetto della prenotazione. Indichiamo con:
 	\begin{itemize}
 		\item \textbf{{\LARGE $r_{L}$}:} raggio d'azione del lettore;
 		\item \textbf{{\LARGE $ z_{0} $}:} zona di residenza (espressa come coordinate puntuali).
 	\end{itemize}
-	\item \textbf{\underline{Prenotanti} [$ P_{i}$ con $i=1,...,N $]:} rappresentano l'insieme degli utenti, tutti interessati ad uno specifico libro in possesso dell'utente \textbf{L}.
-	Nello specifico l'indice \textit{i-esimo} indica l'ordine temporale con cui sono giunte le prenotazioni per lo specifico libro.
-	Oltre a questa informazione, ogni utente, rappresentando un generico utente della community, avrà fornito, al momento della registrazione, le seguenti informazioni:
+	\item \textbf{\underline{Prenotanti} [$ P_{i}$ con $i=1,...,N $]:} rappresentano l'insieme degli N utenti, tutti interessati ad uno specifico libro in possesso dell'utente \textbf{L}.
+	
+	Oltre a questa informazione, ogni utente avrà fornito, al momento della registrazione, le seguenti informazioni:
 	\begin{itemize}
 		\item \textbf{{\LARGE $r^{P}_{i}$} con $i=1,...,N $:} raggio d'azione del lettore;
 		\item \textbf{{\LARGE $z^{P}_{i}$} con $i=1,...,N $:} zona di residenza.
 	\end{itemize}
 
-	L'algoritmo può essere scomposto in due macro-blocchi:
+	L'algoritmo può dunque essere scomposto in due macro-blocchi:
 	\begin{itemize}
-		\item \textbf{Step 0:} questo fase viene realizzata nel momento in cui il sistema inizia ad analizzare tutti gli utenti che hanno effettuato una prenotazione per un determinato libro che si trova nello stato di "Under reading".
+		\item \textbf{Step 0:} questa fase viene richiamata nel momento in cui il sistema inizia ad analizzare tutti gli utenti che hanno effettuato una prenotazione per un determinato libro che si trova nello stato di \textit{"Under reading"}.
 		
 		Tutti gli N prenotanti \textit{$ P_{i} $} vengono ordinati in base alla distanza dal lettore \textit{L}, indipendentemente da quello che è l'ordine temporale con cui è stata effettuata la prenotazione: la quantità di cui si terrà (come si può vedere nella figura ~\ref{fig:DistanceAlgorithm}) conto sarà quindi la distanza
-		{\LARGE \begin{equation}
+		\begin{equation}
 			|z^{p}_{i}-z_{0}|
-		\end{equation}}
+		\end{equation}
 		\begin{figure}[h!]
 		\centering
 		\includegraphics[width=0.8\textwidth]{Immagini/Algoritmo_Explanation}
@@ -37,7 +37,7 @@ Andiamo ad evidenziare gli attori coinvolti in questa operazione:
 		\item \textbf{Step 1:} in questo macro-blocco andiamo effettivamente ad applicare l'algoritmo \textit{smart} per poter soddisfare, nella maniera migliore, le esigenze di ogni utente della community.
 		
 		
-		L'idea di base è che, se lettore e prenotante hanno possibilità di incontrarsi, ovvero se i loro raggi d'azione si sovrappongono, essi potranno accordarsi direttamente sul luogo dello scambio, rendendo \textit{"safety"} il passaggio del libro: questo scambio avverrà ovviamente in una zona all'interno dell'intersezione dei raggi d'azione, come mostrato in figura ~\ref{fig:Zona_incontro}.
+		L'idea di base è che, se utente lettore e utente prenotante hanno possibilità di incontrarsi, ovvero se i loro raggi d'azione si sovrappongono, essi potranno accordarsi direttamente sul luogo dello scambio, rendendo \textit{"safety"} il passaggio del libro: questo scambio avverrà ovviamente in una zona all'interno dell'intersezione dei raggi d'azione, come mostrato in figura ~\ref{fig:Zona_incontro}.
 		
 		\begin{figure}[h!]
 			\centering
@@ -46,14 +46,15 @@ Andiamo ad evidenziare gli attori coinvolti in questa operazione:
 			\label{fig:Zona_incontro}
 		\end{figure}
 	
-		Nel caso in cui invece, i due utenti interessati non abbiano la possibilità di trovare un luogo comune in cui potersi scambiare il libro direttamente, si avrà che, la rete di users appartenenti alla community farà da tramite, per portare il libro \textit{"coast-to-coast"}.
-		Quindi, tramite un semplice pseudo-codice, possiamo scrivere il nostro algoritmo come
+		Nel caso in cui invece, i due utenti interessati non abbiano la possibilità di trovare un luogo comune in cui potersi scambiare il libro fisicamente si avrà che, la rete di users appartenenti alla community farà da tramite, per portare il libro \textit{"coast-to-coast"}.
+		
+		Quindi, tramite un semplice pseudo-codice, possiamo descrivere il nostro algoritmo come
 	
 		\begin{algorithm}[H]
 			\SetAlgoLined
-			\KwData{Users and their informations}
-			\KwResult{Optimum path from reader to reserver}
-			Step 0 (intilization)\;
+			\KwData{Informazioni dell'utente lettore e di quello prenotante}
+			\KwResult{Percorso ottimo dal lettore al prenotante}
+			Step 0 (inizializzazione)\;
 			\eIf{Distanza <= 0}{
 				Trova un punto d'incontro nell'unione delle delle area;
 				
@@ -75,8 +76,9 @@ Andiamo ad evidenziare gli attori coinvolti in questa operazione:
 		
 		ovvero che i raggi d'azione si sovrappongano o meno.
 		
-		Nel caso in cui i due utenti non abbiano possibili punti d'incontro (Distanza $>= 0 $), dobbiamo selezionare gli utenti tramite il quale il libro in questione potrà viaggiare: l'idea base è quindi quella di costruirsi un'area circolare di centro pari alla metà della congiungente del punto $ z_{0} $ (zona di residenza lettore) e $ z^{p}_{i} $ (zona di residenza prenotante).
-		Andremo poi a selezionare tutti gli utenti che si trovano all'interno di questa circoscrizione.
+		Nel caso in cui i due utenti non abbiano possibili punti d'incontro (distanza $>= 0 $), dobbiamo selezionare l'insieme di utenti tramite i quali il libro in questione potrà spostarsi: l'idea base è quindi quella di costruirsi un'area circolare di centro pari alla metà della congiungente del punto $ z_{0} $ (zona di residenza lettore) e $ z^{p}_{i} $ (zona di residenza prenotante).
+		Verranno poi selezionati tutti gli utenti che si trovano all'interno di questa circoscrizione.
+		
 		In passi sequenziali, possiamo scrivere:
 		
 		\begin{algorithm}[H]
@@ -87,7 +89,7 @@ Andiamo ad evidenziare gli attori coinvolti in questa operazione:
 			
 			Il raggio della circoscrizione di utenti coinvolti sarà pari alla distanza
 			\[ \bar{Z} = \dfrac{1}{2} |z^{p}_{i}-z_{0}| \]
-			\For{Tutti gli utwnti $ z_{i}^U $ nella community}{
+			\For{ogni utente $ z_{i}^U $ che si trova all'interno della community}{
 			\If{$ (Distanza(z_{0},z_{i}^U)) <= \bar{Z} $ oppure $ (Distanza(z_{i}^P,z_{i}^U)) <= \bar{Z} $  }{
 				
 				Seleziono l'utente $ z_{i}^U $ e lo inserisco nella lista (\textit{HandToHandUsers}) dei possibili utenti che potrebbero partecipare attivamente al prestito;
@@ -97,7 +99,7 @@ Andiamo ad evidenziare gli attori coinvolti in questa operazione:
 			\caption{Creazione del percorso tra lettore e prenotante}
 		\end{algorithm}
 		
-		Quindi, alla fine dello step 1, avremo individuato tutti gli utenti i quali potrebbero partecipare attivamente alla realizzazione di un prestito: il risultato ottenuto sarà quindi come quello in figura ~\ref{fig:UsersNet}.
+		Quindi, alla fine dello step 1, avremo individuato tutti gli utenti i quali possono partecipare attivamente alla realizzazione di un prestito: il risultato ottenuto sarà quindi come quello in figura ~\ref{fig:UsersNet}.
 						
 		\begin{figure}[h!]
 			\centering
@@ -109,16 +111,17 @@ Andiamo ad evidenziare gli attori coinvolti in questa operazione:
 	\end{itemize}
 \end{itemize}
 
-//TODO: move this comment to documentation
+Un ulteriore miglioramento che è stato introdotto è rappresentato dal comportamento greedy dell'algoritmo \textit{decisionale}: come è facilmente intuibile, in questo contesto, l'obbiettivo base è quello di andare a minimizzare il numero di km percorsi dal libro, per giungere al lettore prenotante.
 
-// Insieme di candidati: users == overlapping users
-// Funzione obbiettivo: minimizzare i km che il libro deve fare / minimizzare il numero di utenti tra cui fare
-// il passamano --> la scelgo in maniera epsilon - greedy
+Il concetto è quindi quello di minimizzare il numero di utenti che prenderanno parte attivamente al prestito, realizzando un \textit{passamano} tra uno e l'altro.
 
+Un approccio classico per minimizzare il percorso seguito dal libro durante il prestito è quello di andare a scegliere l'utente successivo a cui far arrivare il libro come l'utente la cui distanza è minima tra tutti quelli possibili.
 
-// Epsilon for epsilon greedy algorithm: during the path calculation for the reservation
-// we choose usually the next user, as the nearest one.
-// Using the greedy algorithm, with a probability that depends on the epsilon variable value, we choose the user
-// with the biggest radius.
-// epsilon lower --> algorithm stronger (always foound path to me)
-// epsilon higher --> algorithm found sorthest path
+Per rendere però più performante possiamo andare ad applicare un approccio \textit{greedy}, il quale consente di aumentare l'ottimalità dell'algoritmo stesso: nello specifico il concetto seguito nell'implementazione è stato quello di andare ad optare tra due differenti scelte decisionali, ovvero:
+\begin{itemize}
+	\item \textit{Probabilità $\epsilon$}: andiamo a scegliere l'utente più vicino, tra tutti quelli selezionabili;
+	\item \textit{Probabilità $1 - \epsilon$}: tra gli utenti che si possono selezionare, si va a scegliere, con questa probabilità, l'utente con raggio d'azione maggiore
+\end{itemize}
+
+Grazie a questa duplice possibile scelta, siamo in grado di rendere l'algoritmo più ottimale, ovvero in grado di trovare, nella maggior parte dei casi, un percorso ottimo; in particolare, minore è il valore di $\epsilon$ che andiamo a scegliere, più \textit{forte} sarà l'algoritmo, ovvero troverà sempre un percorso ma senza garanzia che sia quello ottimale.
+Maggiore invece è il valore di $\epsilon$ scelto, più bassa sarà la probabilità che troverà un percorso però, il percorso trovato, sarà uno dei più corti.
