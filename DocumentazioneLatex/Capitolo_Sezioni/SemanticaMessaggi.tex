@@ -57,8 +57,11 @@ Qual'ora invece il server riceva una richiesta con un tipo errato, la risposta c
 \begin{lstlisting}[caption={Risposta KO},captionpos=b]
 	"requestType:10000;result:KO_RequestType"
 \end{lstlisting}
-
-
+Un possibile sviluppo futuro potrebbe essere quello di sfruttare una semantica con un formato \textit{tradizionale} come \underline{JSON}.
+\\ \noindent
+Il fatto che in questo caso si è scelto un linguaggio proprietario è stato dovuto al fatto che si voleva rendere l'applicazione indipendente da questo punto di vista, in maniera tale che client e server fossero anch'essi proprietari dal punto di vista della semantica del linguaggio. Sicuramente il fatto di sfruttare \underline{JSON} oppure \underline{XML}, da un punto di vista della codifica sarebbe risultato più semplice, dal momento che esistono classi che garantiscono il loro parsing in funzione di un valore chiave con il quale viene identificato ogni elemento del messaggio. 
+\\ \noindent
+In questo caso, invece, la procedura di parsing della stringa del messaggio è risultata più lunga, in quanto si è dovuto, dopo aver stabilito il formato descritto, valutare la posizione dei simboli all'interno della stringa per poterla decodificare. 
 
 
 

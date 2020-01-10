@@ -1,7 +1,7 @@
 Netty è un framework NIO (Non-blocking Input Output) di tipo client-server (i.e. permette una comunicazione asincrona tra client e server di tipo event-driven) che facilita lo sviluppo di applicazioni di rete che utilizzano socket TCP e UDP.
 
 Il framework è disponibile sul Maven Central Repository e può essere scaricato includendo la seguente dependency nel pom.xml del progetto:
-\begin{lstlisting} [caption={My Caption},captionpos=b]
+\begin{lstlisting} [caption={estratto del pom.xml relativo alle dependency},captionpos=b]
 <dependencies>
 	<dependency>
 		<groupId>io.netty</groupId>
@@ -15,7 +15,7 @@ Lato Server creiamo un oggetto singleton di tipo \textit{Communication} il quale
 
 Quest'ultimo effettua il bootstrap del \textit{ServerChannel}, dove il \textit{ServerChannel} rappresenta il link "primario" (sul port 5000) che accetta ogni connessione di un client e crea un canale "figlio" sul quale avverà tale comunicazione.
 
-\begin{lstlisting} [caption={My Caption},captionpos=b]
+\begin{lstlisting} [caption={definizione costruttore lato server},captionpos=b]
 private Communication() throws Exception {
 	ServerBootstrap b = new ServerBootstrap();
 
@@ -27,7 +27,7 @@ private Communication() throws Exception {
 \newpage
 Al server andiamo ad aggiungere un handler \textit{ServerInitializer} che aggiunge alla pipeline, oltre agli encoder e decoder di default, il \textit{ServerHandler}.
 
-\begin{lstlisting} [caption={My Caption},captionpos=b]
+\begin{lstlisting} [caption={inizializzazione campi per comunicazione lato server},captionpos=b]
 class ServerInitializer extends ChannelInitializer<SocketChannel> {
 
 	private static final StringDecoder DECODER = new StringDecoder();
@@ -47,7 +47,7 @@ class ServerInitializer extends ChannelInitializer<SocketChannel> {
 
 La classe \textit{ServerHandler} è un sottotipo di \textit{SimpleChannelInboundHandler} \\(io.netty.channel.SimpleChannelInboundHandler) il quale fornisce la stringa inviata dal client tramite il metodo seguente.
 
-\begin{lstlisting} [caption={My Caption},captionpos=b]
+\begin{lstlisting} [caption={parsing e invio del messaggio nel formato desiderato verso client},captionpos=b]
 class ServerHandler extends SimpleChannelInboundHandler<String> {
 	
 	@Override
@@ -106,7 +106,7 @@ Il metodo Send, definito all'interno della classe \textit{Communication}, si occ
 \newpage
 Lato Client creiamo un oggetto singleton \textit{Communication} che implementa il seguente metodo dell'interfaccia \textit{SendRequest}, aprendo la connessione con il Server sulla socket (35.180.103.132,5000) e inviando il messaggio al server.
 
-\begin{lstlisting}[caption={My Caption},captionpos=b]
+\begin{lstlisting}[caption={Connessione con server e invio del messaggio},captionpos=b]
 public class Communication implements SendRequest {
 	private static final String IP = "35.180.103.132";
 	public static final String HOST = System.getProperty("host", IP);
@@ -134,7 +134,7 @@ Tralasciando la discussione dell'implementazione della classe \textit{ClientInit
 
 Andiamo invece ad approfondire l'implementazione della classe \textit{ClientHandler}:.
 
-\begin{lstlisting}[caption={My Caption},captionpos=b]
+\begin{lstlisting}[caption={lettura di quanto inviato dal client},captionpos=b]
 class ClientHandler extends SimpleChannelInboundHandler<String> {
 	@Override
 	protected void channelRead0(ChannelHandlerContext ctx, String msg) {
