@@ -51,6 +51,46 @@ Questo caso di test verifica che la ricerca di un libro venga svolta in maniera 
 La medesima procedura è stata implementata per le altre componenti descritte precedentemente; il fatto di utilizzare questo tool consente di svolgere anche un'analisi dinamica del codice, dal momento che se ci fosse un errore, la successione grafica subirebbe un crash, mostrando un segnale di errore e facendo fallire il caso di test previsto.
 
 \section{Lato Server}
+	\subsection{Analisi Dinamica}
+		\subsubsection{JUNIT Test}
+		In questa sezione viene presentato un esempio di analisi dinamica del codice per quanto riguarda il lato server. Come esempio da riportare nella documentazione si è scelto di valutare il caso di test relativo alla fase di login, sia nel caso in cui l'esito sia positivo sia in caso in cui l'esito sia negativo.
+		\begin{lstlisting}
+		@Test
+		public void logintTest() {
+		
+		Profile u = new Profile();
+		u.setUsername("A");
+		u.setPassword("6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b");
+		assertTrue(LoginStatus.SUCCESS == u.login());
+		
+		u.setPassword("1");
+		assertFalse(LoginStatus.SUCCESS == ProfileData.getInstance().login(u));
+		assertTrue(LoginStatus.WRONG_PWD == ProfileData.getInstance().login(u));
+		
+		u.setUsername("paperino");
+		assertTrue(LoginStatus.WRONG_USERNAME == ProfileData.getInstance().login(u));
+		}
+		
+		@Test
+		public void existLogin() {
+		Profile u = new Profile();
+		u.setUsername("A");
+		
+		assertTrue(Profile.existUser(u.getUsername()));
+		
+		u.setUsername("ZX");
+		assertFalse(Profile.existUser(u.getUsername()));
+		}
+		\end{lstlisting}
+		\begin{figure}[h!]
+			\centering
+			\includegraphics[width=\textwidth]{Immagini/Test/Junit_login.jpg}
+			\caption{Junit test}
+			\label{fig:Junit_login}
+		\end{figure}
+		L'esito è indicato dalla figura \ref{fig:Junit_login}, la quale evidenzia il fatto che inserendo username e password corretti, il login ha un esito successivo, al contrario si verifica che con delle credenziali sbagliate si verifica un errore.
+		
+		
 	\subsection{Analisi Statica}
 		\begin{figure}[h!]
 			\centering

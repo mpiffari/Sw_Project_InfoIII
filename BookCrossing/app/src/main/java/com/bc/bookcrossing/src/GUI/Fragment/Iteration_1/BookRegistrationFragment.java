@@ -152,7 +152,7 @@ public class BookRegistrationFragment extends Fragment implements ObserverDataBo
             if( scannedBook == null) {
                 result = dispatcher.sendDataBookRegistrationManual(title, author, yearOfPubb, edition, bookTypeDesc);
             } else {
-                result = dispatcher.sendDataBookRegistrationAuto(title, author, yearOfPubb, edition, bookTypeDesc, scannedBook.toString());
+                result = dispatcher.sendDataBookRegistrationAuto(title, author, yearOfPubb, edition, bookTypeDesc, scannedBook.getISBN());
             }
             if(result == false) {
                 Toast.makeText(getActivity(), "Problem with Server connection!", Toast.LENGTH_LONG).show();

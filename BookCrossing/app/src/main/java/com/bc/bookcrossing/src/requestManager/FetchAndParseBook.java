@@ -51,7 +51,7 @@ public class FetchAndParseBook extends AsyncTask<String,Void,String> {
 
         // Attempt to query the Books API.
         try {
-            URL requestURL = new URL("https://www.googleapis.com/books/v1/volumes?q=" + queryString + ":isbn&key=AIzaSyAi6ffwa0bpwcqM4t5vn1at47kqY_s9kIc");
+            URL requestURL = new URL("https://www.googleapis.com/books/v1/volumes?q=" + queryString + ":isbn");
 
             // Open the network connection.
             urlConnection = (HttpURLConnection) requestURL.openConnection();

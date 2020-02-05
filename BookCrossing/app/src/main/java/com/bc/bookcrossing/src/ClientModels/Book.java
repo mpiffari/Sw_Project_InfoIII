@@ -476,4 +476,6 @@ public class Book implements Serializable{
                 "Categoria: " + type + ".\n" +
                 "Libro raccolto dall'utente: " + user + ".";
     }
+
+
 }
