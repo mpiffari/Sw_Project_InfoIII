@@ -46,8 +46,13 @@ public void searchBookTestOK(){
 	getDecorView()))).check(matches(isDisplayed()));
 \end{lstlisting}
 
-Questo caso di test verifica che la ricerca di un libro venga svolta in maniera corretta, garantendo la visualizzazione dei corretti \textit{fragment} e dei \textit{Toast} formattati in maniera corretta.
-
+	\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{Immagini/Test/Espresso.png}
+	\caption{Espresso test}
+	\label{fig:espresso}
+\end{figure}
+Questo caso di test verifica che la ricerca di un libro venga svolta in maniera corretta, garantendo la visualizzazione dei corretti \textit{fragment} e dei \textit{Toast} formattati in maniera corretta. L'esito di questo caso di test eseguito attraverso il tool \textbf{Espresso Junit} fornito da Android Studio può essere riassunto dalla figura \ref{fig:espresso}.
 La medesima procedura è stata implementata per le altre componenti descritte precedentemente; il fatto di utilizzare questo tool consente di svolgere anche un'analisi dinamica del codice, dal momento che se ci fosse un errore, la successione grafica subirebbe un crash, mostrando un segnale di errore e facendo fallire il caso di test previsto.
 
 \section{Lato Server}
