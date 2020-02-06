@@ -159,7 +159,7 @@ public class FetchAndParseBook extends AsyncTask<String,Void,String> {
                     // Debug print
                     Log.d("Result", title + " ; " + authors + " ; " + yearOfPubblication);
                     Log.d("year", "" + year);
-                    Log.d("link" , volumeInfo.getJSONObject("imageLinks").getString("smallThumbnail"));
+                    //Log.d("link" , volumeInfo.getJSONObject("imageLinks").getString("smallThumbnail"));
 
                     parsedBook = new Book(title, authors, year, 1, type, queryString);
                     ISBNScanFragment.setScannedBook(parsedBook);
