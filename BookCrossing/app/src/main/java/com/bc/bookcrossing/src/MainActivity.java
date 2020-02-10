@@ -1,11 +1,11 @@
 package com.bc.bookcrossing.src;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
@@ -44,7 +44,7 @@ import com.bc.bookcrossing.src.GUI.Fragment.Iteration_2.SearchFragment;
 public class MainActivity extends AppCompatActivity implements ScanResultReceiver {
 
     public static BottomNavigationView bottomNav;
-    private int backButtonCount;
+    private Fragment selectedFragment = null;
     @Override
     protected void onResume() {
         super.onResume();
@@ -66,29 +66,11 @@ public class MainActivity extends AppCompatActivity implements ScanResultReceive
 
     }
 
-    @Override
-    public void onBackPressed()
-    {
-        if(backButtonCount >= 1)
-        {
-            Intent intent = new Intent(Intent.ACTION_MAIN);
-            intent.addCategory(Intent.CATEGORY_HOME);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            backButtonCount = 0;
-            startActivity(intent);
-        }
-        else
-        {
-            Toast.makeText(this, "Press the back button once again to close the application.", Toast.LENGTH_SHORT).show();
-            backButtonCount++;
-        }
-    }
-
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                    Fragment selectedFragment = null;
+                    selectedFragment = null;
 
                     switch (item.getItemId()) {
                         case R.id.profile:
@@ -106,6 +88,7 @@ public class MainActivity extends AppCompatActivity implements ScanResultReceive
                     }
 
                     if(Globals.isLoggedIn == true) {
+                        getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                                 selectedFragment).addToBackStack(null).commit();
                     } else {
