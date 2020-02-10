@@ -18,6 +18,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.StringTokenizer;
 
 import static com.bc.bookcrossing.src.requestManager.communication.Communication.singletonCommunication;
 
@@ -194,8 +195,14 @@ public class Processing implements GenerateRequests, ReceiveAnswer {
                 String msg = data.substring(result+1, indexNotifications);
 
                 String notifications = data.substring(indexNotifications + 1);
-                Globals.notifications = notifications;
-                Log.d("TAG", Globals.notifications);
+                StringTokenizer st = new StringTokenizer(notifications, "|");
+                while (st.hasMoreTokens()) {
+                    Globals.notifications += st.nextToken() + "\n\n";
+                    System.out.println(st.nextToken());
+                }
+
+
+                //Log.d("TAG", Globals.notifications);
 
                 boolean flag =false;
                 LoginStatus logStaus = LoginStatus.NONE;

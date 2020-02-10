@@ -88,7 +88,7 @@ public class ProfileFragment extends Fragment implements ObserverDataProfile, Vi
         leaveButton = v.findViewById(R.id.leaveButton);
         leaveButton.setOnClickListener(this);
         if(!Globals.notifications.equals("")){
-            TextView notifications = v.findViewById(R.id.notifications);
+            TextView notifications = (TextView) v.findViewById(R.id.informations);
             notifications.setText(Globals.notifications);
         }
         return v;

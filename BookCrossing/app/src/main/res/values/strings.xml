@@ -54,6 +54,7 @@
     <string name="title_search">Search by title...</string>
     <string name="reserve_book">Reserve Book</string>
     <string name="search">Search</string>
-    <string name="profile_informations">PROFILE INFORMATIONS</string>
+    <string name="profile_informations">Profile information...</string>
+    <string name="informations">Information...</string>
     <string name = "login_ok">Login completed successfully</string>
 </resources>

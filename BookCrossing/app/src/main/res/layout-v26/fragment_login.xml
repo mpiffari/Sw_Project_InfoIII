@@ -5,7 +5,7 @@
     android:id="@+id/BookRegistrationLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GUI.Fragment.Iteration_1.BookRegistrationFragment">
+    tools:context=".GUI.Fragment.BookRegistrationFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -20,6 +20,19 @@
             android:layout_height="wrap_content"
             android:text="@string/leave" />
 
+        <TextView
+            android:id="@+id/informations"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/informations"
+            android:text="@string/informations" />
+
+        <TextView
+            android:id="@+id/profileInformationHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/profile_informations"
+            android:text="@string/profile_informations" />
     </LinearLayout>
 
 </FrameLayout>

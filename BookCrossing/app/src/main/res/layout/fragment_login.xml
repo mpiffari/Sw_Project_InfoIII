@@ -14,12 +14,6 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/notifications"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
-
         <Button
             android:id="@+id/leaveButton"
             android:layout_width="match_parent"
@@ -27,11 +21,18 @@
             android:text="@string/leave" />
 
         <TextView
+            android:id="@+id/informations"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="INFORMATIONS"
+            android:text="INFORMATIONS" />
+
+        <TextView
             android:id="@+id/profileInformationHeader"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="PROFILE INFORMATIONS"
             android:text="@string/profile_informations" />
-
     </LinearLayout>
 
 </FrameLayout>
