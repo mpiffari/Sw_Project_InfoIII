@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.10.29)  10 FEB 2020 13:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.10.29)  10 FEB 2020 13:10
 entering extended mode
 **./DocumentazioneProgettuale.tex
 (DocumentazioneProgettuale.tex
@@ -809,18 +809,21 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 {C:/Users/miche/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2
 
 ]
-(DocumentazioneProgettuale.toc)
+(DocumentazioneProgettuale.toc
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10.95> on input line 4.
+ [3])
 \tf@toc=\write4
 \openout4 = `DocumentazioneProgettuale.toc'.
 
- [3] [4
-
-] (DocumentazioneProgettuale.lof)
+ [4] (DocumentazioneProgettuale.lof)
 \tf@lof=\write5
 \openout5 = `DocumentazioneProgettuale.lof'.
 
 
-[5] [6
+[5
+
+] [6
 
 ] (DocumentazioneProgettuale.lot)
 \tf@lot=\write6
@@ -850,8 +853,6 @@ File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 
 ]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 85.
-LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <9> on input line 85.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <5> on input line 85.
@@ -862,7 +863,7 @@ sul li-bro, seguendo le istruzioni mostrate dall'applicazione.
  []
 
 [10] [11] [12]) (Capitolo_Sezioni/UseCases.tex
-<Immagini/UseCase_BookCrossing.png, id=299, 840.741pt x 709.4505pt>
+<Immagini/UseCase_BookCrossing.png, id=425, 840.741pt x 709.4505pt>
 File: Immagini/UseCase_BookCrossing.png Graphic file (type png)
 <use Immagini/UseCase_BookCrossing.png>
 Package pdftex.def Info: Immagini/UseCase_BookCrossing.png  used on input line 
@@ -905,7 +906,7 @@ Overfull \hbox (5.60779pt too wide) in paragraph at lines 4--33
  []
 
 ) (Capitolo_Sezioni/StateBook.tex [14]
-<Immagini/BookState.jpg, id=317, 1074.0125pt x 1003.75pt>
+<Immagini/BookState.jpg, id=440, 1074.0125pt x 1003.75pt>
 File: Immagini/BookState.jpg Graphic file (type jpg)
 <use Immagini/BookState.jpg>
 Package pdftex.def Info: Immagini/BookState.jpg  used on input line 16.
@@ -933,14 +934,14 @@ el-oper ([]https://www.oracle.com/it/database/technologies/appdev/sql-
 
 ]
  3.
-<Immagini/Deployment_Diagram.jpg, id=335, 1706.375pt x 546.04pt>
+<Immagini/Deployment_Diagram.jpg, id=457, 1706.375pt x 546.04pt>
 File: Immagini/Deployment_Diagram.jpg Graphic file (type jpg)
 <use Immagini/Deployment_Diagram.jpg>
 Package pdftex.def Info: Immagini/Deployment_Diagram.jpg  used on input line 14
 1.
 (pdftex.def)             Requested size: 483.69687pt x 154.7815pt.
 (Capitolo_Sezioni/ArchitectureEnvisioning.tex
-<Immagini/Architecture_Envisoring.jpg, id=336, 610.4406pt x 65.5248pt>
+<Immagini/Architecture_Envisoring.jpg, id=458, 610.4406pt x 65.5248pt>
 File: Immagini/Architecture_Envisoring.jpg Graphic file (type jpg)
 <use Immagini/Architecture_Envisoring.jpg>
 Package pdftex.def Info: Immagini/Architecture_Envisoring.jpg  used on input li
@@ -948,7 +949,7 @@ ne 4.
 (pdftex.def)             Requested size: 338.58632pt x 36.34369pt.
 )
 (Capitolo_Sezioni/DatabaseArchitecture.tex
-<Immagini/db_schema.jpg, id=339, 1212.53pt x 578.16pt>
+<Immagini/db_schema.jpg, id=461, 1212.53pt x 578.16pt>
 File: Immagini/db_schema.jpg Graphic file (type jpg)
 <use Immagini/db_schema.jpg>
 Package pdftex.def Info: Immagini/db_schema.jpg  used on input line 4.
@@ -965,7 +966,7 @@ See the caption package documentation for explanation.
 ] [21] [22]
  4.
 (Capitolo_Sezioni/ArchiettuturaSoftware.tex
-<Immagini/Architettura_Software.jpg, id=371, 601.4972pt x 735.49782pt>
+<Immagini/Architettura_Software.jpg, id=490, 601.4972pt x 735.49782pt>
 File: Immagini/Architettura_Software.jpg Graphic file (type jpg)
 <use Immagini/Architettura_Software.jpg>
 Package pdftex.def Info: Immagini/Architettura_Software.jpg  used on input line
@@ -974,12 +975,12 @@ Package pdftex.def Info: Immagini/Architettura_Software.jpg  used on input line
  [23
 
  <./Immagini/Architettura_Software.jpg>]) (Capitolo_Sezioni/LogicalView.tex
-<Immagini/GUI_subsys.jpg, id=379, 498.36188pt x 532.99126pt>
+<Immagini/GUI_subsys.jpg, id=497, 498.36188pt x 532.99126pt>
 File: Immagini/GUI_subsys.jpg Graphic file (type jpg)
 <use Immagini/GUI_subsys.jpg>
 Package pdftex.def Info: Immagini/GUI_subsys.jpg  used on input line 3.
 (pdftex.def)             Requested size: 386.95897pt x 413.86098pt.
-<Immagini/RequestManagerClient_subsys.JPG, id=380, 529.22719pt x 348.55219pt>
+<Immagini/RequestManagerClient_subsys.JPG, id=498, 529.22719pt x 348.55219pt>
 File: Immagini/RequestManagerClient_subsys.JPG Graphic file (type jpg)
 <use Immagini/RequestManagerClient_subsys.JPG>
 Package pdftex.def Info: Immagini/RequestManagerClient_subsys.JPG  used on inpu
@@ -989,7 +990,7 @@ t line 9.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Immagini/RequestManagerSrv_subsys.jpg, id=381, 686.565pt x 381.67593pt>
+<Immagini/RequestManagerSrv_subsys.jpg, id=499, 686.565pt x 381.67593pt>
 File: Immagini/RequestManagerSrv_subsys.jpg Graphic file (type jpg)
 <use Immagini/RequestManagerSrv_subsys.jpg>
 Package pdftex.def Info: Immagini/RequestManagerSrv_subsys.jpg  used on input l
@@ -998,7 +999,7 @@ ine 15.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Immagini/Server_subsys.jpg, id=382, 522.45187pt x 489.32813pt>
+<Immagini/Server_subsys.jpg, id=500, 522.45187pt x 489.32813pt>
 File: Immagini/Server_subsys.jpg Graphic file (type jpg)
 <use Immagini/Server_subsys.jpg>
 Package pdftex.def Info: Immagini/Server_subsys.jpg  used on input line 21.
@@ -1019,12 +1020,12 @@ Overfull \hbox (0.12952pt too wide) in paragraph at lines 10--11
 ) [27
 
 ] (Capitolo_Sezioni/UMLAndLogicalView_1.tex
-<Immagini/iterazione_1_uml.jpg, id=410, 1000.73875pt x 716.6775pt>
+<Immagini/iterazione_1_uml.jpg, id=524, 1000.73875pt x 716.6775pt>
 File: Immagini/iterazione_1_uml.jpg Graphic file (type jpg)
 <use Immagini/iterazione_1_uml.jpg>
 Package pdftex.def Info: Immagini/iterazione_1_uml.jpg  used on input line 2.
 (pdftex.def)             Requested size: 483.69687pt x 346.3962pt.
-<Immagini/UML_ComputeRequestServer.jpg, id=411, 699.61375pt x 408.52625pt>
+<Immagini/UML_ComputeRequestServer.jpg, id=525, 699.61375pt x 408.52625pt>
 File: Immagini/UML_ComputeRequestServer.jpg Graphic file (type jpg)
 <use Immagini/UML_ComputeRequestServer.jpg>
 Package pdftex.def Info: Immagini/UML_ComputeRequestServer.jpg  used on input l
@@ -1042,13 +1043,13 @@ File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 ]
  6.
 (Capitolo_Sezioni/ObserverDelegate.tex
-<Immagini/Observer/ObserverTheory.jpg, id=468, 563.10374pt x 429.605pt>
+<Immagini/Observer/ObserverTheory.jpg, id=580, 563.10374pt x 429.605pt>
 File: Immagini/Observer/ObserverTheory.jpg Graphic file (type jpg)
 <use Immagini/Observer/ObserverTheory.jpg>
 Package pdftex.def Info: Immagini/Observer/ObserverTheory.jpg  used on input li
 ne 9.
 (pdftex.def)             Requested size: 241.84843pt x 184.51022pt.
-<Immagini/Observer/RegisterToDispatcherData.JPG, id=471, 805.50937pt x 261.2259
+<Immagini/Observer/RegisterToDispatcherData.JPG, id=583, 805.50937pt x 261.2259
 4pt>
 File: Immagini/Observer/RegisterToDispatcherData.JPG Graphic file (type jpg)
 <use Immagini/Observer/RegisterToDispatcherData.JPG>
@@ -1059,7 +1060,7 @@ n input line 19.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<Immagini/Observer/UnregisterFromDispatcherData.JPG, id=472, 432.86719pt x 271.
+<Immagini/Observer/UnregisterFromDispatcherData.JPG, id=584, 432.86719pt x 271.
 76532pt>
 File: Immagini/Observer/UnregisterFromDispatcherData.JPG Graphic file (type jpg
 )
@@ -1070,7 +1071,7 @@ ed on input line 26.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<Immagini/ObserverForUIInformation.jpg, id=474, 566.115pt x 420.06938pt>
+<Immagini/ObserverForUIInformation.jpg, id=586, 566.115pt x 420.06938pt>
 File: Immagini/ObserverForUIInformation.jpg Graphic file (type jpg)
 <use Immagini/ObserverForUIInformation.jpg>
 Package pdftex.def Info: Immagini/ObserverForUIInformation.jpg  used on input l
@@ -1080,7 +1081,7 @@ ine 35.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [31 <./Immagini/Observer/ObserverTheory.jpg>]
-<Immagini/ClassDiagramDispatcherDelegate.jpg, id=484, 786.68906pt x 387.69844pt
+<Immagini/ClassDiagramDispatcherDelegate.jpg, id=592, 786.68906pt x 387.69844pt
 >
 File: Immagini/ClassDiagramDispatcherDelegate.jpg Graphic file (type jpg)
 <use Immagini/ClassDiagramDispatcherDelegate.jpg>
@@ -1091,7 +1092,7 @@ nput line 46.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Immagini/LoginFragment.jpg, id=489, 551.05875pt x 234.1247pt>
+<Immagini/LoginFragment.jpg, id=597, 551.05875pt x 234.1247pt>
 File: Immagini/LoginFragment.jpg Graphic file (type jpg)
 <use Immagini/LoginFragment.jpg>
 Package pdftex.def Info: Immagini/LoginFragment.jpg  used on input line 58.
@@ -1099,7 +1100,7 @@ Package pdftex.def Info: Immagini/LoginFragment.jpg  used on input line 58.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Immagini/BookRegistrationFragment.jpg, id=490, 490.08093pt x 260.47313pt>
+<Immagini/BookRegistrationFragment.jpg, id=598, 490.08093pt x 260.47313pt>
 File: Immagini/BookRegistrationFragment.jpg Graphic file (type jpg)
 <use Immagini/BookRegistrationFragment.jpg>
 Package pdftex.def Info: Immagini/BookRegistrationFragment.jpg  used on input l
@@ -1108,7 +1109,7 @@ ine 66.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Immagini/ResearchFragment.jpg, id=491, 514.92375pt x 372.64218pt>
+<Immagini/ResearchFragment.jpg, id=599, 514.92375pt x 372.64218pt>
 File: Immagini/ResearchFragment.jpg Graphic file (type jpg)
 <use Immagini/ResearchFragment.jpg>
 Package pdftex.def Info: Immagini/ResearchFragment.jpg  used on input line 73.
@@ -1116,7 +1117,7 @@ Package pdftex.def Info: Immagini/ResearchFragment.jpg  used on input line 73.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Immagini/ReservationFragment.jpg, id=492, 639.89063pt x 197.98969pt>
+<Immagini/ReservationFragment.jpg, id=600, 639.89063pt x 197.98969pt>
 File: Immagini/ReservationFragment.jpg Graphic file (type jpg)
 <use Immagini/ReservationFragment.jpg>
 Package pdftex.def Info: Immagini/ReservationFragment.jpg  used on input line 8
@@ -1137,7 +1138,7 @@ nput line 4.
  [35
 
 ] [36]
-<Immagini/CommunicationPackageServer.jpg, id=564, 714.67pt x 710.655pt>
+<Immagini/CommunicationPackageServer.jpg, id=667, 714.67pt x 710.655pt>
 File: Immagini/CommunicationPackageServer.jpg Graphic file (type jpg)
 <use Immagini/CommunicationPackageServer.jpg>
 Package pdftex.def Info: Immagini/CommunicationPackageServer.jpg  used on input
@@ -1148,7 +1149,7 @@ Package pdftex.def Info: Immagini/CommunicationPackageServer.jpg  used on input
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [37] [38 <./Immagini/CommunicationPackageServer.jpg>]
-<Immagini/CommunicationPackageClient.jpg, id=615, 974.64125pt x 469.755pt>
+<Immagini/CommunicationPackageClient.jpg, id=717, 974.64125pt x 469.755pt>
 File: Immagini/CommunicationPackageClient.jpg Graphic file (type jpg)
 <use Immagini/CommunicationPackageClient.jpg>
 Package pdftex.def Info: Immagini/CommunicationPackageClient.jpg  used on input
@@ -1188,7 +1189,7 @@ Overfull \hbox (0.12952pt too wide) in paragraph at lines 11--12
 [47
 
 ]
-<Immagini/UML_ComputeRequestServer2.jpg, id=773, 699.61375pt x 408.52625pt>
+<Immagini/UML_ComputeRequestServer2.jpg, id=874, 699.61375pt x 408.52625pt>
 File: Immagini/UML_ComputeRequestServer2.jpg Graphic file (type jpg)
 <use Immagini/UML_ComputeRequestServer2.jpg>
 Package pdftex.def Info: Immagini/UML_ComputeRequestServer2.jpg  used on input 
@@ -1201,7 +1202,7 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <17.28> on input line 9.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <10> on input line 9.
-<Immagini/Algoritmo_Explanation.jpeg, id=792, 478.78876pt x 180.675pt>
+<Immagini/Algoritmo_Explanation.jpeg, id=892, 478.78876pt x 180.675pt>
 File: Immagini/Algoritmo_Explanation.jpeg Graphic file (type jpg)
 <use Immagini/Algoritmo_Explanation.jpeg>
 Package pdftex.def Info: Immagini/Algoritmo_Explanation.jpeg  used on input lin
@@ -1214,7 +1215,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 [49
 
 ]
-<Immagini/Algorithm_PuntoIncontro.jpg, id=807, 448.67625pt x 216.81pt>
+<Immagini/Algorithm_PuntoIncontro.jpg, id=906, 448.67625pt x 216.81pt>
 File: Immagini/Algorithm_PuntoIncontro.jpg Graphic file (type jpg)
 <use Immagini/Algorithm_PuntoIncontro.jpg>
 Package pdftex.def Info: Immagini/Algorithm_PuntoIncontro.jpg  used on input li
@@ -1231,11 +1232,7 @@ Overfull \hbox (51.46509pt too wide) in paragraph at lines 85--101
 $[]$ 
  []
 
-
-LaTeX Warning: Reference `fig:UsersNet' on page 51 undefined on input line 103.
-
-
-<Immagini/Algorithm_UsersNet.jpg, id=817, 572.1375pt x 498.36188pt>
+<Immagini/Algorithm_UsersNet.jpg, id=916, 572.1375pt x 498.36188pt>
 File: Immagini/Algorithm_UsersNet.jpg Graphic file (type jpg)
 <use Immagini/Algorithm_UsersNet.jpg>
 Package pdftex.def Info: Immagini/Algorithm_UsersNet.jpg  used on input line 10
@@ -1249,4 +1246,95 @@ Overfull \hbox (20.42789pt too wide) in paragraph at lines 120--121
 \T1/lmr/m/n/10.95 sente di au-mentare l'ottimalità dell'algoritmo stesso: nello
  speci-fico il con-cetto se-guito nell'implementazione
  []
+
+<Immagini/Alg_complx.png, id=917, 517.935pt x 862.72313pt>
+File: Immagini/Alg_complx.png Graphic file (type png)
+<use Immagini/Alg_complx.png>
+Package pdftex.def Info: Immagini/Alg_complx.png  used on input line 131.
+(pdftex.def)             Requested size: 386.95897pt x 644.57907pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+) [51] [52 <./Immagini/Algorithm_UsersNet.jpg>] [53 <./Immagini/Alg_complx.png>
+] [54
+
+]
+ 11.
+(Capitolo_Sezioni/Test.tex [55]
+<Immagini/Test/Espresso.png, id=959, 752.8125pt x 229.60782pt>
+File: Immagini/Test/Espresso.png Graphic file (type png)
+<use Immagini/Test/Espresso.png>
+Package pdftex.def Info: Immagini/Test/Espresso.png  used on input line 51.
+(pdftex.def)             Requested size: 386.95897pt x 118.02687pt.
+ [56 <./Immagini/Test/Espresso.png>]
+<Immagini/Test/Junit_login.jpg, id=995, 796.47563pt x 127.22531pt>
+File: Immagini/Test/Junit_login.jpg Graphic file (type jpg)
+<use Immagini/Test/Junit_login.jpg>
+Package pdftex.def Info: Immagini/Test/Junit_login.jpg  used on input line 92.
+(pdftex.def)             Requested size: 483.69687pt x 77.2637pt.
+<Immagini/analisi_statica_package.jpg, id=997, 321.2pt x 448.67625pt>
+File: Immagini/analisi_statica_package.jpg Graphic file (type jpg)
+<use Immagini/analisi_statica_package.jpg>
+Package pdftex.def Info: Immagini/analisi_statica_package.jpg  used on input li
+ne 102.
+(pdftex.def)             Requested size: 145.11053pt x 202.70346pt.
+ [57 <./Immagini/Test/Junit_login.jpg> <./Immagini/analisi_statica_package.jpg>
+]
+<Immagini/analisi_statica_grafico1.jpg, id=1015, 469.755pt x 456.70625pt>
+File: Immagini/analisi_statica_grafico1.jpg Graphic file (type jpg)
+<use Immagini/analisi_statica_grafico1.jpg>
+Package pdftex.def Info: Immagini/analisi_statica_grafico1.jpg  used on input l
+ine 116.
+(pdftex.def)             Requested size: 145.11053pt x 141.07571pt.
+)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 181.
+ [58 <./Immagini/analisi_statica_grafico1.jpg>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 181.
+ (DocumentazioneProgettuale.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 181.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 181.
+Package rerunfilecheck Info: File `DocumentazioneProgettuale.out' has not chang
+ed.
+(rerunfilecheck)             Checksum: CC2CA9C131505D86A29C24E346AA2D70;2295.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 181.
+ ) 
+Here is how much of TeX's memory you used:
+ 13240 strings out of 492970
+ 205010 string characters out of 3126593
+ 669367 words of memory out of 3000000
+ 16280 multiletter control sequences out of 15000+200000
+ 122698 words of font info for 70 fonts, out of 3000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 36i,16n,47p,672b,2119s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Users/miche/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-rm.en
+c}{C:/Users/miche/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-maths
+y.enc}{C:/Users/miche/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-m
+athit.enc}{C:/Users/miche/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/
+lm-ec.enc}{C:/Users/miche/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/
+lm-ts1.enc}<C:/Users/miche/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public
+/amsfonts/latxfont/lcircle1.pfb><C:/Users/miche/AppData/Local/Programs/MiKTeX 2
+.9/fonts/type1/public/lm/lmbx10.pfb><C:/Users/miche/AppData/Local/Programs/MiKT
+eX 2.9/fonts/type1/public/lm/lmbx12.pfb><C:/Users/miche/AppData/Local/Programs/
+MiKTeX 2.9/fonts/type1/public/lm/lmbxi10.pfb><C:/Users/miche/AppData/Local/Prog
+rams/MiKTeX 2.9/fonts/type1/public/lm/lmcsc10.pfb><C:/Users/miche/AppData/Local
+/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmmi10.pfb><C:/Users/miche/AppData/L
+ocal/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmmi12.pfb><C:/Users/miche/AppDa
+ta/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmmi8.pfb><C:/Users/miche/Ap
+pData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmr10.pfb><C:/Users/miche
+/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmr12.pfb><C:/Users/mi
+che/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmr17.pfb><C:/Users
+/miche/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmr6.pfb><C:/Use
+rs/miche/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmr8.pfb><C:/U
+sers/miche/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmr9.pfb><C:
+/Users/miche/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmri10.pfb
+><C:/Users/miche/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmri9.
+pfb><C:/Users/miche/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmr
+o10.pfb><C:/Users/miche/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm
+/lmsy10.pfb><C:/Users/miche/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/publi
+c/lm/lmtt9.pfb>
+Output written on DocumentazioneProgettuale.pdf (66 pages, 4161617 bytes).
+PDF statistics:
+ 1202 PDF objects out of 1440 (max. 8388607)
+ 540 named destinations out of 1000 (max. 500000)
+ 433 words of extra memory for PDF output out of 10000 (max. 10000000)
 

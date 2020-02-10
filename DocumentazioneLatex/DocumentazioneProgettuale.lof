@@ -1,0 +1,44 @@
+\babel@toc {english}{}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Use cases diagram\relax }}{13}{figure.caption.4}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Stati del libro all'interno della community\relax }}{15}{figure.caption.7}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Deployment Diagram\relax }}{17}{figure.caption.8}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Architecture Envisioning\relax }}{17}{figure.caption.9}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Modello del database\relax }}{18}{figure.3.3}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Architettura Software\relax }}{23}{figure.caption.10}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Logical view - GUI subsystem\relax }}{24}{figure.caption.11}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Logical view - Request Manager subsystem client side\relax }}{25}{figure.caption.12}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Logical view - Request Manager subsystem server side\relax }}{25}{figure.caption.13}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Logical view - Server functionality\relax }}{26}{figure.caption.14}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Class diagram\relax }}{28}{figure.caption.15}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Diagramma della classe ComputeRequest\relax }}{28}{figure.caption.16}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Struttura generica pattern observer\relax }}{31}{figure.caption.17}
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Register function\relax }}{32}{figure.caption.18}
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Unregister function\relax }}{32}{figure.caption.19}
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Interfaccie per la ricezione degli eventi da lato server\relax }}{33}{figure.caption.20}
+\contentsline {figure}{\numberline {6.5}{\ignorespaces Struttura del componente \textit {DataDispatcher}\relax }}{33}{figure.caption.21}
+\contentsline {figure}{\numberline {6.6}{\ignorespaces Struttura del componente \textit {LoginFragment}\relax }}{34}{figure.caption.22}
+\contentsline {figure}{\numberline {6.7}{\ignorespaces Struttura del componente \textit {BookRegistrationFragment}\relax }}{34}{figure.caption.23}
+\contentsline {figure}{\numberline {6.8}{\ignorespaces Struttura del componente \textit {ResearchFragment}\relax }}{34}{figure.caption.24}
+\contentsline {figure}{\numberline {6.9}{\ignorespaces Struttura del componente \textit {ReservationFragment}\relax }}{34}{figure.caption.25}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {7.1}{\ignorespaces Struttura del package \textit {requestManager.Communication}\relax }}{38}{figure.caption.26}
+\contentsline {figure}{\numberline {7.2}{\ignorespaces Struttura del package \textit {requestManager.Communication}\relax }}{39}{figure.caption.27}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {9.1}{\ignorespaces Diagramma della classe ComputeRequest\relax }}{48}{figure.caption.28}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {10.1}{\ignorespaces Distanza tra lettore e prenotante i-esimo\relax }}{50}{figure.caption.29}
+\contentsline {figure}{\numberline {10.2}{\ignorespaces Zona d'incontro tra lettore e prenotante\relax }}{50}{figure.caption.30}
+\contentsline {figure}{\numberline {10.3}{\ignorespaces Esempio di rete di utenti che potrebbero essere attivi nel prestito\relax }}{52}{figure.caption.31}
+\contentsline {figure}{\numberline {10.4}{\ignorespaces Analisi complessit\IeC {\`a} algoritmo\relax }}{53}{figure.caption.32}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {11.1}{\ignorespaces Espresso test\relax }}{56}{figure.caption.33}
+\contentsline {figure}{\numberline {11.2}{\ignorespaces Junit test\relax }}{57}{figure.caption.35}
+\contentsline {figure}{\numberline {11.3}{\ignorespaces Analisi statica del codice\relax }}{57}{figure.caption.36}
+\contentsline {figure}{\numberline {11.4}{\ignorespaces analisi statica grafico\relax }}{58}{figure.caption.37}
