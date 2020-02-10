@@ -138,7 +138,7 @@ public class BookRegistrationFragment extends Fragment implements ObserverDataBo
      * Back button listener.
      * Will close the application if the back button pressed twice.
      */
-    @Override
+
     public void onBackPressed()
     {
         if(backButtonCount >= 1)
