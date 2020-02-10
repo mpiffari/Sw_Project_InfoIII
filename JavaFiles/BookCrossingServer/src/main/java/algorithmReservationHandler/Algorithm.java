@@ -32,6 +32,7 @@ public class Algorithm {
 	 * @param book
 	 * @return
 	 */
+	/*NOT USED, PREVIOUS VERSION
 	public static ArrayList<Profile> step_0(Profile L, Book book) {
 		
 		// Retrieve books owned by the user L: this query is necessary to obtain
@@ -66,7 +67,7 @@ public class Algorithm {
 			return temp;
 		}
 	}
-	
+	*/
 	/**
 	 *  This method, as specified in the documentation, returns the list of users
 	 *  involved in the reservation
