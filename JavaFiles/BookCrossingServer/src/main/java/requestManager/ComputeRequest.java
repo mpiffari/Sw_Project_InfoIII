@@ -218,14 +218,14 @@ public class ComputeRequest implements ProcessRequest{
 			String post = "";
 
 			if(!previous.equals("")) {
-				pre = "deve ricevere da " + previous;
+				pre = username + " deve ricevere da " + previous + " " + Book.onRouteBooks(username).get(pos).getTitle() + " di " + Book.onRouteBooks(username).get(pos).getAuthor() + "|";
 			}
 
 			if(!next.equals("")) {
-				post = " e passare a " + next;
+				post = username + " deve passare a " + next + " "  + Book.onRouteBooks(username).get(pos).getTitle() + " di " + Book.onRouteBooks(username).get(pos).getAuthor() + "|";
 			}
 
-			msg += username + " " + pre + post + " : " + Book.onRouteBooks(username).get(pos).getTitle() + " di " + Book.onRouteBooks(username).get(pos).getAuthor() + " + ";
+			msg += pre + post;
 		}
 		return msg;
 	}

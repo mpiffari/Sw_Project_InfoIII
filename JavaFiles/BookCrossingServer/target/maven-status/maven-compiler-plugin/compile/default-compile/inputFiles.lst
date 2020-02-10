@@ -1,5 +1,6 @@
 C:\Users\Stefano Villa\Desktop\Sw_Project_InfoIII\JavaFiles\BookCrossingServer\src\main\java\algorithmReservationHandler\Algorithm.java
 C:\Users\Stefano Villa\Desktop\Sw_Project_InfoIII\JavaFiles\BookCrossingServer\src\main\java\requestManager\RequestType.java
+C:\Users\Stefano Villa\Desktop\Sw_Project_InfoIII\JavaFiles\BookCrossingServer\src\main\java\test\ProfileDataTest.java
 C:\Users\Stefano Villa\Desktop\Sw_Project_InfoIII\JavaFiles\BookCrossingServer\src\main\java\dataManager\Localization.java
 C:\Users\Stefano Villa\Desktop\Sw_Project_InfoIII\JavaFiles\BookCrossingServer\src\main\java\dataManager\BookData.java
 C:\Users\Stefano Villa\Desktop\Sw_Project_InfoIII\JavaFiles\BookCrossingServer\src\main\java\profile\ProfileManager.java
@@ -10,7 +11,6 @@ C:\Users\Stefano Villa\Desktop\Sw_Project_InfoIII\JavaFiles\BookCrossingServer\s
 C:\Users\Stefano Villa\Desktop\Sw_Project_InfoIII\JavaFiles\BookCrossingServer\src\main\java\requestManager\communication\SendAnswer.java
 C:\Users\Stefano Villa\Desktop\Sw_Project_InfoIII\JavaFiles\BookCrossingServer\src\main\java\requestManager\ProcessRequest.java
 C:\Users\Stefano Villa\Desktop\Sw_Project_InfoIII\JavaFiles\BookCrossingServer\src\main\java\test\BookDataTest.java
-C:\Users\Stefano Villa\Desktop\Sw_Project_InfoIII\JavaFiles\BookCrossingServer\src\main\java\test\UserDataTest.java
 C:\Users\Stefano Villa\Desktop\Sw_Project_InfoIII\JavaFiles\BookCrossingServer\src\main\java\main\Main.java
 C:\Users\Stefano Villa\Desktop\Sw_Project_InfoIII\JavaFiles\BookCrossingServer\src\main\java\requestManager\communication\Communication.java
 C:\Users\Stefano Villa\Desktop\Sw_Project_InfoIII\JavaFiles\BookCrossingServer\src\main\java\dataManager\QueryPerformer.java
@@ -22,7 +22,7 @@ C:\Users\Stefano Villa\Desktop\Sw_Project_InfoIII\JavaFiles\BookCrossingServer\s
 C:\Users\Stefano Villa\Desktop\Sw_Project_InfoIII\JavaFiles\BookCrossingServer\src\main\java\algorithmReservationHandler\AlgorithmResult.java
 C:\Users\Stefano Villa\Desktop\Sw_Project_InfoIII\JavaFiles\BookCrossingServer\src\main\java\dataManager\BookQuery.java
 C:\Users\Stefano Villa\Desktop\Sw_Project_InfoIII\JavaFiles\BookCrossingServer\src\main\java\dataManager\DBConnector.java
+C:\Users\Stefano Villa\Desktop\Sw_Project_InfoIII\JavaFiles\BookCrossingServer\src\main\java\test\ProfileTest.java
 C:\Users\Stefano Villa\Desktop\Sw_Project_InfoIII\JavaFiles\BookCrossingServer\src\main\java\profile\LoginStatus.java
 C:\Users\Stefano Villa\Desktop\Sw_Project_InfoIII\JavaFiles\BookCrossingServer\src\main\java\book\BookManager.java
-C:\Users\Stefano Villa\Desktop\Sw_Project_InfoIII\JavaFiles\BookCrossingServer\src\main\java\test\UserTest.java
 C:\Users\Stefano Villa\Desktop\Sw_Project_InfoIII\JavaFiles\BookCrossingServer\src\main\java\dataManager\ProfileQuery.java
