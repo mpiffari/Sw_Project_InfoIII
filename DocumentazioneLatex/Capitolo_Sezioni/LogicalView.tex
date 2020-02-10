@@ -30,7 +30,7 @@ Si può osservare che, come già introdotto in precedenza, essa segue il modello
 	\item\label{subsysGUI} \textbf{Subsystem \textit{"GUI”:}} rappresenta l’interfaccia grafica con la quale l’applicazione si presenterà. Ciascun componente fa riferimento ad ogni view che l'applicazione può mostrare e che quindi corrispondono a diffenti casi d'uso dell'applicativo stesso, come per esempio l’accesso alla rete di Book Crossing (Login) o la registrazione di un libro.
 	
 	Questi componenti saranno quindi ovviamente allocati direttamente sul dispositivo mobile: ogni singolo component (\textit{fragment}) avrà legato ad esso, in maniera intrinseca, anche un file con estensione \textit{.xml}, il quale permette di definirne l'interfaccia grafica, ovvero il posizionamento degli elementi visivi.
-	
+	\newpage
 	\item\label{subsysRequestManager} \textbf{Subsystem \textit{"Request Manager”:}} ha il compito di gestire le richieste provenienti da ciascun componente descritto nel subsystem \textit{"GUI”}; al suo interno sono indicati i componenti attraverso i quali si risponde alle richieste provenienti dal dispositivo mobile.
 	
 	Una parte di questo \textit{manager} sarà disposta a bordo del dispositivo, permettendo una preelaborazione e assemblamento delle richieste; questo subsystem avrà però anche un implementazione \textit{server side}, che gli permetterà di ricevere tali richieste, rieditarle, secondo quello che sono le necessità delle richieste stesse e poi interfacciarsi, in un verso o nell'altro, con la parte di persistenza dei dati.

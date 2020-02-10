@@ -1,17 +1,17 @@
 Le componenti che invece si è deciso di andare a sviluppare durante la seconda iterazione sono: 
 \begin{itemize}
 	\item \textbf{Componente \textit{Automatic Book registration:}} la componente \textit{Automatic Book registration} fa riferimento all’ UC10
-	%(~\ref{itemize:UC10})
+	(~\ref{itemize:UC10} )
 	(figlio del caso d'uso più generico UC5 
-	%(~\ref{itemize:UC5})
-	); questa funzionalità consente di ottenere, in maniera del tutto automatica, le informazioni necessarie per registrare uno specifico libro all'interno della piattaforma di book crossing. La componente si presenta nel seguente modo:
+	(~\ref{itemize:UC5} );
+	questa funzionalità consente di ottenere, in maniera del tutto automatica, le informazioni necessarie per registrare uno specifico libro all'interno della piattaforma di book crossing. La componente si presenta nel seguente modo:
 	\begin{itemize}
 		\item \textit{GUI:} interfaccia grafica utilizzata per registrare un libro, in maniera automatica, nella rete di Book Crossing. Verranno quindi messe a disposizione una serie di interfaccie grafiche, le quali permetteranno di scansionare il codice ISBN del libro deisderato, unitamente ad una parte GUI utilizzata per mostrare le informazioni relative al libro che è appena stato scansionato.
 		\item \textit{Model:} si fa carico di ricevere le informazioni relative al libro e, sfruttando la parte Data, restituisce alla parte GUI il BCID con il quale siglare il libro;
 		\item \textit{Data:} le informazioni relative al libro che si vuole aggiungere sono memorizzate nel Database RDS, associandolo all'utente che attualmente lo possiede. 
 	\end{itemize}
 	\item \textbf{Componente \textit{Login:}}  la componente \textit{Login} fa riferimento all’ UC13 
-	%(~\ref{itemize:UC13})
+	(~\ref{itemize:UC13} )
 	, ovvero alla funzione che permette ad un utilizzatore dell'applicazione di loggarsi all'interno della piattaforma di Book Crossing, potendo così effettuare operazioni di suo interesse sui testi disponibili.
 	La componente si presenta nel seguente modo:
 	\begin{itemize}

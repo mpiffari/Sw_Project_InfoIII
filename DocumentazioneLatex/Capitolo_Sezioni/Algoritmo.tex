@@ -11,7 +11,7 @@ Andiamo ad evidenziare gli attori coinvolti in questa operazione di prenotazione
 	\end{itemize}
 	\item \textbf{\underline{Prenotanti} [$ P_{i}$ con $i=1,...,N $]:} rappresentano l'insieme degli N utenti, tutti interessati ad uno specifico libro in possesso dell'utente \textbf{L}.
 	
-	Oltre a questa informazione, ogni utente avrà fornito, al momento della registrazione, le seguenti informazioni:
+	Oltre a questa informazione, ogni utente avrà fornito, al momento della registrazione, i seguenti dati:
 	\begin{itemize}
 		\item \textbf{{\LARGE $r^{P}_{i}$} con $i=1,...,N $:} raggio d'azione del lettore;
 		\item \textbf{{\LARGE $z^{P}_{i}$} con $i=1,...,N $:} zona di residenza.
@@ -33,6 +33,7 @@ Andiamo ad evidenziare gli attori coinvolti in questa operazione di prenotazione
 		\end{figure}
 	
 		Questo ordinamento corrisponde quindi sostanzialmente a creare una \textit{priority queue} in cui si va ad assegnare una maggiore priorità all'utente la cui zona di residenza è più vicina a quella del lettore in possesso del libro richiesto.
+		Nella nostra specifica implementazione, l'ordinamento è stato realizzato tramite l'utilizzo di una SortedMap, con ordinamento \textit{custom} in base al valore (e non secondo la key), ovvero la distanza.
 		
 		\item \textbf{Step 1:} in questo macro-blocco andiamo effettivamente ad applicare l'algoritmo \textit{smart} per poter soddisfare, nella maniera migliore, le esigenze di ogni utente della community.
 		
@@ -54,7 +55,6 @@ Andiamo ad evidenziare gli attori coinvolti in questa operazione di prenotazione
 			\SetAlgoLined
 			\KwData{Informazioni dell'utente lettore e di quello prenotante}
 			\KwResult{Percorso ottimo dal lettore al prenotante}
-			Step 0 (inizializzazione)\;
 			\eIf{Distanza <= 0}{
 				Trova un punto d'incontro nell'unione delle delle area;
 				
@@ -62,7 +62,7 @@ Andiamo ad evidenziare gli attori coinvolti in questa operazione di prenotazione
 			}{
 				Crea la rete di utenti che faranno da tramite tra lettore e prenotante;
 				
-				Ricercare il cammino ottimo (il libro si muoverà \textit{hand-to-hand});
+				Ricercare il cammino ottimo (il libro si muoverà \textit{hand-to-hand}) utilizzando \textit{Algorithm 2};
 			}
 			\caption{Algoritmo di gestione della prenotazione}
 		\end{algorithm}
@@ -77,13 +77,14 @@ Andiamo ad evidenziare gli attori coinvolti in questa operazione di prenotazione
 		ovvero che i raggi d'azione si sovrappongano o meno.
 		
 		Nel caso in cui i due utenti non abbiano possibili punti d'incontro (distanza $>= 0 $), dobbiamo selezionare l'insieme di utenti tramite i quali il libro in questione potrà spostarsi: l'idea base è quindi quella di costruirsi un'area circolare di centro pari alla metà della congiungente del punto $ z_{0} $ (zona di residenza lettore) e $ z^{p}_{i} $ (zona di residenza prenotante).
+		
 		Verranno poi selezionati tutti gli utenti che si trovano all'interno di questa circoscrizione.
 		
 		In passi sequenziali, possiamo scrivere:
 		
 		\begin{algorithm}[H]
 			\SetAlgoLined
-			\KwData{Zona di residenza e raggio d'azione di utente lettore e prenotante}
+			\KwData{Zona di residenza e raggio d'azione di tutti gli utenti che si trovano tra lettore e prenotante}
 			\KwResult{Elenco di utenti attraverso cui il libro dovrà spostarsi \textit{hand-to-hand}}
 			
 			
@@ -104,10 +105,9 @@ Andiamo ad evidenziare gli attori coinvolti in questa operazione di prenotazione
 		\begin{figure}[h!]
 			\centering
 			\includegraphics[width=0.8\textwidth]{Immagini/Algorithm_UsersNet}
-			\caption{Rete di utenti che potrebbero essere attivi nel prestito}
+			\caption{Esempio di rete di utenti che potrebbero essere attivi nel prestito}
 			\label{fig:UsersNet}
 		\end{figure}
-		
 	\end{itemize}
 \end{itemize}
 
@@ -125,3 +125,10 @@ Per rendere però più performante possiamo andare ad applicare un approccio \te
 
 Grazie a questa duplice possibile scelta, siamo in grado di rendere l'algoritmo più ottimale, ovvero in grado di trovare, nella maggior parte dei casi, un percorso ottimo; in particolare, minore è il valore di $\epsilon$ che andiamo a scegliere, più \textit{forte} sarà l'algoritmo, ovvero troverà sempre un percorso ma senza garanzia che sia quello ottimale.
 Maggiore invece è il valore di $\epsilon$ scelto, più bassa sarà la probabilità che troverà un percorso però, il percorso trovato, sarà uno dei più corti.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{Immagini/Alg_complessità.png}
+	\caption{Analisi complessità algoritmo}
+	\label{fig:Alg_cmplx}
+\end{figure}
