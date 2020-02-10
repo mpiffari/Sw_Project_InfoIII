@@ -12,6 +12,7 @@ import java.io.Serializable;
  * @since 2018/2019
  */
 
+
 public class Book implements Serializable{
 
 	private String BCID = "";
@@ -25,6 +26,16 @@ public class Book implements Serializable{
 	private boolean underReading;
     private Double latitude;
     private Double longitude;
+
+    private final String TITLE = "TITLE";
+    private final String AUTHOR = "AUTHOR";
+    private final String YEAR = "YEAR";
+    private final String EDITION = "EDITION";
+    private final String TYPE = "TYPE";
+    private final String ACTUALOWNER = "ACTUALOWNER";
+    private final String _ISBN = "ISBN";
+    private final String STATE = "STATE";
+    private final String _BCID = "BCID";
 
     /**
      * Empty Book init
@@ -77,13 +88,14 @@ public class Book implements Serializable{
      *      <li>YEAR:.....\r\n</li>
      *      <li>EDITION:.....\r\n</li>
      *      <li>TYPE:.....\r\n</li>
-     *      <li>USER:.....\r\n</li>
-     *      <li>ISBN:.....\r\n</li>
+     *      <li>ACTUALOWNER:.....\r\n</li>
+     *      <li>_ISBN:.....\r\n</li>
      *      <li>STATE:.....\r\n</li>
-     *      <li>BCID:.....\r\n</li>
+     *      <li>_BCID:.....\r\n</li>
      *  </ul>
      * @param msg
      */
+
 	public Book(@NonNull String msg) {
 		String lines[] = msg.split(";");
         String copyLines[] = new String[9];
@@ -95,40 +107,41 @@ public class Book implements Serializable{
 
             String words[] = line.split(":");
             if(words.length > 0) {
-                switch (words[0].toUpperCase()) {
-                    case "TITLE": {
+                String response = words[0].toUpperCase();
+                switch  (response) {
+                    case TITLE: {
                         this.title = getTitleFromString(line);
                         break;
                     }
-                    case "AUTHOR": {
+                    case AUTHOR: {
                         this.author = getAuthorFromString(line);
                         break;
                     }
-                    case "YEAR": {
+                    case YEAR: {
                         this.yearOfPubblication = getYearOfPubblicationFromString(line);
                         break;
                     }
-                    case "EDITION": {
+                    case EDITION: {
                         this.editionNumber = getEditionNumberFromString(line);
                         break;
                     }
-                    case "TYPE": {
+                    case TYPE: {
                         this.type = getBookTypeFromString(line);
                         break;
                     }
-                    case "USER": {
+                    case ACTUALOWNER: {
                         this.user = getUserFromString(line);
                         break;
                     }
-                    case "ISBN": {
+                    case _ISBN: {
                         this.ISBN = getISBNFromString(line);
                         break;
                     }
-                    case "STATE": {
+                    case STATE: {
                         this.underReading = getStateFromString(line);
                         break;
                     }
-                    case "BCID": {
+                    case _BCID: {
                         this.BCID = getBCIDFromString(line);
                         break;
                     }
@@ -308,7 +321,7 @@ public class Book implements Serializable{
     private String getTitleFromString(String msg) {
         if(msg.length() != 0 && msg != null) {
             String words[] = msg.split(":");
-            if(words[0].toUpperCase().equals("TITLE") && words.length > 1) {
+            if(words[0].toUpperCase().equals(TITLE) && words.length > 1) {
                 return words[1];
             } else {
                 return "";
@@ -321,7 +334,7 @@ public class Book implements Serializable{
 	private String getAuthorFromString(String msg) {
         if(msg.length() != 0 && msg != null) {
             String words[] = msg.split(":");
-            if(words[0].toUpperCase().equals("AUTHOR") && words.length > 1) {
+            if(words[0].toUpperCase().equals(AUTHOR) && words.length > 1) {
                 return words[1];
             } else {
                 return "";
@@ -337,7 +350,7 @@ public class Book implements Serializable{
             String words[] = msg.split(":");
             int year = 0;
             try {
-                if(words[0].toUpperCase().equals("YEAR") && words.length > 1) {
+                if(words[0].toUpperCase().equals(YEAR) && words.length > 1) {
                     try {
                         year = Integer.parseInt(words[1]);
                     } catch (NumberFormatException e) {
@@ -361,7 +374,7 @@ public class Book implements Serializable{
             String words[] = msg.split(":");
             int edition = 0;
             try {
-                if(words[0].toUpperCase().equals("EDITION") && words.length > 1) {
+                if(words[0].toUpperCase().equals(EDITION) && words.length > 1) {
                     try {
                         edition = Integer.parseInt(words[1]);
                     } catch (NumberFormatException e) {
@@ -383,7 +396,7 @@ public class Book implements Serializable{
 	private String getBookTypeFromString(String msg) {
         if(msg.length() != 0 && msg != null) {
             String words[] = msg.split(":");
-            if(words[0].toUpperCase().equals("TYPE") && words.length > 1) {
+            if(words[0].toUpperCase().equals(TYPE) && words.length > 1) {
                 return words[1];
             } else {
                 return  "";
@@ -396,7 +409,7 @@ public class Book implements Serializable{
     private String getISBNFromString(String msg) {
         if(msg.length() != 0 && msg != null) {
             String words[] = msg.split(":");
-            if(words[0].toUpperCase().equals("ISBN") && words.length > 1) {
+            if(words[0].toUpperCase().equals(_ISBN) && words.length > 1) {
                 return words[1];
             } else {
                 return  "";
@@ -409,7 +422,7 @@ public class Book implements Serializable{
     private String getUserFromString(String msg) {
         if(msg.length() != 0 && msg != null) {
             String words[] = msg.split(":");
-            if(words[0].toUpperCase().equals("USER") && words.length > 1) {
+            if(words[0].toUpperCase().equals(ACTUALOWNER) && words.length > 1) {
                 return words[1];
             } else {
                 return  "";
@@ -422,7 +435,7 @@ public class Book implements Serializable{
 	private String getBCIDFromString(String msg) {
         if(msg.length() != 0 && msg != null) {
             String words[] = msg.split(":");
-            if(words[0].toUpperCase().equals("BCID") && words.length > 1) {
+            if(words[0].toUpperCase().equals(_BCID) && words.length > 1) {
                 return words[1];
             } else {
                 return  "";
@@ -435,7 +448,7 @@ public class Book implements Serializable{
     private boolean getStateFromString(String msg){
         if(msg.length() != 0 && msg != null) {
             String words[] = msg.split(":");
-            if(words[0].toUpperCase().equals("STATE") && words.length > 1) {
+            if(words[0].toUpperCase().equals(STATE) && words.length > 1) {
                 return words[1].equals("1");
             } else {
                 return Boolean.parseBoolean(null);
@@ -471,11 +484,14 @@ public class Book implements Serializable{
      */
     @Override
     public String toString() {
-        return "BCID: " + BCID + "\n" +
-                title + " di " + author + ".\n" +
-                "Categoria: " + type + ".\n" +
-                "Libro raccolto dall'utente: " + user + ".";
+        String res = "";
+        res = res + "BCID: " + BCID + "\n";
+        res = res + "Title: " + title + "\n";
+        res = res + "Author: " + author + "\n";
+        res = res + "Categoria: " + type;
+        if(!user.equals("null")) {
+            res = res + "\nLibro in possesso dell'utente: " + user;
+        }
+        return res;
     }
-
-
 }
