@@ -8,7 +8,8 @@ Il progetto consiste nella definizione delle specifiche, modelizzazione e svilup
 ** Autore
 ** Titolo
 ** Tipologia
-* Prenotare libri
+* Prenotare libri;
+* Inserire libri nella piattaforma tramite scansione del codice a barre;
 
 La parte smart del progetto è presente nell'algoritmo di prenotazione dei libri, dove è stato sviluppato un algoritmo greedy in grado di facilitare lo scambio e il movimento "hand-to-hand" dei libri che popolano la piattaforma.
 
